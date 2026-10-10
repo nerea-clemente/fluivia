@@ -42,3 +42,7 @@ python3 -m http.server 8000
 Se puede alojar tal cual en Netlify, Vercel, Cloudflare Pages o GitHub Pages: no requiere compilación, solo subir la carpeta.
 
 La cabecera y el pie están repetidos en cada página: si cambias el menú, actualízalo en todos los `.html`.
+
+## Demo para clientes
+
+`d/r5x0kruj/` es una demo interactiva con datos ficticios para enseñar en reuniones o enviar por email. No está enlazada desde la web y lleva `noindex`. Los textos de cada sector de ejemplo están en `d/r5x0kruj/data.js`; para añadir un sector, copia un bloque y cambia sus textos.
