@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fluivia · Automatización e IA para pequeñas empresas</title>
+  <meta name="description" content="Fluivia ayuda a pequeñas empresas a organizar y automatizar sus procesos con soluciones prácticas de inteligencia artificial. Menos papeleo. Más tiempo para tu negocio.">
+  <meta name="theme-color" content="#123F35">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Fluivia · Procesos que fluyen">
+  <meta property="og:description" content="Menos papeleo. Más tiempo para tu negocio. Automatización e IA para pequeñas empresas.">
+  <meta property="og:image" content="assets/img/og-avatar.png">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ============ CABECERA ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Fluivia, ir al inicio">
+        <img src="assets/img/logo.svg" alt="fluivia" width="650" height="225">
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sectores">Sectores</a></li>
+          <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm nav-cta" href="#contacto">Hablemos</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Abrir menú</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Automatización e IA para pequeñas empresas</p>
+          <h1>Menos papeleo.<br>Más tiempo para tu negocio.</h1>
+          <p class="lead">Detectamos qué tareas te quitan tiempo, construimos una solución que encaje con tu forma de trabajar y te acompañamos mientras la usas.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Cuéntanos tu proceso</a>
+            <a class="btn btn-ghost" href="#como-trabajamos">Ver cómo trabajamos</a>
+          </div>
+          <p class="hero-note">No necesitas saber qué herramienta te hace falta. Basta con contarnos qué te quita tiempo.</p>
+        </div>
+
+        <!-- Esquema: información dispersa → un flujo ordenado -->
+        <div class="flow" aria-label="Ejemplo: las consultas llegan por varios canales y se organizan en un mismo sitio" role="img">
+          <div class="flow-col flow-in">
+            <p class="flow-label">Hoy</p>
+            <div class="chip"><span class="chip-dot"></span>Correo</div>
+            <div class="chip"><span class="chip-dot"></span>WhatsApp</div>
+            <div class="chip"><span class="chip-dot"></span>Formulario web</div>
+            <div class="chip"><span class="chip-dot"></span>Hoja de Excel</div>
+          </div>
+
+          <div class="flow-lines" aria-hidden="true">
+            <svg viewBox="0 0 80 240" preserveAspectRatio="none">
+              <path d="M0 24 C40 24 40 120 80 120"/>
+              <path d="M0 88 C40 88 40 120 80 120"/>
+              <path d="M0 152 C40 152 40 120 80 120"/>
+              <path d="M0 216 C40 216 40 120 80 120"/>
+            </svg>
+          </div>
+
+          <div class="flow-col flow-out">
+            <p class="flow-label">Con Fluivia</p>
+            <div class="panel">
+              <div class="panel-head">
+                <img src="assets/img/isotipo.svg" alt="" width="14" height="22">
+                <span>Consultas · un solo sitio</span>
+              </div>
+              <ul class="panel-list">
+                <li><span class="tag">Nueva</span><span>Solicitud de presupuesto <em>clasificada</em></span></li>
+                <li><span class="tag tag-soft">Borrador</span><span>Respuesta lista para que la revises</span></li>
+                <li><span class="tag tag-soft">Aviso</span><span>Seguimiento programado para el jueves</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SITUACIONES ============ -->
+    <section class="section section-grey" id="situaciones">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">¿Te suena?</p>
+          <h2>Tareas que se repiten cada día y no dejan tiempo para lo importante.</h2>
+        </div>
+
+        <ul class="pains">
+          <li><span class="num">01</span><p>«Pierdo mucho tiempo respondiendo las mismas preguntas.»</p></li>
+          <li><span class="num">02</span><p>«Copio los mismos datos de un programa a otro.»</p></li>
+          <li><span class="num">03</span><p>«La información está repartida entre el correo, el WhatsApp y varias hojas de cálculo.»</p></li>
+          <li><span class="num">04</span><p>«Se me pasan seguimientos y recordatorios a clientes.»</p></li>
+          <li><span class="num">05</span><p>«Quiero usar la IA en el negocio, pero no sé por dónde empezar.»</p></li>
+          <li class="pains-cta">
+            <p>Si alguna de estas frases es tuya, ya tenemos por dónde empezar.</p>
+            <a class="link-arrow" href="#contacto">Cuéntanos la tuya</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Servicios</p>
+          <h2>Entender el problema, construir la solución y acompañar su uso.</h2>
+          <p class="section-lead">Puedes empezar por un servicio concreto o combinarlos. Lo habitual es resolver primero un proceso y ampliar cuando veas cómo funciona.</p>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <span class="num">01</span>
+            <h3>Diagnóstico de procesos</h3>
+            <p>Revisamos cómo trabaja tu negocio, detectamos las tareas que se pueden simplificar y proponemos prioridades.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> analizar cómo gestionáis las consultas, los documentos o el seguimiento de clientes.</p>
+          </article>
+
+          <article class="service">
+            <span class="num">02</span>
+            <h3>Automatización de tareas</h3>
+            <p>Conectamos las herramientas que ya usas y reducimos los pasos manuales.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> registrar formularios, enviar avisos, actualizar información o preparar recordatorios.</p>
+          </article>
+
+          <article class="service">
+            <span class="num">03</span>
+            <h3>Asistentes de IA</h3>
+            <p>Configuramos asistentes para tareas concretas, con la información y los criterios de tu negocio.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> consultar documentación interna, clasificar solicitudes o preparar borradores de respuesta.</p>
+          </article>
+
+          <article class="service">
+            <span class="num">04</span>
+            <h3>Organización de información</h3>
+            <p>Estructuramos documentos, datos y recursos para que sea fácil encontrarlos y usarlos.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> crear una base de conocimiento o un sistema de seguimiento de solicitudes.</p>
+          </article>
+
+          <article class="service">
+            <span class="num">05</span>
+            <h3>Formación y acompañamiento</h3>
+            <p>Enseñamos a tu equipo a usar las soluciones y la IA en su trabajo diario.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> sesiones prácticas, instrucciones de uso y revisión de ejemplos reales.</p>
+          </article>
+
+          <article class="service">
+            <span class="num">06</span>
+            <h3>Mantenimiento y mejora</h3>
+            <p>Revisamos lo que hemos implementado y lo adaptamos cuando cambian tus necesidades.</p>
+            <p class="service-example"><strong>Por ejemplo:</strong> resolver incidencias, ajustar flujos o incorporar nuevas tareas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTORES ============ -->
+    <section class="section section-grey" id="sectores">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Sectores</p>
+          <h2>Ejemplos de lo que hacemos en negocios como el tuyo.</h2>
+          <p class="section-lead">Cada empresa trabaja a su manera. Estos son casos habituales; la solución final siempre se adapta a tus procesos y herramientas.</p>
+        </div>
+
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Sectores">
+            <button class="tab" role="tab" id="tab-gestorias" aria-controls="panel-gestorias" aria-selected="true">Gestorías</button>
+            <button class="tab" role="tab" id="tab-inmobiliarias" aria-controls="panel-inmobiliarias" aria-selected="false" tabindex="-1">Inmobiliarias</button>
+            <button class="tab" role="tab" id="tab-distribucion" aria-controls="panel-distribucion" aria-selected="false" tabindex="-1">Distribución</button>
+            <button class="tab" role="tab" id="tab-academias" aria-controls="panel-academias" aria-selected="false" tabindex="-1">Academias</button>
+            <button class="tab" role="tab" id="tab-servicios" aria-controls="panel-servicios" aria-selected="false" tabindex="-1">Consultorías y agencias</button>
+            <button class="tab" role="tab" id="tab-comercios" aria-controls="panel-comercios" aria-selected="false" tabindex="-1">Comercios</button>
+          </div>
+
+          <!-- Gestorías -->
+          <div class="tab-panel" role="tabpanel" id="panel-gestorias" aria-labelledby="tab-gestorias" tabindex="0">
+            <div class="cases">
+              <article class="case">
+                <h3>Recogida de documentación</h3>
+                <p class="case-before"><span>Antes</span>Pedir facturas y justificantes cliente a cliente, por correo y por teléfono.</p>
+                <p class="case-after"><span>Con Fluivia</span>Recordatorios automáticos y una carpeta por cliente donde todo llega ordenado.</p>
+              </article>
+              <article class="case">
+                <h3>Consultas repetidas</h3>
+                <p class="case-before"><span>Antes</span>Responder una y otra vez a plazos, modelos y documentos necesarios.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un asistente prepara el borrador de respuesta con vuestros criterios para que lo reviséis.</p>
+              </article>
+              <article class="case">
+                <h3>Calendario fiscal</h3>
+                <p class="case-before"><span>Antes</span>Controlar vencimientos de cada cliente en hojas de cálculo sueltas.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un panel de seguimiento con avisos antes de cada fecha clave.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Inmobiliarias -->
+          <div class="tab-panel" role="tabpanel" id="panel-inmobiliarias" aria-labelledby="tab-inmobiliarias" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Leads de portales</h3>
+                <p class="case-before"><span>Antes</span>Copiar a mano los contactos que llegan de cada portal inmobiliario.</p>
+                <p class="case-after"><span>Con Fluivia</span>Los contactos entran solos en vuestra lista, clasificados por inmueble y zona.</p>
+              </article>
+              <article class="case">
+                <h3>Primera respuesta</h3>
+                <p class="case-before"><span>Antes</span>Contestar tarde a solicitudes de información o de visita.</p>
+                <p class="case-after"><span>Con Fluivia</span>Respuesta inicial con los datos del inmueble y propuesta de horarios de visita.</p>
+              </article>
+              <article class="case">
+                <h3>Fichas y anuncios</h3>
+                <p class="case-before"><span>Antes</span>Redactar desde cero la descripción de cada inmueble.</p>
+                <p class="case-after"><span>Con Fluivia</span>Borradores de anuncio a partir de la ficha técnica, listos para ajustar.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Distribución -->
+          <div class="tab-panel" role="tabpanel" id="panel-distribucion" aria-labelledby="tab-distribucion" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Pedidos por varios canales</h3>
+                <p class="case-before"><span>Antes</span>Pedidos por correo, teléfono y WhatsApp que hay que pasar a mano.</p>
+                <p class="case-after"><span>Con Fluivia</span>Los pedidos se registran en un mismo sitio con un formato común.</p>
+              </article>
+              <article class="case">
+                <h3>Estado de las entregas</h3>
+                <p class="case-before"><span>Antes</span>Llamadas de clientes preguntando dónde está su pedido.</p>
+                <p class="case-after"><span>Con Fluivia</span>Avisos automáticos al cliente cuando el pedido sale y cuando se entrega.</p>
+              </article>
+              <article class="case">
+                <h3>Stock y reposición</h3>
+                <p class="case-before"><span>Antes</span>Revisar existencias a ojo y pedir al proveedor cuando ya falta.</p>
+                <p class="case-after"><span>Con Fluivia</span>Alertas de stock mínimo y propuesta de pedido para que la confirmes.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Academias -->
+          <div class="tab-panel" role="tabpanel" id="panel-academias" aria-labelledby="tab-academias" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Matrículas</h3>
+                <p class="case-before"><span>Antes</span>Inscripciones en papel o por correo que luego se pasan a una hoja.</p>
+                <p class="case-after"><span>Con Fluivia</span>Formulario de inscripción conectado a vuestra lista de alumnos y cobros.</p>
+              </article>
+              <article class="case">
+                <h3>Dudas de familias y alumnos</h3>
+                <p class="case-before"><span>Antes</span>Las mismas preguntas sobre horarios, precios y grupos cada semana.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un asistente que responde con la información de la academia y deriva lo demás.</p>
+              </article>
+              <article class="case">
+                <h3>Avisos y recordatorios</h3>
+                <p class="case-before"><span>Antes</span>Mensajes uno a uno para cambios de clase o pagos pendientes.</p>
+                <p class="case-after"><span>Con Fluivia</span>Avisos programados por grupo, con seguimiento de quién los ha recibido.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Consultorías y agencias -->
+          <div class="tab-panel" role="tabpanel" id="panel-servicios" aria-labelledby="tab-servicios" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Alta de nuevos clientes</h3>
+                <p class="case-before"><span>Antes</span>Repetir los mismos correos, documentos y accesos con cada cliente nuevo.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un proceso de bienvenida que se pone en marcha al firmar.</p>
+              </article>
+              <article class="case">
+                <h3>Propuestas y documentos</h3>
+                <p class="case-before"><span>Antes</span>Rehacer propuestas e informes partiendo de archivos antiguos.</p>
+                <p class="case-after"><span>Con Fluivia</span>Plantillas y borradores generados con la información del proyecto.</p>
+              </article>
+              <article class="case">
+                <h3>Conocimiento interno</h3>
+                <p class="case-before"><span>Antes</span>«¿Dónde estaba ese documento?» repetido en cada reunión.</p>
+                <p class="case-after"><span>Con Fluivia</span>Una base de conocimiento que el equipo puede consultar en lenguaje natural.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Comercios -->
+          <div class="tab-panel" role="tabpanel" id="panel-comercios" aria-labelledby="tab-comercios" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Mensajes de clientes</h3>
+                <p class="case-before"><span>Antes</span>Preguntas sobre horarios, disponibilidad y envíos a todas horas.</p>
+                <p class="case-after"><span>Con Fluivia</span>Respuestas preparadas con la información de tu tienda y aviso cuando hace falta una persona.</p>
+              </article>
+              <article class="case">
+                <h3>Reservas y encargos</h3>
+                <p class="case-before"><span>Antes</span>Encargos apuntados en una libreta o en el móvil.</p>
+                <p class="case-after"><span>Con Fluivia</span>Encargos registrados en un único sitio con aviso al cliente cuando están listos.</p>
+              </article>
+              <article class="case">
+                <h3>Proveedores y facturas</h3>
+                <p class="case-before"><span>Antes</span>Facturas en el correo, en papel y en el escritorio.</p>
+                <p class="case-after"><span>Con Fluivia</span>Facturas recogidas y ordenadas automáticamente para tu gestoría.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <p class="sectors-note">¿Tu sector no aparece? Trabajamos con cualquier negocio que tenga tareas administrativas o comerciales repetitivas. <a href="#contacto">Cuéntanos el tuyo</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO TRABAJAMOS ============ -->
+    <section class="section" id="como-trabajamos">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cómo trabajamos</p>
+          <h2>Cinco pasos, de la primera conversación al uso diario.</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Entender</h3>
+            <p>Conocemos tu negocio y el proceso que quieres mejorar.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Priorizar</h3>
+            <p>Elegimos una oportunidad concreta y viable para empezar.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Proponer</h3>
+            <p>Definimos la solución, el alcance y el presupuesto, por escrito.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <h3>Implementar</h3>
+            <p>Construimos, probamos con casos reales y ajustamos.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">5</span>
+            <h3>Acompañar</h3>
+            <p>Explicamos cómo usarla y revisamos que funcione como esperabas.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ DIFERENCIA ============ -->
+    <section class="section section-dark" id="diferencia">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow eyebrow-light">Qué nos diferencia</p>
+          <h2>Tecnología que encaja en tu negocio, no al revés.</h2>
+        </div>
+
+        <div class="values">
+          <div class="value">
+            <h3>Cercanía</h3>
+            <p>Trabajas directamente con la persona que diseña y construye tu solución.</p>
+          </div>
+          <div class="value">
+            <h3>Visión de negocio</h3>
+            <p>Partimos de una necesidad concreta, no de una herramienta de moda.</p>
+          </div>
+          <div class="value">
+            <h3>Soluciones adaptadas</h3>
+            <p>Tenemos en cuenta tus procesos, tus recursos y lo que tu equipo ya sabe hacer.</p>
+          </div>
+          <div class="value">
+            <h3>Claridad</h3>
+            <p>Te explicamos qué vamos a hacer, cómo funcionará y qué seguirá necesitando una persona.</p>
+          </div>
+          <div class="value">
+            <h3>Continuidad</h3>
+            <p>La implementación incluye ayudarte a usarla. No te dejamos con una herramienta que nadie entiende.</p>
+          </div>
+          <div class="value value-quote">
+            <p>«Preparamos un borrador de respuesta para que lo revises.» La IA ayuda; las decisiones siguen siendo tuyas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO EMPEZAR ============ -->
+    <section class="section" id="empezar">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cómo empezar</p>
+          <h2>Un proceso. Una mejora real.</h2>
+          <p class="section-lead">La mejor forma de empezar es resolver una tarea concreta. Cuando veas cómo funciona, decidimos juntos si ampliar.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <p class="plan-kicker">Para empezar</p>
+            <h3>Sesión de diagnóstico</h3>
+            <p>Revisamos cómo trabajáis y salimos con una lista de prioridades y una primera propuesta.</p>
+            <ul class="checks">
+              <li>Análisis del proceso que más tiempo os consume</li>
+              <li>Oportunidades ordenadas por impacto y esfuerzo</li>
+              <li>Recomendación clara del primer paso</li>
+            </ul>
+          </article>
+
+          <article class="plan plan-featured">
+            <p class="plan-kicker">El núcleo</p>
+            <h3>Proyecto a medida</h3>
+            <p>Construimos la solución con un presupuesto cerrado según su alcance.</p>
+            <ul class="checks">
+              <li>Alcance y presupuesto definidos por escrito</li>
+              <li>Pruebas con casos reales de tu negocio</li>
+              <li>Formación al equipo e instrucciones de uso</li>
+            </ul>
+          </article>
+
+          <article class="plan">
+            <p class="plan-kicker">Opcional</p>
+            <h3>Mantenimiento y mejora</h3>
+            <p>Mantenemos todo funcionando y lo adaptamos cuando cambian tus necesidades.</p>
+            <ul class="checks">
+              <li>Resolución de incidencias</li>
+              <li>Ajustes de flujos y nuevas tareas</li>
+              <li>Revisión periódica de resultados</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="honest-note"><strong>Sin promesas vacías.</strong> El ahorro de tiempo o la reducción de errores depende de cada proceso y de cómo se use. Por eso lo comprobamos en cada proyecto, con datos de tu negocio.</p>
+      </div>
+    </section>
+
+    <!-- ============ PREGUNTAS ============ -->
+    <section class="section section-grey" id="preguntas">
+      <div class="container faq-grid">
+        <div class="section-head">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2>Lo que suelen preguntarnos.</h2>
+          <p class="section-lead">¿Tienes otra duda? <a href="#contacto">Escríbenos</a> y te respondemos.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>¿Necesito saber de tecnología o de IA?</summary>
+            <p>No. Puedes venir con algo tan concreto como «pierdo mucho tiempo respondiendo las mismas preguntas». Nosotros buscamos la herramienta adecuada y te lo explicamos con ejemplos.</p>
+          </details>
+          <details>
+            <summary>¿Tengo que cambiar los programas que ya uso?</summary>
+            <p>Normalmente no. Primero intentamos conectar lo que ya utilizas, como el correo, las hojas de cálculo o tu programa de gestión. Solo proponemos una herramienta nueva si de verdad simplifica el trabajo.</p>
+          </details>
+          <details>
+            <summary>¿La IA va a responder sola a mis clientes?</summary>
+            <p>Solo si tú lo decides. En muchos casos lo más útil es que la IA prepare un borrador o clasifique la información y que una persona lo revise. Siempre te explicamos qué parte sigue necesitando intervención humana.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto cuesta?</summary>
+            <p>Depende del alcance. Cada proyecto tiene un presupuesto cerrado que acordamos antes de empezar. También ofrecemos sesiones de diagnóstico o formación y un servicio opcional de mantenimiento.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto se tarda en tener algo funcionando?</summary>
+            <p>Empezamos por un proceso concreto para que veas resultados pronto. El plazo exacto lo fijamos en la propuesta, según lo que haya que construir y probar.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa con los datos de mi empresa y de mis clientes?</summary>
+            <p>Los tratamos con cuidado y de acuerdo con el RGPD. Elegimos herramientas y configuraciones adecuadas para cada tipo de información y te explicamos dónde se guarda y quién tiene acceso.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section section-dark contact" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow eyebrow-light">Hablemos</p>
+          <h2>Cuéntanos qué tarea te quita más tiempo.</h2>
+          <p>Te respondemos para agendar una primera conversación, sin compromiso. En ella vemos tu caso y te decimos con sinceridad si podemos ayudarte.</p>
+          <ul class="contact-points">
+            <li>Primera conversación sin compromiso</li>
+            <li>Propuesta clara, con alcance y presupuesto</li>
+            <li>Trato directo, de principio a fin</li>
+          </ul>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-nombre">Nombre</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-empresa">Empresa</label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Correo electrónico</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono <span class="optional">(opcional)</span></label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-sector">Sector</label>
+            <select id="f-sector" name="sector">
+              <option value="">Selecciona una opción</option>
+              <option>Gestoría o asesoría</option>
+              <option>Inmobiliaria</option>
+              <option>Distribución</option>
+              <option>Academia o formación</option>
+              <option>Consultoría o agencia</option>
+              <option>Comercio</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-mensaje">¿Qué tarea te gustaría simplificar?</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="Por ejemplo: respondo las mismas preguntas por correo varias veces al día."></textarea>
+          </div>
+
+          <div class="field field-check">
+            <input id="f-privacidad" name="privacidad" type="checkbox" required>
+            <label for="f-privacidad">He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</label>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/logo-inverso.svg" alt="fluivia" width="650" height="225">
+        <p>Procesos que fluyen.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Pie de página">
+        <a href="#servicios">Servicios</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#como-trabajamos">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="footer-legal">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <p>© <span data-year>2026</span> Fluivia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
