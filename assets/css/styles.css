@@ -600,3 +600,20 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
 .faq details p a { font-weight: 600; }
 @media (max-width: 1080px) { .commitments { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .commitments { grid-template-columns: 1fr; } }
+
+/* Servicios: herramientas con las que trabajamos */
+.tools-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 40px; padding: 24px 28px; border-radius: var(--radius); background: var(--fluivia-gris-claro); }
+.tools-strip p { color: var(--bosque-80); }
+.tools-strip strong { color: var(--fluivia-bosque); }
+.tool-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-chips li { padding: 6px 14px; border-radius: var(--pill); background: var(--fluivia-blanco); font-size: 14px; font-weight: 600; }
+
+/* Tarjetas de servicio sobre fondo gris */
+.section-grey .service { background: var(--fluivia-blanco); border-color: transparent; }
+
+/* Cuatro formas de empezar */
+.plans:has(> .plan:nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
+.plans:has(> .plan:nth-child(4)) .plan { padding: 32px 24px; }
+@media (max-width: 1180px) { .plans:has(> .plan:nth-child(4)) { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 920px) { .plans:has(> .plan:nth-child(4)) { max-width: none; } }
+@media (max-width: 640px) { .plans:has(> .plan:nth-child(4)) { grid-template-columns: 1fr; } }
