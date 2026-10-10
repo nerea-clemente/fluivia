@@ -35,8 +35,8 @@
       <nav class="main-nav" id="main-nav" aria-label="Principal">
         <ul>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#soluciones">Soluciones</a></li>
           <li><a href="#sectores">Sectores</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
         </ul>
@@ -177,11 +177,160 @@
       </div>
     </section>
 
-    <!-- ============ SOLUCIONES ============ -->
-    <section class="section section-grey" id="soluciones">
+    <!-- ============ SECTORES ============ -->
+    <section class="section section-grey" id="sectores">
       <div class="container">
         <div class="section-head">
-          <h2>Qué podemos automatizar en tu empresa.</h2>
+          <h2>Ejemplos de lo que hacemos en negocios como el tuyo.</h2>
+          <p class="section-lead">Cada empresa trabaja a su manera. Estos son casos habituales; la solución final siempre se adapta a tus procesos y herramientas.</p>
+        </div>
+
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Sectores">
+            <button class="tab" role="tab" id="tab-gestorias" aria-controls="panel-gestorias" aria-selected="true">Gestorías</button>
+            <button class="tab" role="tab" id="tab-inmobiliarias" aria-controls="panel-inmobiliarias" aria-selected="false" tabindex="-1">Inmobiliarias</button>
+            <button class="tab" role="tab" id="tab-distribucion" aria-controls="panel-distribucion" aria-selected="false" tabindex="-1">Distribución</button>
+            <button class="tab" role="tab" id="tab-academias" aria-controls="panel-academias" aria-selected="false" tabindex="-1">Academias</button>
+            <button class="tab" role="tab" id="tab-servicios" aria-controls="panel-servicios" aria-selected="false" tabindex="-1">Consultorías y agencias</button>
+            <button class="tab" role="tab" id="tab-comercios" aria-controls="panel-comercios" aria-selected="false" tabindex="-1">Comercios</button>
+          </div>
+
+          <!-- Gestorías -->
+          <div class="tab-panel" role="tabpanel" id="panel-gestorias" aria-labelledby="tab-gestorias" tabindex="0">
+            <div class="cases">
+              <article class="case">
+                <h3>Recogida de documentación</h3>
+                <p class="case-before"><span>Antes</span>Pedir facturas y justificantes cliente a cliente, por correo y por teléfono.</p>
+                <p class="case-after"><span>Con Fluivia</span>Recordatorios automáticos y una carpeta por cliente donde todo llega ordenado.</p>
+              </article>
+              <article class="case">
+                <h3>Consultas repetidas</h3>
+                <p class="case-before"><span>Antes</span>Responder una y otra vez a plazos, modelos y documentos necesarios.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un asistente prepara el borrador de respuesta con vuestros criterios para que lo reviséis.</p>
+              </article>
+              <article class="case">
+                <h3>Calendario fiscal</h3>
+                <p class="case-before"><span>Antes</span>Controlar vencimientos de cada cliente en hojas de cálculo sueltas.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un panel de seguimiento con avisos antes de cada fecha clave.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Inmobiliarias -->
+          <div class="tab-panel" role="tabpanel" id="panel-inmobiliarias" aria-labelledby="tab-inmobiliarias" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Leads de portales</h3>
+                <p class="case-before"><span>Antes</span>Copiar a mano los contactos que llegan de cada portal inmobiliario.</p>
+                <p class="case-after"><span>Con Fluivia</span>Los contactos entran solos en vuestra lista, clasificados por inmueble y zona.</p>
+              </article>
+              <article class="case">
+                <h3>Primera respuesta</h3>
+                <p class="case-before"><span>Antes</span>Contestar tarde a solicitudes de información o de visita.</p>
+                <p class="case-after"><span>Con Fluivia</span>Respuesta inicial con los datos del inmueble y propuesta de horarios de visita.</p>
+              </article>
+              <article class="case">
+                <h3>Fichas y anuncios</h3>
+                <p class="case-before"><span>Antes</span>Redactar desde cero la descripción de cada inmueble.</p>
+                <p class="case-after"><span>Con Fluivia</span>Borradores de anuncio a partir de la ficha técnica, listos para ajustar.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Distribución -->
+          <div class="tab-panel" role="tabpanel" id="panel-distribucion" aria-labelledby="tab-distribucion" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Pedidos por varios canales</h3>
+                <p class="case-before"><span>Antes</span>Pedidos por correo, teléfono y WhatsApp que hay que pasar a mano.</p>
+                <p class="case-after"><span>Con Fluivia</span>Los pedidos se registran en un mismo sitio con un formato común.</p>
+              </article>
+              <article class="case">
+                <h3>Estado de las entregas</h3>
+                <p class="case-before"><span>Antes</span>Llamadas de clientes preguntando dónde está su pedido.</p>
+                <p class="case-after"><span>Con Fluivia</span>Avisos automáticos al cliente cuando el pedido sale y cuando se entrega.</p>
+              </article>
+              <article class="case">
+                <h3>Stock y reposición</h3>
+                <p class="case-before"><span>Antes</span>Revisar existencias a ojo y pedir al proveedor cuando ya falta.</p>
+                <p class="case-after"><span>Con Fluivia</span>Alertas de stock mínimo y propuesta de pedido para que la confirmes.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Academias -->
+          <div class="tab-panel" role="tabpanel" id="panel-academias" aria-labelledby="tab-academias" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Matrículas</h3>
+                <p class="case-before"><span>Antes</span>Inscripciones en papel o por correo que luego se pasan a una hoja.</p>
+                <p class="case-after"><span>Con Fluivia</span>Formulario de inscripción conectado a vuestra lista de alumnos y cobros.</p>
+              </article>
+              <article class="case">
+                <h3>Dudas de familias y alumnos</h3>
+                <p class="case-before"><span>Antes</span>Las mismas preguntas sobre horarios, precios y grupos cada semana.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un asistente que responde con la información de la academia y deriva lo demás.</p>
+              </article>
+              <article class="case">
+                <h3>Avisos y recordatorios</h3>
+                <p class="case-before"><span>Antes</span>Mensajes uno a uno para cambios de clase o pagos pendientes.</p>
+                <p class="case-after"><span>Con Fluivia</span>Avisos programados por grupo, con seguimiento de quién los ha recibido.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Consultorías y agencias -->
+          <div class="tab-panel" role="tabpanel" id="panel-servicios" aria-labelledby="tab-servicios" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Alta de nuevos clientes</h3>
+                <p class="case-before"><span>Antes</span>Repetir los mismos correos, documentos y accesos con cada cliente nuevo.</p>
+                <p class="case-after"><span>Con Fluivia</span>Un proceso de bienvenida que se pone en marcha al firmar.</p>
+              </article>
+              <article class="case">
+                <h3>Propuestas y documentos</h3>
+                <p class="case-before"><span>Antes</span>Rehacer propuestas e informes partiendo de archivos antiguos.</p>
+                <p class="case-after"><span>Con Fluivia</span>Plantillas y borradores generados con la información del proyecto.</p>
+              </article>
+              <article class="case">
+                <h3>Conocimiento interno</h3>
+                <p class="case-before"><span>Antes</span>«¿Dónde estaba ese documento?» repetido en cada reunión.</p>
+                <p class="case-after"><span>Con Fluivia</span>Una base de conocimiento que el equipo puede consultar en lenguaje natural.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Comercios -->
+          <div class="tab-panel" role="tabpanel" id="panel-comercios" aria-labelledby="tab-comercios" tabindex="0" hidden>
+            <div class="cases">
+              <article class="case">
+                <h3>Mensajes de clientes</h3>
+                <p class="case-before"><span>Antes</span>Preguntas sobre horarios, disponibilidad y envíos a todas horas.</p>
+                <p class="case-after"><span>Con Fluivia</span>Respuestas preparadas con la información de tu tienda y aviso cuando hace falta una persona.</p>
+              </article>
+              <article class="case">
+                <h3>Reservas y encargos</h3>
+                <p class="case-before"><span>Antes</span>Encargos apuntados en una libreta o en el móvil.</p>
+                <p class="case-after"><span>Con Fluivia</span>Encargos registrados en un único sitio con aviso al cliente cuando están listos.</p>
+              </article>
+              <article class="case">
+                <h3>Proveedores y facturas</h3>
+                <p class="case-before"><span>Antes</span>Facturas en el correo, en papel y en el escritorio.</p>
+                <p class="case-after"><span>Con Fluivia</span>Facturas recogidas y ordenadas automáticamente para tu gestoría.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <p class="sectors-note">¿Tu sector no aparece? Trabajamos con cualquier negocio que tenga tareas administrativas o comerciales repetitivas. <a href="#contacto">Cuéntanos el tuyo</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ SOLUCIONES ============ -->
+    <section class="section" id="soluciones">
+      <div class="container">
+        <div class="section-head">
+          <h2>Qué podemos automatizar, área por área.</h2>
           <p class="section-lead">Estas son algunas de las soluciones que implementamos, ordenadas por área. Elige la que más se parezca a tu día a día.</p>
         </div>
 
@@ -371,7 +520,7 @@
     </section>
 
     <!-- ============ A MEDIDA ============ -->
-    <section class="section" id="a-medida">
+    <section class="section section-grey" id="a-medida">
       <div class="container">
         <div class="section-head">
           <h2>Y si lo necesitas, lo construimos a medida.</h2>
@@ -447,155 +596,6 @@
             </ol>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ SECTORES ============ -->
-    <section class="section section-grey" id="sectores">
-      <div class="container">
-        <div class="section-head">
-          <h2>Ejemplos de lo que hacemos en negocios como el tuyo.</h2>
-          <p class="section-lead">Cada empresa trabaja a su manera. Estos son casos habituales; la solución final siempre se adapta a tus procesos y herramientas.</p>
-        </div>
-
-        <div class="tabs" data-tabs>
-          <div class="tab-list" role="tablist" aria-label="Sectores">
-            <button class="tab" role="tab" id="tab-gestorias" aria-controls="panel-gestorias" aria-selected="true">Gestorías</button>
-            <button class="tab" role="tab" id="tab-inmobiliarias" aria-controls="panel-inmobiliarias" aria-selected="false" tabindex="-1">Inmobiliarias</button>
-            <button class="tab" role="tab" id="tab-distribucion" aria-controls="panel-distribucion" aria-selected="false" tabindex="-1">Distribución</button>
-            <button class="tab" role="tab" id="tab-academias" aria-controls="panel-academias" aria-selected="false" tabindex="-1">Academias</button>
-            <button class="tab" role="tab" id="tab-servicios" aria-controls="panel-servicios" aria-selected="false" tabindex="-1">Consultorías y agencias</button>
-            <button class="tab" role="tab" id="tab-comercios" aria-controls="panel-comercios" aria-selected="false" tabindex="-1">Comercios</button>
-          </div>
-
-          <!-- Gestorías -->
-          <div class="tab-panel" role="tabpanel" id="panel-gestorias" aria-labelledby="tab-gestorias" tabindex="0">
-            <div class="cases">
-              <article class="case">
-                <h3>Recogida de documentación</h3>
-                <p class="case-before"><span>Antes</span>Pedir facturas y justificantes cliente a cliente, por correo y por teléfono.</p>
-                <p class="case-after"><span>Con Fluivia</span>Recordatorios automáticos y una carpeta por cliente donde todo llega ordenado.</p>
-              </article>
-              <article class="case">
-                <h3>Consultas repetidas</h3>
-                <p class="case-before"><span>Antes</span>Responder una y otra vez a plazos, modelos y documentos necesarios.</p>
-                <p class="case-after"><span>Con Fluivia</span>Un asistente prepara el borrador de respuesta con vuestros criterios para que lo reviséis.</p>
-              </article>
-              <article class="case">
-                <h3>Calendario fiscal</h3>
-                <p class="case-before"><span>Antes</span>Controlar vencimientos de cada cliente en hojas de cálculo sueltas.</p>
-                <p class="case-after"><span>Con Fluivia</span>Un panel de seguimiento con avisos antes de cada fecha clave.</p>
-              </article>
-            </div>
-          </div>
-
-          <!-- Inmobiliarias -->
-          <div class="tab-panel" role="tabpanel" id="panel-inmobiliarias" aria-labelledby="tab-inmobiliarias" tabindex="0" hidden>
-            <div class="cases">
-              <article class="case">
-                <h3>Leads de portales</h3>
-                <p class="case-before"><span>Antes</span>Copiar a mano los contactos que llegan de cada portal inmobiliario.</p>
-                <p class="case-after"><span>Con Fluivia</span>Los contactos entran solos en vuestra lista, clasificados por inmueble y zona.</p>
-              </article>
-              <article class="case">
-                <h3>Primera respuesta</h3>
-                <p class="case-before"><span>Antes</span>Contestar tarde a solicitudes de información o de visita.</p>
-                <p class="case-after"><span>Con Fluivia</span>Respuesta inicial con los datos del inmueble y propuesta de horarios de visita.</p>
-              </article>
-              <article class="case">
-                <h3>Fichas y anuncios</h3>
-                <p class="case-before"><span>Antes</span>Redactar desde cero la descripción de cada inmueble.</p>
-                <p class="case-after"><span>Con Fluivia</span>Borradores de anuncio a partir de la ficha técnica, listos para ajustar.</p>
-              </article>
-            </div>
-          </div>
-
-          <!-- Distribución -->
-          <div class="tab-panel" role="tabpanel" id="panel-distribucion" aria-labelledby="tab-distribucion" tabindex="0" hidden>
-            <div class="cases">
-              <article class="case">
-                <h3>Pedidos por varios canales</h3>
-                <p class="case-before"><span>Antes</span>Pedidos por correo, teléfono y WhatsApp que hay que pasar a mano.</p>
-                <p class="case-after"><span>Con Fluivia</span>Los pedidos se registran en un mismo sitio con un formato común.</p>
-              </article>
-              <article class="case">
-                <h3>Estado de las entregas</h3>
-                <p class="case-before"><span>Antes</span>Llamadas de clientes preguntando dónde está su pedido.</p>
-                <p class="case-after"><span>Con Fluivia</span>Avisos automáticos al cliente cuando el pedido sale y cuando se entrega.</p>
-              </article>
-              <article class="case">
-                <h3>Stock y reposición</h3>
-                <p class="case-before"><span>Antes</span>Revisar existencias a ojo y pedir al proveedor cuando ya falta.</p>
-                <p class="case-after"><span>Con Fluivia</span>Alertas de stock mínimo y propuesta de pedido para que la confirmes.</p>
-              </article>
-            </div>
-          </div>
-
-          <!-- Academias -->
-          <div class="tab-panel" role="tabpanel" id="panel-academias" aria-labelledby="tab-academias" tabindex="0" hidden>
-            <div class="cases">
-              <article class="case">
-                <h3>Matrículas</h3>
-                <p class="case-before"><span>Antes</span>Inscripciones en papel o por correo que luego se pasan a una hoja.</p>
-                <p class="case-after"><span>Con Fluivia</span>Formulario de inscripción conectado a vuestra lista de alumnos y cobros.</p>
-              </article>
-              <article class="case">
-                <h3>Dudas de familias y alumnos</h3>
-                <p class="case-before"><span>Antes</span>Las mismas preguntas sobre horarios, precios y grupos cada semana.</p>
-                <p class="case-after"><span>Con Fluivia</span>Un asistente que responde con la información de la academia y deriva lo demás.</p>
-              </article>
-              <article class="case">
-                <h3>Avisos y recordatorios</h3>
-                <p class="case-before"><span>Antes</span>Mensajes uno a uno para cambios de clase o pagos pendientes.</p>
-                <p class="case-after"><span>Con Fluivia</span>Avisos programados por grupo, con seguimiento de quién los ha recibido.</p>
-              </article>
-            </div>
-          </div>
-
-          <!-- Consultorías y agencias -->
-          <div class="tab-panel" role="tabpanel" id="panel-servicios" aria-labelledby="tab-servicios" tabindex="0" hidden>
-            <div class="cases">
-              <article class="case">
-                <h3>Alta de nuevos clientes</h3>
-                <p class="case-before"><span>Antes</span>Repetir los mismos correos, documentos y accesos con cada cliente nuevo.</p>
-                <p class="case-after"><span>Con Fluivia</span>Un proceso de bienvenida que se pone en marcha al firmar.</p>
-              </article>
-              <article class="case">
-                <h3>Propuestas y documentos</h3>
-                <p class="case-before"><span>Antes</span>Rehacer propuestas e informes partiendo de archivos antiguos.</p>
-                <p class="case-after"><span>Con Fluivia</span>Plantillas y borradores generados con la información del proyecto.</p>
-              </article>
-              <article class="case">
-                <h3>Conocimiento interno</h3>
-                <p class="case-before"><span>Antes</span>«¿Dónde estaba ese documento?» repetido en cada reunión.</p>
-                <p class="case-after"><span>Con Fluivia</span>Una base de conocimiento que el equipo puede consultar en lenguaje natural.</p>
-              </article>
-            </div>
-          </div>
-
-          <!-- Comercios -->
-          <div class="tab-panel" role="tabpanel" id="panel-comercios" aria-labelledby="tab-comercios" tabindex="0" hidden>
-            <div class="cases">
-              <article class="case">
-                <h3>Mensajes de clientes</h3>
-                <p class="case-before"><span>Antes</span>Preguntas sobre horarios, disponibilidad y envíos a todas horas.</p>
-                <p class="case-after"><span>Con Fluivia</span>Respuestas preparadas con la información de tu tienda y aviso cuando hace falta una persona.</p>
-              </article>
-              <article class="case">
-                <h3>Reservas y encargos</h3>
-                <p class="case-before"><span>Antes</span>Encargos apuntados en una libreta o en el móvil.</p>
-                <p class="case-after"><span>Con Fluivia</span>Encargos registrados en un único sitio con aviso al cliente cuando están listos.</p>
-              </article>
-              <article class="case">
-                <h3>Proveedores y facturas</h3>
-                <p class="case-before"><span>Antes</span>Facturas en el correo, en papel y en el escritorio.</p>
-                <p class="case-after"><span>Con Fluivia</span>Facturas recogidas y ordenadas automáticamente para tu gestoría.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <p class="sectors-note">¿Tu sector no aparece? Trabajamos con cualquier negocio que tenga tareas administrativas o comerciales repetitivas. <a href="#contacto">Cuéntanos el tuyo</a>.</p>
       </div>
     </section>
 
@@ -836,8 +836,8 @@
       </div>
       <nav class="footer-nav" aria-label="Pie de página">
         <a href="#servicios">Servicios</a>
-        <a href="#soluciones">Soluciones</a>
         <a href="#sectores">Sectores</a>
+        <a href="#soluciones">Soluciones</a>
         <a href="#como-trabajamos">Cómo trabajamos</a>
         <a href="#contacto">Contacto</a>
       </nav>
