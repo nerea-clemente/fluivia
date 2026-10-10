@@ -3,18 +3,23 @@
 Web corporativa de **Fluivia**, automatización e IA para pequeñas empresas.
 *Procesos que fluyen.*
 
-Es una web estática (HTML, CSS y JavaScript, sin dependencias ni proceso de build) construida con el kit de marca aprobado: paleta de cuatro colores, Plus Jakarta Sans (alojada en `assets/fonts`) y los logos SVG originales.
+Es una web estática de varias páginas (HTML, CSS y JavaScript, sin dependencias ni proceso de build) construida con el kit de marca aprobado: paleta de cuatro colores, Plus Jakarta Sans (alojada en `assets/fonts`) y los logos SVG originales.
 
 ## Estructura
 
 ```
-index.html          Página principal (una sola página con secciones)
-aviso-legal.html    Aviso legal (LSSI) con campos a completar
-privacidad.html     Política de privacidad (RGPD) con campos a completar
-assets/css/         Estilos (tokens de marca en :root)
-assets/js/main.js   Menú móvil, pestañas de sectores, animaciones y formulario
-assets/fonts/       Plus Jakarta Sans en WOFF2 + licencia OFL
-assets/img/         Logos, isotipo y favicons del kit
+index.html            Inicio: portada, situaciones, qué hacemos, pasos y diferencias
+servicios.html        Los 6 servicios y cómo empezar
+soluciones.html       Soluciones por área, desarrollos a medida y agentes de IA
+sectores.html         Ejemplos por sector (con anclas: #gestorias, #inmobiliarias…)
+como-trabajamos.html  Proceso, qué nos diferencia y preguntas frecuentes
+contacto.html         Formulario de contacto
+aviso-legal.html      Aviso legal (LSSI) con campos a completar
+privacidad.html       Política de privacidad (RGPD) con campos a completar
+assets/css/           Estilos (tokens de marca en :root)
+assets/js/main.js     Menú móvil, pestañas, índice de sectores, animaciones y formulario
+assets/fonts/         Plus Jakarta Sans en WOFF2 + licencia OFL
+assets/img/           Logos, isotipo y favicons del kit
 ```
 
 ## Ver en local
@@ -35,3 +40,5 @@ python3 -m http.server 8000
 ## Publicar
 
 Se puede alojar tal cual en Netlify, Vercel, Cloudflare Pages o GitHub Pages: no requiere compilación, solo subir la carpeta.
+
+La cabecera y el pie están repetidos en cada página: si cambias el menú, actualízalo en todos los `.html`.

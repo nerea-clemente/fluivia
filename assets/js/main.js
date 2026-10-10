@@ -55,6 +55,18 @@
       if (focus) tab.focus();
       tab.scrollIntoView({ block: "nearest", inline: "nearest" });
     };
+    // Abrir la pestaña indicada en la URL (p. ej. sectores.html#inmobiliarias)
+    var fromHash = function () {
+      var id = window.location.hash.slice(1);
+      var target = id && tabs.filter(function (t) { return t.id === "tab-" + id || t.id === "stab-" + id; })[0];
+      if (target) {
+        select(target, false);
+        root.scrollIntoView({ block: "start" });
+      }
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+
     tabs.forEach(function (tab, i) {
       tab.addEventListener("click", function () { select(tab, false); });
       tab.addEventListener("keydown", function (e) {
@@ -67,6 +79,23 @@
       });
     });
   });
+
+  /* ---- Índice de sectores: resaltar el sector visible ---- */
+  var sectorLinks = document.querySelectorAll(".sector-index a");
+  if (sectorLinks.length && "IntersectionObserver" in window) {
+    var markActive = function (id) {
+      sectorLinks.forEach(function (a) {
+        var on = a.getAttribute("href") === "#" + id;
+        a.classList.toggle("is-active", on);
+        if (on) a.scrollIntoView({ block: "nearest", inline: "nearest" });
+      });
+    };
+    var sectorIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) markActive(entry.target.id); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll(".sector-block").forEach(function (el) { sectorIO.observe(el); });
+    markActive("gestorias");
+  }
 
   /* ---- Aparición suave al hacer scroll ---- */
   var revealTargets = document.querySelectorAll(
