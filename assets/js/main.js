@@ -59,8 +59,8 @@
       tab.addEventListener("click", function () { select(tab, false); });
       tab.addEventListener("keydown", function (e) {
         var next = null;
-        if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-        else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next = tabs[(i + 1) % tabs.length];
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = tabs[(i - 1 + tabs.length) % tabs.length];
         else if (e.key === "Home") next = tabs[0];
         else if (e.key === "End") next = tabs[tabs.length - 1];
         if (next) { e.preventDefault(); select(next, true); }
@@ -70,7 +70,7 @@
 
   /* ---- Aparición suave al hacer scroll ---- */
   var revealTargets = document.querySelectorAll(
-    ".section-head, .pains li, .service, .step, .value, .plan, .faq, .contact-form"
+    ".section-head, .pains li, .service, .build, .chain, .step, .value, .plan, .faq, .contact-form"
   );
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var io = new IntersectionObserver(function (entries) {

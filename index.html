@@ -35,6 +35,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Principal">
         <ul>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
           <li><a href="#sectores">Sectores</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
@@ -55,9 +56,8 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Automatización e IA para pequeñas empresas</p>
           <h1>Menos papeleo.<br>Más tiempo para tu negocio.</h1>
-          <p class="lead">Detectamos qué tareas te quitan tiempo, construimos una solución que encaje con tu forma de trabajar y te acompañamos mientras la usas.</p>
+          <p class="lead">Automatización e inteligencia artificial para pequeñas empresas. Detectamos qué tareas te quitan tiempo, construimos una solución que encaje con tu forma de trabajar y te acompañamos mientras la usas.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contacto">Cuéntanos tu proceso</a>
             <a class="btn btn-ghost" href="#como-trabajamos">Ver cómo trabajamos</a>
@@ -106,7 +106,6 @@
     <section class="section section-grey" id="situaciones">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">¿Te suena?</p>
           <h2>Tareas que se repiten cada día y no dejan tiempo para lo importante.</h2>
         </div>
 
@@ -128,9 +127,8 @@
     <section class="section" id="servicios">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Servicios</p>
-          <h2>Entender el problema, construir la solución y acompañar su uso.</h2>
-          <p class="section-lead">Puedes empezar por un servicio concreto o combinarlos. Lo habitual es resolver primero un proceso y ampliar cuando veas cómo funciona.</p>
+          <h2>Cómo te ayudamos.</h2>
+          <p class="section-lead">Entendemos el problema, construimos la solución y te acompañamos en su uso. Puedes empezar por un servicio concreto o combinarlos. Lo habitual es resolver primero un proceso y ampliar cuando veas cómo funciona.</p>
         </div>
 
         <div class="services">
@@ -179,11 +177,283 @@
       </div>
     </section>
 
+    <!-- ============ SOLUCIONES ============ -->
+    <section class="section section-grey" id="soluciones">
+      <div class="container">
+        <div class="section-head">
+          <h2>Qué podemos automatizar en tu empresa.</h2>
+          <p class="section-lead">Estas son algunas de las soluciones que implementamos, ordenadas por área. Elige la que más se parezca a tu día a día.</p>
+        </div>
+
+        <div class="sol-layout" data-tabs>
+          <div class="sol-tabs" role="tablist" aria-label="Áreas" aria-orientation="vertical">
+            <button class="sol-tab" role="tab" id="stab-ventas" aria-controls="spanel-ventas" aria-selected="true"><span class="num">01</span>Ventas y captación</button>
+            <button class="sol-tab" role="tab" id="stab-atencion" aria-controls="spanel-atencion" aria-selected="false" tabindex="-1"><span class="num">02</span>Atención al cliente</button>
+            <button class="sol-tab" role="tab" id="stab-operaciones" aria-controls="spanel-operaciones" aria-selected="false" tabindex="-1"><span class="num">03</span>Operaciones y administración</button>
+            <button class="sol-tab" role="tab" id="stab-rrhh" aria-controls="spanel-rrhh" aria-selected="false" tabindex="-1"><span class="num">04</span>Recursos humanos</button>
+            <button class="sol-tab" role="tab" id="stab-marketing" aria-controls="spanel-marketing" aria-selected="false" tabindex="-1"><span class="num">05</span>Marketing y contenido</button>
+            <button class="sol-tab" role="tab" id="stab-finanzas" aria-controls="spanel-finanzas" aria-selected="false" tabindex="-1"><span class="num">06</span>Finanzas</button>
+            <button class="sol-tab" role="tab" id="stab-conocimiento" aria-controls="spanel-conocimiento" aria-selected="false" tabindex="-1"><span class="num">07</span>Conocimiento interno</button>
+            <button class="sol-tab" role="tab" id="stab-producto" aria-controls="spanel-producto" aria-selected="false" tabindex="-1"><span class="num">08</span>Producto y servicio</button>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-ventas" aria-labelledby="stab-ventas" tabindex="0">
+            <h3 class="sol-panel-title">Ventas y captación</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Cualificación de leads</h3>
+                <p>La IA lee formularios, emails o mensajes de WhatsApp, puntúa cada contacto según tu cliente ideal y lo pasa al CRM con un resumen.</p>
+                <p class="sol-example">Por ejemplo: una inmobiliaria descarta curiosos y prioriza a compradores con presupuesto y plazo.</p>
+              </article>
+              <article class="sol">
+                <h3>Propuestas y presupuestos</h3>
+                <p>A partir de las notas de una llamada, genera una propuesta con tu plantilla, tus precios y casos similares.</p>
+              </article>
+              <article class="sol">
+                <h3>Preparación de reuniones</h3>
+                <p>Antes de cada llamada recibes un resumen del cliente: historial, últimos emails y novedades de su empresa.</p>
+              </article>
+              <article class="sol">
+                <h3>Seguimiento después de la reunión</h3>
+                <p>Transcripción, resumen, lista de tareas y email de seguimiento redactado para que lo revises y lo envíes.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-atencion" aria-labelledby="stab-atencion" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Atención al cliente</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Asistente con tu base de conocimiento</h3>
+                <p>Responde preguntas frecuentes, estado de pedidos o políticas, y deriva a una persona cuando hace falta.</p>
+              </article>
+              <article class="sol">
+                <h3>Clasificación de solicitudes</h3>
+                <p>Detecta tema, urgencia y tono de cada mensaje y lo asigna a quien corresponde.</p>
+              </article>
+              <article class="sol">
+                <h3>Análisis de quejas</h3>
+                <p>Cada semana agrupa las reclamaciones por causa para que sepas qué arreglar primero.</p>
+                <p class="sol-example">Por ejemplo: «El 30 % de las quejas son por retrasos en los envíos a Canarias.»</p>
+              </article>
+              <article class="sol">
+                <h3>Reserva de citas</h3>
+                <p>Tus clientes eligen hueco en tu agenda online y reciben confirmación y recordatorio automáticos.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-operaciones" aria-labelledby="stab-operaciones" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Operaciones y administración</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Facturas y documentos</h3>
+                <p>Extrae los datos de facturas, albaranes o recibos en PDF y los lleva a tu contabilidad o a Excel.</p>
+              </article>
+              <article class="sol">
+                <h3>Revisión de contratos</h3>
+                <p>Compara cada contrato con tu checklist (penalizaciones, plazos de renovación…) y marca los puntos de riesgo.</p>
+              </article>
+              <article class="sol">
+                <h3>Alta de clientes o empleados</h3>
+                <p>Checklist, emails de bienvenida, recogida de documentos y recordatorios, todo en marcha desde el primer día.</p>
+              </article>
+              <article class="sol">
+                <h3>Informes recurrentes</h3>
+                <p>Un informe semanal de ventas, indicadores o tráfico web, redactado y enviado solo, con conclusiones y no solo números.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-rrhh" aria-labelledby="stab-rrhh" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Recursos humanos</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Filtrado de candidaturas</h3>
+                <p>Compara cada CV con los requisitos del puesto y propone una preselección justificada para que decidas tú.</p>
+              </article>
+              <article class="sol">
+                <h3>Ofertas de empleo</h3>
+                <p>Descripciones de puesto y ofertas redactadas a partir de unas pocas notas.</p>
+              </article>
+              <article class="sol">
+                <h3>Asistente interno de RR. HH.</h3>
+                <p>Responde «¿cuántos días de vacaciones me quedan?» o «¿cómo pido una baja?» con las políticas de tu empresa.</p>
+              </article>
+              <article class="sol">
+                <h3>Encuestas de clima</h3>
+                <p>Analiza las respuestas abiertas y saca los temas y tendencias principales.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-marketing" aria-labelledby="stab-marketing" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Marketing y contenido</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Reaprovechar contenido</h3>
+                <p>Un webinar se convierte en artículo de blog, newsletter, carrusel de LinkedIn y preguntas frecuentes.</p>
+              </article>
+              <article class="sol">
+                <h3>SEO</h3>
+                <p>Investigación de palabras clave, guiones de artículos y metadescripciones a escala.</p>
+              </article>
+              <article class="sol">
+                <h3>Personalización</h3>
+                <p>Emails y páginas adaptadas a cada segmento, idioma o país.</p>
+              </article>
+              <article class="sol">
+                <h3>Escucha de marca y competencia</h3>
+                <p>Menciones, reseñas y webs de la competencia vigiladas, con avisos cuando cambian precios o lanzan algo nuevo.</p>
+              </article>
+              <article class="sol">
+                <h3>Revisión de textos</h3>
+                <p>Comprueba tus textos frente a tu guía de estilo, tu terminología o la normativa aplicable.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-finanzas" aria-labelledby="stab-finanzas" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Finanzas</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Conciliación y gastos</h3>
+                <p>Concilia movimientos bancarios y categoriza los gastos automáticamente.</p>
+              </article>
+              <article class="sol">
+                <h3>Alertas de anomalías</h3>
+                <p>Avisos ante gastos fuera de lo normal o facturas duplicadas.</p>
+              </article>
+              <article class="sol">
+                <h3>Recordatorios de cobro</h3>
+                <p>Mensajes escalonados (amable, firme y aviso formal) adaptados a cada cliente.</p>
+              </article>
+              <article class="sol">
+                <h3>Previsiones claras</h3>
+                <p>Escenarios y previsiones explicados en lenguaje sencillo para tomar decisiones.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-conocimiento" aria-labelledby="stab-conocimiento" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Conocimiento interno</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>El asistente de tu empresa</h3>
+                <p>Responde con tus documentos, procesos y manuales, para no tener que preguntar siempre a la misma persona.</p>
+              </article>
+              <article class="sol">
+                <h3>Procesos documentados</h3>
+                <p>A partir de una grabación o una explicación, genera el procedimiento paso a paso.</p>
+              </article>
+              <article class="sol">
+                <h3>Reuniones y decisiones</h3>
+                <p>Resúmenes de reuniones y acuerdos guardados en un sitio donde se pueden buscar.</p>
+              </article>
+            </div>
+          </div>
+          <div class="sol-panel" role="tabpanel" id="spanel-producto" aria-labelledby="stab-producto" tabindex="0" hidden>
+            <h3 class="sol-panel-title">Producto y servicio</h3>
+            <div class="sol-grid">
+              <article class="sol">
+                <h3>Análisis de opiniones</h3>
+                <p>Reseñas, encuestas o comentarios de alumnos agrupados en mejoras concretas.</p>
+              </article>
+              <article class="sol">
+                <h3>Traducción y localización</h3>
+                <p>Webs, materiales y documentación adaptados a otros idiomas y mercados.</p>
+              </article>
+              <article class="sol">
+                <h3>Materiales formativos</h3>
+                <p>Cursos, cuestionarios y guías creados a partir de la documentación que ya tienes.</p>
+              </article>
+              <article class="sol">
+                <h3>Herramientas internas</h3>
+                <p>Pequeñas aplicaciones, scripts e integraciones hechas con IA, sin necesitar un equipo de desarrollo.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A MEDIDA ============ -->
+    <section class="section" id="a-medida">
+      <div class="container">
+        <div class="section-head">
+          <h2>Y si lo necesitas, lo construimos a medida.</h2>
+          <p class="section-lead">Además de conectar las herramientas que ya usas, creamos aplicaciones sencillas pensadas para tu negocio y tus clientes.</p>
+        </div>
+
+        <div class="builds">
+          <article class="build">
+            <div class="build-visual" aria-hidden="true">
+              <div class="mini-cal">
+                <span class="mini-cal-head">Martes 14</span>
+                <span class="slot">09:30</span><span class="slot is-taken">10:30</span><span class="slot is-picked">11:30</span><span class="slot">12:30</span>
+              </div>
+            </div>
+            <h3>Reserva de citas</h3>
+            <p>Agenda online conectada a tu calendario, con confirmación, recordatorios y cambios de cita sin llamadas.</p>
+            <p class="build-for">Para clínicas, gestorías, academias, inmobiliarias o cualquier negocio con citas.</p>
+          </article>
+
+          <article class="build">
+            <div class="build-visual" aria-hidden="true">
+              <div class="mini-portal">
+                <span class="mini-portal-head">Hola, Laura</span>
+                <span class="mini-row"><i></i>Mis documentos</span>
+                <span class="mini-row"><i></i>Estado de mi trámite</span>
+                <span class="mini-row"><i></i>Facturas y pagos</span>
+              </div>
+            </div>
+            <h3>Portales de clientes y alumnos</h3>
+            <p>Un área privada donde cada cliente o alumno consulta sus documentos, el estado de su trámite, sus materiales o sus pagos.</p>
+            <p class="build-for">Menos correos preguntando «¿cómo va lo mío?».</p>
+          </article>
+
+          <article class="build">
+            <div class="build-visual" aria-hidden="true">
+              <div class="mini-dash">
+                <span class="bar" style="--h:40%"></span><span class="bar" style="--h:65%"></span><span class="bar" style="--h:50%"></span><span class="bar" style="--h:85%"></span><span class="bar" style="--h:70%"></span>
+              </div>
+            </div>
+            <h3>Herramientas y paneles internos</h3>
+            <p>Formularios, paneles de seguimiento y pequeñas aplicaciones para que el equipo trabaje en un mismo sitio.</p>
+            <p class="build-for">Hechas a la medida de tu proceso, no al revés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGENTES ============ -->
+    <section class="section section-dark" id="agentes">
+      <div class="container">
+        <div class="section-head">
+          <h2>El siguiente nivel: agentes que encadenan tareas.</h2>
+          <p class="section-lead section-lead-light">La IA no solo redacta textos. También puede dar varios pasos seguidos, como lo haría una persona del equipo, y avisarte cuando necesita tu revisión.</p>
+        </div>
+
+        <div class="chains">
+          <div class="chain">
+            <p class="chain-trigger">Entra un nuevo contacto</p>
+            <ol class="chain-steps">
+              <li>Lo investiga</li><li>Lo puntúa</li><li>Lo registra en el CRM</li><li>Redacta el email</li><li>Agenda un recordatorio</li>
+            </ol>
+          </div>
+          <div class="chain">
+            <p class="chain-trigger">Se matricula un alumno</p>
+            <ol class="chain-steps">
+              <li>Crea su ficha</li><li>Pide los documentos que faltan</li><li>Programa recordatorios</li><li>Avisa al equipo</li>
+            </ol>
+          </div>
+          <div class="chain">
+            <p class="chain-trigger">Cada lunes</p>
+            <ol class="chain-steps">
+              <li>Revisa las métricas</li><li>Detecta qué ha cambiado</li><li>Escribe un resumen</li><li>Lo publica en Slack o Teams</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SECTORES ============ -->
     <section class="section section-grey" id="sectores">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Sectores</p>
           <h2>Ejemplos de lo que hacemos en negocios como el tuyo.</h2>
           <p class="section-lead">Cada empresa trabaja a su manera. Estos son casos habituales; la solución final siempre se adapta a tus procesos y herramientas.</p>
         </div>
@@ -333,7 +603,6 @@
     <section class="section" id="como-trabajamos">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Cómo trabajamos</p>
           <h2>Cinco pasos, de la primera conversación al uso diario.</h2>
         </div>
 
@@ -371,7 +640,6 @@
     <section class="section section-dark" id="diferencia">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow eyebrow-light">Qué nos diferencia</p>
           <h2>Tecnología que encaja en tu negocio, no al revés.</h2>
         </div>
 
@@ -407,7 +675,6 @@
     <section class="section" id="empezar">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Cómo empezar</p>
           <h2>Un proceso. Una mejora real.</h2>
           <p class="section-lead">La mejor forma de empezar es resolver una tarea concreta. Cuando veas cómo funciona, decidimos juntos si ampliar.</p>
         </div>
@@ -455,12 +722,15 @@
     <section class="section section-grey" id="preguntas">
       <div class="container faq-grid">
         <div class="section-head">
-          <p class="eyebrow">Preguntas frecuentes</p>
           <h2>Lo que suelen preguntarnos.</h2>
           <p class="section-lead">¿Tienes otra duda? <a href="#contacto">Escríbenos</a> y te respondemos.</p>
         </div>
 
         <div class="faq">
+          <details>
+            <summary>¿Y si lo que necesito no aparece en la web?</summary>
+            <p>Es lo más habitual. Los ejemplos son solo una muestra: cuéntanos qué tarea te quita tiempo y te diremos si podemos resolverla, ya sea conectando tus herramientas o construyendo algo a medida, como una agenda de citas o un portal para tus clientes.</p>
+          </details>
           <details>
             <summary>¿Necesito saber de tecnología o de IA?</summary>
             <p>No. Puedes venir con algo tan concreto como «pierdo mucho tiempo respondiendo las mismas preguntas». Nosotros buscamos la herramienta adecuada y te lo explicamos con ejemplos.</p>
@@ -493,7 +763,6 @@
     <section class="section section-dark contact" id="contacto">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <p class="eyebrow eyebrow-light">Hablemos</p>
           <h2>Cuéntanos qué tarea te quita más tiempo.</h2>
           <p>Te respondemos para agendar una primera conversación, sin compromiso. En ella vemos tu caso y te decimos con sinceridad si podemos ayudarte.</p>
           <ul class="contact-points">
@@ -534,6 +803,7 @@
               <option>Inmobiliaria</option>
               <option>Distribución</option>
               <option>Academia o formación</option>
+              <option>Clínica o centro de salud</option>
               <option>Consultoría o agencia</option>
               <option>Comercio</option>
               <option>Otro</option>
@@ -566,6 +836,7 @@
       </div>
       <nav class="footer-nav" aria-label="Pie de página">
         <a href="#servicios">Servicios</a>
+        <a href="#soluciones">Soluciones</a>
         <a href="#sectores">Sectores</a>
         <a href="#como-trabajamos">Cómo trabajamos</a>
         <a href="#contacto">Contacto</a>
