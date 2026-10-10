@@ -157,6 +157,14 @@
       return firstInvalid;
     };
 
+    // Si se llega desde «Me interesa», prepara el mensaje con el producto
+    try {
+      var interes = new URLSearchParams(window.location.search).get("interes");
+      if (interes && !form.elements.mensaje.value) {
+        form.elements.mensaje.value = "Me interesa «" + interes + "». ";
+      }
+    } catch (err) { /* navegador sin URLSearchParams */ }
+
     form.addEventListener("input", function (e) {
       if (e.target.getAttribute("aria-invalid") === "true") validate();
     });
