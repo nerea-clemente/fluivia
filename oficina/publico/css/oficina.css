@@ -183,6 +183,20 @@ table { border-collapse: collapse; }
 .estado-guardado { font-size: 13px; color: var(--suave); }
 .estado-guardado.es-sucio { color: var(--ambar); font-weight: 600; }
 
+/* ---------- Facturación ---------- */
+.fiscal { display: grid; gap: 10px; margin-top: 14px; }
+.fiscal-caja { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; font-size: 13.5px; }
+.fiscal-caja .icon { width: 17px; height: 17px; margin-top: 1px; }
+.fiscal-caja p + p { margin-top: 4px; }
+.fiscal-caja strong { font-weight: 700; }
+.fiscal-ok { background: var(--ok-fondo); color: #145A31; }
+.fiscal-mal { background: var(--rojo-fondo); color: #8C1D17; }
+.fiscal-pend { background: var(--ambar-fondo); color: #6B4500; }
+.fiscal-info { background: var(--azul-fondo); color: #164B85; }
+.fiscal-acciones { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip-fiscal { background: var(--rojo-fondo); color: var(--rojo); }
+.hist-fiscal .hist-ic { background: var(--ambar-fondo); color: var(--ambar); }
+
 /* ---------- Avisos ---------- */
 .aviso { position: fixed; left: 50%; bottom: 24px; z-index: 50; transform: translate(-50%, 20px); padding: 11px 18px; border-radius: var(--pill); background: var(--texto); color: var(--blanco); font-weight: 600; font-size: 13.5px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
 .aviso.es-visible { opacity: 1; transform: translate(-50%, 0); }

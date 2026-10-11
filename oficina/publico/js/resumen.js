@@ -39,6 +39,13 @@
       return '<li><span>' + esc(e[1]) + '</span><span class="embudo-barra"><i style="width:' + Math.round(n / max * 100) + '%"></i></span><strong>' + n + "</strong></li>";
     }).join("");
 
+    var sinNif = lista.filter(Of.fiscalPendiente);
+    document.getElementById("fiscal-caja").hidden = !sinNif.length;
+    document.getElementById("fiscal-lista").innerHTML = sinNif.map(function (c) {
+      var que = !c.nif ? "Sin NIF-IVA" : c.vies && c.vies.nif === c.nif && c.vies.estado === "no-valido" ? "No válido en VIES" : "Sin comprobar";
+      return '<li><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + '</a><span class="chip chip-fiscal">' + que + "</span></li>";
+    }).join("");
+
     var web = lista.map(function (c) {
       var ult = (c.historial || []).filter(function (x) { return x.tipo === "web" || x.tipo === "demo"; }).pop();
       return ult ? { c: c, h: ult } : null;

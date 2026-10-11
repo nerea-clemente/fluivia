@@ -16,6 +16,7 @@
 //   GET  /api/yo · GET /api/contactos · GET /api/contactos.csv
 //   GET/PUT/DELETE /api/contactos/:id
 //   POST /api/contactos/:id/correo   enviar un correo y apuntarlo en el historial
+//   POST /api/contactos/:id/vies     comprobar su NIF-IVA en VIES
 //   GET  /api/plantillas?contacto=:id   enlace de su demo y plantillas ya rellenas
 //   POST /api/acceso/salir · POST /api/acceso/salir-todas
 //
@@ -25,6 +26,7 @@
 import { Oficina } from './store.js';
 import * as C from './contactos.js';
 import * as Correo from './correo.js';
+import * as Vies from './vies.js';
 
 export { Oficina };
 
@@ -190,6 +192,14 @@ async function api(req, env, store, url, email) {
       }
       if (req.method === 'DELETE') return json(await store.borrarContacto(id));
     }
+    if (partes[3] === 'vies' && req.method === 'POST') {
+      const c = await store.leerContacto(id);
+      if (!c) return json({ error: 'No existe ese contacto' }, 404);
+      if (!C.nifConFormato(c.nif)) return json({ error: 'Guarda primero un NIF-IVA con el prefijo del país (por ejemplo ESB12345678)' }, 400);
+      if (!(await store.limitar(`vies:${email}`, 30, 3600))) return json({ error: 'Demasiadas comprobaciones seguidas. Prueba dentro de un rato.' }, 429);
+      const r = await Vies.comprobar(c.nif, env.DEV === '1' && env.VIES_PRUEBA === '1' ? viesSimulado : undefined);
+      return json(await store.guardarVies(id, { ...r, nif: c.nif }, email));
+    }
     if (partes[3] === 'correo' && req.method === 'POST') {
       const c = await store.leerContacto(id);
       if (!c) return json({ error: 'No existe ese contacto' }, 404);
@@ -205,6 +215,10 @@ async function api(req, env, store, url, email) {
   }
   return json({ error: 'No encontrado' }, 404);
 }
+
+// Solo en local (DEV=1 y VIES_PRUEBA=1): VIES simulado. Los NIF con «0000» salen no válidos.
+const viesSimulado = async (url) => new Response(JSON.stringify(/0000/.test(url)
+  ? { isValid: false, userError: 'INVALID' } : { isValid: true, userError: 'VALID', name: 'EMPRESA DE PRUEBA SL', address: 'CALLE MAYOR 1\n28001 MADRID' }));
 
 // ---- Tareas programadas ---------------------------------------------------------------
 async function copia(env) {

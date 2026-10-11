@@ -10,7 +10,22 @@ export const ETAPAS = ['nuevo', 'contactado', 'reunion', 'propuesta', 'cliente',
 export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'otro', ''];
 export const ORIGENES = ['web-demo', 'web-contacto', 'prospeccion', 'linkedin', 'recomendacion', 'evento', 'manual', 'otro'];
 export const INTERESES = ['consultas', 'citas', 'documentos', 'a-medida', 'marketing', 'formacion'];
-export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linkedin', 'web', 'etapa', 'demo'];
+export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linkedin', 'web', 'etapa', 'demo', 'fiscal'];
+// País del cliente a efectos de IVA: España, Dinamarca u otro país de la UE.
+export const PAISES = ['ES', 'DK', 'UE'];
+export const VIES_ESTADOS = ['valido', 'no-valido', 'no-disponible'];
+// Sectores cuya actividad suele estar exenta de IVA en España (sanidad y enseñanza).
+export const SECTORES_EXENTOS = ['clinica', 'academia'];
+
+// NIF-IVA en mayúsculas, sin espacios ni signos, con el prefijo del país.
+export function normalizarNif(v, pais = 'ES') {
+  let n = String(v ?? '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 16);
+  if (!n) return '';
+  // España y Dinamarca: si falta el prefijo del país, se pone (en el resto de la UE se escribe con él).
+  if ((pais === 'ES' || pais === 'DK') && !n.startsWith(pais)) n = pais + n;
+  return n;
+}
+export const nifConFormato = (n) => /^[A-Z]{2}[A-Z0-9]{2,13}$/.test(n || '');
 
 const txt = (v, n) => String(v ?? '').replace(/\u0000/g, '').slice(0, n);
 const fechaIso = (v) => (/^\d{4}-\d{2}-\d{2}T[\d:.]+Z$/.test(v || '') ? v : '');
@@ -46,6 +61,11 @@ export function limpiar(b = {}) {
     motivo: txt(b.motivo, 300),
     etiquetas: etiquetas(b.etiquetas),
     creado: fechaIso(b.creado) || new Date().toISOString(),
+    // Facturación
+    pais: PAISES.includes(b.pais) ? b.pais : 'ES',
+    razonSocial: txt(b.razonSocial, 200).trim(),
+    nif: normalizarNif(b.nif, PAISES.includes(b.pais) ? b.pais : 'ES'),
+    direccion: txt(b.direccion, 400).trim(),
   };
   d.etapas = Object.fromEntries(ETAPAS.filter((k) => dia(b.etapas?.[k])).map((k) => [k, b.etapas[k]]));
   if (!d.etapas[d.etapa]) d.etapas[d.etapa] = hoy();
@@ -63,6 +83,9 @@ export function limpiar(b = {}) {
   d.demo = b.demo && fechaIso(b.demo.fecha) ? { fecha: b.demo.fecha, enlace: txt(b.demo.enlace, 600) } : null;
   // Dejó de recibir correos (rebote o petición): no se le vuelve a escribir.
   d.noEscribir = b.noEscribir === true;
+  // Resultado de la última comprobación en VIES (solo lo pone el servidor; ver fusionar).
+  d.vies = b.vies && fechaIso(b.vies.fecha) && VIES_ESTADOS.includes(b.vies.estado)
+    ? { estado: b.vies.estado, fecha: b.vies.fecha, nif: txt(b.vies.nif, 20), nombre: txt(b.vies.nombre, 300), direccion: txt(b.vies.direccion, 400) } : null;
   return d;
 }
 
@@ -73,6 +96,8 @@ export function fusionar(prev, d) {
   const perdidos = (prev.historial || []).filter((h) => (h.auto || h.tipo === 'web' || h.tipo === 'demo') && !hay.has(h.fecha));
   if (perdidos.length) d.historial = [...d.historial, ...perdidos].sort((a, b) => (a.fecha < b.fecha ? -1 : 1));
   if (!d.demo && prev.demo) d.demo = prev.demo;
+  // La comprobación de VIES no se cambia desde la ficha, y deja de valer si cambia el NIF.
+  d.vies = prev.vies && prev.vies.nif === d.nif ? prev.vies : null;
   return d;
 }
 
@@ -116,12 +141,12 @@ export const NOMBRE_ETAPA = { nuevo: 'Nuevo', contactado: 'Contactado', reunion:
 
 // Para el CSV: una fila por contacto.
 export function csv(lista) {
-  const cols = ['nombre', 'empresa', 'cargo', 'email', 'telefono', 'sector', 'ciudad', 'origen', 'etapa', 'implantacion', 'cuota', 'proxima_fecha', 'proxima', 'creado'];
+  const cols = ['nombre', 'empresa', 'cargo', 'email', 'telefono', 'sector', 'ciudad', 'origen', 'etapa', 'implantacion', 'cuota', 'proxima_fecha', 'proxima', 'pais', 'razonSocial', 'nif', 'vies', 'direccion', 'creado'];
   const celda = (v) => {
     let s = String(v ?? '');
     if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`; // que una hoja de cálculo no lo tome por fórmula
     return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
-  const filas = lista.map((c) => cols.map((k) => celda(k === 'proxima_fecha' ? c.proxima?.fecha : k === 'proxima' ? c.proxima?.texto : c[k])).join(';'));
+  const filas = lista.map((c) => cols.map((k) => celda(k === 'proxima_fecha' ? c.proxima?.fecha : k === 'proxima' ? c.proxima?.texto : k === 'vies' ? (c.vies?.estado || '') : c[k])).join(';'));
   return '﻿' + [cols.join(';'), ...filas].join('\r\n');
 }

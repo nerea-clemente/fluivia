@@ -7,6 +7,7 @@ La herramienta interna de Fluivia. Por ahora tiene:
 - **Envío de la demo**: quien la pide desde la web la recibe por correo, con el nombre de su negocio y su sector.
 - **Correos desde la ficha**: con plantillas (primer contacto, después de la demo, seguimiento, propuesta) que se rellenan solas y puedes cambiar antes de enviar. Salen desde tu dominio y quedan en el historial.
 - **Su demo personalizada**: cada ficha tiene el enlace a la demo con el nombre y el sector de esa empresa, para copiarlo o abrirlo.
+- **Facturación e IVA**: en cada contacto, el país, la razón social, la dirección fiscal y el NIF-IVA, con un botón para comprobarlo en VIES (la base de datos de la Comisión Europea). La ficha te dice qué IVA lleva su factura: sin IVA y con inversión del sujeto pasivo si el NIF es válido, 25 % de *moms* si es danés, y un aviso si no es válido (suele ser que no está dado de alta en el ROI). Si cambias el NIF, hay que volver a comprobarlo. Avisa también de que clínicas y academias suelen estar exentas de IVA. Los contactos en propuesta o clientes sin NIF-IVA válido salen marcados en la lista, el tablero y el resumen, y te pide confirmación antes de pasarlos a cliente. Hay una plantilla de correo para pedir los datos de facturación.
 - **Resumen**: lo que te toca hoy, contactos nuevos, importes en propuestas y cuotas de clientes.
 - **Cada mañana**, un correo con «hoy te toca» si hay algo pendiente.
 - **Cada noche**, una copia de seguridad en R2, en la UE (se guardan 60 días).
@@ -42,7 +43,7 @@ printf 'DEV=1\n' > .dev.vars
 npx wrangler dev
 ```
 
-Con `DEV=1` no se envía ningún correo: el código para entrar y los correos se escriben en la terminal.
+Con `DEV=1` no se envía ningún correo: el código para entrar y los correos se escriben en la terminal. Para probar la comprobación de VIES sin conexión, arranca con `--var VIES_PRUEBA:1`: los NIF que contienen «0000» salen no válidos y el resto válidos.
 
 ## Protección
 

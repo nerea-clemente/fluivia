@@ -87,6 +87,11 @@ export const PLANTILLAS = {
     asunto: 'Retomamos lo de {empresa}',
     texto: 'Hola, {nombre}:\n\nRetomo nuestra conversación. ¿Has podido darle una vuelta? Si te surge alguna duda o quieres cambiar algo de lo que hablamos, dímelo y lo ajusto.\n\nUn saludo,\nFluivia',
   },
+  'datos-facturacion': {
+    nombre: 'Pedir los datos para facturar',
+    asunto: 'Datos para la factura de {empresa}',
+    texto: 'Hola, {nombre}:\n\nPara preparar la factura necesito estos datos:\n\n· Razón social\n· NIF\n· Dirección fiscal\n\nTe facturo desde Dinamarca, que también es UE, así que la factura irá sin IVA y con «inversión del sujeto pasivo»: el IVA lo declaráis vosotros en vuestra declaración trimestral. Para eso vuestro NIF tiene que estar dado de alta en el registro de operaciones intracomunitarias (ROI). Si no lo está, vuestra gestoría lo hace en un momento con el modelo 036.\n\nGracias,\nFluivia',
+  },
   propuesta: {
     nombre: 'Envío de propuesta',
     asunto: 'Propuesta para {empresa}',

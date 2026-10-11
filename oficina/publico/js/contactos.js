@@ -57,7 +57,7 @@
     $("lista").innerHTML = '<div class="tabla-env"><table class="tabla"><thead><tr><th>Contacto</th><th>Etapa</th><th>Próxima acción</th><th class="ocultar-movil">Origen</th><th class="ocultar-movil">Último movimiento</th></tr></thead><tbody>' +
       lista.map(function (c) {
         return '<tr data-id="' + esc(c.id) + '"><td><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + "</a><small>" + esc(Of.subtitulo(c)) + "</small></td>" +
-          "<td>" + Of.etapa(c.etapa) + "</td>" +
+          "<td>" + Of.etapa(c.etapa) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</td>" +
           "<td>" + (c.proxima && c.proxima.fecha ? Of.proxima(c) + "<small>" + esc(c.proxima.texto) + "</small>" : '<span class="tenue">—</span>') + "</td>" +
           '<td class="ocultar-movil">' + esc(Of.nombre(Of.ORIGENES, c.origen)) + "</td>" +
           '<td class="ocultar-movil">' + esc(ultimo(c)) + "</td></tr>";
@@ -72,7 +72,7 @@
       return '<section class="columna" data-etapa="' + e[0] + '"><h2>' + esc(e[1]) + " <span>" + col.length + "</span></h2>" +
         (suma ? '<p class="columna-suma">' + Of.euros(suma) + (e[0] === "cliente" ? "/mes" : "") + "</p>" : "") +
         col.map(function (c) {
-          return '<a class="tarjeta-c" draggable="true" data-id="' + esc(c.id) + '" href="/ficha.html?id=' + encodeURIComponent(c.id) + '"><strong>' + esc(Of.titulo(c)) + "</strong><span>" + esc(Of.subtitulo(c)) + "</span>" + Of.proxima(c) + "</a>";
+          return '<a class="tarjeta-c" draggable="true" data-id="' + esc(c.id) + '" href="/ficha.html?id=' + encodeURIComponent(c.id) + '"><strong>' + esc(Of.titulo(c)) + "</strong><span>" + esc(Of.subtitulo(c)) + "</span>" + Of.proxima(c) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</a>";
         }).join("") + "</section>";
     }).join("");
   }
@@ -118,6 +118,7 @@
     var etapa = col.getAttribute("data-etapa");
     if (!c || c.etapa === etapa) return;
     var copia = JSON.parse(JSON.stringify(c)); copia.etapa = etapa;
+    if (etapa === "cliente" && Of.fiscalPendiente(copia) && !confirm(Of.titulo(c) + " todavía no tiene un NIF-IVA válido en VIES. Sin él, su factura tendría que llevar el 25 % de IVA danés.\n\n¿Pasarlo a cliente igualmente?")) return;
     Of.api("/api/contactos/" + encodeURIComponent(c.id), { method: "PUT", body: copia }).then(function (g) {
       todos = todos.map(function (x) { return x.id === g.id ? g : x; });
       pintar(); Of.aviso(Of.titulo(g) + ": " + Of.nombre(Of.ETAPAS, etapa));

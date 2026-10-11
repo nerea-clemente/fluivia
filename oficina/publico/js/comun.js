@@ -6,7 +6,8 @@
   var SECTORES = [["gestoria", "Gestoría"], ["inmobiliaria", "Inmobiliaria"], ["clinica", "Clínica"], ["academia", "Academia"], ["distribucion", "Distribución"], ["consultoria", "Consultoría o agencia"], ["comercio", "Comercio"], ["otro", "Otro"]];
   var ORIGENES = [["web-demo", "Pidió la demo"], ["web-contacto", "Formulario de la web"], ["prospeccion", "Prospección"], ["linkedin", "LinkedIn"], ["recomendacion", "Recomendación"], ["evento", "Evento"], ["manual", "A mano"], ["otro", "Otro"]];
   var INTERESES = [["consultas", "Consultas en orden"], ["citas", "Citas sin llamadas"], ["documentos", "Documentos sin perseguir"], ["a-medida", "A medida"], ["marketing", "Marketing"], ["formacion", "Formación"]];
-  var TIPOS = [["nota", "Nota"], ["llamada", "Llamada"], ["correo", "Correo"], ["reunion", "Reunión"], ["whatsapp", "WhatsApp"], ["linkedin", "LinkedIn"], ["web", "Web"], ["etapa", "Etapa"], ["demo", "Demo"]];
+  var TIPOS = [["nota", "Nota"], ["llamada", "Llamada"], ["correo", "Correo"], ["reunion", "Reunión"], ["whatsapp", "WhatsApp"], ["linkedin", "LinkedIn"], ["web", "Web"], ["etapa", "Etapa"], ["demo", "Demo"], ["fiscal", "IVA"]];
+  var PAISES = [["ES", "España"], ["DK", "Dinamarca"], ["UE", "Otro país de la UE"]];
   var nombre = function (lista, k) { var f = lista.filter(function (x) { return x[0] === k; })[0]; return f ? f[1] : (k || ""); };
 
   var ICONOS = {
@@ -22,7 +23,10 @@
     mas: "M12 5v14M5 12h14",
     descarga: "M12 4v11M7 10l5 5 5-5M5 20h14",
     atras: "M19 12H5M11 6l-6 6 6 6",
-    copiar: "M9 9h11v11H9zM5 15H4V4h11v1"
+    copiar: "M9 9h11v11H9zM5 15H4V4h11v1",
+    fiscal: "M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z",
+    alerta: "M12 9v4M12 17h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z",
+    check: "M5 12.5 10 17 19 7"
   };
   function icono(n) { return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (ICONOS[n] || "") + '"/></svg>'; }
 
@@ -61,6 +65,13 @@
     var cuando = f < h ? "Desde el " + dia(f) : f === h ? "Hoy" : dia(f);
     return '<span class="' + clase + '">' + esc(cuando) + "</span>";
   }
+  // ¿Le falta un NIF-IVA válido para facturarle sin IVA danés? Solo cuenta en
+  // propuesta o cliente, y solo fuera de Dinamarca (allí siempre lleva moms).
+  function fiscalPendiente(c) {
+    if (c.etapa !== "propuesta" && c.etapa !== "cliente") return false;
+    if (c.pais === "DK") return false;
+    return !(c.vies && c.vies.estado === "valido" && c.vies.nif === c.nif);
+  }
   function etapa(k) { return '<span class="etapa etapa-' + esc(k) + '">' + esc(nombre(ETAPAS, k)) + "</span>"; }
   function titulo(c) { return c.empresa || c.nombre || c.email || "Sin nombre"; }
   function subtitulo(c) { return [c.empresa ? c.nombre : "", nombre(SECTORES, c.sector)].filter(Boolean).join(" · "); }
@@ -93,7 +104,7 @@
   }
 
   window.Of = {
-    ETAPAS: ETAPAS, SECTORES: SECTORES, ORIGENES: ORIGENES, INTERESES: INTERESES, TIPOS: TIPOS,
+    ETAPAS: ETAPAS, SECTORES: SECTORES, ORIGENES: ORIGENES, INTERESES: INTERESES, TIPOS: TIPOS, PAISES: PAISES, fiscalPendiente: fiscalPendiente,
     nombre: nombre, icono: icono, esc: esc, api: api, hoy: hoy, masDias: masDias, dia: dia, momento: momento, euros: euros,
     proxima: proxima, etapa: etapa, titulo: titulo, subtitulo: subtitulo, aviso: aviso, cabecera: cabecera
   };

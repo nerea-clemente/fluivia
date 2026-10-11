@@ -95,6 +95,19 @@ export class Oficina extends DurableObject {
     c.historial = [...(c.historial || []), { fecha: new Date().toISOString(), ...entrada, autor }];
     return this.guardarContacto(id, Contactos.limpiar(c), autor);
   }
+  // Resultado de VIES: se guarda en la ficha y queda en el historial.
+  guardarVies(id, r, autor) {
+    const c = this.leerContacto(id);
+    if (!c) return null;
+    const fecha = new Date().toISOString();
+    if (r.estado !== 'no-disponible') c.vies = { estado: r.estado, fecha, nif: r.nif, nombre: r.nombre || '', direccion: r.direccion || '' };
+    const texto = r.estado === 'valido' ? `NIF-IVA ${r.nif} válido en VIES${r.nombre ? `: ${r.nombre}` : ''}. Se le puede facturar sin IVA danés, con inversión del sujeto pasivo.`
+      : r.estado === 'no-valido' ? `NIF-IVA ${r.nif} no válido en VIES. Hasta que se dé de alta en operaciones intracomunitarias (ROI), habría que cobrarle el 25 % de IVA danés.`
+      : `No se ha podido comprobar el NIF-IVA ${r.nif} en VIES. ${r.detalle || ''}`.trim();
+    c.historial = [...(c.historial || []), { fecha, tipo: 'fiscal', texto, autor }];
+    const g = this.guardarContacto(id, Contactos.limpiar(c), autor);
+    return { ...g, viesResultado: r };
+  }
   borrarContacto(id) { this.sql.exec('DELETE FROM contactos WHERE id = ?', id); return { ok: true }; }
   porEmail(email) { return this.sql.exec('SELECT id FROM contactos WHERE email = ? LIMIT 1', email).toArray()[0]?.id || null; }
   // Entrada desde la web (demo o contacto): nueva ficha o se añade a la que ya hay.

@@ -18,6 +18,7 @@
 
   // ---- Opciones de los desplegables ----
   form.elements.sector.insertAdjacentHTML("beforeend", Of.SECTORES.map(function (s) { return '<option value="' + s[0] + '">' + esc(s[1]) + "</option>"; }).join(""));
+  form.elements.pais.innerHTML = Of.PAISES.map(function (s) { return '<option value="' + s[0] + '">' + esc(s[1]) + "</option>"; }).join("");
   form.elements.origen.innerHTML = Of.ORIGENES.map(function (s) { return '<option value="' + s[0] + '">' + esc(s[1]) + "</option>"; }).join("");
   $("intereses").innerHTML = Of.INTERESES.map(function (s) { return '<label class="opcion"><input type="checkbox" name="intereses" value="' + s[0] + '">' + esc(s[1]) + "</label>"; }).join("");
   $("apunte-tipo").innerHTML = Of.TIPOS.filter(function (t) { return ["nota", "llamada", "reunion", "whatsapp", "linkedin", "correo"].indexOf(t[0]) > -1; })
@@ -39,9 +40,13 @@
   }
   $("etapas").addEventListener("click", function (e) {
     var b = e.target.closest("[data-etapa]"); if (!b) return;
-    etapa = b.getAttribute("data-etapa");
+    var nueva = b.getAttribute("data-etapa");
+    if (nueva === "cliente" && etapa !== "cliente" && Of.fiscalPendiente(Object.assign(leer(), { etapa: "cliente", vies: c && c.vies }))) {
+      if (!confirm("Todavía no tiene un NIF-IVA válido en VIES. Sin él, su factura tendría que llevar el 25 % de IVA danés.\n\n¿Pasarlo a cliente igualmente?")) return;
+    }
+    etapa = nueva;
     if (etapa === "cliente" || etapa === "perdido") { form.elements.proxima_fecha.value = ""; form.elements.proxima_texto.value = ""; }
-    pintarEtapas(); marcar(true);
+    pintarEtapas(); pintarFiscal(); marcar(true);
   });
 
   $("proxima-rapida").addEventListener("click", function (e) {
@@ -54,7 +59,8 @@
 
   // ---- Leer y escribir el formulario ----
   function rellenar(x) {
-    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo"].forEach(function (k) { form.elements[k].value = x[k] || ""; });
+    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo", "nif", "razonSocial", "direccion"].forEach(function (k) { form.elements[k].value = x[k] || ""; });
+    form.elements.pais.value = x.pais || "ES";
     form.elements.sector.value = x.sector || "";
     form.elements.origen.value = x.origen || "manual";
     form.elements.etiquetas.value = (x.etiquetas || []).join(", ");
@@ -69,7 +75,7 @@
   }
   function leer() {
     var d = c ? JSON.parse(JSON.stringify(c)) : { historial: [], etapas: {} };
-    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo", "sector", "origen"].forEach(function (k) { d[k] = form.elements[k].value.trim(); });
+    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo", "sector", "origen", "pais", "nif", "razonSocial", "direccion"].forEach(function (k) { d[k] = form.elements[k].value.trim(); });
     d.etiquetas = form.elements.etiquetas.value.split(",").map(function (t) { return t.trim(); }).filter(Boolean);
     d.implantacion = +form.elements.implantacion.value || 0;
     d.cuota = +form.elements.cuota.value || 0;
@@ -79,10 +85,68 @@
     return d;
   }
 
+  // ---- Facturación: qué IVA lleva su factura ----
+  var nifActual = function () { var v = form.elements.nif.value.toUpperCase().replace(/[^A-Z0-9]/g, ""), p = form.elements.pais.value; if (v && (p === "ES" || p === "DK") && v.indexOf(p) !== 0) v = p + v; return v; };
+  function caja(clase, icono, html) { return '<div class="fiscal-caja ' + clase + '">' + Of.icono(icono) + "<div>" + html + "</div></div>"; }
+  function pintarFiscal() {
+    var pais = form.elements.pais.value, nif = nifActual(), v = c && c.vies, sector = form.elements.sector.value;
+    var comprobado = v && v.nif === nif;
+    var h = "", chip = "";
+    if (pais === "DK") {
+      h = caja("fiscal-info", "fiscal", "<p><strong>Cliente en Dinamarca:</strong> su factura lleva el 25 % de <em>moms</em>.</p>");
+    } else if (!nif) {
+      h = caja("fiscal-pend", "alerta", "<p><strong>Falta el NIF-IVA.</strong> Sin él no se puede facturar sin IVA danés. Usa la plantilla «Pedir los datos para facturar».</p>");
+      chip = "pend";
+    } else if (!/^[A-Z]{2}[A-Z0-9]{2,13}$/.test(nif)) {
+      h = caja("fiscal-mal", "alerta", "<p><strong>El NIF-IVA no tiene buen formato.</strong> Escríbelo con el prefijo del país, por ejemplo ESB12345678.</p>");
+      chip = "mal";
+    } else if (comprobado && v.estado === "valido") {
+      h = caja("fiscal-ok", "check", "<p><strong>Válido en VIES</strong> (comprobado el " + esc(Of.momento(v.fecha)) + ")" + (v.nombre ? ": " + esc(v.nombre) : "") + ".</p><p>Su factura va <strong>sin IVA</strong>, con la mención «Inversión del sujeto pasivo / Reverse charge».</p>");
+    } else if (comprobado && v.estado === "no-valido") {
+      h = caja("fiscal-mal", "alerta", "<p><strong>No válido en VIES</strong> (comprobado el " + esc(Of.momento(v.fecha)) + ").</p><p>Normalmente es que no está dado de alta en operaciones intracomunitarias (ROI). Pídele que su gestoría lo haga con el modelo 036. Hasta entonces, su factura tendría que llevar el 25 % de IVA danés.</p>");
+      chip = "mal";
+    } else {
+      h = caja("fiscal-pend", "alerta", "<p><strong>Sin comprobar en VIES.</strong> Compruébalo antes de la primera factura.</p>");
+      chip = "pend";
+    }
+    if (pais === "ES" && (sector === "clinica" || sector === "academia")) {
+      h += caja("fiscal-info", "fiscal", "<p>La sanidad y la enseñanza suelen estar <strong>exentas de IVA</strong>: el 21 % que declare por tu factura será un coste para él, igual que con un proveedor español. Mejor comentárselo a su gestoría.</p>");
+    }
+    var acciones = [];
+    if (pais !== "DK" && /^[A-Z]{2}[A-Z0-9]{2,13}$/.test(nif)) acciones.push('<button type="button" class="btn btn-sec btn-peq" id="comprobar-vies">' + (comprobado ? "Volver a comprobar en VIES" : "Comprobar en VIES") + "</button>");
+    if (comprobado && v.estado === "valido" && ((v.nombre && !form.elements.razonSocial.value) || (v.direccion && !form.elements.direccion.value))) acciones.push('<button type="button" class="btn-texto" id="usar-vies">Usar el nombre y la dirección de VIES</button>');
+    if (acciones.length) h += '<div class="fiscal-acciones">' + acciones.join("") + "</div>";
+    $("fiscal").innerHTML = h;
+    var mostrarChip = chip && (etapa === "propuesta" || etapa === "cliente");
+    $("fiscal-chip").innerHTML = mostrarChip ? '<span class="chip chip-fiscal">' + (chip === "mal" ? "NIF-IVA no válido" : "Falta comprobar el NIF-IVA") + "</span>" : "";
+  }
+  form.elements.pais.addEventListener("change", pintarFiscal);
+  form.elements.nif.addEventListener("input", pintarFiscal);
+  form.elements.sector.addEventListener("change", pintarFiscal);
+  $("fiscal").addEventListener("click", function (e) {
+    if (e.target.closest("#usar-vies")) {
+      if (!form.elements.razonSocial.value) form.elements.razonSocial.value = c.vies.nombre || "";
+      if (!form.elements.direccion.value) form.elements.direccion.value = c.vies.direccion || "";
+      marcar(true); pintarFiscal(); return;
+    }
+    var b = e.target.closest("#comprobar-vies"); if (!b) return;
+    if (nuevo) { Of.aviso("Guarda primero el contacto.", true); return; }
+    b.disabled = true; b.textContent = "Comprobando…";
+    var hacer = function () {
+      return Of.api("/api/contactos/" + encodeURIComponent(id) + "/vies", { method: "POST", body: {} }).then(function (g) {
+        var r = g.viesResultado; delete g.viesResultado;
+        c = g; pintarHistorial(); pintarFiscal();
+        Of.aviso(r.estado === "valido" ? "NIF-IVA válido en VIES" : r.estado === "no-valido" ? "NIF-IVA no válido en VIES" : (r.detalle || "VIES no responde ahora. Prueba más tarde."), r.estado !== "valido");
+      });
+    };
+    (sucio ? guardar().then(hacer) : hacer()).catch(function (err) { if (err) Of.aviso(err.message, true); pintarFiscal(); });
+  });
+
   function pintarTodo() {
     $("titulo").textContent = nuevo ? "Nuevo contacto" : Of.titulo(c);
     document.title = (nuevo ? "Nuevo contacto" : Of.titulo(c)) + " · Oficina de Fluivia";
     pintarEtapas();
+    pintarFiscal();
     $("borrar").hidden = nuevo;
     ["apuntar-caja", "demo-caja", "historial-caja"].forEach(function (k) { $(k).hidden = nuevo; });
     $("correo-caja").hidden = nuevo || !c.email || c.noEscribir;
@@ -94,7 +158,7 @@
     }
   }
 
-  var ICONO_TIPO = { nota: "nota", llamada: "llamada", correo: "correo", reunion: "reunion", whatsapp: "whatsapp", linkedin: "linkedin", web: "web", etapa: "etapa", demo: "demo" };
+  var ICONO_TIPO = { nota: "nota", llamada: "llamada", correo: "correo", reunion: "reunion", whatsapp: "whatsapp", linkedin: "linkedin", web: "web", etapa: "etapa", demo: "demo", fiscal: "fiscal" };
   function pintarHistorial() {
     var h = (c.historial || []).slice().reverse();
     $("historial").innerHTML = h.length ? h.map(function (x) {
