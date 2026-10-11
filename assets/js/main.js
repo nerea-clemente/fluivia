@@ -8,7 +8,14 @@
      cliente de correo del visitante con el mensaje ya redactado. */
   var CONFIG = {
     FORM_ENDPOINT: "",
-    CONTACT_EMAIL: "[tu-email@dominio.es]"
+    CONTACT_EMAIL: "[tu-email@dominio.es]",
+    /* DEMO_ENDPOINT: dirección del Worker que manda la demo por correo
+       (carpeta worker/demo). Si se deja vacío, la petición se manda por correo
+       a CONTACT_EMAIL y la demo se envía a mano.
+       CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
+       de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
+    DEMO_ENDPOINT: "",
+    CITA_URL: ""
   };
 
   /* ---- Cabecera: borde al hacer scroll ---- */
@@ -211,6 +218,108 @@
         "&body=" + encodeURIComponent(body);
       status.className = "form-status is-ok";
       status.textContent = "Se ha abierto tu programa de correo con el mensaje preparado. Solo tienes que enviarlo.";
+    });
+  }
+
+  /* ---- Pedir una demo ---- */
+  var cita = document.getElementById("demo-cita");
+  if (cita && /^https:\/\//.test(CONFIG.CITA_URL)) {
+    cita.href = CONFIG.CITA_URL;
+    cita.target = "_blank";
+    cita.rel = "noopener";
+  }
+
+  var demoForm = document.getElementById("demo-form");
+  if (demoForm) {
+    var demoStatus = document.getElementById("demo-status");
+    var demoMessages = {
+      nombre: "Indica tu nombre.",
+      email: "Escribe un correo válido.",
+      negocio: "Indica el nombre de tu negocio.",
+      sector: "Elige tu sector.",
+      privacidad: "Necesitamos que aceptes la política de privacidad."
+    };
+    var abierto = Date.now();
+
+    var demoError = function (input, msg) {
+      var field = input.closest(".field");
+      var existing = field.querySelector(".field-error");
+      if (existing) existing.remove();
+      field.classList.toggle("has-error", !!msg);
+      input.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (msg) {
+        var p = document.createElement("p");
+        p.className = "field-error";
+        p.id = input.id + "-error";
+        p.textContent = msg;
+        field.appendChild(p);
+        input.setAttribute("aria-describedby", p.id);
+      } else {
+        input.removeAttribute("aria-describedby");
+      }
+    };
+    var demoValidate = function () {
+      var first = null;
+      Object.keys(demoMessages).forEach(function (name) {
+        var input = demoForm.elements[name];
+        var valid = input.type === "checkbox" ? input.checked : input.value.trim() !== "" && input.checkValidity();
+        demoError(input, valid ? "" : demoMessages[name]);
+        if (!valid && !first) first = input;
+      });
+      return first;
+    };
+
+    demoForm.addEventListener("input", function (e) {
+      if (e.target.getAttribute("aria-invalid") === "true") demoValidate();
+    });
+
+    demoForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      demoStatus.className = "form-status";
+      demoStatus.textContent = "";
+      var invalid = demoValidate();
+      if (invalid) { invalid.focus(); return; }
+
+      var datos = {
+        nombre: demoForm.elements.nombre.value.trim(),
+        email: demoForm.elements.email.value.trim(),
+        negocio: demoForm.elements.negocio.value.trim(),
+        sector: demoForm.elements.sector.value,
+        web: demoForm.elements.web.value,
+        segundos: Math.round((Date.now() - abierto) / 1000)
+      };
+      var hecho = function () {
+        demoForm.reset();
+        demoStatus.className = "form-status is-ok";
+        demoStatus.textContent = "¡Listo! En unos minutos te llega la demo a " + datos.email + ". Si no la ves, mira en la carpeta de correo no deseado.";
+      };
+
+      if (CONFIG.DEMO_ENDPOINT) {
+        var boton = demoForm.querySelector('button[type="submit"]');
+        boton.disabled = true;
+        fetch(CONFIG.DEMO_ENDPOINT, { method: "POST", body: JSON.stringify(datos), headers: { "Content-Type": "application/json" } })
+          .then(function (res) { if (!res.ok) throw new Error(res.status); hecho(); })
+          .catch(function () {
+            demoStatus.className = "form-status is-error";
+            demoStatus.textContent = "No hemos podido enviarla. Inténtalo de nuevo en un momento o escríbenos a " + CONFIG.CONTACT_EMAIL + ".";
+          })
+          .finally(function () { boton.disabled = false; });
+        return;
+      }
+
+      var cuerpo = [
+        "Quiero ver la demo.",
+        "",
+        "Nombre: " + datos.nombre,
+        "Negocio: " + datos.negocio,
+        "Sector: " + demoForm.elements.sector.options[demoForm.elements.sector.selectedIndex].text,
+        "Correo: " + datos.email
+      ].join("\n");
+      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL +
+        "?subject=" + encodeURIComponent("Quiero ver la demo · " + datos.negocio) +
+        "&body=" + encodeURIComponent(cuerpo);
+      demoStatus.className = "form-status is-ok";
+      demoStatus.textContent = "Se ha abierto tu programa de correo con la petición preparada. Envíala y te mandamos la demo.";
     });
   }
 

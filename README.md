@@ -49,3 +49,4 @@ La cabecera y el pie están repetidos en cada página: si cambias el menú, actu
 
 - Cada negocio de ejemplo está en `d/r5x0kruj/sectores/` (marca, problemas típicos y cuatro casos contados paso a paso). Para añadir un sector, copia uno de esos archivos, cambia los textos y añádelo en `index.html`.
 - `d/r5x0kruj/crear.html` prepara un enlace con el nombre, el color y el logo del cliente (parámetros `n`, `c`, `l`, `lema` y `r` para el correo de respuesta). No guarda nada: todo va en el enlace.
+- `demo.html` es la página pública para pedir la demo: reservar una llamada (`CITA_URL`) o recibirla por correo. El envío automático lo hace el Worker de `worker/demo/` (ver su `LEEME.md`); mientras `DEMO_ENDPOINT` esté vacío en `assets/js/main.js`, la petición llega por correo y la demo se manda a mano.

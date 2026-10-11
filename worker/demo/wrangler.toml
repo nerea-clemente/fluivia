@@ -1,0 +1,22 @@
+name = "fluivia-demo"
+main = "index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Web desde la que se puede pedir la demo (separadas por comas)
+ALLOWED_ORIGINS = "https://nerea-clemente.github.io"
+# Dirección de la demo privada
+DEMO_URL = "https://nerea-clemente.github.io/fluivia/d/r5x0kruj/"
+# Remitente: tiene que ser de un dominio verificado en Resend
+FROM = "Fluivia <hola@tudominio.es>"
+# Dónde te llega el aviso de cada demo pedida y a dónde responden los clientes
+NOTIFY_TO = "hola@tudominio.es"
+REPLY_TO = "hola@tudominio.es"
+# Enlace para reservar una llamada (opcional)
+CITA_URL = ""
+
+# Opcional: límite de una demo cada 10 minutos por correo.
+# Crea el espacio con `npx wrangler kv namespace create LIMITES` y pega aquí su id.
+# [[kv_namespaces]]
+# binding = "LIMITES"
+# id = ""
