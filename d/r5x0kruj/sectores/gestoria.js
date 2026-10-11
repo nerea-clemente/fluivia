@@ -6,6 +6,7 @@
   negocio: "Gestoría Ribera",
   lema: "Asesoría fiscal, laboral y contable desde 1998",
   cliente: "Cliente",
+  software: { actual: "tu programa de contabilidad y tu portal de cliente", medida: "un portal de cliente y un panel a medida" },
   marca: {
     m1: "#1F3A5F", m1t: "#FFFFFF", m2: "#E6DDBF", m2t: "#1F3A5F", suave: "#F2F4F8", tinta: "#1B2533",
     fuente: "'Lora', Georgia, serif", radio: "6px",
@@ -22,6 +23,7 @@
   casos: [
     {
       id: "cierre",
+      montaje: { plazo: "2 a 3 semanas", con: "Tu portal de cliente o uno nuevo, con WhatsApp y correo" },
       nav: "Documentación del trimestre",
       titulo: "La documentación del trimestre, sin perseguir a nadie",
       hoy: "Ana manda 140 mensajes uno a uno y apunta en un Excel quién ha enviado qué. Los últimos días antes del 20 son una carrera.",
@@ -96,6 +98,7 @@
 
     {
       id: "facturas",
+      montaje: { plazo: "3 a 4 semanas", con: "Exporta al formato de tu programa de contabilidad" },
       nav: "Facturas que se leen solas",
       titulo: "Facturas de gastos que se leen solas",
       hoy: "Los clientes mandan fotos de tickets y PDF. Alguien del equipo los abre uno a uno y teclea los datos en el programa de contabilidad.",
@@ -156,6 +159,7 @@
 
     {
       id: "consultas",
+      montaje: { plazo: "2 semanas", con: "WhatsApp Business y el calendario fiscal de cada cliente" },
       nav: "Consultas de clientes",
       titulo: "Las preguntas de siempre, respondidas a cualquier hora",
       hoy: "Por WhatsApp entran las mismas preguntas a cualquier hora. Responderlas interrumpe el trabajo y lo que es asesoramiento se mezcla con lo que no.",
@@ -199,6 +203,7 @@
 
     {
       id: "alta",
+      montaje: { plazo: "2 semanas", con: "Tu web y tu programa de gestión de clientes, o uno nuevo" },
       nav: "Alta de cliente nuevo",
       titulo: "Alta de un cliente nuevo en un día",
       hoy: "Para dar de alta a un cliente hacen falta varios correos: DNI, alta en Hacienda, certificado, datos del banco… y siempre falta algo o está caducado.",

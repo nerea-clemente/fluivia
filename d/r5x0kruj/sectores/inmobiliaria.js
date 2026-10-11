@@ -6,6 +6,7 @@
   negocio: "Inmobiliaria Brisa",
   lema: "Tu casa, sin prisas y sin sorpresas",
   cliente: "Comprador",
+  software: { actual: "tu CRM inmobiliario y los portales", medida: "un CRM a medida para tu forma de trabajar" },
   marca: {
     m1: "#C2553D", m1t: "#FFFFFF", m2: "#F6D9BE", m2t: "#3A2620", suave: "#F8F2EC", tinta: "#2B2220",
     fuente: "'DM Serif Display', Georgia, serif", radio: "14px",
@@ -22,6 +23,7 @@
   casos: [
     {
       id: "contactos",
+      montaje: { plazo: "2 semanas", con: "Los avisos de los portales, tu CRM y WhatsApp Business" },
       nav: "Contactos de portales",
       titulo: "Contactos de los portales, atendidos en un minuto",
       hoy: "Los contactos de los portales llegan al correo a cualquier hora. Se responden cuando alguien puede, a veces al día siguiente.",
@@ -80,6 +82,7 @@
 
     {
       id: "visitas",
+      montaje: { plazo: "2 semanas", con: "Tu agenda y tu CRM, o uno nuevo" },
       nav: "Visitas y opiniones",
       titulo: "Visitas confirmadas y opiniones que llegan al propietario",
       hoy: "Las visitas se confirman a mano, algunas personas no aparecen y nadie pregunta qué les pareció. El propietario solo sabe lo que el agente le cuenta.",
@@ -144,6 +147,7 @@
 
     {
       id: "captacion",
+      montaje: { plazo: "2 a 3 semanas", con: "Tu web y los datos de ventas de tu zona" },
       nav: "Captar propietarios",
       titulo: "Propietarios que piden valoración desde la web",
       hoy: "Los propietarios que quieren vender llaman a tres agencias para saber cuánto vale su piso. Gana el que contesta antes y mejor.",
@@ -192,6 +196,7 @@
 
     {
       id: "operacion",
+      montaje: { plazo: "2 a 3 semanas", con: "Tu CRM o una ficha de operación a medida" },
       nav: "Papeles hasta la notaría",
       titulo: "De las arras a la notaría, sin papeles perdidos",
       hoy: "Nota simple, certificado energético, recibo del IBI, nóminas para el banco… cada documento llega por un sitio distinto y alguien tiene que acordarse de pedirlo.",

@@ -45,4 +45,7 @@ La cabecera y el pie están repetidos en cada página: si cambias el menú, actu
 
 ## Demo para clientes
 
-`d/r5x0kruj/` es una demo interactiva con datos ficticios para enseñar en reuniones o enviar por email. No está enlazada desde la web y lleva `noindex`. Los textos de cada sector de ejemplo están en `d/r5x0kruj/data.js`; para añadir un sector, copia un bloque y cambia sus textos.
+`d/r5x0kruj/` es una demo interactiva con datos ficticios para enseñar en reuniones o enviar por email. No está enlazada desde la web y lleva `noindex`.
+
+- Cada negocio de ejemplo está en `d/r5x0kruj/sectores/` (marca, problemas típicos y cuatro casos contados paso a paso). Para añadir un sector, copia uno de esos archivos, cambia los textos y añádelo en `index.html`.
+- `d/r5x0kruj/crear.html` prepara un enlace con el nombre, el color y el logo del cliente (parámetros `n`, `c`, `l`, `lema` y `r` para el correo de respuesta). No guarda nada: todo va en el enlace.

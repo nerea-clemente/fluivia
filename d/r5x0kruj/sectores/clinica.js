@@ -6,6 +6,7 @@
   negocio: "Clínica Alba",
   lema: "Fisioterapia y pilates terapéutico",
   cliente: "Paciente",
+  software: { actual: "tu programa de agenda y de historias clínicas", medida: "una agenda y unas fichas de paciente a medida" },
   marca: {
     m1: "#0F7C7E", m1t: "#FFFFFF", m2: "#CDEFE9", m2t: "#0B4F50", suave: "#EEF8F6", tinta: "#123B3C",
     fuente: "'Figtree', 'Segoe UI', sans-serif", radio: "12px",
@@ -22,6 +23,7 @@
   casos: [
     {
       id: "citas",
+      montaje: { plazo: "2 a 3 semanas", con: "Tu programa de agenda o una agenda nueva, y WhatsApp Business" },
       nav: "Citas y huecos libres",
       titulo: "Citas online y huecos que se vuelven a llenar",
       hoy: "Las citas se cuadran por teléfono y, cuando alguien cancela la víspera, el hueco se queda vacío.",
@@ -87,6 +89,7 @@
 
     {
       id: "primera-visita",
+      montaje: { plazo: "2 semanas", con: "Tu programa de historias clínicas o una ficha a medida" },
       nav: "Primera visita",
       titulo: "Primera visita sin papeles",
       hoy: "El paciente llega, rellena a mano la ficha, el consentimiento y la protección de datos, y después alguien lo pasa al ordenador.",
@@ -168,6 +171,7 @@
 
     {
       id: "tratamiento",
+      montaje: { plazo: "3 a 4 semanas", con: "Tus vídeos de ejercicios y una app web para el paciente, sin descargas" },
       nav: "Ejercicios y seguimiento",
       titulo: "Ejercicios en casa y tratamientos que se terminan",
       hoy: "Los ejercicios se explican en la camilla y se olvidan en casa. Cuando el paciente nota mejoría, deja de venir sin terminar.",
@@ -242,6 +246,7 @@
 
     {
       id: "resenas",
+      montaje: { plazo: "1 semana", con: "Tu ficha de Google y WhatsApp Business" },
       nav: "Reseñas y pacientes que vuelven",
       titulo: "Reseñas en Google y pacientes que vuelven",
       hoy: "Los pacientes contentos se van sin dejar reseña y no se vuelve a saber de ellos hasta que se lesionan otra vez.",

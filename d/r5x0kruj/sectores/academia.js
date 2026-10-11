@@ -6,6 +6,7 @@
   negocio: "Academia Nexo",
   lema: "Idiomas y refuerzo escolar en grupos reducidos",
   cliente: "Familia",
+  software: { actual: "tu programa de gestión de alumnos", medida: "una gestión de grupos, alumnos y familias a medida" },
   marca: {
     m1: "#4B3FD1", m1t: "#FFFFFF", m2: "#FFE08A", m2t: "#2A2272", suave: "#F3F1FF", tinta: "#221C4F",
     fuente: "'Nunito', 'Trebuchet MS', sans-serif", radio: "18px",
@@ -22,6 +23,7 @@
   casos: [
     {
       id: "matricula",
+      montaje: { plazo: "3 semanas", con: "Tu web, tu programa de gestión y la domiciliación que ya usas" },
       nav: "Matrícula online",
       titulo: "Matrícula online con prueba de nivel",
       hoy: "Las familias vienen a la academia, rellenan papeles y hay que hacerles una prueba de nivel en persona antes de decirles en qué grupo entran.",
@@ -86,6 +88,7 @@
 
     {
       id: "asistencia",
+      montaje: { plazo: "2 semanas", con: "Una app web para el profesorado y WhatsApp" },
       nav: "Faltas y familias",
       titulo: "Las faltas, avisadas a las familias el mismo día",
       hoy: "Las profesoras pasan lista en papel. Si un alumno falta, la familia no se entera, y nadie ve quién está dejando de venir hasta que es tarde.",
@@ -143,6 +146,7 @@
 
     {
       id: "familias",
+      montaje: { plazo: "2 semanas", con: "WhatsApp Business y tus grupos y horarios" },
       nav: "Preguntas de familias",
       titulo: "Las preguntas de las familias, con plazas y horarios reales",
       hoy: "Horarios, plazas, precios, festivos: Irene responde el teléfono entre clase y clase y el WhatsApp los domingos.",
@@ -180,6 +184,7 @@
 
     {
       id: "renovaciones",
+      montaje: { plazo: "1 a 2 semanas", con: "WhatsApp o correo y tu lista de alumnos" },
       nav: "Renovaciones de junio",
       titulo: "Saber en junio quién sigue en septiembre",
       hoy: "En junio, la mitad de las familias no dice si sigue. En septiembre faltan plazas en unos grupos y sobran en otros.",
