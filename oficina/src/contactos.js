@@ -1,0 +1,127 @@
+// ---------------------------------------------------------------------------
+// Contactos: el CRM de Fluivia. Empresas y personas desde el primer contacto
+// (web, demo, prospección) hasta que son clientes.
+//
+// Cada ficha se guarda como JSON en la tabla contactos del Durable Object; el
+// email y la etapa van también en columnas para buscar y contar.
+// ---------------------------------------------------------------------------
+
+export const ETAPAS = ['nuevo', 'contactado', 'reunion', 'propuesta', 'cliente', 'perdido'];
+export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'otro', ''];
+export const ORIGENES = ['web-demo', 'web-contacto', 'prospeccion', 'linkedin', 'recomendacion', 'evento', 'manual', 'otro'];
+export const INTERESES = ['consultas', 'citas', 'documentos', 'a-medida', 'marketing', 'formacion'];
+export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linkedin', 'web', 'etapa', 'demo'];
+
+const txt = (v, n) => String(v ?? '').replace(/\u0000/g, '').slice(0, n);
+const fechaIso = (v) => (/^\d{4}-\d{2}-\d{2}T[\d:.]+Z$/.test(v || '') ? v : '');
+const dia = (v) => (/^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : '');
+const euros = (v) => { const n = Math.round(Number(v)); return Number.isFinite(n) && n >= 0 && n < 10_000_000 ? n : 0; };
+export const hoy = () => new Date().toISOString().slice(0, 10);
+export const masDias = (n) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
+
+export const EMAIL_OK = /^[^\s@<>"'`\\()[\];,]+@[^\s@<>"'`\\()[\];,]+\.[a-z]{2,}$/i;
+export const idValido = (id) => /^[a-z0-9-]{1,80}$/.test(id || '');
+export const nuevoId = () => `c-${Date.now().toString(36)}-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36)}`;
+
+const etiquetas = (v) => [...new Set((Array.isArray(v) ? v : []).map((x) => txt(x, 40).trim()).filter(Boolean))].slice(0, 20);
+
+// Deja solo lo que se espera, con tamaños acotados.
+export function limpiar(b = {}) {
+  const d = {
+    nombre: txt(b.nombre, 200).trim(),
+    empresa: txt(b.empresa, 200).trim(),
+    cargo: txt(b.cargo, 120).trim(),
+    email: txt(b.email, 200).trim().toLowerCase(),
+    telefono: txt(b.telefono, 60).trim(),
+    web: txt(b.web, 300).trim(),
+    ciudad: txt(b.ciudad, 120).trim(),
+    sector: SECTORES.includes(b.sector) ? b.sector : '',
+    origen: ORIGENES.includes(b.origen) ? b.origen : 'manual',
+    etapa: ETAPAS.includes(b.etapa) ? b.etapa : 'nuevo',
+    intereses: [...new Set((Array.isArray(b.intereses) ? b.intereses : []).filter((x) => INTERESES.includes(x)))],
+    implantacion: euros(b.implantacion),
+    cuota: euros(b.cuota),
+    mensaje: txt(b.mensaje, 4000),
+    notas: txt(b.notas, 8000),
+    motivo: txt(b.motivo, 300),
+    etiquetas: etiquetas(b.etiquetas),
+    creado: fechaIso(b.creado) || new Date().toISOString(),
+  };
+  d.etapas = Object.fromEntries(ETAPAS.filter((k) => dia(b.etapas?.[k])).map((k) => [k, b.etapas[k]]));
+  if (!d.etapas[d.etapa]) d.etapas[d.etapa] = hoy();
+  d.proxima = { fecha: dia(b.proxima?.fecha), texto: txt(b.proxima?.texto, 300).trim() };
+  d.historial = (Array.isArray(b.historial) ? b.historial : []).slice(-400)
+    .map((h) => ({
+      fecha: fechaIso(h.fecha) || new Date().toISOString(),
+      tipo: TIPOS.includes(h.tipo) ? h.tipo : 'nota',
+      texto: txt(h.texto, 8000),
+      asunto: txt(h.asunto, 300),
+      ...(h.auto === true ? { auto: true } : {}),
+      ...(txt(h.autor, 200) ? { autor: txt(h.autor, 200) } : {}),
+    }))
+    .filter((h) => h.texto || h.asunto);
+  d.demo = b.demo && fechaIso(b.demo.fecha) ? { fecha: b.demo.fecha, enlace: txt(b.demo.enlace, 600) } : null;
+  // Dejó de recibir correos (rebote o petición): no se le vuelve a escribir.
+  d.noEscribir = b.noEscribir === true;
+  return d;
+}
+
+// Al guardar desde la ficha no se pisa lo que la web ha añadido mientras tanto.
+export function fusionar(prev, d) {
+  if (!prev) return d;
+  const hay = new Set(d.historial.map((h) => h.fecha));
+  const perdidos = (prev.historial || []).filter((h) => (h.auto || h.tipo === 'web' || h.tipo === 'demo') && !hay.has(h.fecha));
+  if (perdidos.length) d.historial = [...d.historial, ...perdidos].sort((a, b) => (a.fecha < b.fecha ? -1 : 1));
+  if (!d.demo && prev.demo) d.demo = prev.demo;
+  return d;
+}
+
+// Lo que llega de la web: si el email ya existe, se añade a esa ficha.
+// tipo: 'demo' (pidió la demo) o 'contacto' (formulario de contacto).
+export function deLaWeb(existente, e) {
+  const ahora = new Date().toISOString();
+  const c = existente ? structuredClone(existente) : {
+    nombre: e.nombre, empresa: e.empresa, email: e.email, telefono: e.telefono, sector: e.sector,
+    origen: e.tipo === 'demo' ? 'web-demo' : 'web-contacto', etapa: 'nuevo', etapas: { nuevo: hoy() },
+    historial: [], creado: ahora,
+  };
+  for (const k of ['nombre', 'empresa', 'telefono', 'sector']) if (!c[k] && e[k]) c[k] = e[k];
+  const texto = e.tipo === 'demo'
+    ? `Ha pedido la demo desde la web${e.empresa ? ` para ${e.empresa}` : ''}. Se le ha enviado por correo.`
+    : [`Ha escrito desde el formulario de contacto.`, e.mensaje ? `Mensaje: ${e.mensaje}` : ''].filter(Boolean).join('\n\n');
+  c.historial = [...(c.historial || []), { fecha: ahora, tipo: e.tipo === 'demo' ? 'demo' : 'web', texto, auto: true }];
+  if (e.tipo === 'demo' && e.enlace) c.demo = { fecha: ahora, enlace: e.enlace };
+  if (e.mensaje && e.tipo !== 'demo') c.mensaje = [c.mensaje, e.mensaje].filter(Boolean).join('\n\n—\n\n');
+  // Si ya es cliente o está perdido, no se cambia la etapa; si no, toca escribirle.
+  if (!['cliente', 'perdido'].includes(c.etapa)) {
+    c.proxima = e.tipo === 'demo'
+      ? { fecha: masDias(2), texto: 'Preguntarle qué le ha parecido la demo' }
+      : { fecha: hoy(), texto: 'Contestar a su mensaje' };
+  }
+  return limpiar(c);
+}
+
+// Cambio de etapa con su apunte en el historial.
+export function cambiarEtapa(c, etapa, autor) {
+  if (!ETAPAS.includes(etapa) || c.etapa === etapa) return c;
+  const n = structuredClone(c);
+  n.historial.push({ fecha: new Date().toISOString(), tipo: 'etapa', texto: `${NOMBRE_ETAPA[c.etapa]} → ${NOMBRE_ETAPA[etapa]}`, autor });
+  n.etapa = etapa;
+  n.etapas = { ...n.etapas, [etapa]: hoy() };
+  if (['cliente', 'perdido'].includes(etapa)) n.proxima = { fecha: '', texto: '' };
+  return limpiar(n);
+}
+
+export const NOMBRE_ETAPA = { nuevo: 'Nuevo', contactado: 'Contactado', reunion: 'Reunión', propuesta: 'Propuesta', cliente: 'Cliente', perdido: 'Perdido' };
+
+// Para el CSV: una fila por contacto.
+export function csv(lista) {
+  const cols = ['nombre', 'empresa', 'cargo', 'email', 'telefono', 'sector', 'ciudad', 'origen', 'etapa', 'implantacion', 'cuota', 'proxima_fecha', 'proxima', 'creado'];
+  const celda = (v) => {
+    let s = String(v ?? '');
+    if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`; // que una hoja de cálculo no lo tome por fórmula
+    return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const filas = lista.map((c) => cols.map((k) => celda(k === 'proxima_fecha' ? c.proxima?.fecha : k === 'proxima' ? c.proxima?.texto : c[k])).join(';'));
+  return '﻿' + [cols.join(';'), ...filas].join('\r\n');
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resumen · Oficina de Fluivia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/oficina.css">
+</head>
+<body>
+  <main class="pagina">
+    <div class="pagina-cab">
+      <div>
+        <h1 id="saludo">Hola</h1>
+        <p id="fecha"></p>
+      </div>
+      <div class="acciones">
+        <a class="btn btn-sec" href="/contactos.html">Ver contactos</a>
+        <a class="btn" href="/ficha.html?nuevo=1">Nuevo contacto</a>
+      </div>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="resumen-grid">
+      <section class="tarjeta">
+        <div class="tarjeta-cab"><h2>Hoy te toca</h2><span class="tenue" id="toca-n"></span></div>
+        <ul class="toca" id="toca"></ul>
+      </section>
+      <div class="ficha-col">
+        <section class="tarjeta">
+          <h2>Por etapa</h2>
+          <ul class="embudo" id="embudo"></ul>
+        </section>
+        <section class="tarjeta">
+          <h2>Últimos de la web</h2>
+          <ul class="recientes" id="recientes"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/resumen.js"></script>
+</body>
+</html>

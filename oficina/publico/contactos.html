@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contactos · Oficina de Fluivia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/oficina.css">
+</head>
+<body>
+  <main class="pagina">
+    <div class="pagina-cab">
+      <div>
+        <h1>Contactos</h1>
+        <p id="total"></p>
+      </div>
+      <div class="acciones">
+        <div class="vista-cambio" role="group" aria-label="Vista">
+          <button type="button" data-vista="lista" aria-pressed="true">Lista</button>
+          <button type="button" data-vista="tablero" aria-pressed="false">Tablero</button>
+        </div>
+        <a class="btn btn-sec" href="/api/contactos.csv" download>Exportar</a>
+        <a class="btn" href="/ficha.html?nuevo=1">Nuevo contacto</a>
+      </div>
+    </div>
+
+    <div class="filtros">
+      <label class="sr-only" for="buscar">Buscar</label>
+      <input class="entrada" id="buscar" type="search" placeholder="Buscar por nombre, empresa, email o teléfono">
+      <label class="sr-only" for="f-sector">Sector</label>
+      <select class="entrada" id="f-sector"><option value="">Todos los sectores</option></select>
+      <label class="sr-only" for="f-origen">Origen</label>
+      <select class="entrada" id="f-origen"><option value="">Todos los orígenes</option></select>
+    </div>
+    <div class="pestanas" id="pestanas" role="group" aria-label="Etapa"></div>
+
+    <div id="lista"></div>
+    <div class="tablero" id="tablero" hidden></div>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/contactos.js"></script>
+</body>
+</html>

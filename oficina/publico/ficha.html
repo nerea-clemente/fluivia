@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · Oficina de Fluivia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/oficina.css">
+</head>
+<body>
+  <main class="pagina">
+    <a class="volver" href="/contactos.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Contactos</a>
+    <div class="pagina-cab">
+      <div class="ficha-cab">
+        <h1 id="titulo">Contacto</h1>
+        <span id="etapa-chip"></span>
+      </div>
+      <div class="acciones">
+        <button type="button" class="btn btn-peligro btn-peq" id="borrar" hidden>Borrar contacto</button>
+      </div>
+    </div>
+
+    <form id="ficha" class="ficha-grid" novalidate>
+      <div class="ficha-col">
+        <section class="tarjeta">
+          <h2>Etapa</h2>
+          <div class="etapas-paso" id="etapas" role="group" aria-label="Etapa"></div>
+          <label class="campo" id="motivo-campo" style="margin-top:12px" hidden><span>Por qué no ha salido</span><input name="motivo" maxlength="300" placeholder="Por ejemplo: no es el momento, se queda con lo que tiene…"></label>
+        </section>
+
+        <section class="tarjeta">
+          <h2>Próxima acción</h2>
+          <div class="campos">
+            <label class="campo"><span>Cuándo</span><input name="proxima_fecha" type="date"></label>
+            <label class="campo"><span>Qué hay que hacer</span><input name="proxima_texto" maxlength="300" placeholder="Llamarle para ver la demo juntos"></label>
+          </div>
+          <div class="proxima-rapida" id="proxima-rapida">
+            <button type="button" class="btn btn-sec btn-peq" data-dias="0">Hoy</button>
+            <button type="button" class="btn btn-sec btn-peq" data-dias="1">Mañana</button>
+            <button type="button" class="btn btn-sec btn-peq" data-dias="3">En 3 días</button>
+            <button type="button" class="btn btn-sec btn-peq" data-dias="7">En una semana</button>
+            <button type="button" class="btn btn-sec btn-peq" data-dias="14">En dos semanas</button>
+            <button type="button" class="btn-texto" data-dias="quitar">Quitar</button>
+          </div>
+        </section>
+
+        <section class="tarjeta">
+          <h2>Datos</h2>
+          <div class="campos">
+            <label class="campo"><span>Empresa</span><input name="empresa" maxlength="200" autocomplete="off"></label>
+            <label class="campo"><span>Persona</span><input name="nombre" maxlength="200" autocomplete="off"></label>
+            <label class="campo"><span>Cargo</span><input name="cargo" maxlength="120"></label>
+            <label class="campo"><span>Sector</span><select name="sector"><option value="">Sin indicar</option></select></label>
+            <label class="campo"><span>Correo</span><input name="email" type="email" maxlength="200" autocomplete="off"></label>
+            <label class="campo"><span>Teléfono</span><input name="telefono" type="tel" maxlength="60" autocomplete="off"></label>
+            <label class="campo"><span>Ciudad</span><input name="ciudad" maxlength="120"></label>
+            <label class="campo"><span>Web</span><input name="web" maxlength="300" placeholder="https://"></label>
+            <label class="campo"><span>Origen</span><select name="origen"></select></label>
+            <label class="campo"><span>Etiquetas</span><input name="etiquetas" maxlength="400" placeholder="Separadas por comas"></label>
+            <div class="campo ancho"><span>Le interesa</span><div class="opciones" id="intereses"></div></div>
+            <label class="campo"><span>Implantación (€)</span><input name="implantacion" type="number" min="0" step="10" inputmode="numeric"></label>
+            <label class="campo"><span>Cuota (€/mes)</span><input name="cuota" type="number" min="0" step="1" inputmode="numeric"></label>
+            <label class="campo ancho"><span>Notas</span><textarea name="notas" maxlength="8000" placeholder="Cómo trabajan hoy, qué programas usan, quién decide…"></textarea></label>
+            <div class="campo ancho" id="mensaje-campo" hidden><span>Lo que escribió en la web</span><p class="hist-txt" id="mensaje"></p></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="ficha-col">
+        <section class="tarjeta" id="apuntar-caja" hidden>
+          <h2>Apuntar</h2>
+          <div class="campos">
+            <label class="campo"><span>Qué ha pasado</span><select id="apunte-tipo"></select></label>
+            <label class="campo ancho"><span>Detalle</span><textarea id="apunte-texto" maxlength="8000" placeholder="Le he llamado: tiene interés en las citas, quiere verlo con su socia el jueves."></textarea></label>
+          </div>
+          <div class="acciones" style="margin-top:10px"><button type="button" class="btn btn-sec" id="apuntar">Apuntar en el historial</button></div>
+        </section>
+
+        <section class="tarjeta" id="correo-caja" hidden>
+          <h2>Escribir un correo</h2>
+          <div class="campos">
+            <label class="campo ancho"><span>Plantilla</span><select id="plantilla"><option value="">Correo en blanco</option></select></label>
+            <label class="campo ancho"><span>Asunto</span><input id="correo-asunto" maxlength="200"></label>
+            <label class="campo ancho"><span>Texto</span><textarea id="correo-texto" maxlength="10000" style="min-height:200px"></textarea></label>
+          </div>
+          <div class="acciones" style="margin-top:10px">
+            <button type="button" class="btn" id="enviar-correo">Enviar desde hola@fluivia.es</button>
+            <span class="tenue" id="correo-a"></span>
+          </div>
+        </section>
+
+        <section class="tarjeta" id="demo-caja" hidden>
+          <h2>Su demo personalizada</h2>
+          <p class="tenue" style="margin-bottom:10px">Con el nombre de su empresa y los casos de su sector. Cambia si cambias la empresa o el sector y guardas.</p>
+          <div class="demo-enlace">
+            <input class="entrada" id="demo-enlace" readonly aria-label="Enlace de su demo">
+            <button type="button" class="btn btn-sec btn-peq" id="copiar-demo">Copiar</button>
+            <a class="btn btn-sec btn-peq" id="abrir-demo" target="_blank" rel="noopener">Abrir</a>
+          </div>
+          <p class="tenue" id="demo-enviada" style="margin-top:8px"></p>
+        </section>
+
+        <section class="tarjeta" id="historial-caja" hidden>
+          <h2>Historial</h2>
+          <ul class="historial" id="historial"></ul>
+        </section>
+      </div>
+    </form>
+
+    <div class="barra-guardar">
+      <span class="estado-guardado" id="estado-guardado">Sin cambios</span>
+      <button type="button" class="btn" id="guardar">Guardar</button>
+    </div>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/ficha.js"></script>
+</body>
+</html>

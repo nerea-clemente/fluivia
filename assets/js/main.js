@@ -2,16 +2,15 @@
 (function () {
   "use strict";
 
-  /* ---- Configuración del formulario de contacto ----
-     FORM_ENDPOINT: URL de un servicio de formularios (Formspree, Getform,
-     un webhook de Make/n8n…). Si se deja vacío, el formulario abre el
-     cliente de correo del visitante con el mensaje ya redactado. */
+  /* ---- Configuración de los formularios ---- */
   var CONFIG = {
     FORM_ENDPOINT: "",
     CONTACT_EMAIL: "[tu-email@dominio.es]",
-    /* DEMO_ENDPOINT: dirección del Worker que manda la demo por correo
-       (carpeta worker/demo). Si se deja vacío, la petición se manda por correo
-       a CONTACT_EMAIL y la demo se envía a mano.
+    /* Cuando la Oficina esté publicada (carpeta oficina/, ver su LEEME.md):
+       FORM_ENDPOINT: "https://oficina.fluivia.es/api/publico/contacto"
+       DEMO_ENDPOINT: "https://oficina.fluivia.es/api/publico/demo"
+       Así cada mensaje y cada demo pedida entran solos en tus contactos.
+       Mientras estén vacíos, los formularios abren el correo del visitante.
        CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
        de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
     DEMO_ENDPOINT: "",

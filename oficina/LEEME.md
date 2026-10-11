@@ -1,0 +1,52 @@
+# Oficina de Fluivia
+
+La herramienta interna de Fluivia. Por ahora tiene:
+
+- **Contactos**: todas las empresas con las que hablas, desde el primer contacto hasta que son clientes. Etapas (nuevo, contactado, reunión, propuesta, cliente, perdido), próxima acción, historial de todo lo que ha pasado, intereses, importes y notas. Se ve en lista o en tablero (arrastrando una tarjeta cambias su etapa) y se exporta a CSV.
+- **Entrada automática desde la web**: quien pide la demo o escribe en el formulario de contacto entra solo como contacto (o se añade a su ficha si ya existía), con la próxima acción puesta. A ti te llega un aviso por correo con el enlace a su ficha.
+- **Envío de la demo**: quien la pide desde la web la recibe por correo, con el nombre de su negocio y su sector.
+- **Correos desde la ficha**: con plantillas (primer contacto, después de la demo, seguimiento, propuesta) que se rellenan solas y puedes cambiar antes de enviar. Salen desde tu dominio y quedan en el historial.
+- **Su demo personalizada**: cada ficha tiene el enlace a la demo con el nombre y el sector de esa empresa, para copiarlo o abrirlo.
+- **Resumen**: lo que te toca hoy, contactos nuevos, importes en propuestas y cuotas de clientes.
+- **Cada mañana**, un correo con «hoy te toca» si hay algo pendiente.
+- **Cada noche**, una copia de seguridad en R2, en la UE (se guardan 60 días).
+
+Se entra con un código que llega al correo, solo para los emails de `EMAILS_PERMITIDOS`. Los datos se guardan en un Durable Object con SQLite en la UE.
+
+## Puesta en marcha
+
+Necesitas una cuenta de Cloudflare (gratis) y Resend con `fluivia.es` verificado.
+
+```
+cd oficina
+npm install
+npx wrangler login
+npx wrangler r2 bucket create fluivia-oficina-copias --jurisdiction eu
+npx wrangler secret put RESEND_API_KEY
+npx wrangler deploy
+```
+
+Después:
+
+1. **Dirección propia:** en Cloudflare, Workers → fluivia-oficina → Settings → Domains & Routes, añade `oficina.fluivia.es`. Si el DNS de `fluivia.es` no está en Cloudflare, usa la dirección `*.workers.dev` que te da `wrangler deploy` y ponla en `OFICINA_URL`.
+2. **Revisa `wrangler.jsonc`:** `EMAILS_PERMITIDOS` (quién puede entrar), `AVISOS` (a dónde llegan los avisos), `CITA_URL` (tu enlace de reservas) y `WEB_ORIGENES` (desde qué webs se aceptan los formularios). Vuelve a hacer `npx wrangler deploy` si cambias algo.
+3. **Conecta la web:** en `assets/js/main.js` de la web, pon
+   - `FORM_ENDPOINT: "https://oficina.fluivia.es/api/publico/contacto"`
+   - `DEMO_ENDPOINT: "https://oficina.fluivia.es/api/publico/demo"`
+
+## Probar en local
+
+```
+cd oficina
+printf 'DEV=1\n' > .dev.vars
+npx wrangler dev
+```
+
+Con `DEV=1` no se envía ningún correo: el código para entrar y los correos se escriben en la terminal.
+
+## Protección
+
+- Formularios de la web: solo desde `WEB_ORIGENES`, campo oculto y tiempo mínimo contra bots, y límite de envíos por IP y por correo.
+- Acceso: código de 6 cifras que caduca en 10 minutos, 5 intentos, límite de peticiones; sesión de 7 días en una cookie HttpOnly (en el servidor solo se guarda su hash).
+- Las peticiones que cambian datos solo se aceptan desde la propia Oficina.
+- Cabeceras de seguridad (sin incrustar en otras webs, sin indexar, política de contenido estricta).

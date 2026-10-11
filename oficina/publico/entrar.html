@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Oficina de Fluivia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/oficina.css">
+</head>
+<body>
+  <main class="entrar">
+    <div class="entrar-caja">
+      <img src="/img/logo.svg" alt="fluivia" width="650" height="225">
+      <form id="paso-email" novalidate>
+        <h1>Oficina</h1>
+        <p>Escribe tu correo y te mandamos un código para entrar.</p>
+        <label class="campo"><span>Correo</span><input id="email" type="email" autocomplete="email" required></label>
+        <button class="btn" type="submit">Enviarme el código</button>
+        <p class="error" id="error-email" role="alert"></p>
+      </form>
+      <form id="paso-codigo" novalidate hidden>
+        <h1>Revisa tu correo</h1>
+        <p>Te hemos mandado un código de 6 cifras a <strong id="a-quien"></strong>. Caduca en 10 minutos.</p>
+        <label class="campo"><span>Código</span><input id="codigo" class="codigo-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required></label>
+        <button class="btn" type="submit">Entrar</button>
+        <button class="btn-texto" type="button" id="otra-vez">Usar otro correo</button>
+        <p class="error" id="error-codigo" role="alert"></p>
+      </form>
+    </div>
+  </main>
+  <script src="/js/entrar.js"></script>
+</body>
+</html>
