@@ -241,6 +241,14 @@
     };
     var abierto = Date.now();
 
+    // Si se llega desde Sectores, deja elegido el sector
+    try {
+      var sectorUrl = new URLSearchParams(window.location.search).get("sector");
+      if (sectorUrl && demoForm.elements.sector.querySelector('option[value="' + sectorUrl.replace(/[^a-z]/g, "") + '"]')) {
+        demoForm.elements.sector.value = sectorUrl;
+      }
+    } catch (err) { /* navegador sin URLSearchParams */ }
+
     var demoError = function (input, msg) {
       var field = input.closest(".field");
       var existing = field.querySelector(".field-error");
