@@ -719,9 +719,9 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
 .case-change { display: grid; gap: 10px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); }
 .case-change p { display: grid; grid-template-columns: 64px 1fr; gap: 12px; font-size: 15px; line-height: 1.55; }
 .case-change span { font-size: 13px; font-weight: 700; padding-top: 2px; }
-.case-before { color: var(--bosque-65); }
-.case-before span { color: #B3261E; }
-.case-after span { color: #1E7B45; }
+.case-change .case-before { color: var(--bosque-65); }
+.case-change .case-before span { color: #B3261E; }
+.case-change .case-after span { color: #1E7B45; }
 
 .about { display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; max-width: 960px; }
 .about-photo { display: block; width: clamp(120px, 16vw, 200px); height: clamp(120px, 16vw, 200px); border-radius: 50%; object-fit: cover; }
@@ -762,4 +762,8 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
   .about-mini.about-solo { grid-template-columns: 1fr; }
 }
 
-.sector-demo { margin-top: 20px; }
+.sector-more { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 20px; }
+.page-hero .hero-actions { margin-top: 32px; }
+.cases-2 { grid-template-columns: repeat(2, 1fr); }
+.service-price { margin-top: auto; padding-top: 12px; font-weight: 700; }
+@media (max-width: 860px) { .cases-2 { grid-template-columns: 1fr; } }

@@ -4,14 +4,14 @@ compatibility_date = "2026-09-01"
 
 [vars]
 # Web desde la que se puede pedir la demo (separadas por comas)
-ALLOWED_ORIGINS = "https://nerea-clemente.github.io"
+ALLOWED_ORIGINS = "https://fluivia.es,https://www.fluivia.es,https://nerea-clemente.github.io"
 # Dirección de la demo privada
-DEMO_URL = "https://nerea-clemente.github.io/fluivia/d/r5x0kruj/"
+DEMO_URL = "https://fluivia.es/d/r5x0kruj/"
 # Remitente: tiene que ser de un dominio verificado en Resend
-FROM = "Fluivia <hola@tudominio.es>"
+FROM = "Fluivia <hola@fluivia.es>"
 # Dónde te llega el aviso de cada demo pedida y a dónde responden los clientes
-NOTIFY_TO = "hola@tudominio.es"
-REPLY_TO = "hola@tudominio.es"
+NOTIFY_TO = "hola@fluivia.es"
+REPLY_TO = "hola@fluivia.es"
 # Enlace para reservar una llamada (opcional)
 CITA_URL = ""
 
