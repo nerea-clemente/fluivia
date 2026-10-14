@@ -53,21 +53,44 @@ export function enlaceDemo(env, sector, empresa) {
   return url.toString();
 }
 
-// El correo que recibe quien pide la demo desde la web.
+// El correo que recibe quien pide la demo desde la web, en el idioma de la web
+// desde la que la pidió (español, inglés o danés). La demo está en español.
+const SECTOR_EN = { gestoria: 'an accountancy firm', inmobiliaria: 'an estate agency', clinica: 'a clinic', academia: 'a school', distribucion: 'a distribution business', consultoria: 'a consultancy or agency', comercio: 'a shop' };
+const SECTOR_DA = { gestoria: 'et bogholderi', inmobiliaria: 'en ejendomsmægler', clinica: 'en klinik', academia: 'en skole', distribucion: 'en distributionsvirksomhed', consultoria: 'et konsulenthus eller bureau', comercio: 'en butik' };
+
 export function correoDemo(env, d, enlace) {
-  const s = sectorTexto(d.sector);
-  const intro = tieneDemo(d.sector)
-    ? `Son cuatro situaciones del día a día de ${s.una}, contadas paso a paso. Se recorre en unos cinco minutos.`
-    : 'Todavía no tenemos una demo de tu sector, así que te mando la general. Respóndeme contándome a qué te dedicas y te preparo una con tus casos.';
-  const cita = env.CITA_URL
-    ? `Si prefieres verla conmigo, reserva una llamada de 20 minutos: ${env.CITA_URL}`
-    : 'Si prefieres verla conmigo, responde a este correo y buscamos un hueco de 20 minutos.';
-  const texto = [`Hola, ${d.nombre}:`, `Aquí tienes la demo de Fluivia preparada para ${d.empresa}:`, enlace, intro, cita, 'Un saludo,\nFluivia'].join('\n\n');
-  return {
-    to: [d.email], reply_to: (env.AVISOS || '').split(',')[0].trim() || undefined,
-    subject: `Tu demo de Fluivia para ${d.empresa}`, text: texto,
-    html: html(texto, 'Recibes este correo porque has pedido la demo en la web de Fluivia.'),
-  };
+  const idioma = ['en', 'da'].includes(d.idioma) ? d.idioma : 'es';
+  const responder = (env.AVISOS || '').split(',')[0].trim() || undefined;
+  const conDemo = tieneDemo(d.sector);
+  let asunto, partes, pie;
+  if (idioma === 'en') {
+    asunto = `Your Fluivia demo for ${d.empresa}`;
+    partes = [`Hi ${d.nombre},`, `Here is the Fluivia demo prepared for ${d.empresa}:`, enlace,
+      conDemo ? `It shows four everyday situations for ${SECTOR_EN[d.sector]}, step by step. It takes about five minutes. The demo itself is in Spanish for now: just reply to this email if you would like me to walk you through it in English.`
+        : 'We do not have a demo for your industry yet, so here is the general one (in Spanish for now). Reply and tell me what you do, and I will prepare one with your own cases.',
+      env.CITA_URL ? `If you prefer to see it with me, book a 20-minute call: ${env.CITA_URL}` : 'If you prefer to see it with me, reply to this email and we will find a 20-minute slot.',
+      'Best regards,\nFluivia'];
+    pie = 'You are receiving this email because you requested the demo on the Fluivia website.';
+  } else if (idioma === 'da') {
+    asunto = `Din Fluivia-demo til ${d.empresa}`;
+    partes = [`Hej ${d.nombre}`, `Her er Fluivia-demoen, som vi har lavet til ${d.empresa}:`, enlace,
+      conDemo ? `Den viser fire situationer fra hverdagen i ${SECTOR_DA[d.sector]}, trin for trin, og tager omkring fem minutter. Selve demoen er på spansk indtil videre: svar på denne mail, hvis du vil have, at jeg viser dig den på dansk.`
+        : 'Vi har endnu ikke en demo til din branche, så her er den generelle (på spansk indtil videre). Svar og fortæl, hvad I laver, så laver jeg en med jeres egne eksempler.',
+      env.CITA_URL ? `Vil du hellere se den sammen med mig, kan du booke et opkald på 20 minutter: ${env.CITA_URL}` : 'Vil du hellere se den sammen med mig, så svar på denne mail, så finder vi 20 minutter.',
+      'Venlig hilsen\nFluivia'];
+    pie = 'Du får denne mail, fordi du har bedt om demoen på Fluivias hjemmeside.';
+  } else {
+    const s = sectorTexto(d.sector);
+    asunto = `Tu demo de Fluivia para ${d.empresa}`;
+    partes = [`Hola, ${d.nombre}:`, `Aquí tienes la demo de Fluivia preparada para ${d.empresa}:`, enlace,
+      conDemo ? `Son cuatro situaciones del día a día de ${s.una}, contadas paso a paso. Se recorre en unos cinco minutos.`
+        : 'Todavía no tenemos una demo de tu sector, así que te mando la general. Respóndeme contándome a qué te dedicas y te preparo una con tus casos.',
+      env.CITA_URL ? `Si prefieres verla conmigo, reserva una llamada de 20 minutos: ${env.CITA_URL}` : 'Si prefieres verla conmigo, responde a este correo y buscamos un hueco de 20 minutos.',
+      'Un saludo,\nFluivia'];
+    pie = 'Recibes este correo porque has pedido la demo en la web de Fluivia.';
+  }
+  const texto = partes.join('\n\n');
+  return { to: [d.email], reply_to: responder, subject: asunto, text: texto, html: html(texto, pie) };
 }
 
 // Plantillas para escribir desde la ficha. Se rellenan y se pueden cambiar antes de enviar.

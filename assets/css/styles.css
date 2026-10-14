@@ -767,3 +767,15 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
 .cases-2 { grid-template-columns: repeat(2, 1fr); }
 .service-price { margin-top: auto; padding-top: 12px; font-weight: 700; }
 @media (max-width: 860px) { .cases-2 { grid-template-columns: 1fr; } }
+
+/* Selector de idioma (es una lista dentro del menú: se anulan los estilos de .main-nav ul) */
+.lang-switch, .main-nav ul.lang-switch { display: flex; flex-direction: row; align-items: center; gap: 2px; padding: 3px; border-radius: var(--pill); border: 1px solid var(--line); }
+.lang-switch a, .main-nav ul.lang-switch a { display: block; min-width: 34px; padding: 4px 8px; border-radius: var(--pill); font-size: 12.5px; font-weight: 600; text-align: center; text-decoration: none; color: var(--bosque-80); }
+.main-nav ul.lang-switch a::after { display: none; }
+.lang-switch a:hover { color: var(--fluivia-bosque); background: var(--fluivia-gris-claro); }
+.lang-switch a[aria-current="true"], .main-nav ul.lang-switch a[aria-current="true"] { background: var(--fluivia-bosque); color: var(--fluivia-blanco); }
+.header-inner > .lang-switch { margin-left: auto; margin-right: 16px; }
+@media (max-width: 920px) {
+  .main-nav ul.lang-switch { align-self: flex-start; }
+  .main-nav ul.lang-switch a { min-width: 46px; padding: 8px 10px; font-size: 14px; }
+}

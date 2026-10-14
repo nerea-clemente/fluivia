@@ -1,17 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fluivia.es/</loc><lastmod>2026-10-11</lastmod><priority>1.0</priority></url>
-  <url><loc>https://fluivia.es/servicios.html</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
-  <url><loc>https://fluivia.es/sectores.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/caso-real.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/como-trabajamos.html</loc><lastmod>2026-10-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://fluivia.es/demo.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/contacto.html</loc><lastmod>2026-10-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://fluivia.es/automatizacion-gestorias.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/automatizacion-inmobiliarias.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/automatizacion-clinicas.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/automatizacion-academias.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/automatizacion-distribucion.html</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://fluivia.es/aviso-legal.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
-  <url><loc>https://fluivia.es/privacidad.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://fluivia.es/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/servicios.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/servicios.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/sectores.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/sectores.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/caso-real.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/caso-real.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/como-trabajamos.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/como-trabajamos.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/demo.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/demo.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/contacto.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/automatizacion-gestorias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-gestorias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/automatizacion-inmobiliarias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-inmobiliarias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/automatizacion-clinicas.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-clinicas.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/automatizacion-academias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-academias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/automatizacion-distribucion.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-distribucion.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/aviso-legal.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/aviso-legal.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/privacidad.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/privacidad.html"/>
+  </url>
 </urlset>

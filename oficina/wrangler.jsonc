@@ -32,7 +32,7 @@
     // A dónde llegan los avisos (demo pedida, mensaje de la web, resumen diario).
     "AVISOS": "hola@fluivia.es",
     // Webs desde las que se aceptan los formularios.
-    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://nerea-clemente.github.io",
+    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.pages.dev,https://nerea-clemente.github.io",
     // La demo privada y el enlace para reservar llamada (opcional).
     "DEMO_URL": "https://fluivia.es/d/r5x0kruj/",
     // Dónde está la Oficina (para los enlaces de los avisos).

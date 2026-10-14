@@ -1,0 +1,10 @@
+# Cabeceras para Cloudflare Pages (y Netlify, que usa el mismo formato)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# La demo privada: que no la indexe ningún buscador
+/d/*
+  X-Robots-Tag: noindex, nofollow, noarchive

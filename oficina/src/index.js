@@ -133,6 +133,7 @@ async function publico(req, env, store, url, ctx) {
     nombre: limpio(b.nombre, 120), email: limpio(b.email, 200).toLowerCase(),
     empresa: limpio(b.negocio || b.empresa, 60), telefono: limpio(b.telefono, 40),
     sector: sectorDe(limpio(b.sector, 60)), mensaje: String(b.mensaje || '').trim().slice(0, 4000),
+    idioma: ['es', 'en', 'da'].includes(b.idioma) ? b.idioma : (/\/(en|da)\//.exec(req.headers.get('referer') || '') || [])[1] || 'es',
   };
   if (!e.nombre || !C.EMAIL_OK.test(e.email) || (tipo === 'demo' && !e.empresa) || (tipo === 'contacto' && !e.mensaje)) {
     return json({ error: 'Faltan datos' }, 400, cab);

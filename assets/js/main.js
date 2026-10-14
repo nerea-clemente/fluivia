@@ -17,6 +17,63 @@
     CITA_URL: ""
   };
 
+  /* ---- Textos en cada idioma (según <html lang>) ---- */
+  var IDIOMA = (document.documentElement.lang || "es").slice(0, 2);
+  var TEXTOS = {
+    es: {
+      abrirMenu: "Abrir menú", cerrarMenu: "Cerrar menú",
+      nombre: "Indica tu nombre.", email: "Escribe un correo válido.",
+      mensaje: "Cuéntanos brevemente qué te gustaría simplificar.", privacidad: "Necesitamos que aceptes la política de privacidad.",
+      negocio: "Indica el nombre de tu negocio.", sector: "Elige tu sector.",
+      enviado: "¡Gracias! Hemos recibido tu mensaje y te responderemos pronto.",
+      errorEnvio: "No hemos podido enviar el mensaje. Inténtalo de nuevo o escríbenos a {email}.",
+      correoAbierto: "Se ha abierto tu programa de correo con el mensaje preparado. Solo tienes que enviarlo.",
+      asuntoContacto: "Consulta desde la web · {nombre}",
+      etNombre: "Nombre", etEmpresa: "Empresa", etCorreo: "Correo", etTelefono: "Teléfono", etSector: "Sector", etNegocio: "Negocio",
+      demoLista: "¡Listo! En unos minutos te llega la demo a {email}. Si no la ves, mira en la carpeta de correo no deseado.",
+      demoError: "No hemos podido enviarla. Inténtalo de nuevo en un momento o escríbenos a {email}.",
+      demoQuiero: "Quiero ver la demo.", demoAsunto: "Quiero ver la demo · {negocio}",
+      demoCorreoAbierto: "Se ha abierto tu programa de correo con la petición preparada. Envíala y te mandamos la demo.",
+      interes: "Me interesa «{x}». "
+    },
+    en: {
+      abrirMenu: "Open menu", cerrarMenu: "Close menu",
+      nombre: "Please enter your name.", email: "Please enter a valid email address.",
+      mensaje: "Tell us briefly what you would like to simplify.", privacidad: "Please accept the privacy policy.",
+      negocio: "Please enter the name of your business.", sector: "Please choose your industry.",
+      enviado: "Thank you! We have received your message and will get back to you soon.",
+      errorEnvio: "We couldn't send your message. Please try again or write to us at {email}.",
+      correoAbierto: "Your email program has opened with the message ready. You just need to send it.",
+      asuntoContacto: "Enquiry from the website · {nombre}",
+      etNombre: "Name", etEmpresa: "Company", etCorreo: "Email", etTelefono: "Phone", etSector: "Industry", etNegocio: "Business",
+      demoLista: "Done! The demo will reach {email} in a few minutes. If you can't see it, check your spam folder.",
+      demoError: "We couldn't send it. Please try again in a moment or write to us at {email}.",
+      demoQuiero: "I'd like to see the demo.", demoAsunto: "I'd like to see the demo · {negocio}",
+      demoCorreoAbierto: "Your email program has opened with the request ready. Send it and we'll send you the demo.",
+      interes: "I'm interested in “{x}”. "
+    },
+    da: {
+      abrirMenu: "Åbn menu", cerrarMenu: "Luk menu",
+      nombre: "Skriv dit navn.", email: "Skriv en gyldig e-mailadresse.",
+      mensaje: "Fortæl kort, hvad du gerne vil gøre nemmere.", privacidad: "Du skal acceptere privatlivspolitikken.",
+      negocio: "Skriv navnet på din virksomhed.", sector: "Vælg din branche.",
+      enviado: "Tak! Vi har modtaget din besked og vender tilbage hurtigst muligt.",
+      errorEnvio: "Vi kunne ikke sende beskeden. Prøv igen, eller skriv til os på {email}.",
+      correoAbierto: "Dit mailprogram er åbnet med beskeden klar. Du skal bare sende den.",
+      asuntoContacto: "Henvendelse fra hjemmesiden · {nombre}",
+      etNombre: "Navn", etEmpresa: "Virksomhed", etCorreo: "E-mail", etTelefono: "Telefon", etSector: "Branche", etNegocio: "Virksomhed",
+      demoLista: "Så er det klaret! Demoen kommer til {email} om få minutter. Kan du ikke se den, så tjek din spam-mappe.",
+      demoError: "Vi kunne ikke sende den. Prøv igen om lidt, eller skriv til os på {email}.",
+      demoQuiero: "Jeg vil gerne se demoen.", demoAsunto: "Jeg vil gerne se demoen · {negocio}",
+      demoCorreoAbierto: "Dit mailprogram er åbnet med forespørgslen klar. Send den, så sender vi dig demoen.",
+      interes: "Jeg er interesseret i »{x}«. "
+    }
+  };
+  var T = TEXTOS[IDIOMA] || TEXTOS.es;
+  var t = function (clave, datos) {
+    return String(T[clave] || TEXTOS.es[clave] || "").replace(/\{(\w+)\}/g, function (m, k) { return datos && k in datos ? datos[k] : m; });
+  };
+
   /* ---- Cabecera: borde al hacer scroll ---- */
   var header = document.querySelector(".site-header");
   var onScroll = function () {
@@ -31,7 +88,7 @@
   if (toggle && nav) {
     var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.querySelector(".sr-only").textContent = open ? "Cerrar menú" : "Abrir menú";
+      toggle.querySelector(".sr-only").textContent = open ? t("cerrarMenu") : t("abrirMenu");
       nav.classList.toggle("is-open", open);
     };
     toggle.addEventListener("click", function () {
@@ -128,10 +185,10 @@
   if (form) {
     var status = document.getElementById("form-status");
     var messages = {
-      nombre: "Indica tu nombre.",
-      email: "Escribe un correo válido.",
-      mensaje: "Cuéntanos brevemente qué te gustaría simplificar.",
-      privacidad: "Necesitamos que aceptes la política de privacidad."
+      nombre: t("nombre"),
+      email: t("email"),
+      mensaje: t("mensaje"),
+      privacidad: t("privacidad")
     };
 
     var setError = function (input, msg) {
@@ -167,7 +224,7 @@
     try {
       var interes = new URLSearchParams(window.location.search).get("interes");
       if (interes && !form.elements.mensaje.value) {
-        form.elements.mensaje.value = "Me interesa «" + interes + "». ";
+        form.elements.mensaje.value = t("interes", { x: interes });
       }
     } catch (err) { /* navegador sin URLSearchParams */ }
 
@@ -187,7 +244,7 @@
       var done = function () {
         form.reset();
         status.className = "form-status is-ok";
-        status.textContent = "¡Gracias! Hemos recibido tu mensaje y te responderemos pronto.";
+        status.textContent = t("enviado");
       };
 
       if (CONFIG.FORM_ENDPOINT) {
@@ -197,26 +254,26 @@
           .then(function (res) { if (!res.ok) throw new Error(res.status); done(); })
           .catch(function () {
             status.className = "form-status is-error";
-            status.textContent = "No hemos podido enviar el mensaje. Inténtalo de nuevo o escríbenos a " + CONFIG.CONTACT_EMAIL + ".";
+            status.textContent = t("errorEnvio", { email: CONFIG.CONTACT_EMAIL });
           })
           .finally(function () { button.disabled = false; });
         return;
       }
 
       var body = [
-        "Nombre: " + data.get("nombre"),
-        "Empresa: " + (data.get("empresa") || "-"),
-        "Correo: " + data.get("email"),
-        "Teléfono: " + (data.get("telefono") || "-"),
-        "Sector: " + (data.get("sector") || "-"),
+        t("etNombre") + ": " + data.get("nombre"),
+        t("etEmpresa") + ": " + (data.get("empresa") || "-"),
+        t("etCorreo") + ": " + data.get("email"),
+        t("etTelefono") + ": " + (data.get("telefono") || "-"),
+        t("etSector") + ": " + (form.elements.sector.value ? form.elements.sector.options[form.elements.sector.selectedIndex].text : "-"),
         "",
         data.get("mensaje")
       ].join("\n");
       window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL +
-        "?subject=" + encodeURIComponent("Consulta desde la web · " + data.get("nombre")) +
+        "?subject=" + encodeURIComponent(t("asuntoContacto", { nombre: data.get("nombre") })) +
         "&body=" + encodeURIComponent(body);
       status.className = "form-status is-ok";
-      status.textContent = "Se ha abierto tu programa de correo con el mensaje preparado. Solo tienes que enviarlo.";
+      status.textContent = t("correoAbierto");
     });
   }
 
@@ -232,11 +289,11 @@
   if (demoForm) {
     var demoStatus = document.getElementById("demo-status");
     var demoMessages = {
-      nombre: "Indica tu nombre.",
-      email: "Escribe un correo válido.",
-      negocio: "Indica el nombre de tu negocio.",
-      sector: "Elige tu sector.",
-      privacidad: "Necesitamos que aceptes la política de privacidad."
+      nombre: t("nombre"),
+      email: t("email"),
+      negocio: t("negocio"),
+      sector: t("sector"),
+      privacidad: t("privacidad")
     };
     var abierto = Date.now();
 
@@ -293,12 +350,13 @@
         negocio: demoForm.elements.negocio.value.trim(),
         sector: demoForm.elements.sector.value,
         web: demoForm.elements.web.value,
+        idioma: IDIOMA,
         segundos: Math.round((Date.now() - abierto) / 1000)
       };
       var hecho = function () {
         demoForm.reset();
         demoStatus.className = "form-status is-ok";
-        demoStatus.textContent = "¡Listo! En unos minutos te llega la demo a " + datos.email + ". Si no la ves, mira en la carpeta de correo no deseado.";
+        demoStatus.textContent = t("demoLista", { email: datos.email });
       };
 
       if (CONFIG.DEMO_ENDPOINT) {
@@ -308,25 +366,25 @@
           .then(function (res) { if (!res.ok) throw new Error(res.status); hecho(); })
           .catch(function () {
             demoStatus.className = "form-status is-error";
-            demoStatus.textContent = "No hemos podido enviarla. Inténtalo de nuevo en un momento o escríbenos a " + CONFIG.CONTACT_EMAIL + ".";
+            demoStatus.textContent = t("demoError", { email: CONFIG.CONTACT_EMAIL });
           })
           .finally(function () { boton.disabled = false; });
         return;
       }
 
       var cuerpo = [
-        "Quiero ver la demo.",
+        t("demoQuiero"),
         "",
-        "Nombre: " + datos.nombre,
-        "Negocio: " + datos.negocio,
-        "Sector: " + demoForm.elements.sector.options[demoForm.elements.sector.selectedIndex].text,
-        "Correo: " + datos.email
+        t("etNombre") + ": " + datos.nombre,
+        t("etNegocio") + ": " + datos.negocio,
+        t("etSector") + ": " + demoForm.elements.sector.options[demoForm.elements.sector.selectedIndex].text,
+        t("etCorreo") + ": " + datos.email
       ].join("\n");
       window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL +
-        "?subject=" + encodeURIComponent("Quiero ver la demo · " + datos.negocio) +
+        "?subject=" + encodeURIComponent(t("demoAsunto", { negocio: datos.negocio })) +
         "&body=" + encodeURIComponent(cuerpo);
       demoStatus.className = "form-status is-ok";
-      demoStatus.textContent = "Se ha abierto tu programa de correo con la petición preparada. Envíala y te mandamos la demo.";
+      demoStatus.textContent = t("demoCorreoAbierto");
     });
   }
 

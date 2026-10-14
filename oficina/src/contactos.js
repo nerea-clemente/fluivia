@@ -111,9 +111,10 @@ export function deLaWeb(existente, e) {
     historial: [], creado: ahora,
   };
   for (const k of ['nombre', 'empresa', 'telefono', 'sector']) if (!c[k] && e[k]) c[k] = e[k];
+  const enIdioma = e.idioma === 'en' ? ' (desde la web en inglés)' : e.idioma === 'da' ? ' (desde la web en danés)' : '';
   const texto = e.tipo === 'demo'
-    ? `Ha pedido la demo desde la web${e.empresa ? ` para ${e.empresa}` : ''}. Se le ha enviado por correo.`
-    : [`Ha escrito desde el formulario de contacto.`, e.mensaje ? `Mensaje: ${e.mensaje}` : ''].filter(Boolean).join('\n\n');
+    ? `Ha pedido la demo desde la web${enIdioma}${e.empresa ? ` para ${e.empresa}` : ''}. Se le ha enviado por correo.`
+    : [`Ha escrito desde el formulario de contacto${enIdioma}.`, e.mensaje ? `Mensaje: ${e.mensaje}` : ''].filter(Boolean).join('\n\n');
   c.historial = [...(c.historial || []), { fecha: ahora, tipo: e.tipo === 'demo' ? 'demo' : 'web', texto, auto: true }];
   if (e.tipo === 'demo' && e.enlace) c.demo = { fecha: ahora, enlace: e.enlace };
   if (e.mensaje && e.tipo !== 'demo') c.mensaje = [c.mensaje, e.mensaje].filter(Boolean).join('\n\n—\n\n');

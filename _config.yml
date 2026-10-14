@@ -1,4 +1,6 @@
 # GitHub Pages: lo que no forma parte de la web pública
 exclude:
   - oficina
+  - herramientas
   - README.md
+  - _site
