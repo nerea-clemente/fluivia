@@ -400,3 +400,16 @@
     el.textContent = new Date().getFullYear();
   });
 })();
+
+// Selector de idioma: se cierra al pulsar fuera o con Escape.
+(function () {
+  var menus = document.querySelectorAll(".lang-menu");
+  if (!menus.length) return;
+  document.addEventListener("click", function (e) {
+    menus.forEach(function (m) { if (m.open && !m.contains(e.target)) m.open = false; });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    menus.forEach(function (m) { if (m.open) { m.open = false; m.querySelector("summary").focus(); } });
+  });
+})();

@@ -41,6 +41,7 @@ def existe(idioma, pagina):
     return os.path.exists(IDIOMAS[idioma][0] + pagina)
 
 def selector(idioma, pagina):
+    # Desplegable (<details>): funciona sin JavaScript; main.js lo cierra al pulsar fuera.
     # Rutas relativas desde la carpeta de la página actual.
     subir = "../" if IDIOMAS[idioma][0] else ""
     items = []
@@ -48,8 +49,10 @@ def selector(idioma, pagina):
         destino = pagina if existe(cod, pagina) else "index.html"
         href = subir + carpeta + destino
         actual = ' aria-current="true"' if cod == idioma else ""
-        items.append(f'<li><a href="{href}" lang="{cod}" hreflang="{cod}" title="{nombre}"{actual}>{cod.upper()}</a></li>')
-    return f'<ul class="lang-switch" aria-label="{ETIQUETA_SELECTOR[idioma]}">' + "".join(items) + "</ul>"
+        items.append(f'<li><a href="{href}" lang="{cod}" hreflang="{cod}"{actual}>{nombre}</a></li>')
+    return (f'<details class="lang-menu"><summary aria-label="{ETIQUETA_SELECTOR[idioma]}: {IDIOMAS[idioma][1]}">'
+            f'<svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z"/></svg>'
+            f'{idioma.upper()}</summary><ul>' + "".join(items) + "</ul></details>")
 
 def poner_al_dia(idioma, pagina):
     ruta = IDIOMAS[idioma][0] + pagina
@@ -74,6 +77,7 @@ def poner_al_dia(idioma, pagina):
 
     # 4. Selector de idioma: en el menú, o junto al botón en las páginas legales
     s = re.sub(r'\s*<ul class="lang-switch".*?</ul>', "", s, flags=re.S)
+    s = re.sub(r'\s*<details class="lang-menu">.*?</details>', "", s, flags=re.S)
     nav = re.search(r'(<nav class="main-nav" id="main-nav"[^>]*>\s*<ul>.*?</ul>)', s, re.S)
     if nav:
         s = s.replace(nav.group(1), nav.group(1) + "\n        " + selector(idioma, pagina), 1)
