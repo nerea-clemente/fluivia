@@ -5,83 +5,335 @@
     <lastmod>2026-10-14</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/"/>
   </url>
   <url>
     <loc>https://fluivia.es/servicios.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/servicios.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/servicios.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/servicios.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/servicios.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/servicios.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/sectores.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/sectores.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/sectores.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/sectores.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/sectores.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/sectores.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/sectores.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/caso-real.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/caso-real.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/caso-real.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/caso-real.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/caso-real.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/caso-real.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/caso-real.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/como-trabajamos.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/como-trabajamos.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/como-trabajamos.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/como-trabajamos.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/como-trabajamos.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/como-trabajamos.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/como-trabajamos.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/demo.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/demo.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/demo.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/demo.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/demo.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/demo.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/contacto.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/contacto.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/contacto.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/contacto.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/contacto.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/automatizacion-gestorias.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-gestorias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/automatizacion-gestorias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-gestorias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/automatizacion-gestorias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-gestorias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-gestorias.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/automatizacion-inmobiliarias.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-inmobiliarias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/automatizacion-inmobiliarias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-inmobiliarias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/automatizacion-inmobiliarias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-inmobiliarias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-inmobiliarias.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/automatizacion-clinicas.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-clinicas.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/automatizacion-clinicas.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-clinicas.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/automatizacion-clinicas.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-clinicas.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-clinicas.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/automatizacion-academias.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-academias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/automatizacion-academias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-academias.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/automatizacion-academias.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-academias.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-academias.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/automatizacion-distribucion.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-distribucion.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/automatizacion-distribucion.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-distribucion.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/automatizacion-distribucion.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/automatizacion-distribucion.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/automatizacion-distribucion.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/aviso-legal.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/aviso-legal.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/aviso-legal.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/aviso-legal.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/aviso-legal.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/aviso-legal.html"/>
   </url>
   <url>
     <loc>https://fluivia.es/privacidad.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/privacidad.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/en/privacidad.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/privacidad.html"/>
+  </url>
+  <url>
+    <loc>https://fluivia.es/da/privacidad.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluivia.es/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.es/da/privacidad.html"/>
   </url>
 </urlset>

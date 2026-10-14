@@ -220,11 +220,18 @@
       return firstInvalid;
     };
 
+    // Los enlaces «Me interesa» llevan el nombre en español; aquí se traduce.
+    var PRODUCTOS = {
+      en: { "Consultas en orden": "Enquiries, sorted", "Citas sin llamadas": "Bookings without calls", "Documentos sin perseguir": "Documents without chasing", "Oficina digital": "Digital office", "Ver una demo": "See a demo" },
+      da: { "Consultas en orden": "Styr på henvendelserne", "Citas sin llamadas": "Booking uden opkald", "Documentos sin perseguir": "Dokumenter uden rykkere", "Oficina digital": "Digitalt kontor", "Ver una demo": "Se en demo" }
+    };
+
     // Si se llega desde «Me interesa», prepara el mensaje con el producto
     try {
       var interes = new URLSearchParams(window.location.search).get("interes");
       if (interes && !form.elements.mensaje.value) {
-        form.elements.mensaje.value = t("interes", { x: interes });
+        var nombres = PRODUCTOS[IDIOMA] || {};
+        form.elements.mensaje.value = t("interes", { x: nombres[interes] || interes });
       }
     } catch (err) { /* navegador sin URLSearchParams */ }
 
