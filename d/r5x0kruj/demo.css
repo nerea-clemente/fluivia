@@ -426,7 +426,7 @@ button.resp.pista { animation-name: pista-sec; }
 /* ---------- Responsive ---------- */
 /* La ventana del ordenador es estrecha (portátiles, o con la historia al lado):
    sin el menú lateral, para que el contenido no se corte. */
-@container ventana (max-width: 480px) {
+@container ventana (max-width: 640px) {
   .v-app { grid-template-columns: minmax(0, 1fr); }
   .v-menu { display: none; }
   .v-cont { padding: 16px; }
@@ -435,7 +435,7 @@ button.resp.pista { animation-name: pista-sec; }
   .tabla td { padding: 6px 6px; }
   .tabla td .ui-btn { padding: 0 8px; font-size: 11px; }
 }
-@media (max-width: 1180px) {
+@media (max-width: 1480px) {
   .historia { grid-template-columns: minmax(0, 1fr); }
   .historia-pasos { position: static; }
 }
