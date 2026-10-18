@@ -161,8 +161,9 @@ async function publico(req, env, store, url, ctx) {
 async function entradaWeb(req, env, store, url, ctx) {
   if (req.method !== 'POST') return json({ error: 'Método no permitido' }, 405);
   // Se llama ENTRADA_SECRETO, pero también vale con el nombre que tiene en Netlify.
-  const secreto = String(env.ENTRADA_SECRETO || env.OFICINA_SECRETO || '');
-  const dado = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  // Sin espacios ni saltos de línea al principio o al final (al pegarla se cuelan).
+  const secreto = String(env.ENTRADA_SECRETO || env.OFICINA_SECRETO || '').trim();
+  const dado = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
   if (secreto.length < 16 || !(await mismoSecreto(dado, secreto))) return json({ error: 'No autorizado' }, 401);
   let b;
   try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
