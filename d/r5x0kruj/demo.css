@@ -288,6 +288,7 @@ button.resp.pista { animation-name: pista-sec; }
 .tabla td { padding: 8px 10px; border-top: 1px solid rgba(0, 0, 0, .06); vertical-align: middle; }
 .tabla td .ui-btn { min-height: 30px; padding: 0 10px; font-size: 12px; }
 .tabla tr.is-resaltada td { background: #FFFAEB; }
+.tabla .chip { white-space: normal; line-height: 1.25; padding: 3px 8px; }
 
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
 .kpi { padding: 12px; border-radius: var(--mradio); background: #F8F9FA; }
@@ -434,7 +435,6 @@ button.resp.pista { animation-name: pista-sec; }
   .tabla th { padding: 6px 6px; font-size: 10.5px; white-space: normal; }
   .tabla td { padding: 6px 6px; }
   .tabla td .ui-btn { padding: 0 8px; font-size: 11px; }
-  .tabla .chip { white-space: normal; line-height: 1.25; padding: 3px 8px; }
 }
 @media (max-width: 1480px) {
   .historia { grid-template-columns: minmax(0, 1fr); }
