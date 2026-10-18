@@ -295,7 +295,7 @@ export default {
   },
   async scheduled(evento, env, ctx) {
     if (evento.cron === '30 2 * * *') ctx.waitUntil(copia(env));
-    else ctx.waitUntil(resumenDiario(env, env.OFICINA_URL || 'https://fluivia-oficina.studyandbeyond.workers.dev'));
+    else ctx.waitUntil(resumenDiario(env, env.OFICINA_URL || 'https://fluivia-oficina.fluivia.workers.dev'));
   },
 };
 

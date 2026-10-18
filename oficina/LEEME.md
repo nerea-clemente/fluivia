@@ -17,7 +17,8 @@ Se entra con un código que llega al correo, solo para los emails de `EMAILS_PER
 ## Puesta en marcha
 
 Igual que Study and Beyond: la web en Netlify (con Netlify Forms) y la Oficina
-en Cloudflare, en la misma cuenta, como `sab2-backlog`. Hace falta Resend con
+en Cloudflare, pero en una cuenta de Cloudflare propia de Fluivia, con el
+subdominio `fluivia` en workers.dev. Hace falta Resend con
 `fluivia.ai` verificado (los correos salen de `hola@fluivia.ai`).
 
 ```
@@ -35,7 +36,7 @@ npx wrangler deploy
 
 Después:
 
-1. **Dirección:** `wrangler deploy` te da `https://fluivia-oficina.<tu-cuenta>.workers.dev`. Si no es `fluivia-oficina.studyandbeyond.workers.dev`, cámbiala en `OFICINA_URL` (aquí) y ponla también en Netlify como variable `OFICINA_URL`.
+1. **Dirección:** `wrangler deploy` te da `https://fluivia-oficina.<tu-cuenta>.workers.dev`. Si no es `fluivia-oficina.fluivia.workers.dev`, cámbiala en `OFICINA_URL` (aquí) y ponla también en Netlify como variable `OFICINA_URL`.
 2. **Revisa `wrangler.jsonc`:** `EMAILS_PERMITIDOS` (quién puede entrar), `AVISOS` (a dónde llegan los avisos) y `CITA_URL` (tu enlace de reservas). Vuelve a hacer `npx wrangler deploy` si cambias algo.
 3. **La web ya está conectada:** los formularios van a Netlify Forms y `netlify/functions/submission-created.mjs` manda la demo (o la confirmación) por correo y pasa el contacto a la Oficina por `POST /api/entrada/web`. En Netlify hacen falta las variables `RESEND_API_KEY` y `OFICINA_SECRETO`.
 
