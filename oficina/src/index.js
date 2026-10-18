@@ -160,7 +160,8 @@ async function publico(req, env, store, url, ctx) {
 // Entrada desde Netlify: misma ficha y mismo aviso que los formularios públicos.
 async function entradaWeb(req, env, store, url, ctx) {
   if (req.method !== 'POST') return json({ error: 'Método no permitido' }, 405);
-  const secreto = String(env.ENTRADA_SECRETO || '');
+  // Se llama ENTRADA_SECRETO, pero también vale con el nombre que tiene en Netlify.
+  const secreto = String(env.ENTRADA_SECRETO || env.OFICINA_SECRETO || '');
   const dado = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
   if (secreto.length < 16 || !(await mismoSecreto(dado, secreto))) return json({ error: 'No autorizado' }, 401);
   let b;

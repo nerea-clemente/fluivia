@@ -30,7 +30,8 @@
   "observability": { "enabled": true },
   // Los secretos van en Cloudflare con `npx wrangler secret put`, nunca aquí:
   //   RESEND_API_KEY   clave de Resend
-  //   ENTRADA_SECRETO  la misma que OFICINA_SECRETO en Netlify (formularios de la web)
+  //   ENTRADA_SECRETO  la misma que OFICINA_SECRETO en Netlify (formularios de la web);
+  //                    también se acepta con el nombre OFICINA_SECRETO
   "vars": {
     // Quién puede entrar (código por email), separados por comas.
     "EMAILS_PERMITIDOS": "hola@fluivia.ai,info.fluivia@gmail.com",
