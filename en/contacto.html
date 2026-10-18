@@ -70,7 +70,13 @@
           </ul>
         </div>
 
-        <form class="contact-form" id="contact-form" novalidate>
+        <form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
+          <input type="hidden" name="form-name" value="contacto">
+          <input type="hidden" name="idioma" value="en">
+          <div class="field field-trampa" aria-hidden="true">
+            <label for="f-web">Leave this field empty</label>
+            <input id="f-web" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <div class="field-row">
             <div class="field">
               <label for="f-nombre">Name</label>
@@ -148,6 +154,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/main.js?v=202610141500" defer></script>
+  <script src="../assets/js/main.js?v=202610181500" defer></script>
 </body>
 </html>

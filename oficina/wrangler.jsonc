@@ -24,7 +24,9 @@
   // 02:30 copia de seguridad · 07:45 resumen de «hoy te toca» por correo (hora UTC).
   "triggers": { "crons": ["30 2 * * *", "45 6 * * *"] },
   "observability": { "enabled": true },
-  // Los secretos (RESEND_API_KEY) van en Cloudflare con `npx wrangler secret put`, nunca aquí.
+  // Los secretos van en Cloudflare con `npx wrangler secret put`, nunca aquí:
+  //   RESEND_API_KEY   clave de Resend
+  //   ENTRADA_SECRETO  la misma que OFICINA_SECRETO en Netlify (formularios de la web)
   "vars": {
     // Quién puede entrar (código por email), separados por comas.
     "EMAILS_PERMITIDOS": "hola@fluivia.es",
@@ -32,11 +34,12 @@
     // A dónde llegan los avisos (demo pedida, mensaje de la web, resumen diario).
     "AVISOS": "hola@fluivia.es",
     // Webs desde las que se aceptan los formularios.
-    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.pages.dev,https://nerea-clemente.github.io",
+    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.netlify.app",
     // La demo privada y el enlace para reservar llamada (opcional).
     "DEMO_URL": "https://fluivia.es/d/r5x0kruj/",
-    // Dónde está la Oficina (para los enlaces de los avisos).
-    "OFICINA_URL": "https://oficina.fluivia.es",
+    // Dónde está la Oficina (para los enlaces de los avisos). En la misma cuenta de
+    // Cloudflare que Study and Beyond, como sab2-backlog.studyandbeyond.workers.dev.
+    "OFICINA_URL": "https://fluivia-oficina.studyandbeyond.workers.dev",
     "CITA_URL": ""
   }
 }

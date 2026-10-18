@@ -1,4 +1,4 @@
-# Cabeceras para Cloudflare Pages (y Netlify, que usa el mismo formato)
+# Cabeceras para Netlify (se copian a _site al construir)
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

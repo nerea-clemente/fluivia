@@ -77,7 +77,9 @@
             <a class="btn btn-primary btn-block" id="demo-cita" href="contacto.html?interes=Ver%20una%20demo">Book et opkald</a>
           </article>
 
-          <form class="contact-form demo-form" id="demo-form" novalidate>
+          <form class="contact-form demo-form" id="demo-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
+            <input type="hidden" name="form-name" value="demo">
+            <input type="hidden" name="idioma" value="da">
             <h2>Eller få den på mail</h2>
             <div class="field-row">
               <div class="field">
@@ -148,6 +150,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/main.js?v=202610141500" defer></script>
+  <script src="../assets/js/main.js?v=202610181500" defer></script>
 </body>
 </html>

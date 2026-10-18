@@ -1,0 +1,34 @@
+# Despliegue en Netlify (igual que Study and Beyond).
+[build]
+  command = "sh herramientas/construir.sh"
+  publish = "_site"
+  # Solo se publica la web si ha cambiado algo de la web. Los cambios de la
+  # Oficina (oficina/) van a Cloudflare y no gastan despliegues de Netlify.
+  # «git diff --quiet» sale con 0 (= no construir) si no hay cambios.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':!oficina' ':!README.md'"
+
+# Respuesta automática a los formularios: netlify/functions/submission-created.mjs
+# (usa los textos de oficina/src/correo.js). Los formularios «contacto» y «demo»
+# los detecta Netlify solo, por el data-netlify="true" del HTML.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Las cabeceras (seguridad y noindex de la demo) están en _headers.
+
+# soluciones.html se fundió con servicios.html.
+[[redirects]]
+  from = "/soluciones.html"
+  to = "/servicios.html"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/en/soluciones.html"
+  to = "/en/servicios.html"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/da/soluciones.html"
+  to = "/da/servicios.html"
+  status = 301
+  force = true

@@ -4,17 +4,23 @@
 
   /* ---- Configuración de los formularios ---- */
   var CONFIG = {
-    FORM_ENDPOINT: "",
-    CONTACT_EMAIL: "[tu-email@dominio.es]",
-    /* Cuando la Oficina esté publicada (carpeta oficina/, ver su LEEME.md):
-       FORM_ENDPOINT: "https://oficina.fluivia.es/api/publico/contacto"
-       DEMO_ENDPOINT: "https://oficina.fluivia.es/api/publico/demo"
-       Así cada mensaje y cada demo pedida entran solos en tus contactos.
-       Mientras estén vacíos, los formularios abren el correo del visitante.
-       CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
+    /* Los formularios van a Netlify Forms (como en Study and Beyond). Netlify los
+       guarda, y netlify/functions/submission-created.mjs manda la demo por correo
+       y pasa el contacto a la Oficina. Si el envío falla (por ejemplo, en una
+       copia de la web que no está en Netlify), se abre el correo del visitante. */
+    NETLIFY_FORMS: true,
+    CONTACT_EMAIL: "hola@fluivia.es",
+    /* CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
        de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
-    DEMO_ENDPOINT: "",
     CITA_URL: ""
+  };
+
+  // Envío a Netlify Forms: el formulario entero, codificado como lo espera Netlify.
+  var enviarANetlify = function (form, extra) {
+    var datos = new URLSearchParams(new FormData(form));
+    Object.keys(extra || {}).forEach(function (k) { datos.set(k, extra[k]); });
+    return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: datos.toString() })
+      .then(function (res) { if (!res.ok) throw new Error(res.status); });
   };
 
   /* ---- Textos en cada idioma (según <html lang>) ---- */
@@ -254,19 +260,7 @@
         status.textContent = t("enviado");
       };
 
-      if (CONFIG.FORM_ENDPOINT) {
-        var button = form.querySelector('button[type="submit"]');
-        button.disabled = true;
-        fetch(CONFIG.FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
-          .then(function (res) { if (!res.ok) throw new Error(res.status); done(); })
-          .catch(function () {
-            status.className = "form-status is-error";
-            status.textContent = t("errorEnvio", { email: CONFIG.CONTACT_EMAIL });
-          })
-          .finally(function () { button.disabled = false; });
-        return;
-      }
-
+      var porCorreo = function () {
       var body = [
         t("etNombre") + ": " + data.get("nombre"),
         t("etEmpresa") + ": " + (data.get("empresa") || "-"),
@@ -281,6 +275,15 @@
         "&body=" + encodeURIComponent(body);
       status.className = "form-status is-ok";
       status.textContent = t("correoAbierto");
+      };
+
+      if (!CONFIG.NETLIFY_FORMS) { porCorreo(); return; }
+      var button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      enviarANetlify(form)
+        .then(done)
+        .catch(porCorreo)
+        .finally(function () { button.disabled = false; });
     });
   }
 
@@ -366,19 +369,7 @@
         demoStatus.textContent = t("demoLista", { email: datos.email });
       };
 
-      if (CONFIG.DEMO_ENDPOINT) {
-        var boton = demoForm.querySelector('button[type="submit"]');
-        boton.disabled = true;
-        fetch(CONFIG.DEMO_ENDPOINT, { method: "POST", body: JSON.stringify(datos), headers: { "Content-Type": "application/json" } })
-          .then(function (res) { if (!res.ok) throw new Error(res.status); hecho(); })
-          .catch(function () {
-            demoStatus.className = "form-status is-error";
-            demoStatus.textContent = t("demoError", { email: CONFIG.CONTACT_EMAIL });
-          })
-          .finally(function () { boton.disabled = false; });
-        return;
-      }
-
+      var demoPorCorreo = function () {
       var cuerpo = [
         t("demoQuiero"),
         "",
@@ -392,6 +383,17 @@
         "&body=" + encodeURIComponent(cuerpo);
       demoStatus.className = "form-status is-ok";
       demoStatus.textContent = t("demoCorreoAbierto");
+      };
+
+      // Envío en menos de 3 segundos: un bot. Se le da por bueno sin enviar nada.
+      if (datos.segundos < 3) { hecho(); return; }
+      if (!CONFIG.NETLIFY_FORMS) { demoPorCorreo(); return; }
+      var boton = demoForm.querySelector('button[type="submit"]');
+      boton.disabled = true;
+      enviarANetlify(demoForm)
+        .then(hecho)
+        .catch(demoPorCorreo)
+        .finally(function () { boton.disabled = false; });
     });
   }
 

@@ -4,3 +4,5 @@ exclude:
   - herramientas
   - README.md
   - _site
+  - netlify
+  - netlify.toml

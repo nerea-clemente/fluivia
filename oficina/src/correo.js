@@ -93,6 +93,19 @@ export function correoDemo(env, d, enlace) {
   return { to: [d.email], reply_to: responder, subject: asunto, text: texto, html: html(texto, pie) };
 }
 
+// Confirmación para quien escribe desde el formulario de contacto, en su idioma.
+export function correoRecibido(env, d) {
+  const idioma = ['en', 'da'].includes(d.idioma) ? d.idioma : 'es';
+  const responder = (env.AVISOS || '').split(',')[0].trim() || undefined;
+  const T = {
+    es: { asunto: 'Hemos recibido tu mensaje', partes: [`Hola, ${d.nombre}:`, 'Gracias por escribirnos. Hemos recibido tu mensaje y te contestamos en un día laborable como mucho.', 'Si quieres añadir algo, responde a este correo.', 'Un saludo,\nFluivia'], pie: 'Recibes este correo porque has escrito desde la web de Fluivia.' },
+    en: { asunto: 'We have received your message', partes: [`Hi ${d.nombre},`, 'Thank you for getting in touch. We have received your message and will reply within one working day.', 'If you would like to add anything, just reply to this email.', 'Best regards,\nFluivia'], pie: 'You are receiving this email because you wrote to us through the Fluivia website.' },
+    da: { asunto: 'Vi har modtaget din besked', partes: [`Hej ${d.nombre}`, 'Tak fordi du skrev til os. Vi har modtaget din besked og svarer senest inden for en arbejdsdag.', 'Vil du tilføje noget, så svar bare på denne mail.', 'Venlig hilsen\nFluivia'], pie: 'Du får denne mail, fordi du har skrevet til os via Fluivias hjemmeside.' },
+  }[idioma];
+  const texto = T.partes.join('\n\n');
+  return { to: [d.email], reply_to: responder, subject: T.asunto, text: texto, html: html(texto, T.pie) };
+}
+
 // Plantillas para escribir desde la ficha. Se rellenan y se pueden cambiar antes de enviar.
 export const PLANTILLAS = {
   'primer-contacto': {

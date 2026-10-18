@@ -12,6 +12,12 @@
 //   POST /api/publico/contacto   formulario de contacto: crea o completa el
 //                                contacto y te avisa
 //
+// Desde Netlify (la web está allí, con Netlify Forms, como Study and Beyond):
+//   POST /api/entrada/web        lo manda netlify/functions/submission-created.mjs,
+//                                firmado con «Authorization: Bearer ENTRADA_SECRETO».
+//                                Crea o completa el contacto y te avisa; la demo
+//                                ya la ha mandado Netlify.
+//
 // API con sesión:
 //   GET  /api/yo · GET /api/contactos · GET /api/contactos.csv
 //   GET/PUT/DELETE /api/contactos/:id
@@ -151,6 +157,38 @@ async function publico(req, env, store, url, ctx) {
   return json({ ok: true }, 200, cab);
 }
 
+// Entrada desde Netlify: misma ficha y mismo aviso que los formularios públicos.
+async function entradaWeb(req, env, store, url, ctx) {
+  if (req.method !== 'POST') return json({ error: 'Método no permitido' }, 405);
+  const secreto = String(env.ENTRADA_SECRETO || '');
+  const dado = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
+  if (secreto.length < 16 || !(await mismoSecreto(dado, secreto))) return json({ error: 'No autorizado' }, 401);
+  let b;
+  try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
+  const tipo = b.tipo === 'demo' ? 'demo' : 'contacto';
+  const e = {
+    tipo,
+    nombre: limpio(b.nombre, 120), email: limpio(b.email, 200).toLowerCase(),
+    empresa: limpio(b.empresa, 60), telefono: limpio(b.telefono, 40),
+    sector: sectorDe(limpio(b.sector, 60)), mensaje: String(b.mensaje || '').trim().slice(0, 4000),
+    idioma: ['es', 'en', 'da'].includes(b.idioma) ? b.idioma : 'es',
+  };
+  if (!e.nombre || !C.EMAIL_OK.test(e.email)) return json({ error: 'Faltan datos' }, 400);
+  if (tipo === 'demo' && b.demoEnviada && /^https:\/\//.test(b.enlace || '')) e.enlace = String(b.enlace).slice(0, 600);
+  const r = await store.contactoDeLaWeb(e);
+  ctx.waitUntil(avisar(env, e, r, url).catch((err) => console.error('[aviso]', err)));
+  return json({ ok: true, id: r.id });
+}
+
+// Compara dos secretos sin dar pistas por el tiempo que tarda.
+async function mismoSecreto(a, b) {
+  const h = async (x) => new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(x)));
+  const [x, y] = await Promise.all([h(a), h(b)]);
+  let dif = 0;
+  for (let i = 0; i < x.length; i++) dif |= x[i] ^ y[i];
+  return dif === 0;
+}
+
 async function avisar(env, e, r, url) {
   if (!env.AVISOS) return;
   const ficha = `${url.origin}/ficha.html?id=${r.id}`;
@@ -257,7 +295,7 @@ export default {
   },
   async scheduled(evento, env, ctx) {
     if (evento.cron === '30 2 * * *') ctx.waitUntil(copia(env));
-    else ctx.waitUntil(resumenDiario(env, env.OFICINA_URL || 'https://oficina.fluivia.es'));
+    else ctx.waitUntil(resumenDiario(env, env.OFICINA_URL || 'https://fluivia-oficina.studyandbeyond.workers.dev'));
   },
 };
 
@@ -266,6 +304,7 @@ async function atender(req, env, ctx) {
   const store = almacen(env);
 
   if (url.pathname.startsWith('/api/publico/')) return publico(req, env, store, url, ctx);
+  if (url.pathname === '/api/entrada/web') return entradaWeb(req, env, store, url, ctx);
   if (url.pathname.startsWith('/api/acceso/') && !url.pathname.startsWith('/api/acceso/salir')) return acceso(req, env, store, url);
   if (PUBLICAS.includes(url.pathname) || url.pathname.startsWith('/fonts/')) return env.ASSETS.fetch(req);
 

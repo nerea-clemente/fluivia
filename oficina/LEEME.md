@@ -16,7 +16,9 @@ Se entra con un código que llega al correo, solo para los emails de `EMAILS_PER
 
 ## Puesta en marcha
 
-Necesitas una cuenta de Cloudflare (gratis) y Resend con `fluivia.es` verificado.
+Igual que Study and Beyond: la web en Netlify (con Netlify Forms) y la Oficina
+en Cloudflare, en la misma cuenta, como `sab2-backlog`. Hace falta Resend con
+`fluivia.es` verificado.
 
 ```
 cd oficina
@@ -24,16 +26,20 @@ npm install
 npx wrangler login
 npx wrangler r2 bucket create fluivia-oficina-copias --jurisdiction eu
 npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put ENTRADA_SECRETO
 npx wrangler deploy
 ```
 
+`ENTRADA_SECRETO` es una clave larga inventada (por ejemplo, la que da
+`openssl rand -hex 32`). En Netlify va el mismo valor, como `OFICINA_SECRETO`.
+
 Después:
 
-1. **Dirección propia:** en Cloudflare, Workers → fluivia-oficina → Settings → Domains & Routes, añade `oficina.fluivia.es`. Si el DNS de `fluivia.es` no está en Cloudflare, usa la dirección `*.workers.dev` que te da `wrangler deploy` y ponla en `OFICINA_URL`.
-2. **Revisa `wrangler.jsonc`:** `EMAILS_PERMITIDOS` (quién puede entrar), `AVISOS` (a dónde llegan los avisos), `CITA_URL` (tu enlace de reservas) y `WEB_ORIGENES` (desde qué webs se aceptan los formularios). Vuelve a hacer `npx wrangler deploy` si cambias algo.
-3. **Conecta la web:** en `assets/js/main.js` de la web, pon
-   - `FORM_ENDPOINT: "https://oficina.fluivia.es/api/publico/contacto"`
-   - `DEMO_ENDPOINT: "https://oficina.fluivia.es/api/publico/demo"`
+1. **Dirección:** `wrangler deploy` te da `https://fluivia-oficina.<tu-cuenta>.workers.dev`. Si no es `fluivia-oficina.studyandbeyond.workers.dev`, cámbiala en `OFICINA_URL` (aquí) y ponla también en Netlify como variable `OFICINA_URL`.
+2. **Revisa `wrangler.jsonc`:** `EMAILS_PERMITIDOS` (quién puede entrar), `AVISOS` (a dónde llegan los avisos) y `CITA_URL` (tu enlace de reservas). Vuelve a hacer `npx wrangler deploy` si cambias algo.
+3. **La web ya está conectada:** los formularios van a Netlify Forms y `netlify/functions/submission-created.mjs` manda la demo (o la confirmación) por correo y pasa el contacto a la Oficina por `POST /api/entrada/web`. En Netlify hacen falta las variables `RESEND_API_KEY` y `OFICINA_SECRETO`.
+
+Los formularios públicos `/api/publico/*` siguen funcionando para una web que no esté en Netlify (solo desde `WEB_ORIGENES`).
 
 ## Probar en local
 
@@ -47,7 +53,7 @@ Con `DEV=1` no se envía ningún correo: el código para entrar y los correos se
 
 ## Protección
 
-- Formularios de la web: solo desde `WEB_ORIGENES`, campo oculto y tiempo mínimo contra bots, y límite de envíos por IP y por correo.
+- Entrada desde Netlify: solo con `ENTRADA_SECRETO`. Formularios públicos: solo desde `WEB_ORIGENES`, campo oculto y tiempo mínimo contra bots, y límite de envíos por IP y por correo.
 - Acceso: código de 6 cifras que caduca en 10 minutos, 5 intentos, límite de peticiones; sesión de 7 días en una cookie HttpOnly (en el servidor solo se guarda su hash).
 - Las peticiones que cambian datos solo se aceptan desde la propia Oficina.
 - Cabeceras de seguridad (sin incrustar en otras webs, sin indexar, política de contenido estricta).
