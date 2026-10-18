@@ -21,6 +21,8 @@
           <button type="button" data-vista="lista" aria-pressed="true">Lista</button>
           <button type="button" data-vista="tablero" aria-pressed="false">Tablero</button>
         </div>
+        <button type="button" class="btn btn-sec" id="importar">Importar empresas</button>
+        <input type="file" id="importar-archivo" accept=".csv,.json,text/csv,application/json" hidden>
         <a class="btn btn-sec" href="/api/contactos.csv" download>Exportar</a>
         <a class="btn" href="/ficha.html?nuevo=1">Nuevo contacto</a>
       </div>
@@ -33,6 +35,8 @@
       <select class="entrada" id="f-sector"><option value="">Todos los sectores</option></select>
       <label class="sr-only" for="f-origen">Origen</label>
       <select class="entrada" id="f-origen"><option value="">Todos los orígenes</option></select>
+      <label class="sr-only" for="f-pais">País</label>
+      <select class="entrada" id="f-pais"><option value="">Todos los países</option><option value="ES">España</option><option value="DK">Dinamarca</option><option value="UE">Otro país de la UE</option></select>
     </div>
     <div class="pestanas" id="pestanas" role="group" aria-label="Etapa"></div>
 

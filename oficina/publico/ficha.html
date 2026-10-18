@@ -68,6 +68,8 @@
             <label class="campo"><span>Teléfono</span><input name="telefono" type="tel" maxlength="60" autocomplete="off"></label>
             <label class="campo"><span>Ciudad</span><input name="ciudad" maxlength="120"></label>
             <label class="campo"><span>Web</span><input name="web" maxlength="300" placeholder="https://"></label>
+            <label class="campo"><span>LinkedIn <a id="abrir-linkedin" target="_blank" rel="noopener" hidden>abrir</a></span><input name="linkedin" maxlength="300" placeholder="https://www.linkedin.com/company/…"></label>
+            <p class="campo ancho tenue" id="fuente" hidden></p>
             <label class="campo"><span>Origen</span><select name="origen"></select></label>
             <label class="campo"><span>Etiquetas</span><input name="etiquetas" maxlength="400" placeholder="Separadas por comas"></label>
             <div class="campo ancho"><span>Le interesa</span><div class="opciones" id="intereses"></div></div>
@@ -98,6 +100,7 @@
           </div>
           <div class="acciones" style="margin-top:10px">
             <button type="button" class="btn" id="enviar-correo">Enviar desde info@fluivia.ai</button>
+            <button type="button" class="btn btn-sec" id="copiar-texto" title="Para pegarlo en LinkedIn">Copiar el texto</button>
             <span class="tenue" id="correo-a"></span>
           </div>
         </section>

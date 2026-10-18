@@ -5,7 +5,7 @@
   Of.cabecera("contactos");
 
   var todos = [];
-  var estado = { texto: "", sector: "", origen: "", etapa: "activos", vista: "lista" };
+  var estado = { texto: "", sector: "", origen: "", pais: "", etapa: "activos", vista: "lista" };
   try { var g = JSON.parse(localStorage.getItem("of-contactos") || "{}"); if (g.vista) estado.vista = g.vista; if (g.etapa) estado.etapa = g.etapa; } catch (e) {}
   var guardarPref = function () { try { localStorage.setItem("of-contactos", JSON.stringify({ vista: estado.vista, etapa: estado.etapa })); } catch (e) {} };
 
@@ -19,6 +19,7 @@
     return todos.filter(function (c) {
       if (estado.sector && c.sector !== estado.sector) return false;
       if (estado.origen && c.origen !== estado.origen) return false;
+      if (estado.pais && (c.pais || "ES") !== estado.pais) return false;
       if (!sinEtapa) {
         if (estado.etapa === "activos" && (c.etapa === "cliente" || c.etapa === "perdido")) return false;
         if (estado.etapa === "toca" && !(c.proxima && c.proxima.fecha && c.proxima.fecha <= Of.hoy() && c.etapa !== "cliente" && c.etapa !== "perdido")) return false;
@@ -56,7 +57,8 @@
     if (!lista.length) { $("lista").innerHTML = '<p class="vacio">' + (todos.length ? "No hay contactos con estos filtros." : 'Todavía no hay contactos. Llegarán solos desde la web, o puedes <a href="/ficha.html?nuevo=1">crear uno</a>.') + "</p>"; return; }
     $("lista").innerHTML = '<div class="tabla-env"><table class="tabla"><thead><tr><th>Contacto</th><th>Etapa</th><th>Próxima acción</th><th class="ocultar-movil">Origen</th><th class="ocultar-movil">Último movimiento</th></tr></thead><tbody>' +
       lista.map(function (c) {
-        return '<tr data-id="' + esc(c.id) + '"><td><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + "</a><small>" + esc(Of.subtitulo(c)) + "</small></td>" +
+        var li = c.linkedin ? ' <a class="chip" href="' + esc(c.linkedin) + '" target="_blank" rel="noopener" title="Abrir en LinkedIn">in</a>' : "";
+        return '<tr data-id="' + esc(c.id) + '"><td><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + "</a>" + li + "<small>" + esc([Of.subtitulo(c), c.ciudad].filter(Boolean).join(" · ")) + "</small></td>" +
           "<td>" + Of.etapa(c.etapa) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</td>" +
           "<td>" + (c.proxima && c.proxima.fecha ? Of.proxima(c) + "<small>" + esc(c.proxima.texto) + "</small>" : '<span class="tenue">—</span>') + "</td>" +
           '<td class="ocultar-movil">' + esc(Of.nombre(Of.ORIGENES, c.origen)) + "</td>" +
@@ -89,6 +91,50 @@
   $("buscar").addEventListener("input", function () { estado.texto = this.value; pintar(); });
   $("f-sector").addEventListener("change", function () { estado.sector = this.value; pintar(); });
   $("f-origen").addEventListener("change", function () { estado.origen = this.value; pintar(); });
+  $("f-pais").addEventListener("change", function () { estado.pais = this.value; pintar(); });
+
+  // ---- Importar una lista de empresas (CSV o JSON) para prospectar ----
+  // Columnas: empresa, ciudad, pais (ES/DK), sector, web, telefono, email, linkedin,
+  // persona, cvr, nota, fuente. Las que ya estén (por correo, web o nombre y ciudad) no se repiten.
+  function leerCsv(texto) {
+    texto = texto.replace(/^\uFEFF/, "");
+    var sep = (texto.split("\n")[0].match(/;/g) || []).length >= (texto.split("\n")[0].match(/,/g) || []).length ? ";" : ",";
+    var filas = [], fila = [], celda = "", dentro = false;
+    for (var i = 0; i < texto.length; i++) {
+      var ch = texto[i];
+      if (dentro) { if (ch === '"') { if (texto[i + 1] === '"') { celda += '"'; i++; } else dentro = false; } else celda += ch; }
+      else if (ch === '"') dentro = true;
+      else if (ch === sep) { fila.push(celda); celda = ""; }
+      else if (ch === "\n" || ch === "\r") { if (ch === "\r" && texto[i + 1] === "\n") i++; fila.push(celda); filas.push(fila); fila = []; celda = ""; }
+      else celda += ch;
+    }
+    if (celda || fila.length) { fila.push(celda); filas.push(fila); }
+    var cab = (filas.shift() || []).map(function (h) { return normal(h).trim().replace(/[^a-z]/g, ""); });
+    var alias = { nombre: "empresa", company: "empresa", city: "ciudad", country: "pais", phone: "telefono", telfono: "telefono", correo: "email", mail: "email", contacto: "persona", notas: "nota" };
+    return filas.filter(function (f) { return f.some(function (x) { return x.trim(); }); }).map(function (f) {
+      var o = {}; cab.forEach(function (h, j) { o[alias[h] || h] = (f[j] || "").trim(); }); return o;
+    });
+  }
+  function importar(lista) {
+    if (!lista.length) { Of.aviso("El archivo no tiene empresas.", true); return; }
+    var porDia = prompt(lista.length + " empresas en el archivo. ¿Cuántas quieres contactar al día? (las repartimos en la próxima acción)", "10");
+    if (porDia === null) return;
+    Of.api("/api/contactos/importar", { method: "POST", body: { contactos: lista, porDia: Number(porDia) || 10 } }).then(function (r) {
+      Of.aviso(r.nuevos + " empresas añadidas" + (r.repetidos ? ", " + r.repetidos + " ya estaban" : "") + (r.hasta ? ". Repartidas hasta el " + r.hasta.split("-").reverse().join("/") : ""));
+      return Of.api("/api/contactos");
+    }).then(function (l) { if (l) { todos = l; estado.origen = "prospeccion"; $("f-origen").value = "prospeccion"; pintar(); } }).catch(function (e) { Of.aviso(e.message, true); });
+  }
+  $("importar").addEventListener("click", function () { $("importar-archivo").click(); });
+  $("importar-archivo").addEventListener("change", function () {
+    var f = this.files[0]; this.value = "";
+    if (!f) return;
+    f.text().then(function (t) {
+      var lista;
+      try { lista = /\.json$/i.test(f.name) || /^\s*[\[{]/.test(t) ? JSON.parse(t) : leerCsv(t); } catch (e) { Of.aviso("No se ha podido leer el archivo.", true); return; }
+      if (lista && !Array.isArray(lista)) lista = lista.contactos || [];
+      importar(lista || []);
+    });
+  });
   $("pestanas").addEventListener("click", function (e) { var b = e.target.closest("[data-etapa]"); if (b) { estado.etapa = b.getAttribute("data-etapa"); guardarPref(); pintar(); } });
   document.querySelector(".vista-cambio").addEventListener("click", function (e) { var b = e.target.closest("[data-vista]"); if (b) { estado.vista = b.getAttribute("data-vista"); guardarPref(); pintar(); } });
   $("lista").addEventListener("click", function (e) {

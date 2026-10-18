@@ -20,6 +20,7 @@
 //
 // API con sesión:
 //   GET  /api/yo · GET /api/contactos · GET /api/contactos.csv
+//   POST /api/contactos/importar     añade la lista de prospección (sin repetir)
 //   GET/PUT/DELETE /api/contactos/:id
 //   POST /api/contactos/:id/correo   enviar un correo y apuntarlo en el historial
 //   POST /api/contactos/:id/vies     comprobar su NIF-IVA en VIES
@@ -211,6 +212,14 @@ async function api(req, env, store, url, email) {
   if (url.pathname === '/api/contactos' && req.method === 'GET') return json(await store.contactos());
   if (url.pathname === '/api/contactos.csv' && req.method === 'GET') {
     return new Response(C.csv(await store.contactos()), { headers: { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': `attachment; filename="contactos-fluivia-${C.hoy()}.csv"`, 'cache-control': 'no-store' } });
+  }
+  if (url.pathname === '/api/contactos/importar' && req.method === 'POST') {
+    let b;
+    try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
+    const lista = Array.isArray(b.contactos) ? b.contactos.filter((x) => x && typeof x === 'object').slice(0, 1000) : [];
+    if (!lista.length) return json({ error: 'La lista está vacía' }, 400);
+    const porDia = Math.min(50, Math.max(1, Number(b.porDia) || 10));
+    return json(await store.importarProspeccion(lista, email, porDia));
   }
   if (url.pathname === '/api/plantillas' && req.method === 'GET') {
     const c = await store.leerContacto(url.searchParams.get('contacto') || '');

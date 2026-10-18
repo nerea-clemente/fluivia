@@ -59,7 +59,9 @@
 
   // ---- Leer y escribir el formulario ----
   function rellenar(x) {
-    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo", "nif", "razonSocial", "direccion"].forEach(function (k) { form.elements[k].value = x[k] || ""; });
+    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "linkedin", "notas", "motivo", "nif", "razonSocial", "direccion"].forEach(function (k) { form.elements[k].value = x[k] || ""; });
+    $("abrir-linkedin").hidden = !x.linkedin; if (x.linkedin) $("abrir-linkedin").href = x.linkedin;
+    $("fuente").hidden = !x.fuente; $("fuente").textContent = x.fuente ? "Datos sacados de: " + x.fuente : "";
     form.elements.pais.value = x.pais || "ES";
     form.elements.sector.value = x.sector || "";
     form.elements.origen.value = x.origen || "manual";
@@ -75,7 +77,8 @@
   }
   function leer() {
     var d = c ? JSON.parse(JSON.stringify(c)) : { historial: [], etapas: {} };
-    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "notas", "motivo", "sector", "origen", "pais", "nif", "razonSocial", "direccion"].forEach(function (k) { d[k] = form.elements[k].value.trim(); });
+    ["empresa", "nombre", "cargo", "email", "telefono", "ciudad", "web", "linkedin", "notas", "motivo", "sector", "origen", "pais", "nif", "razonSocial", "direccion"].forEach(function (k) { d[k] = form.elements[k].value.trim(); });
+    d.fuente = (c && c.fuente) || "";
     d.etiquetas = form.elements.etiquetas.value.split(",").map(function (t) { return t.trim(); }).filter(Boolean);
     d.implantacion = +form.elements.implantacion.value || 0;
     d.cuota = +form.elements.cuota.value || 0;
@@ -234,6 +237,17 @@
     };
     // Antes de enviar, se guarda lo que haya cambiado (el correo usa los datos guardados).
     if (sucio) guardar().then(envio).catch(function () {}); else envio();
+  });
+
+  // Copiar el texto (para mandarlo por LinkedIn): luego se apunta en el historial.
+  $("copiar-texto").addEventListener("click", function () {
+    var v = $("correo-texto").value.trim();
+    if (!v) { Of.aviso("No hay texto que copiar.", true); return; }
+    (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(function () {
+      Of.aviso("Texto copiado. Cuando lo mandes, apúntalo como «LinkedIn».");
+      $("apunte-tipo").value = "linkedin";
+      if (!$("apunte-texto").value) $("apunte-texto").value = "Mensaje por LinkedIn: " + ($("correo-asunto").value || "primer contacto") + ".";
+    }, function () { $("correo-texto").select(); Of.aviso("Cópialo con Ctrl+C"); });
   });
 
   $("copiar-demo").addEventListener("click", function () {

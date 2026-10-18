@@ -109,9 +109,24 @@ export function correoRecibido(env, d) {
 // Plantillas para escribir desde la ficha. Se rellenan y se pueden cambiar antes de enviar.
 export const PLANTILLAS = {
   'primer-contacto': {
-    nombre: 'Primer contacto (prospección)',
-    asunto: 'Una demo para {empresa}',
-    texto: 'Hola, {nombre}:\n\nTrabajo con {sector_plural} para quitarles tareas que se repiten cada semana: pedir documentación, responder las mismas preguntas o pasar datos de un sitio a otro.\n\nTe he preparado una demo con el nombre de {empresa}, para que veas en cinco minutos cómo quedaría:\n{demo}\n\nSi te encaja, lo vemos juntos en una llamada de 20 minutos.\n\nUn saludo,\nFluivia',
+    nombre: 'Primer correo (España)',
+    asunto: 'Una idea para {empresa}',
+    texto: 'Hola, {nombre}:\n\nTe escribo porque trabajo con {sector_plural} para quitarles tareas que se repiten cada semana: pedir documentación, contestar las mismas preguntas o pasar datos de un sitio a otro.\n\nHe preparado una demo con el nombre de {empresa}, para que veas en cinco minutos cómo quedaría:\n{demo}\n\nSi te encaja, lo vemos en una llamada de 20 minutos. Y si no te interesa, dímelo y no te vuelvo a escribir.\n\nUn saludo,\nFluivia',
+  },
+  'linkedin-es': {
+    nombre: 'Mensaje de LinkedIn (España)',
+    asunto: 'Primer contacto',
+    texto: 'Hola, {nombre}. Trabajo con {sector_plural} automatizando tareas que se repiten cada semana (documentación, consultas, citas). He preparado una demo corta con el nombre de {empresa}. ¿Te la paso y me dices si te encaja?',
+  },
+  'primer-contacto-dk': {
+    nombre: 'Første mail (Danmark)',
+    asunto: 'En idé til {empresa}',
+    texto: 'Hej {nombre}\n\nJeg skriver, fordi jeg hjælper {sector_plural_da} med at automatisere de opgaver, der gentager sig hver uge: indhente dokumenter, svare på de samme spørgsmål eller flytte data fra ét system til et andet.\n\nHar du 20 minutter i næste uge? Så viser jeg dig, hvordan det kunne se ud hos {empresa}.\n\nOg hvis det ikke er relevant, så sig til, så skriver jeg ikke igen.\n\nVenlig hilsen\nFluivia',
+  },
+  'linkedin-dk': {
+    nombre: 'LinkedIn-besked (Danmark)',
+    asunto: 'Første kontakt',
+    texto: 'Hej {nombre}. Jeg hjælper {sector_plural_da} med at automatisere opgaver, der gentager sig hver uge (dokumenter, henvendelser, bookinger). Må jeg vise dig på 20 minutter, hvordan det kunne se ud hos {empresa}?',
   },
   'tras-demo': {
     nombre: 'Después de la demo',
@@ -135,9 +150,15 @@ export const PLANTILLAS = {
   },
 };
 
+const SECTOR_DA_PLURAL = { gestoria: 'bogholderier og revisorer', inmobiliaria: 'ejendomsmæglere', clinica: 'klinikker', academia: 'skoler og kursuscentre', distribucion: 'grossister', consultoria: 'konsulenthuse og bureauer', comercio: 'butikker' };
+
 export function rellenar(t, c, env) {
   const s = sectorTexto(c.sector);
   const nombre = (c.nombre || '').split(/\s+/)[0] || '';
-  const vals = { nombre, empresa: c.empresa || 'tu negocio', sector_plural: s.plural, sector: s.una, demo: enlaceDemo(env, c.sector, c.empresa) };
-  return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m));
+  const dk = c.pais === 'DK';
+  const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
+    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa) };
+  // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
+  return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m))
+    .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));
 }

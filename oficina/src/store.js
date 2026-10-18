@@ -120,6 +120,32 @@ export class Oficina extends DurableObject {
     return { id: guardado.id, nuevo: !id };
   }
 
+  // Lista de prospección: añade las empresas que no estén ya (por correo, web o
+  // nombre y ciudad). La próxima acción se reparte: `porDia` empresas cada día laborable.
+  importarProspeccion(lista, autor, porDia = 10) {
+    const vistas = new Set(this.contactos().flatMap((c) => Contactos.clavesDe(c)));
+    const dias = [];
+    const d = new Date();
+    let nuevos = 0, repetidos = 0;
+    const fechaPara = (i) => {
+      while (dias.length <= Math.floor(i / porDia)) {
+        while ([0, 6].includes(d.getUTCDay())) d.setUTCDate(d.getUTCDate() + 1);
+        dias.push(d.toISOString().slice(0, 10));
+        d.setUTCDate(d.getUTCDate() + 1);
+      }
+      return dias[Math.floor(i / porDia)];
+    };
+    for (const e of lista) {
+      const claves = Contactos.clavesDe({ ...e, web: e.web });
+      if (!e.empresa || claves.some((k) => vistas.has(k))) { repetidos++; continue; }
+      const c = Contactos.deProspeccion(e, fechaPara(nuevos), autor);
+      this.guardarContacto(Contactos.nuevoId(), c, autor);
+      claves.forEach((k) => vistas.add(k));
+      nuevos++;
+    }
+    return { nuevos, repetidos, hasta: nuevos ? fechaPara(nuevos - 1) : '' };
+  }
+
   // ---- Copias de seguridad ------------------------------------------------------
   exportar() {
     return Object.fromEntries(TABLAS_DATOS.map((t) => [t, this.sql.exec(`SELECT * FROM ${t}`).toArray()]));
