@@ -430,6 +430,10 @@ button.resp.pista { animation-name: pista-sec; }
   .v-app { grid-template-columns: minmax(0, 1fr); }
   .v-menu { display: none; }
   .v-cont { padding: 16px; }
+  .tabla { font-size: 11.5px; }
+  .tabla th { padding: 6px 6px; font-size: 10.5px; white-space: normal; }
+  .tabla td { padding: 6px 6px; }
+  .tabla td .ui-btn { padding: 0 8px; font-size: 11px; }
 }
 @media (max-width: 1180px) {
   .historia { grid-template-columns: minmax(0, 1fr); }
