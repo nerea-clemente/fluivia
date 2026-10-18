@@ -19,7 +19,7 @@ Se entra con un código que llega al correo, solo para los emails de `EMAILS_PER
 Igual que Study and Beyond: la web en Netlify (con Netlify Forms) y la Oficina
 en Cloudflare, pero en una cuenta de Cloudflare propia de Fluivia, con el
 subdominio `info-fluivia` en workers.dev. Hace falta Resend con
-`fluivia.ai` verificado (los correos salen de `hola@fluivia.ai`).
+`fluivia.ai` verificado (los correos salen de `info@fluivia.ai`).
 
 ```
 cd oficina

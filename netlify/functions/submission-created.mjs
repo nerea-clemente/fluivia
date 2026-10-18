@@ -23,12 +23,12 @@
 import * as Correo from '../../oficina/src/correo.js';
 import { EMAIL_OK } from '../../oficina/src/contactos.js';
 
-// Los correos salen de hola@fluivia.ai (el único dominio verificado en Resend) y
+// Los correos salen de info@fluivia.ai (el único dominio verificado en Resend) y
 // las respuestas van a la dirección del país de la web, que llega al mismo buzón.
-const RESPONDER = { es: 'hola@fluivia.es', en: 'hola@fluivia.ai', da: 'hola@fluivia.dk' };
+const RESPONDER = { es: 'info@fluivia.es', en: 'info@fluivia.ai', da: 'info@fluivia.dk' };
 const ENV = {
   RESEND_API_KEY: (process.env.RESEND_API_KEY || '').trim(),
-  REMITENTE: 'Fluivia <hola@fluivia.ai>',
+  REMITENTE: 'Fluivia <info@fluivia.ai>',
   DEMO_URL: (process.env.URL || 'https://fluivia.ai').replace(/\/$/, '') + '/d/r5x0kruj/',
   CITA_URL: process.env.CITA_URL || '',
 };
