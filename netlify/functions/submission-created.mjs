@@ -46,7 +46,8 @@ async function enviarAOficina(e) {
       body: JSON.stringify(e),
       signal: AbortSignal.timeout(8000),
     });
-    if (!r.ok) console.error('La Oficina respondió', r.status, await r.text());
+    if (!r.ok) console.error('La Oficina respondió', r.status, await r.text(), r.status === 401 ? '· OFICINA_SECRETO (Netlify) y el secreto de la Oficina (Cloudflare) no son iguales' : '');
+    else console.log('Contacto pasado a la Oficina.');
   } catch (err) {
     console.error('No se pudo pasar el contacto a la Oficina:', err);
   }
@@ -85,8 +86,10 @@ export default async (req) => {
         e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa);
         await Correo.enviar(env, Correo.correoDemo(env, e, e.enlace));
         e.demoEnviada = true;
+        console.log(`Demo enviada a ${e.email} (${e.idioma}).`);
       } else if (e.tipo === 'contacto') {
         await Correo.enviar(env, Correo.correoRecibido(env, e));
+        console.log(`Confirmación enviada a ${e.email} (${e.idioma}).`);
       }
     } catch (err) {
       console.error('No se pudo mandar la respuesta automática:', err);

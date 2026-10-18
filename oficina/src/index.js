@@ -164,7 +164,10 @@ async function entradaWeb(req, env, store, url, ctx) {
   // Sin espacios ni saltos de línea al principio o al final (al pegarla se cuelan).
   const secreto = String(env.ENTRADA_SECRETO || env.OFICINA_SECRETO || '').trim();
   const dado = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
-  if (secreto.length < 16 || !(await mismoSecreto(dado, secreto))) return json({ error: 'No autorizado' }, 401);
+  if (secreto.length < 16 || !(await mismoSecreto(dado, secreto))) {
+    console.warn(secreto.length < 16 ? '[entrada] falta el secreto ENTRADA_SECRETO (u OFICINA_SECRETO) en Cloudflare' : '[entrada] el secreto que manda Netlify no coincide');
+    return json({ error: 'No autorizado' }, 401);
+  }
   let b;
   try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
   const tipo = b.tipo === 'demo' ? 'demo' : 'contacto';
