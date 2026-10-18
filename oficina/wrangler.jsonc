@@ -6,6 +6,10 @@
   "name": "fluivia-oficina",
   "main": "src/index.js",
   "compatibility_date": "2026-09-01",
+  // La dirección fluivia-oficina.info-fluivia.workers.dev, siempre encendida;
+  // las direcciones de prueba de cada versión, apagadas.
+  "workers_dev": true,
+  "preview_urls": false,
   "assets": {
     "directory": "./publico",
     "binding": "ASSETS",
@@ -38,8 +42,8 @@
     // La demo privada y el enlace para reservar llamada (opcional).
     "DEMO_URL": "https://fluivia.es/d/r5x0kruj/",
     // Dónde está la Oficina (para los enlaces de los avisos). Cuenta de Cloudflare
-    // propia de Fluivia, con el subdominio «fluivia» en workers.dev.
-    "OFICINA_URL": "https://fluivia-oficina.fluivia.workers.dev",
+    // propia de Fluivia, con el subdominio «info-fluivia» en workers.dev.
+    "OFICINA_URL": "https://fluivia-oficina.info-fluivia.workers.dev",
     "CITA_URL": ""
   }
 }

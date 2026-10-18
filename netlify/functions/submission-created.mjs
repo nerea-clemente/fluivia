@@ -32,7 +32,7 @@ const ENV = {
   DEMO_URL: (process.env.URL || 'https://fluivia.ai').replace(/\/$/, '') + '/d/r5x0kruj/',
   CITA_URL: process.env.CITA_URL || '',
 };
-const OFICINA_URL = (process.env.OFICINA_URL || 'https://fluivia-oficina.fluivia.workers.dev').replace(/\/$/, '');
+const OFICINA_URL = (process.env.OFICINA_URL || 'https://fluivia-oficina.info-fluivia.workers.dev').replace(/\/$/, '');
 const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'otro'];
 const limpio = (v, n) => String(v ?? '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, n);
 
