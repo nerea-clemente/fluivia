@@ -29,10 +29,10 @@
   //   ENTRADA_SECRETO  la misma que OFICINA_SECRETO en Netlify (formularios de la web)
   "vars": {
     // Quién puede entrar (código por email), separados por comas.
-    "EMAILS_PERMITIDOS": "hola@fluivia.es",
+    "EMAILS_PERMITIDOS": "hola@fluivia.es,info.fluivia@gmail.com",
     "REMITENTE": "Fluivia <hola@fluivia.es>",
     // A dónde llegan los avisos (demo pedida, mensaje de la web, resumen diario).
-    "AVISOS": "hola@fluivia.es",
+    "AVISOS": "hola@fluivia.es,info.fluivia@gmail.com",
     // Webs desde las que se aceptan los formularios.
     "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.netlify.app",
     // La demo privada y el enlace para reservar llamada (opcional).
