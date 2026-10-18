@@ -29,12 +29,12 @@
   //   ENTRADA_SECRETO  la misma que OFICINA_SECRETO en Netlify (formularios de la web)
   "vars": {
     // Quién puede entrar (código por email), separados por comas.
-    "EMAILS_PERMITIDOS": "hola@fluivia.es,info.fluivia@gmail.com",
-    "REMITENTE": "Fluivia <hola@fluivia.es>",
+    "EMAILS_PERMITIDOS": "hola@fluivia.ai,info.fluivia@gmail.com",
+    "REMITENTE": "Fluivia <hola@fluivia.ai>",
     // A dónde llegan los avisos (demo pedida, mensaje de la web, resumen diario).
-    "AVISOS": "hola@fluivia.es,info.fluivia@gmail.com",
+    "AVISOS": "hola@fluivia.ai,info.fluivia@gmail.com",
     // Webs desde las que se aceptan los formularios.
-    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.netlify.app",
+    "WEB_ORIGENES": "https://fluivia.es,https://www.fluivia.es,https://fluivia.ai,https://www.fluivia.ai,https://fluivia.dk,https://www.fluivia.dk",
     // La demo privada y el enlace para reservar llamada (opcional).
     "DEMO_URL": "https://fluivia.es/d/r5x0kruj/",
     // Dónde está la Oficina (para los enlaces de los avisos). En la misma cuenta de

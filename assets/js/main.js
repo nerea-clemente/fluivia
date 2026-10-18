@@ -9,7 +9,8 @@
        y pasa el contacto a la Oficina. Si el envío falla (por ejemplo, en una
        copia de la web que no está en Netlify), se abre el correo del visitante. */
     NETLIFY_FORMS: true,
-    CONTACT_EMAIL: "hola@fluivia.es",
+    // Todas llegan al mismo buzón (hola@fluivia.ai); cada web enseña la de su país.
+    CONTACT_EMAIL: { es: "hola@fluivia.es", en: "hola@fluivia.ai", da: "hola@fluivia.dk" }[(document.documentElement.lang || "es").slice(0, 2)] || "hola@fluivia.ai",
     /* CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
        de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
     CITA_URL: ""

@@ -23,11 +23,13 @@
 import * as Correo from '../../oficina/src/correo.js';
 import { EMAIL_OK } from '../../oficina/src/contactos.js';
 
+// Los correos salen de hola@fluivia.ai (el único dominio verificado en Resend) y
+// las respuestas van a la dirección del país de la web, que llega al mismo buzón.
+const RESPONDER = { es: 'hola@fluivia.es', en: 'hola@fluivia.ai', da: 'hola@fluivia.dk' };
 const ENV = {
   RESEND_API_KEY: process.env.RESEND_API_KEY || '',
-  REMITENTE: 'Fluivia <hola@fluivia.es>',
-  AVISOS: 'hola@fluivia.es',
-  DEMO_URL: (process.env.URL || 'https://fluivia.es').replace(/\/$/, '') + '/d/r5x0kruj/',
+  REMITENTE: 'Fluivia <hola@fluivia.ai>',
+  DEMO_URL: (process.env.URL || 'https://fluivia.ai').replace(/\/$/, '') + '/d/r5x0kruj/',
   CITA_URL: process.env.CITA_URL || '',
 };
 const OFICINA_URL = (process.env.OFICINA_URL || 'https://fluivia-oficina.studyandbeyond.workers.dev').replace(/\/$/, '');
@@ -74,15 +76,17 @@ export default async (req) => {
   };
   if (!e.nombre || !EMAIL_OK.test(e.email)) { console.log('Envío sin nombre o sin correo válido: no se responde.'); return ok(); }
 
+  const env = { ...ENV, AVISOS: RESPONDER[e.idioma] };
+
   // Primero la respuesta al visitante; luego, a la Oficina (con el enlace de la demo enviada).
   if (ENV.RESEND_API_KEY) {
     try {
       if (e.tipo === 'demo' && e.empresa) {
-        e.enlace = Correo.enlaceDemo(ENV, e.sector, e.empresa);
-        await Correo.enviar(ENV, Correo.correoDemo(ENV, e, e.enlace));
+        e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa);
+        await Correo.enviar(env, Correo.correoDemo(env, e, e.enlace));
         e.demoEnviada = true;
       } else if (e.tipo === 'contacto') {
-        await Correo.enviar(ENV, Correo.correoRecibido(ENV, e));
+        await Correo.enviar(env, Correo.correoRecibido(env, e));
       }
     } catch (err) {
       console.error('No se pudo mandar la respuesta automática:', err);

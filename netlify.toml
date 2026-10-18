@@ -16,19 +16,14 @@
 
 # Las cabeceras (seguridad y noindex de la demo) están en _headers.
 
+# Un proyecto de Netlify por dominio, todos con este archivo. Cada uno pone su
+# idioma en la variable IDIOMA: es (fluivia.es), en (fluivia.ai) o da (fluivia.dk).
+# Ver herramientas/construir.sh. En fluivia.es, /en/* y /da/* van a su dominio
+# (_site/_redirects, lo genera construir.sh).
+
 # soluciones.html se fundió con servicios.html.
 [[redirects]]
   from = "/soluciones.html"
   to = "/servicios.html"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/en/soluciones.html"
-  to = "/en/servicios.html"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/da/soluciones.html"
-  to = "/da/servicios.html"
   status = 301
   force = true

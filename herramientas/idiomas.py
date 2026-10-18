@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Pone al día las tres versiones de la web (español en la raíz, inglés en en/ y
-danés en da/): idioma de la página, selector de idioma, enlaces hreflang,
-dirección canónica, rutas a assets/ y el sitemap.
+"""Pone al día las tres versiones de la web: idioma de la página, selector de
+idioma, enlaces hreflang, dirección canónica, rutas a assets/ y los sitemaps.
+
+En el repositorio, el español está en la raíz, el inglés en en/ y el danés en
+da/. Cada idioma se publica en su dominio (ver herramientas/construir.sh):
+fluivia.es (español), fluivia.ai (inglés, internacional) y fluivia.dk (danés).
 
 Las traducciones solo tienen que cambiar el texto: todo lo demás lo deja bien
 este script. Ejecútalo desde la raíz del repositorio después de tocar páginas:
@@ -12,8 +15,12 @@ import os
 import re
 import html
 
-DOMINIO = "https://fluivia.es/"
-FECHA = "2026-10-14"
+DOMINIOS = {"es": "https://fluivia.es/", "en": "https://fluivia.ai/", "da": "https://fluivia.dk/"}
+# Para quien no habla ninguno de los tres idiomas: la versión internacional.
+POR_DEFECTO = "en"
+PAIS = {"es": '{"@type": "Country", "name": "Spain"}', "da": '{"@type": "Country", "name": "Denmark"}',
+        "en": '[{"@type": "Country", "name": "Spain"}, {"@type": "Country", "name": "Denmark"}]'}
+FECHA = "2026-10-18"
 
 IDIOMAS = {
     # código: (carpeta, nombre en su idioma, og:locale)
@@ -34,20 +41,18 @@ PRIORIDAD = {"index.html": "1.0", "servicios.html": "0.9", "como-trabajamos.html
              "aviso-legal.html": "0.2", "privacidad.html": "0.2"}
 
 def url(idioma, pagina):
-    carpeta = IDIOMAS[idioma][0]
-    return DOMINIO + carpeta + ("" if pagina == "index.html" else pagina)
+    return DOMINIOS[idioma] + ("" if pagina == "index.html" else pagina)
 
 def existe(idioma, pagina):
     return os.path.exists(IDIOMAS[idioma][0] + pagina)
 
 def selector(idioma, pagina):
     # Desplegable (<details>): funciona sin JavaScript; main.js lo cierra al pulsar fuera.
-    # Rutas relativas desde la carpeta de la página actual.
-    subir = "../" if IDIOMAS[idioma][0] else ""
+    # El idioma actual, con ruta relativa; los otros, a su dominio.
     items = []
     for cod, (carpeta, nombre, _) in IDIOMAS.items():
         destino = pagina if existe(cod, pagina) else "index.html"
-        href = subir + carpeta + destino
+        href = pagina if cod == idioma else url(cod, destino)
         actual = ' aria-current="true"' if cod == idioma else ""
         items.append(f'<li><a href="{href}" lang="{cod}" hreflang="{cod}"{actual}>{nombre}</a></li>')
     return (f'<details class="lang-menu"><summary aria-label="{ETIQUETA_SELECTOR[idioma]}: {IDIOMAS[idioma][1]}">'
@@ -63,6 +68,10 @@ def poner_al_dia(idioma, pagina):
     s = re.sub(r'<html lang="[^"]*">', f'<html lang="{idioma}">', s, count=1)
     s = re.sub(r'<meta property="og:locale" content="[^"]*">', f'<meta property="og:locale" content="{IDIOMAS[idioma][2]}">', s)
 
+    # 1b. Las direcciones absolutas (imagen para redes, datos para Google), a su dominio
+    s = re.sub(r'https://fluivia\.(?:es|ai|dk)/', DOMINIOS[idioma], s)
+    s = re.sub(r'"areaServed": (?:\{[^{}]*\}|\[[^\]]*\])', '"areaServed": ' + PAIS[idioma], s)
+
     # 2. Rutas a los archivos comunes (en en/ y da/ hay que subir un nivel)
     if carpeta:
         s = re.sub(r'((?:href|src)=")(?!\.\./|https?:|mailto:|#|/)(assets/|favicon\.ico|site\.webmanifest)', r'\1../\2', s)
@@ -72,7 +81,7 @@ def poner_al_dia(idioma, pagina):
     s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url(idioma, pagina)}">', s, count=1)
     s = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url(idioma, pagina)}">', s, count=1)
     alternos = [f'<link rel="alternate" hreflang="{cod}" href="{url(cod, pagina)}">' for cod in IDIOMAS if existe(cod, pagina)]
-    alternos.append(f'<link rel="alternate" hreflang="x-default" href="{url("es", pagina)}">')
+    alternos.append(f'<link rel="alternate" hreflang="x-default" href="{url(POR_DEFECTO if existe(POR_DEFECTO, pagina) else "es", pagina)}">')
     s = s.replace('<link rel="canonical"', "\n  ".join(alternos) + '\n  <link rel="canonical"', 1)
 
     # 4. Selector de idioma: en el menú, o junto al botón en las páginas legales
@@ -89,16 +98,17 @@ def poner_al_dia(idioma, pagina):
     open(ruta, "w", encoding="utf-8").write(s)
 
 def sitemap():
-    filas = []
-    for pagina in PAGINAS:
-        for cod in IDIOMAS:
+    # Un sitemap por dominio, cada uno en la carpeta de su idioma.
+    for cod in IDIOMAS:
+        filas = []
+        for pagina in PAGINAS:
             if not existe(cod, pagina):
                 continue
             alternos = "".join(f'\n    <xhtml:link rel="alternate" hreflang="{c}" href="{url(c, pagina)}"/>' for c in IDIOMAS if existe(c, pagina))
             filas.append(f'  <url>\n    <loc>{url(cod, pagina)}</loc>\n    <lastmod>{FECHA}</lastmod>\n    <priority>{PRIORIDAD.get(pagina, "0.8")}</priority>{alternos}\n  </url>')
-    open("sitemap.xml", "w", encoding="utf-8").write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
-        + "\n".join(filas) + "\n</urlset>\n")
+        open(IDIOMAS[cod][0] + "sitemap.xml", "w", encoding="utf-8").write(
+            '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+            + "\n".join(filas) + "\n</urlset>\n")
 
 if __name__ == "__main__":
     hechas = 0
@@ -108,4 +118,4 @@ if __name__ == "__main__":
                 poner_al_dia(cod, pagina)
                 hechas += 1
     sitemap()
-    print(f"{hechas} páginas al día y sitemap.xml regenerado")
+    print(f"{hechas} páginas al día y sitemaps regenerados")
