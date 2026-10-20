@@ -61,3 +61,11 @@ La cabecera y el pie están repetidos en cada página: si cambias el menú, actu
 
 `oficina/` es la herramienta interna de Fluivia (contactos, resumen diario, correos). Es un Worker de Cloudflare aparte de la web: ver `oficina/LEEME.md`. No se publica en GitHub Pages (`_config.yml` la excluye).
 
+
+## Publicar la web (Netlify)
+
+Netlify publica la rama `produccion` en los tres proyectos (fluivia.es, fluivia.ai y fluivia.dk). Cada publicación gasta 15 créditos por proyecto y el plan gratis trae 300 al mes, así que se trabaja en la rama de desarrollo y solo se pasa a `produccion` cuando hay algo listo para publicar:
+
+    git push origin <rama-de-trabajo>:produccion
+
+La Oficina (carpeta `oficina/`) no pasa por Netlify: se publica en Cloudflare.
