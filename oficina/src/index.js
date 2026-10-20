@@ -38,7 +38,7 @@ import * as Vies from './vies.js';
 export { Oficina };
 
 const SESION_DIAS = 7;
-const PUBLICAS = ['/entrar.html', '/css/oficina.css', '/js/entrar.js', '/js/tema.js', '/img/logo.svg', '/img/favicon.svg', '/favicon.ico'];
+const PUBLICAS = ['/entrar.html', '/css/oficina.css', '/js/entrar.js', '/img/logo.svg', '/img/favicon.svg', '/favicon.ico'];
 
 const json = (datos, status = 200, extra = {}) => new Response(JSON.stringify(datos), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...extra } });
 const cookie = (req, nombre) => (req.headers.get('cookie') || '').split(/;\s*/).map((c) => c.split('=')).find(([k]) => k === nombre)?.[1];
