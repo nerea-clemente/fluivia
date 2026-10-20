@@ -38,7 +38,7 @@ import * as Vies from './vies.js';
 export { Oficina };
 
 const SESION_DIAS = 7;
-const PUBLICAS = ['/entrar.html', '/css/oficina.css', '/js/entrar.js', '/img/logo.svg', '/img/favicon.svg', '/favicon.ico'];
+const PUBLICAS = ['/entrar.html', '/css/oficina.css', '/js/entrar.js', '/js/tema.js', '/img/logo.svg', '/img/favicon.svg', '/favicon.ico'];
 
 const json = (datos, status = 200, extra = {}) => new Response(JSON.stringify(datos), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...extra } });
 const cookie = (req, nombre) => (req.headers.get('cookie') || '').split(/;\s*/).map((c) => c.split('=')).find(([k]) => k === nombre)?.[1];
@@ -320,7 +320,7 @@ async function atender(req, env, ctx) {
   if (url.pathname.startsWith('/api/publico/')) return publico(req, env, store, url, ctx);
   if (url.pathname === '/api/entrada/web') return entradaWeb(req, env, store, url, ctx);
   if (url.pathname.startsWith('/api/acceso/') && !url.pathname.startsWith('/api/acceso/salir')) return acceso(req, env, store, url);
-  if (PUBLICAS.includes(url.pathname) || url.pathname.startsWith('/fonts/')) return env.ASSETS.fetch(req);
+  if (PUBLICAS.includes(url.pathname) || url.pathname.startsWith('/fonts/') || /^\/css\/temas\/[a-z0-9-]+\.css$/.test(url.pathname)) return env.ASSETS.fetch(req);
 
   const t = cookie(req, 'of_sesion');
   const email = t ? await store.sesion(await sha256(t)) : null;
