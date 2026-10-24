@@ -113,7 +113,7 @@
       final: { antes: "Timevis af indtastning hvert kvartal og fejl, når tallene skulle skrives af.", ahora: "Bilagene kommer ind færdiglæste, og bogholderiet bruger tiden på de 5, der er tvivl om." },
       escena: function (x) {
         var u = UI, movil, cuerpo;
-        var recibo = u.recibo({ comercio: "VVS-GROSSISTEN NORD", dato: "CVR 31 24 56 78 · 12.09.2026", lineas: [["Alupex-rør 20 mm, 10 m", "289,00"], ["Messingvinkler x12", "198,00"], ["Teflontape x6", "110,75"]], total: "597,75 kr." });
+        var recibo = u.recibo({ comercio: "VVS-GROSSISTEN NORD", dato: "CVR 31 24 56 78 · 12.09.2026", lineas: [["Alupex-rør 20 mm", "289,00"], ["Messingvinkler x12", "198,00"], ["Teflontape x6", "110,75"]], total: "597,75 kr." });
         if (x.p === 0) {
           movil = u.movil({ quien: "Mads' mobil", hora: "13.10", titulo: "Upload udgift", cuerpo:
             '<div class="caja caja-suave" style="display:grid;place-items:center;padding:22px 10px">' + recibo + "</div>" +
