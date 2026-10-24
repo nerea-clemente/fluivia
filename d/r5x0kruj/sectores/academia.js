@@ -12,15 +12,138 @@
     fuente: "'Nunito', 'Trebuchet MS', sans-serif", radio: "18px",
     logo: '<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="20" fill="#4B3FD1"/><path d="M13.5 27V14l13 13V14" fill="none" stroke="#FFC93C" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   },
-  panel: ["Grupos", "Alumnos", "Asistencia", "Familias", "Matrículas"],
-  situacion: "Unos 180 alumnos, de primaria a adultos, en 22 grupos de inglés, francés y refuerzo. Irene dirige la academia y también da clase; en septiembre y en junio no da abasto.",
+  panel: ["Exámenes", "Grupos", "Alumnos", "Asistencia", "Matrículas"],
+  situacion: "Unos 180 alumnos, de primaria a adultos, en 22 grupos de inglés, francés y refuerzo. Cuatro grupos, de jóvenes y de adultos, preparan exámenes de Cambridge. Irene dirige la academia y también da clase; en septiembre y en junio no da abasto.",
   dolores: [
+    ["Simulacros que nadie corrige a tiempo", "Los grupos de B2 y C1 piden exámenes de práctica, pero corregirlos lleva tardes enteras. Y la nota llega cuando ya no sirve."],
     ["Septiembre es una locura", "Matrículas en papel, llamadas para saber el nivel y grupos que se llenan sin que nadie lo sepa a tiempo."],
     ["Faltas que nadie avisa", "Si un alumno falta, la familia se entera cuando llegan las notas. Y nadie ve quién está dejando de venir."],
-    ["Las mismas preguntas", "Horarios, plazas libres, si hay clase en festivo… por teléfono y por WhatsApp, también los domingos."],
     ["Junio sin saber quién sigue", "Media academia no confirma si sigue el curso que viene y los grupos se organizan a ciegas."]
   ],
   casos: [
+    {
+      id: "examenes",
+      montaje: { plazo: "3 a 4 semanas", con: "Tu web, tus grupos y los ejercicios que prepara tu profesorado" },
+      nav: "Exámenes de práctica",
+      titulo: "Exámenes de Cambridge de práctica que se corrigen solos",
+      hoy: "Los grupos de B2 y C1 piden simulacros, pero corregirlos se come las tardes del profesorado. Y hasta el examen nadie sabe bien quién va justo en Listening.",
+      con: "Los alumnos hacen exámenes de práctica al estilo de B2 First y C1 Advanced desde el móvil o el portátil. Se corrigen solos, con explicación, y la academia ve cómo va cada grupo en cada parte.",
+      ganas: ["Simulacros sin horas de corrección", "Cada alumno sabe qué repasar", "Ves quién flojea y en qué parte"],
+      pasos: [
+        { quien: "cliente", nombre: "Lucía, 16 años", t: "Lucía hace el Use of English desde el móvil", d: "Huecos con cuatro opciones y formación de palabras. Cada respuesta se corrige al momento y le dice por qué.", boton: "Pasar al Reading" },
+        { quien: "cliente", nombre: "Lucía, 16 años", t: "El Reading, con la pista en el texto", d: "Un texto corto y sus preguntas. Si falla, ve la frase del texto donde estaba la respuesta.", boton: "Pasar al Listening" },
+        { quien: "cliente", nombre: "Lucía, 16 años", t: "El Listening, como en el examen", d: "Lo escucha dos veces y escribe lo que oye. Aquí las respuestas se corrigen al terminar, no antes.", boton: "Terminar el examen" },
+        { quien: "auto", t: "Nota por partes, banda estimada y qué repasar", d: "Lucía ve que va camino del B2 y en qué falla más. Ana, su profesora, lo ve a la vez en el panel.", boton: "Ver cómo van los grupos" },
+        { quien: "equipo", nombre: "Ana, profesora", t: "Ana ve quién necesita ayuda y asigna la siguiente práctica", d: "Por grupos y por partes. El Listening flojea en B2 jóvenes, así que les manda un examen nuevo y práctica extra de esa parte.", boton: "Asignar al grupo" }
+      ],
+      final: { antes: "Simulacros en papel que se corrigen en casa, días después, y alumnos que llegan al examen sin saber qué les falla.", ahora: "Cada práctica se corrige al momento y Ana prepara la siguiente según lo que flojea cada grupo." },
+      escena: function (x) {
+        var u = UI, movil, cuerpo, p = x.p;
+        var titulo = "Examen 4 · " + ["Use of English", "Reading", "Listening"][Math.min(p, 2)] + " · " + (p + 1) + " de 3";
+
+        if (p === 0) {
+          movil = u.movil({ quien: "Móvil de Lucía", hora: "17:40", titulo: titulo, cuerpo:
+            '<div class="caja anim"><p class="peq"><strong>Part 1 · Elige la palabra que falta</strong></p><p>On her first night in Dublin, Marta ___ up a conversation with the woman next door.</p>' + u.opc(["A struck", "B made", "C took", "D set"], 1) + "</div>" +
+            u.check([["Era «struck», no «made»", "falta", "Se dice «strike up a conversation»: empezar a hablar con alguien. «Make» va con «friends».", " anim anim-2"]]) +
+            '<div class="caja"><p class="peq"><strong>Part 3 · Forma la palabra</strong></p><p>Losing the final was a huge ___ for the team. <span class="tenue">(DISAPPOINT)</span></p></div>' +
+            u.check([["disappointment", "ok", "Bien: después de «a huge» va un sustantivo."]]) +
+            u.btn("Pasar al Reading", true, "ancho")
+          });
+        } else if (p === 1) {
+          movil = u.movil({ quien: "Móvil de Lucía", hora: "17:52", titulo: titulo, cuerpo:
+            '<div class="caja anim"><p class="peq"><strong>The night library</strong></p><p class="peq">Every Thursday, the library in Hartfield stays open until midnight. Students asked for it: they had nowhere quiet to revise. «We expected five people,» says Joan, the librarian. «Forty <mark>turned up</mark>.»</p></div>' +
+            '<div class="fila">' + u.chip("1 ✓", "ok") + u.chip("2 ✓", "ok") + u.chip("3 ✗", "alerta") + u.chip("4 …", "info") + "</div>" +
+            '<div class="caja"><p class="peq"><strong>3. What does «turned up» mean?</strong></p>' + u.opc(["A arrived", "B left", "C complained", "D signed up"], 3) + "</div>" +
+            u.check([["Era «arrived», no «signed up»", "falta", "«Turn up» es aparecer, llegar: esperaban a cinco y llegaron cuarenta. «Sign up» es apuntarse.", " anim anim-2"]]) +
+            u.btn("Pasar al Listening", true, "ancho")
+          });
+        } else if (p === 2) {
+          movil = u.movil({ quien: "Móvil de Lucía", hora: "18:05", titulo: titulo, cuerpo:
+            '<div class="caja caja-suave anim"><div style="display:flex;gap:12px;align-items:center">' +
+              '<span style="display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:50%;background:var(--m1);color:var(--m1t)"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg></span>' +
+              '<div style="flex:1;min-width:0"><strong class="peq">Part 2 · Una ruta en bici por el río</strong>' +
+              '<div class="barra-fondo" style="margin:7px 0 4px"><i style="width:58%"></i></div>' +
+              '<div class="entre tenue"><span>1:52</span><span>3:15</span></div></div></div>' +
+              '<p class="tenue" style="margin-top:8px">Segunda escucha de dos, como en el examen.</p></div>' +
+            u.campos([
+              ["6. The tour starts at the old ___ station.", "railway"],
+              ["7. Riders must bring their own ___.", "helmet"],
+              ["8. The longest stop is for a ___ by the water.", "picnic"]
+            ]) +
+            '<p class="tenue">Las respuestas se corrigen cuando termines.</p>' +
+            u.btn("Terminar el examen", true, "ancho")
+          });
+        } else if (p === 3) {
+          movil = u.movil({ quien: "Móvil de Lucía", hora: "18:14", titulo: "Resultado · Examen 4", cuerpo:
+            '<div class="caja caja-suave anim" style="text-align:center"><p class="tenue">Banda estimada</p><p class="marca-fuente" style="font-size:24px;line-height:1.2">Vas camino del B2</p><p class="tenue">Unos 166 puntos. El B2 empieza en 160.</p></div>' +
+            u.barra(20, 28, "Use of English") + u.barra(31, 42, "Reading") + u.barra(17, 30, "Listening") +
+            u.check([["Listening 7: era «water bottle»", "falta", "Pusiste «helmet», pero el casco lo dan ellos: «Just bring a water bottle.»", " anim anim-2"]]) +
+            '<div class="caja caja-alerta anim anim-2"><h5>' + u.icono("alerta") + 'Para repasar</h5><ul class="lista-simple"><li><span>Listening Part 2</span><strong>3 fallos</strong></li><li><span>Phrasal verbs con «up»</span><strong>2 fallos</strong></li></ul></div>'
+          });
+        } else {
+          movil = u.movil({ quien: "Móvil de Lucía", hora: x.fin ? "19:02" : "18:30", titulo: "Mis exámenes", cuerpo:
+            (x.fin ? u.aviso("Nueva práctica de Ana", "Examen 5 y un Listening Part 2 extra. Para el viernes.", " anim") : "") +
+            u.grafico([5.1, 5.8, 6.4, 6.9], ["Ex. 1", "Ex. 2", "Ex. 3", "Ex. 4"], "Tu nota en cada examen (sobre 10)") +
+            u.check([
+              ["Examen 4", "ok", "6,9 · camino del B2"],
+              ["Examen 3", "ok", "6,4 · B1 alto"],
+              x.fin ? ["Examen 5", "pend", "Asignado por Ana · para el viernes", " anim"] : ["Examen 5", "pend", "Todavía sin asignar"]
+            ])
+          });
+        }
+
+        if (p < 3) {
+          var luc = [
+            "<strong>Lucía Ortega</strong>",
+            p === 0 ? u.chip("Haciéndolo", "info") : "71 %",
+            p === 0 ? "—" : p === 1 ? u.chip("Haciéndolo", "info") : "74 %",
+            p < 2 ? "—" : u.chip("Haciéndolo", "info"),
+            "—"
+          ];
+          cuerpo = '<div class="entre"><strong>Examen 4 · B2 First jóvenes</strong>' + u.chip("Para el viernes", "marca") + "</div>" +
+            u.kpis([["8 de 12", "entregados"], ["1", "haciéndolo ahora", "ok"], ["3", "sin empezar"]]) +
+            u.tabla(["Alumno", "Use of English", "Reading", "Listening", "Banda"], [
+              luc,
+              ["Mateo Gil", "86 %", "83 %", "80 %", u.chip("B2 alto", "ok")],
+              ["Iker Sanz", "79 %", "77 %", "55 %", u.chip("B2", "ok")],
+              ["Nora Vidal", "63 %", "70 %", "48 %", u.chip("B1 alto", "pend")],
+              ["Álex Moreno", "60 %", "58 %", "52 %", u.chip("B1 alto", "pend")]
+            ], ["is-resaltada"]) +
+            '<p class="tenue">Ejercicios propios de la academia, al estilo de B2 First. No es material oficial de Cambridge.</p>';
+        } else if (p === 3) {
+          cuerpo = '<div class="entre"><strong>Examen 4 · B2 First jóvenes</strong>' + u.chip("Para el viernes", "marca") + "</div>" +
+            u.kpis([["9 de 12", "entregados", "ok"], ["0", "haciéndolo ahora"], ["3", "sin empezar"]]) +
+            u.tabla(["Alumno", "Use of English", "Reading", "Listening", "Banda"], [
+              ["<strong>Lucía Ortega</strong>", "71 %", "74 %", "57 %", u.chip("B2", "ok")],
+              ["Mateo Gil", "86 %", "83 %", "80 %", u.chip("B2 alto", "ok")],
+              ["Iker Sanz", "79 %", "77 %", "55 %", u.chip("B2", "ok")],
+              ["Nora Vidal", "63 %", "70 %", "48 %", u.chip("B1 alto", "pend")],
+              ["Álex Moreno", "60 %", "58 %", "52 %", u.chip("B1 alto", "pend")]
+            ], ["is-resaltada"]) +
+            '<div class="caja caja-ia anim anim-2"><h5>En este grupo</h5><p>El Listening es la parte más floja: 58 % de media. Casi todos los fallos son en la Part 2, al copiar datos concretos.</p></div>' +
+            '<div class="fila">' + u.btn("Ver cómo van los grupos", true) + "</div>";
+        } else {
+          cuerpo = '<div class="entre"><strong>Cómo van los grupos</strong>' + u.chip("Examen 4", "info") + "</div>" +
+            u.tabla(["Grupo", "Use of English", "Reading", "Listening", "Media"], [
+              ["B2 First jóvenes (12)", "72 %", "75 %", u.chip("58 %", "alerta"), "B2 justo"],
+              ["B2 First adultos (9)", "68 %", "80 %", "71 %", "B2"],
+              ["C1 Advanced adultos (7)", u.chip("61 %", "alerta"), "78 %", "74 %", "C1 justo"]
+            ], ["is-resaltada"]) +
+            '<div class="caja caja-alerta"><h5>' + u.icono("alerta") + 'Quién necesita ayuda</h5><ul class="lista-simple">' +
+              "<li><span>Listening Part 2 · B2 jóvenes</span><strong>Lucía, Nora, Álex, Iker</strong></li>" +
+              "<li><span>Word formation · C1 adultos</span><strong>Pilar, Andrés</strong></li></ul></div>" +
+            '<div class="caja' + (x.fin ? " caja-suave" : " anim") + '"><h5>Siguiente práctica</h5>' +
+              u.campos([
+                ["Grupo", "B2 First jóvenes · 12 alumnos"],
+                ["Qué les mandas", u.opc(["Examen 5 completo", "Listening Part 2 extra", "Word formation"], [0, 1])],
+                ["Para", "Viernes 6 de noviembre"]
+              ]) +
+              '<div class="fila" style="margin-top:10px">' + (x.fin ? u.chip("Asignado a 12 alumnos", "ok") + '<span class="tenue">Les ha llegado al móvil</span>' : u.btn("Asignar al grupo", true)) + "</div></div>";
+        }
+        return movil + u.ventana({ quien: "Ordenador de Ana, profesora", seccion: "Exámenes", cuerpo: cuerpo });
+      }
+    },
+
     {
       id: "matricula",
       montaje: { plazo: "3 semanas", con: "Tu web, tu programa de gestión y la domiciliación que ya usas" },
@@ -141,44 +264,6 @@
             ]);
         }
         return movil + u.ventana({ quien: "Ordenador de Irene", seccion: "Asistencia", cuerpo: cuerpo });
-      }
-    },
-
-    {
-      id: "familias",
-      montaje: { plazo: "2 semanas", con: "WhatsApp Business y tus grupos y horarios" },
-      nav: "Preguntas de familias",
-      titulo: "Las preguntas de las familias, con plazas y horarios reales",
-      hoy: "Horarios, plazas, precios, festivos: Irene responde el teléfono entre clase y clase y el WhatsApp los domingos.",
-      con: "Un asistente responde con los grupos y plazas reales de la academia, ofrece una clase de prueba y pasa a Irene lo que necesita una persona.",
-      ganas: ["Irene da clase sin interrupciones", "Ninguna pregunta sin responder", "Clases de prueba reservadas solas"],
-      pasos: [
-        { quien: "cliente", nombre: "Pedro, interesado", t: "Pedro pregunta un domingo", d: "Quiere aprender francés para un viaje y escribe por WhatsApp a las 11 de la mañana.", boton: "Enviar" },
-        { quien: "auto", t: "Respuesta con plazas reales", d: "No es un texto fijo: consulta los grupos de verdad y le dice dónde queda sitio. Le ofrece una clase de prueba.", boton: "Reservar la clase de prueba" },
-        { quien: "auto", t: "Lo que no sabe, se lo pasa a Irene", d: "Pedro pregunta por un descuento de empresa. El asistente no se lo inventa: avisa a Irene con el contexto.", boton: "Ver la bandeja de Irene" },
-        { quien: "equipo", nombre: "Irene, directora", t: "El lunes, Irene lo tiene todo ordenado", d: "La clase de prueba está en la agenda del grupo y la pregunta del descuento espera con una respuesta propuesta.", boton: "Ver el resultado" }
-      ],
-      final: { antes: "Interrupciones en clase y mensajes del fin de semana que se contestan el lunes, cuando ya es tarde.", ahora: "Las familias tienen respuesta al momento y a Irene solo le llega lo que necesita su decisión." },
-      escena: function (x) {
-        var u = UI;
-        var chat = u.fecha("Domingo") + u.yo("Hola, ¿tenéis clases de francés para adultos? Empiezo de cero.", "11:02", x.n(0));
-        if (x.p === 0) chat += u.btn(u.icono("enviar") + "Enviar", true);
-        if (x.p >= 1) chat += u.ellos("¡Hola, Pedro! Sí. Tenemos <strong>Francés A1 para adultos</strong> los martes y jueves de 19:30 a 21:00, y quedan <strong>3 plazas</strong>.<br><br>¿Quieres venir a una clase de prueba gratis este martes?", "11:02", x.n(1));
-        if (x.p === 1) chat += u.respuestas(["Sí, el martes", "Prefiero otro día"], 0);
-        if (x.p >= 2) chat += u.yo("Sí, el martes", "11:03") + u.ellos("Apuntado: <strong>martes a las 19:30</strong>, aula 2. Te mando la dirección.", "11:03", x.n(2)) +
-          u.yo("¿Hay descuento si venimos dos de la misma empresa?", "11:05") +
-          u.ellos("Eso lo decide Irene, la directora. Le paso tu pregunta y te contesta mañana.", "11:05", x.n(2));
-        var movil = u.movil({ quien: "Móvil de Pedro", app: "wa", hora: "11:05", cuerpo: chat });
-        var cuerpo;
-        if (x.p < 2) {
-          cuerpo = u.kpis([["27", "preguntas respondidas este fin de semana", "ok"], ["2", "para Irene"]]) +
-            u.tabla(["Familia", "Pregunta", "Estado"], [["Marta López", "¿Hay clase el día 12?", u.chip("Respondida", "ok")], ["Javier Ros", "¿Plazas en refuerzo de Mates?", u.chip("Respondida", "ok")], ["Pedro Alonso", x.p ? "Francés para adultos" : "…", x.p ? u.chip("Respondida", "ok") : u.chip("Entrando", "info")]], ["", "", "is-resaltada"]);
-        } else {
-          cuerpo = '<div class="caja caja-suave"><div class="entre"><strong>Clase de prueba</strong>' + u.chip("Reservada sola", "ok") + '</div><p>Pedro Alonso · Francés A1 adultos · martes 19:30</p></div>' +
-            '<div class="caja caja-ia' + x.n(2) + '"><h5>Para Irene</h5><p>Pedro Alonso pregunta si hay descuento para dos personas de la misma empresa. Viene a la clase de prueba del martes.</p></div>' +
-            (x.p === 3 ? '<div class="caja anim"><h5>Respuesta propuesta</h5><p>Hola, Pedro. Sí, si os apuntáis dos personas os aplicamos un 10 % a cada uno. Lo hablamos el martes en la clase de prueba.</p></div><div class="fila">' + u.btn("Enviar", false) + u.btn("Editar", false, "sec") + "</div>" : "");
-        }
-        return movil + u.ventana({ quien: "Ordenador de Irene", seccion: "Familias", cuerpo: cuerpo });
       }
     },
 

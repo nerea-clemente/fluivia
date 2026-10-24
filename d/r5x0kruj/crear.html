@@ -67,6 +67,14 @@
             <option value="distribucion">Distribución</option>
             <option value="consultoria">Consultoría o agencia</option>
             <option value="comercio">Comercio</option>
+            <option value="autoescuela">Autoescuela (solo en español)</option>
+          </select>
+        </label>
+        <label>Idioma de la demo
+          <select id="lang">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="da">Danés</option>
           </select>
         </label>
         <label>Nombre del negocio
@@ -110,7 +118,7 @@
     (function () {
       "use strict";
       var $ = function (id) { return document.getElementById(id); };
-      var campos = ["s", "n", "lema", "c", "l", "r"];
+      var campos = ["s", "lang", "n", "lema", "c", "l", "r"];
       var temporizador;
 
       try { var guardado = localStorage.getItem("fluivia-demo-correo"); if (guardado) $("r").value = guardado; } catch (e) {}
@@ -119,6 +127,7 @@
         var base = new URL("./", location.href);
         var p = new URLSearchParams();
         p.set("s", $("s").value);
+        if ($("lang").value !== "es") p.set("lang", $("lang").value);
         var n = $("n").value.trim();
         if (n) p.set("n", n);
         var lema = $("lema").value.trim();
