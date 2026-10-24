@@ -42,7 +42,7 @@
           return u.ventana({ quien: "Irene's computer", seccion: "Proposals", cuerpo:
             '<div class="entre"><strong>Hearth Bakery · first meeting</strong>' + u.chip("Today, 10:00 · 40 min", "info") + "</div>" +
             u.ficha([["With", "Daniel Hart and his sister Mia"], ["Business", "Bakery with its own kitchen and two shops"], ["Came via", "Referred by Ruiz Dental Clinic"]]) +
-            '<div class="caja anim"><h5>' + u.icono("mic") + 'What was said</h5><p class="tenue">“We want to take cake orders on the website. Right now it's all by phone.” · “My sister does Instagram when she has time.” · “We were thinking around €600 a month, not much more.”</p></div>' +
+            '<div class="caja anim"><h5>' + u.icono("mic") + 'What was said</h5><p class="tenue">“We want to take cake orders on the website. Right now it’s all by phone.” · “My sister does Instagram when she has time.” · “We were thinking around €600 a month, not much more.”</p></div>' +
             u.campos([["Irene's notes", "Start with social and local ads. Both siblings decide. They want it running before Christmas."]]) +
             '<div class="fila">' + u.btn("Prepare the proposal", true) + "</div>"
           });
