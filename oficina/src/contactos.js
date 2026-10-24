@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 export const ETAPAS = ['nuevo', 'contactado', 'reunion', 'propuesta', 'cliente', 'perdido'];
-export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'otro', ''];
+export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'autoescuela', 'otro', ''];
 export const ORIGENES = ['web-demo', 'web-contacto', 'prospeccion', 'linkedin', 'recomendacion', 'evento', 'manual', 'otro'];
 export const INTERESES = ['consultas', 'citas', 'documentos', 'a-medida', 'marketing', 'formacion'];
 export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linkedin', 'web', 'etapa', 'demo', 'fiscal'];
@@ -59,6 +59,8 @@ export function limpiar(b = {}) {
     ciudad: txt(b.ciudad, 120).trim(),
     sector: SECTORES.includes(b.sector) ? b.sector : '',
     origen: ORIGENES.includes(b.origen) ? b.origen : 'manual',
+    // Idioma en el que se le escribe y se le manda la demo (vacío: según el país).
+    idioma: ['es', 'en', 'da'].includes(b.idioma) ? b.idioma : '',
     etapa: ETAPAS.includes(b.etapa) ? b.etapa : 'nuevo',
     intereses: [...new Set((Array.isArray(b.intereses) ? b.intereses : []).filter((x) => INTERESES.includes(x)))],
     implantacion: euros(b.implantacion),
@@ -118,6 +120,7 @@ export function deLaWeb(existente, e) {
     historial: [], creado: ahora,
   };
   for (const k of ['nombre', 'empresa', 'telefono', 'sector']) if (!c[k] && e[k]) c[k] = e[k];
+  if (!c.idioma && ['es', 'en', 'da'].includes(e.idioma)) c.idioma = e.idioma;
   const enIdioma = e.idioma === 'en' ? ' (desde la web en inglés)' : e.idioma === 'da' ? ' (desde la web en danés)' : '';
   const texto = e.tipo === 'demo'
     ? `Ha pedido la demo desde la web${enIdioma}${e.empresa ? ` para ${e.empresa}` : ''}. Se le ha enviado por correo.`

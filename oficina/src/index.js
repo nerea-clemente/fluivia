@@ -104,7 +104,7 @@ async function acceso(req, env, store, url) {
 
 // ---- Formularios de la web -------------------------------------------------------
 const SECTOR_DE_TEXTO = [
-  [/gestor|asesor/i, 'gestoria'], [/inmobiliar/i, 'inmobiliaria'], [/cl[ií]nica|salud/i, 'clinica'],
+  [/autoescuela|auto escuela|autoescola/i, 'autoescuela'], [/gestor|asesor/i, 'gestoria'], [/inmobiliar/i, 'inmobiliaria'], [/cl[ií]nica|salud/i, 'clinica'],
   [/academia|formaci/i, 'academia'], [/distribu/i, 'distribucion'], [/consultor|agencia/i, 'consultoria'], [/comercio|tienda/i, 'comercio'],
 ];
 const sectorDe = (v) => (C.SECTORES.includes(v) && v ? v : (SECTOR_DE_TEXTO.find(([re]) => re.test(v || '')) || [null, 'otro'])[1]);
@@ -148,7 +148,7 @@ async function publico(req, env, store, url, ctx) {
   if (!(await store.limitar(`email:${e.email}`, 3, 600))) return json({ ok: true }, 200, cab);
 
   if (tipo === 'demo') {
-    e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa);
+    e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa, e.idioma);
     try { await Correo.enviar(env, Correo.correoDemo(env, e, e.enlace)); }
     catch (err) { console.error('[demo]', err); return json({ error: 'No se ha podido enviar' }, 502, cab); }
   }
@@ -225,7 +225,7 @@ async function api(req, env, store, url, email) {
     const c = await store.leerContacto(url.searchParams.get('contacto') || '');
     if (!c) return json({ error: 'No existe ese contacto' }, 404);
     return json({
-      demo: Correo.enlaceDemo(env, c.sector, c.empresa),
+      demo: Correo.enlaceDemo(env, c.sector, c.empresa, Correo.idiomaDe(c)),
       plantillas: Object.entries(Correo.PLANTILLAS).map(([k, p]) => ({ k, nombre: p.nombre, asunto: Correo.rellenar(p.asunto, c, env), texto: Correo.rellenar(p.texto, c, env) })),
     });
   }

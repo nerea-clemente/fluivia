@@ -33,7 +33,7 @@ const ENV = {
   CITA_URL: process.env.CITA_URL || '',
 };
 const OFICINA_URL = (process.env.OFICINA_URL || 'https://fluivia-oficina.info-fluivia.workers.dev').replace(/\/$/, '');
-const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'otro'];
+const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'autoescuela', 'otro'];
 const limpio = (v, n) => String(v ?? '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, n);
 
 async function enviarAOficina(e) {
@@ -83,7 +83,7 @@ export default async (req) => {
   if (ENV.RESEND_API_KEY) {
     try {
       if (e.tipo === 'demo' && e.empresa) {
-        e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa);
+        e.enlace = Correo.enlaceDemo(env, e.sector, e.empresa, e.idioma);
         await Correo.enviar(env, Correo.correoDemo(env, e, e.enlace));
         e.demoEnviada = true;
         console.log(`Demo enviada a ${e.email} (${e.idioma}).`);

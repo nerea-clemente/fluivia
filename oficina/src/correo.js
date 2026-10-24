@@ -13,6 +13,7 @@ const SECTOR_TEXTO = {
   distribucion: { una: 'una empresa de distribución', plural: 'empresas de distribución' },
   consultoria: { una: 'una consultoría o agencia', plural: 'consultorías y agencias' },
   comercio: { una: 'un comercio', plural: 'comercios' },
+  autoescuela: { una: 'una autoescuela', plural: 'autoescuelas' },
 };
 export const sectorTexto = (s) => SECTOR_TEXTO[s] || { una: 'tu negocio', plural: 'pequeñas empresas' };
 export const tieneDemo = (s) => !!SECTOR_TEXTO[s];
@@ -44,8 +45,13 @@ export function html(texto, pie = '') {
   </div></body></html>`;
 }
 
-export function enlaceDemo(env, sector, empresa) {
+// Idioma de la demo para un contacto: el que eligió en la web; si no, danés para Dinamarca.
+export const idiomaDe = (c) => (['es', 'en', 'da'].includes(c.idioma) ? c.idioma : c.pais === 'DK' ? 'da' : 'es');
+
+// La demo existe en español, inglés y danés (las autoescuelas, solo en español).
+export function enlaceDemo(env, sector, empresa, idioma = 'es') {
   const url = new URL(env.DEMO_URL || 'https://fluivia.es/d/r5x0kruj/');
+  if (idioma === 'en' || idioma === 'da') url.searchParams.set('lang', idioma);
   if (tieneDemo(sector)) url.searchParams.set('s', sector);
   if (empresa) url.searchParams.set('n', empresa.slice(0, 60));
   const responder = (env.AVISOS || '').split(',')[0].trim();
@@ -55,8 +61,8 @@ export function enlaceDemo(env, sector, empresa) {
 
 // El correo que recibe quien pide la demo desde la web, en el idioma de la web
 // desde la que la pidió (español, inglés o danés). La demo está en español.
-const SECTOR_EN = { gestoria: 'an accountancy firm', inmobiliaria: 'an estate agency', clinica: 'a clinic', academia: 'a school', distribucion: 'a distribution business', consultoria: 'a consultancy or agency', comercio: 'a shop' };
-const SECTOR_DA = { gestoria: 'et bogholderi', inmobiliaria: 'en ejendomsmægler', clinica: 'en klinik', academia: 'en skole', distribucion: 'en distributionsvirksomhed', consultoria: 'et konsulenthus eller bureau', comercio: 'en butik' };
+const SECTOR_EN = { autoescuela: 'a driving school', gestoria: 'an accountancy firm', inmobiliaria: 'an estate agency', clinica: 'a clinic', academia: 'a school', distribucion: 'a distribution business', consultoria: 'a consultancy or agency', comercio: 'a shop' };
+const SECTOR_DA = { autoescuela: 'en køreskole', gestoria: 'et bogholderi', inmobiliaria: 'en ejendomsmægler', clinica: 'en klinik', academia: 'en skole', distribucion: 'en distributionsvirksomhed', consultoria: 'et konsulenthus eller bureau', comercio: 'en butik' };
 
 export function correoDemo(env, d, enlace) {
   const idioma = ['en', 'da'].includes(d.idioma) ? d.idioma : 'es';
@@ -66,16 +72,16 @@ export function correoDemo(env, d, enlace) {
   if (idioma === 'en') {
     asunto = `Your Fluivia demo for ${d.empresa}`;
     partes = [`Hi ${d.nombre},`, `Here is the Fluivia demo prepared for ${d.empresa}:`, enlace,
-      conDemo ? `It shows four everyday situations for ${SECTOR_EN[d.sector]}, step by step. It takes about five minutes. The demo itself is in Spanish for now: just reply to this email if you would like me to walk you through it in English.`
-        : 'We do not have a demo for your industry yet, so here is the general one (in Spanish for now). Reply and tell me what you do, and I will prepare one with your own cases.',
+      conDemo ? `It shows four everyday situations for ${SECTOR_EN[d.sector]}, step by step. It takes about five minutes. If you prefer, just reply to this email and I will walk you through it.`
+        : 'We do not have a demo for your industry yet, so here is the general one. Reply and tell me what you do, and I will prepare one with your own cases.',
       env.CITA_URL ? `If you prefer to see it with me, book a 20-minute call: ${env.CITA_URL}` : 'If you prefer to see it with me, reply to this email and we will find a 20-minute slot.',
       'Best regards,\nFluivia'];
     pie = 'You are receiving this email because you requested the demo on the Fluivia website.';
   } else if (idioma === 'da') {
     asunto = `Din Fluivia-demo til ${d.empresa}`;
     partes = [`Hej ${d.nombre}`, `Her er Fluivia-demoen, som vi har lavet til ${d.empresa}:`, enlace,
-      conDemo ? `Den viser fire situationer fra hverdagen i ${SECTOR_DA[d.sector]}, trin for trin, og tager omkring fem minutter. Selve demoen er på spansk indtil videre: svar på denne mail, hvis du vil have, at jeg viser dig den på dansk.`
-        : 'Vi har endnu ikke en demo til din branche, så her er den generelle (på spansk indtil videre). Svar og fortæl, hvad I laver, så laver jeg en med jeres egne eksempler.',
+      conDemo ? `Den viser fire situationer fra hverdagen i ${SECTOR_DA[d.sector]}, trin for trin, og tager omkring fem minutter. Svar gerne på denne mail, hvis du hellere vil have, at jeg viser dig den.`
+        : 'Vi har endnu ikke en demo til din branche, så her er den generelle. Svar og fortæl, hvad I laver, så laver jeg en med jeres egne eksempler.',
       env.CITA_URL ? `Vil du hellere se den sammen med mig, kan du booke et opkald på 20 minutter: ${env.CITA_URL}` : 'Vil du hellere se den sammen med mig, så svar på denne mail, så finder vi 20 minutter.',
       'Venlig hilsen\nFluivia'];
     pie = 'Du får denne mail, fordi du har bedt om demoen på Fluivias hjemmeside.';
@@ -150,14 +156,14 @@ export const PLANTILLAS = {
   },
 };
 
-const SECTOR_DA_PLURAL = { gestoria: 'bogholderier og revisorer', inmobiliaria: 'ejendomsmæglere', clinica: 'klinikker', academia: 'skoler og kursuscentre', distribucion: 'grossister', consultoria: 'konsulenthuse og bureauer', comercio: 'butikker' };
+const SECTOR_DA_PLURAL = { autoescuela: 'køreskoler', gestoria: 'bogholderier og revisorer', inmobiliaria: 'ejendomsmæglere', clinica: 'klinikker', academia: 'skoler og kursuscentre', distribucion: 'grossister', consultoria: 'konsulenthuse og bureauer', comercio: 'butikker' };
 
 export function rellenar(t, c, env) {
   const s = sectorTexto(c.sector);
   const nombre = (c.nombre || '').split(/\s+/)[0] || '';
   const dk = c.pais === 'DK';
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
-    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa) };
+    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)) };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
   return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m))
     .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));
