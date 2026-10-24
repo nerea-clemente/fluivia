@@ -97,6 +97,12 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://fluivia.dk/automatizacion-distribucion.html"/>
   </url>
   <url>
+    <loc>https://fluivia.es/automatizacion-autoescuelas.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fluivia.es/automatizacion-autoescuelas.html"/>
+  </url>
+  <url>
     <loc>https://fluivia.es/aviso-legal.html</loc>
     <lastmod>2026-10-18</lastmod>
     <priority>0.2</priority>

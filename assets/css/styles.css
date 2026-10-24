@@ -537,6 +537,7 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
 .sectors-teaser { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
 .sectors-teaser .section-head { margin-bottom: 0; }
 .sector-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sector-links li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .sector-links a {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   min-height: 64px; padding: 0 20px; border-radius: var(--radius-sm);

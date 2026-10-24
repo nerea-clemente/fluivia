@@ -34,7 +34,7 @@ PAGINAS = [
     "index.html", "servicios.html", "sectores.html", "caso-real.html", "como-trabajamos.html",
     "demo.html", "contacto.html",
     "automatizacion-gestorias.html", "automatizacion-inmobiliarias.html", "automatizacion-clinicas.html",
-    "automatizacion-academias.html", "automatizacion-distribucion.html",
+    "automatizacion-academias.html", "automatizacion-distribucion.html", "automatizacion-autoescuelas.html",
     "aviso-legal.html", "privacidad.html",
 ]
 PRIORIDAD = {"index.html": "1.0", "servicios.html": "0.9", "como-trabajamos.html": "0.7", "contacto.html": "0.7",
