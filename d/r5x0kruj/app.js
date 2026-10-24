@@ -41,7 +41,7 @@
         ["Una propuesta concreta", "Qué montaríamos primero, en cuánto tiempo y con qué herramientas: las tuyas o nuevas."],
         ["Lo montamos y lo probáis", "Primero lo usa tu equipo. Cuando estáis contentos, lo ven tus clientes."]],
       tituloPara: function (n) { return "Demo para " + n; }, preparada: function (n) { return "Preparada para " + n; },
-      enLinea: "en línea", hab: " hab. · ", banos: " baños", ejemploDe: "Ejemplo de", tipoNegocio: "Tipo de negocio del ejemplo", menu: "Menú de la demo", inicioDemo: "Inicio de la demo", partes: "Partes de la demo"
+      correo: "Correo", hoy: "Hoy", pieNota: "Los nombres, conversaciones y cifras de esta demo son de ejemplo.", enLinea: "en línea", hab: " hab. · ", banos: " baños", ejemploDe: "Ejemplo de", tipoNegocio: "Tipo de negocio del ejemplo", menu: "Menú de la demo", inicioDemo: "Inicio de la demo", partes: "Partes de la demo"
     },
     en: {
       auto: "Automatic", cliente: "Customer", equipo: "Your team", de: " of ", de5: " of 5",
@@ -66,7 +66,7 @@
         ["A concrete proposal", "What we would set up first, how long it takes and with which tools: yours or new ones."],
         ["We build it and you try it", "Your team uses it first. When you're happy, your customers see it."]],
       tituloPara: function (n) { return "Demo for " + n; }, preparada: function (n) { return "Prepared for " + n; },
-      enLinea: "online", hab: " bedrooms · ", banos: " bathrooms", ejemploDe: "Example of", tipoNegocio: "Type of business in the example", menu: "Demo menu", inicioDemo: "Start of the demo", partes: "Parts of the demo"
+      correo: "Mail", hoy: "Today", pieNota: "The names, conversations and figures in this demo are examples.", enLinea: "online", hab: " bedrooms · ", banos: " bathrooms", ejemploDe: "Example of", tipoNegocio: "Type of business in the example", menu: "Demo menu", inicioDemo: "Start of the demo", partes: "Parts of the demo"
     },
     da: {
       auto: "Automatisk", cliente: "Kunde", equipo: "Dit team", de: " af ", de5: " af 5",
@@ -91,7 +91,7 @@
         ["Et konkret forslag", "Hvad vi ville sætte op først, hvor lang tid det tager, og med hvilke værktøjer: jeres egne eller nye."],
         ["Vi bygger det, og I prøver det", "Først bruger dit team det. Når I er tilfredse, ser jeres kunder det."]],
       tituloPara: function (n) { return "Demo til " + n; }, preparada: function (n) { return "Lavet til " + n; },
-      enLinea: "online", hab: " vær. · ", banos: " bad", ejemploDe: "Eksempel på", tipoNegocio: "Virksomhedstype i eksemplet", menu: "Demoens menu", inicioDemo: "Demoens start", partes: "Demoens dele"
+      correo: "Mail", hoy: "I dag", pieNota: "Navne, samtaler og tal i denne demo er eksempler.", enLinea: "online", hab: " vær. · ", banos: " bad", ejemploDe: "Eksempel på", tipoNegocio: "Virksomhedstype i eksemplet", menu: "Demoens menu", inicioDemo: "Demoens start", partes: "Demoens dele"
     }
   };
   var T = TXT[IDIOMA];
@@ -219,7 +219,7 @@
       if (o.app === "wa") {
         cab = '<div class="m-cab m-cab-wa">' + logo(30) + "<div><strong>" + esc(o.de || S.negocio) + "</strong><span>" + esc(o.sub || T.enLinea) + "</span></div></div>";
       } else if (o.app === "mail") {
-        cab = '<div class="m-cab m-cab-mail">' + icono("correo") + "<strong>Correo</strong></div>";
+        cab = '<div class="m-cab m-cab-mail">' + icono("correo") + "<strong>" + T.correo + "</strong></div>";
       } else {
         cab = '<div class="m-cab m-cab-marca">' + logo(28) + '<div><strong class="marca-fuente">' + esc(S.negocio) + "</strong><span>" + esc(o.titulo || "") + "</span></div></div>";
       }
@@ -432,7 +432,7 @@
       }).join("") + "</div></section>";
 
     h += bloqueHerramientas();
-    h += '<p class="pie-nota">Los nombres, conversaciones y cifras de esta demo son de ejemplo.</p>';
+    h += '<p class="pie-nota">' + T.pieNota + '</p>';
     return h;
   }
 
@@ -460,7 +460,7 @@
       '<button type="button" class="btn-sec" data-reiniciar>' + icono("repetir") + T.empezarNuevo + "</button></header>";
 
     h += '<section class="resumen' + (plegado ? " is-plegado" : "") + '">' +
-      '<div class="res"><h2>Hoy</h2><p>' + esc(c.hoy) + "</p></div>" +
+      '<div class="res"><h2>' + T.hoy + '</h2><p>' + esc(c.hoy) + "</p></div>" +
       '<div class="res"><h2>' + T.ganas + '</h2><ul>' + c.ganas.map(function (g) { return "<li>" + icono("check") + esc(g) + "</li>"; }).join("") + "</ul></div>" +
       '<div class="res"><h2>' + T.montarlo + '</h2><p><strong>' + esc(c.montaje.plazo) + "</strong></p><p>" + esc(c.montaje.con) + "</p></div>" +
       "</section>";
