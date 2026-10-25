@@ -17,8 +17,8 @@
   dolores: [
     ["Contactos que se enfrían", "Un interesado escribe desde el portal a las 21:30 y nadie le contesta hasta el día siguiente. Para entonces ya ha llamado a otra agencia."],
     ["Visitas a base de mensajes", "Cuadrar una visita lleva diez mensajes, y después nadie pregunta qué le pareció."],
-    ["Propietarios que preguntan", "«¿Cómo va lo mío?». Sin datos de visitas, la conversación sobre bajar el precio se hace difícil."],
-    ["Papeles hasta la notaría", "Nota simple, certificado energético, documentación del banco… repartido entre correos y carpetas."]
+    ["Propietarios que preguntan", "El propietario pregunta «¿cómo va lo mío?» y, sin datos de visitas, cuesta hablar de bajar el precio."],
+    ["Papeles hasta la notaría", "La nota simple, el certificado energético y los papeles del banco están repartidos entre correos y carpetas."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Contactos de los portales, atendidos en un minuto",
       hoy: "Los contactos de los portales llegan al correo a cualquier hora. Se responden cuando alguien puede, a veces al día siguiente.",
       con: "Cada contacto recibe respuesta en un minuto, se le hacen las preguntas clave y llega al agente ya calificado y con una visita propuesta.",
-      ganas: ["Respuesta en un minuto, también de noche", "Sabes qué contactos son serios", "Más visitas cerradas"],
       pasos: [
         { quien: "auto", t: "Entra un contacto desde el portal a las 21:30", d: "Elena se interesa por el piso de la calle Colón. Pablo está cenando y no se entera.", boton: "Ver qué pasa" },
         { quien: "auto", t: "En un minuto, Elena ya tiene respuesta", d: "Por WhatsApp, con la ficha del piso y dos preguntas para saber si es un contacto serio: para qué lo quiere y cómo lo va a pagar.", boton: "Elena responde" },
@@ -87,7 +86,6 @@
       titulo: "Visitas confirmadas y opiniones que llegan al propietario",
       hoy: "Las visitas se confirman a mano, algunas personas no aparecen y nadie pregunta qué les pareció. El propietario solo sabe lo que el agente le cuenta.",
       con: "Recordatorio con confirmación, hoja de ruta para el agente, una pregunta corta después de cada visita y un informe semanal para el propietario.",
-      ganas: ["Menos visitas en balde", "Sabes qué frena a los compradores", "Propietarios informados sin llamadas"],
       pasos: [
         { quien: "auto", t: "La víspera, recordatorio con confirmación", d: "Elena recibe dirección, hora y quién la va a recibir. Confirma con un toque.", boton: "Elena confirma" },
         { quien: "equipo", nombre: "Pablo, agente", t: "Pablo tiene su ruta del día en el móvil", d: "Cada visita con lo que busca el comprador, para que no tenga que repasar los mensajes.", boton: "Visita terminada" },
@@ -152,7 +150,6 @@
       titulo: "Propietarios que piden valoración desde la web",
       hoy: "Los propietarios que quieren vender llaman a tres agencias para saber cuánto vale su piso. Gana el que contesta antes y mejor.",
       con: "Un formulario de valoración en la web da una horquilla orientativa al momento, y la agencia recibe al propietario con sus datos y un estudio de mercado ya preparado.",
-      ganas: ["Más propietarios que te llaman a ti", "Llegas a la cita con el estudio hecho", "Ninguna valoración se queda sin seguimiento"],
       pasos: [
         { quien: "cliente", nombre: "Jaime, propietario", t: "Jaime pide una valoración desde la web", d: "Dirección, metros, habitaciones, estado y cuándo quiere vender. Dos minutos.", boton: "Ver mi valoración" },
         { quien: "auto", t: "Recibe una horquilla orientativa al momento", d: "Calculada con ventas recientes de la zona, y la invitación a que un agente lo vea para darle un precio ajustado.", boton: "Pedir visita de valoración" },
@@ -201,7 +198,6 @@
       titulo: "De las arras a la notaría, sin papeles perdidos",
       hoy: "Nota simple, certificado energético, recibo del IBI, nóminas para el banco… cada documento llega por un sitio distinto y alguien tiene que acordarse de pedirlo.",
       con: "Cada operación tiene su ficha con lo que falta y quién lo tiene que traer. Comprador y vendedor reciben avisos y ven cómo va todo desde el móvil.",
-      ganas: ["Nada se queda sin pedir", "Comprador y vendedor tranquilos", "Llegas a la firma con todo"],
       pasos: [
         { quien: "equipo", nombre: "Pablo, agente", t: "Pablo abre la operación", d: "Con la fecha de firma, se crea la lista de documentos y quién tiene que aportar cada uno.", boton: "Enviar avisos" },
         { quien: "auto", t: "Al vendedor solo le piden lo suyo", d: "A Jaime le falta el certificado energético. Puede subirlo o pedir que la agencia lo gestione.", boton: "Jaime responde" },

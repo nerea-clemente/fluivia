@@ -15,9 +15,9 @@
   panel: ["Mensajes", "Encargos", "Proveedores", "Clientes", "Reseñas"],
   situacion: "Dos libreras, una persona por las tardes y unos 12.000 libros en tienda. Una web pequeña, un club de lectura y mensajes por WhatsApp e Instagram que llegan mientras se atiende el mostrador.",
   dolores: [
-    ["«¿Tenéis este libro?» a todas horas", "Por WhatsApp, por Instagram y por teléfono. Para contestar hay que dejar el mostrador y mirar en el ordenador."],
-    ["Encargos en una libreta", "El libro llega de la distribuidora y nadie se acuerda de avisar. O se avisa dos veces."],
-    ["Albaranes y facturas por todas partes", "De diez distribuidoras y editoriales, en papel y en el correo. A final de trimestre, la gestoría pide lo que falta."],
+    ["«¿Tenéis este libro?» a todas horas", "Te lo preguntan por WhatsApp, por Instagram y por teléfono, y para contestar hay que dejar el mostrador y mirar en el ordenador."],
+    ["Encargos en una libreta", "El libro llega de la distribuidora y nadie se acuerda de avisar, o se avisa dos veces."],
+    ["Albaranes y facturas por todas partes", "Llegan de diez distribuidoras y editoriales, en papel y por correo, y a final de trimestre la gestoría pide lo que falta."],
     ["Clientes que vienen una vez", "Muchos compran un regalo en Navidad y no vuelven. Y los que salen contentos no dejan reseña."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Mensajes de clientes respondidos con el stock real",
       hoy: "Preguntan por WhatsApp o Instagram si tenéis un libro, a qué hora abrís o si podéis guardarlo. Contestar obliga a dejar el mostrador y mirar en el programa.",
       con: "Las preguntas de siempre se responden al momento con el stock de tu programa de caja y vuestro horario. Lo que necesita a una librera, como una recomendación o una queja, se le pasa.",
-      ganas: ["Respuestas al momento, también de noche", "Sin dejar el mostrador para mirar el stock", "Lo delicado lo lleva una persona"],
       pasos: [
         { quien: "cliente", nombre: "Elena, clienta", t: "Elena pregunta por Instagram a las 21:30", d: "Busca un libro que le han recomendado y quiere saber si abrís el sábado.", boton: "Enviar la pregunta" },
         { quien: "auto", t: "Se responde con el stock y el horario reales", d: "Quedan 2 ejemplares en tienda y el sábado abrís de 10:00 a 14:00. Se le ofrece guardarle uno.", boton: "Elena pide que se lo guarden" },
@@ -91,7 +90,6 @@
       titulo: "Encargos que avisan solos cuando llegan",
       hoy: "Si un libro no está, se apunta en una libreta, se pide a la distribuidora y, cuando llega, alguien tiene que acordarse de llamar al cliente.",
       con: "El encargo se registra con los datos del cliente y entra en el pedido a la distribuidora. Al dar entrada al albarán, al cliente le llega un aviso de que ya puede pasar a recogerlo.",
-      ganas: ["Ningún encargo olvidado", "Sin llamar uno a uno", "Sabes qué hay pendiente de recoger"],
       pasos: [
         { quien: "equipo", nombre: "Nuria, librera", t: "Pablo encarga un libro en el mostrador", d: "Busca una guía de rutas en bici que no tenéis. Nuria la apunta en el panel en medio minuto, con su teléfono.", boton: "Guardar el encargo" },
         { quien: "auto", t: "Pablo recibe la confirmación", d: "Con el libro, el precio y el plazo aproximado de la distribuidora. El encargo entra en el próximo pedido.", boton: "Llega el pedido" },
@@ -167,7 +165,6 @@
       titulo: "Albaranes y facturas de proveedores, ordenados para la gestoría",
       hoy: "Los albaranes llegan en papel con las cajas y las facturas, por correo. Se acumulan en una bandeja y a final de trimestre la gestoría pide las que faltan.",
       con: "Cada albarán y factura que recibes, en papel con una foto o por correo, se lee y se guarda ordenado. Se comprueba que la factura cuadra con los albaranes y la gestoría tiene su carpeta al día.",
-      ganas: ["Ninguna factura perdida", "Las diferencias se ven antes de pagar", "La gestoría deja de pedirte papeles"],
       pasos: [
         { quien: "equipo", nombre: "Nuria, librera", t: "Nuria hace una foto al albarán", d: "Llegan las cajas de la distribuidora con el albarán en papel. Una foto desde el móvil de la tienda y el papel ya puede ir al archivador.", boton: "Hacer la foto" },
         { quien: "auto", t: "Se lee y se compara con el pedido", d: "Se leen los libros, las unidades, la base y el IVA. Un libro que se pidió no viene: queda apuntado.", boton: "Llega la factura" },
@@ -259,7 +256,6 @@
       titulo: "Reseñas en Google y clientes que vuelven",
       hoy: "Los clientes contentos se van sin dejar reseña. Y quien vino a por un regalo en diciembre no vuelve a saber de la librería hasta el año siguiente.",
       con: "A quien deja su teléfono y acepta recibir mensajes, le llega uno para opinar en Google. Cuando sale una novedad que le encaja con lo que compró, se le avisa.",
-      ganas: ["Más reseñas en Google", "Todas respondidas sin dedicarle tardes", "Clientes que vuelven"],
       pasos: [
         { quien: "auto", t: "Al día siguiente de la compra, se pide su opinión", d: "Solo a quien dejó su teléfono y aceptó recibir mensajes. Un mensaje corto con el enlace directo a vuestra ficha de Google.", boton: "Elena deja su reseña" },
         { quien: "equipo", nombre: "Marisa, dueña", t: "La respuesta llega preparada", d: "La reseña aparece en el panel con una respuesta propuesta en el tono de la librería. Marisa la lee, la cambia si quiere y la publica.", boton: "Publicar la respuesta" },

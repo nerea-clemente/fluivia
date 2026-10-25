@@ -15,9 +15,9 @@
   panel: ["Quarter close", "Clients", "Receipts", "Questions", "Onboarding"],
   situacion: "Five people handle the bookkeeping, VAT and payroll for around 140 freelancers and small companies. Every quarter it's the same race to the deadline.",
   dolores: [
-    ["Chasing paperwork", "Every quarter, one message at a time to 140 clients asking for invoices and bank statements. Plus a spreadsheet to track who's missing."],
-    ["Receipts in every format", "Photos of till receipts, PDFs, crumpled paper. Someone types them into the accounting software one by one."],
-    ["The same questions", "“When is my VAT due?” “Can I claim my car?” At any hour, and on WhatsApp."],
+    ["Chasing paperwork", "Every quarter someone writes to 140 clients one by one asking for invoices and bank statements, and keeps a spreadsheet of who's missing."],
+    ["Receipts in every format", "Photos of till receipts, PDFs and crumpled paper come in, and someone types them into the accounting software one by one."],
+    ["The same questions", "Clients ask on WhatsApp, at any hour, “when is my VAT due?” or “can I claim my car?”."],
     ["Slow onboarding", "Taking on a new client means several emails, and there's always a document missing."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Quarterly paperwork, without chasing anyone",
       hoy: "Anna sends 140 messages one by one and tracks who has sent what in a spreadsheet. The last days before the deadline are a race.",
       con: "Each client gets their own checklist and a link to their portal. Reminders go out on their own and only ask for what's missing.",
-      ganas: ["No more chasing clients", "See who's missing at a glance", "A calmer deadline week"],
       pasos: [
         { quien: "auto", t: "On 1 October, the request goes out to everyone", d: "Each client gets what applies to them. Marco, a self-employed plumber, is asked for his sales invoices, his expense receipts and his bank statement.", boton: "Marco opens his portal" },
         { quien: "cliente", nombre: "Marco, self-employed", t: "Marco uploads what he has from his phone", d: "He takes photos or uploads PDFs. The firm sees them straight away in its dashboard, with no digging through email or WhatsApp.", boton: "Upload the documents" },
@@ -103,7 +102,6 @@
       titulo: "Expense receipts that read themselves",
       hoy: "Clients send photos of receipts and PDFs. Someone on the team opens them one by one and types the figures into the accounting software.",
       con: "Each receipt is read as it arrives: supplier, VAT number, date, net amount, VAT and total, with a suggested account. The team only checks the unclear ones.",
-      ganas: ["Far less typing", "Fewer data-entry mistakes", "Unclear receipts flagged for you"],
       pasos: [
         { quien: "cliente", nombre: "Marco, self-employed", t: "Marco takes a photo of the receipt", d: "From his portal or by forwarding it on WhatsApp. He doesn't need to sort anything.", boton: "Send the photo" },
         { quien: "auto", t: "The figures are pulled out automatically", d: "The receipt is read and the bookkeeping fields are filled in, with an account suggested based on Marco's line of work.", boton: "Open the inbox" },
@@ -164,7 +162,6 @@
       titulo: "The usual questions, answered at any hour",
       hoy: "The same questions come in on WhatsApp at all hours. Answering them interrupts the work, and real advice gets mixed up with simple admin.",
       con: "An assistant answers the general questions using the firm's data and the client's own. Anything that needs advice goes to Anna with a summary.",
-      ganas: ["Fewer interruptions", "Instant answers", "Anna still gives the advice"],
       pasos: [
         { quien: "cliente", nombre: "Sofia, hairdresser", t: "Sofia asks a question at 22:40", d: "A deadline question that comes up hundreds of times every quarter.", boton: "Send the question" },
         { quien: "auto", t: "An instant answer, with her details", d: "Not a generic reply: it knows Sofia pays her VAT by direct debit and that one document is still missing.", boton: "Ask a trickier question" },
@@ -208,7 +205,6 @@
       titulo: "A new client onboarded in a day",
       hoy: "Taking on a client takes several emails: ID, business registration, last year's tax return, bank details… and something is always missing or out of date.",
       con: "The client fills in a form and gets the exact list of what they need to send. Documents are checked as they're uploaded and the tax calendar is set up automatically.",
-      ganas: ["Onboarding in a day, not two weeks", "Nothing expired or half-done", "A great first impression"],
       pasos: [
         { quien: "cliente", nombre: "Daniel, new client", t: "Daniel fills in the sign-up form", d: "On the firm's website. He says how he trades (sole trader or company), what he does and whether he has premises or staff.", boton: "Send the form" },
         { quien: "auto", t: "He gets his own checklist, and only his", d: "As a sole trader with rented premises, he's asked for photo ID, his business registration, last year's tax return and the lease. Nothing else.", boton: "Upload the documents" },

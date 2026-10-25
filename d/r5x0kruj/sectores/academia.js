@@ -16,7 +16,7 @@
   situacion: "Unos 180 alumnos, de primaria a adultos, en 22 grupos de inglés, francés y refuerzo. Cuatro grupos, de jóvenes y de adultos, preparan exámenes de Cambridge. Irene dirige la academia y también da clase; en septiembre y en junio no da abasto.",
   dolores: [
     ["Simulacros que nadie corrige a tiempo", "Los grupos de B2 y C1 piden exámenes de práctica, pero corregirlos lleva tardes enteras. Y la nota llega cuando ya no sirve."],
-    ["Septiembre es una locura", "Matrículas en papel, llamadas para saber el nivel y grupos que se llenan sin que nadie lo sepa a tiempo."],
+    ["Septiembre es una locura", "Las matrículas llegan en papel, hay que llamar para saber el nivel y los grupos se llenan sin que nadie se entere a tiempo."],
     ["Faltas que nadie avisa", "Si un alumno falta, la familia se entera cuando llegan las notas. Y nadie ve quién está dejando de venir."],
     ["Junio sin saber quién sigue", "Media academia no confirma si sigue el curso que viene y los grupos se organizan a ciegas."]
   ],
@@ -28,7 +28,6 @@
       titulo: "Exámenes de Cambridge de práctica que se corrigen solos",
       hoy: "Los grupos de B2 y C1 piden simulacros, pero corregirlos se come las tardes del profesorado. Y hasta el examen nadie sabe bien quién va justo en Listening.",
       con: "Los alumnos hacen exámenes de práctica al estilo de B2 First y C1 Advanced desde el móvil o el portátil. Se corrigen solos, con explicación, y la academia ve cómo va cada grupo en cada parte.",
-      ganas: ["Simulacros sin horas de corrección", "Cada alumno sabe qué repasar", "Ves quién flojea y en qué parte"],
       pasos: [
         { quien: "cliente", nombre: "Lucía, 16 años", t: "Lucía hace el Use of English desde el móvil", d: "Huecos con cuatro opciones y formación de palabras. Cada respuesta se corrige al momento y le dice por qué.", boton: "Pasar al Reading" },
         { quien: "cliente", nombre: "Lucía, 16 años", t: "El Reading, con la pista en el texto", d: "Un texto corto y sus preguntas. Si falla, ve la frase del texto donde estaba la respuesta.", boton: "Pasar al Listening" },
@@ -151,7 +150,6 @@
       titulo: "Matrícula online con prueba de nivel",
       hoy: "Las familias vienen a la academia, rellenan papeles y hay que hacerles una prueba de nivel en persona antes de decirles en qué grupo entran.",
       con: "La familia matricula desde el móvil: datos, prueba de nivel corta, grupo recomendado con plazas reales y firma de las normas. La academia lo ve todo colocado.",
-      ganas: ["Matrículas a cualquier hora", "Grupos bien hechos desde el principio", "Septiembre sin colas"],
       pasos: [
         { quien: "cliente", nombre: "Laura, madre de Hugo", t: "Laura apunta a Hugo desde el móvil", d: "Datos del alumno, qué quiere estudiar y qué tardes puede. Un domingo por la noche, sin llamar.", boton: "Siguiente" },
         { quien: "cliente", nombre: "Hugo, 12 años", t: "Hugo hace una prueba de nivel corta", d: "Diez minutos de preguntas que se adaptan a cómo va respondiendo. Sirve para orientar, no para aprobar o suspender.", boton: "Terminar la prueba" },
@@ -216,7 +214,6 @@
       titulo: "Las faltas, avisadas a las familias el mismo día",
       hoy: "Las profesoras pasan lista en papel. Si un alumno falta, la familia no se entera, y nadie ve quién está dejando de venir hasta que es tarde.",
       con: "La profesora pasa lista en el móvil, la familia recibe un aviso con los deberes y la academia ve quién acumula faltas.",
-      ganas: ["Familias informadas al momento", "Alumnos que no se descuelgan", "Informes trimestrales sin esfuerzo"],
       pasos: [
         { quien: "equipo", nombre: "Sara, profesora", t: "Sara pasa lista en 20 segundos", d: "Desde el móvil, al empezar la clase. Hugo no ha venido.", boton: "Guardar la lista" },
         { quien: "auto", t: "La familia recibe un aviso con los deberes", d: "Laura sabe en el momento que Hugo no ha ido y tiene los deberes de hoy para que no se quede atrás.", boton: "Laura responde" },
@@ -274,7 +271,6 @@
       titulo: "Saber en junio quién sigue en septiembre",
       hoy: "En junio, la mitad de las familias no dice si sigue. En septiembre faltan plazas en unos grupos y sobran en otros.",
       con: "Cada familia recibe en mayo la propuesta de su grupo para el curso que viene. Con sus respuestas, la academia planifica grupos y sabe por qué se va quien se va.",
-      ganas: ["Grupos planificados antes del verano", "Plazas guardadas para quien sigue", "Sabes por qué se va la gente"],
       pasos: [
         { quien: "auto", t: "En mayo, la propuesta para el curso que viene", d: "Laura recibe el grupo recomendado para Hugo el curso que viene, con prioridad sobre las familias nuevas.", boton: "Laura mantiene la plaza" },
         { quien: "auto", t: "Quien no sigue, dice por qué", d: "Una pregunta y un toque. La academia sabe si se van por horario, por precio o porque se mudan.", boton: "Ver las respuestas" },

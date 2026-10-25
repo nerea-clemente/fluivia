@@ -15,9 +15,9 @@
   panel: ["Messages", "Orders", "Suppliers", "Customers", "Reviews"],
   situacion: "Two booksellers, one person in the afternoons and around 12,000 books in the shop. A small web shop, a reading club, and WhatsApp and Instagram messages that come in while someone is serving at the till.",
   dolores: [
-    ["“Do you have this book?” all day long", "On WhatsApp, Instagram and the phone. To answer, someone has to leave the till and check the computer."],
-    ["Special orders in a notebook", "The book arrives from the distributor and nobody remembers to tell the customer. Or they're told twice."],
-    ["Delivery notes and invoices everywhere", "From ten distributors and publishers, on paper and by email. At the end of the quarter, the accountant asks for whatever's missing."],
+    ["“Do you have this book?” all day long", "People ask on WhatsApp, on Instagram and by phone, and to answer someone has to leave the till and check the computer."],
+    ["Special orders in a notebook", "The book arrives from the distributor and nobody remembers to tell the customer, or they're told twice."],
+    ["Delivery notes and invoices everywhere", "They come from ten distributors and publishers, on paper and by email, and at the end of the quarter the accountant asks for whatever's missing."],
     ["Customers who come once", "Plenty of people buy a Christmas present and never come back. And happy customers don't leave reviews."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Customer messages answered with real stock",
       hoy: "People ask on WhatsApp or Instagram if you have a book, when you open or if you can put one aside. Answering means leaving the till and checking the system.",
       con: "The everyday questions get an instant answer, using the stock in your till system and your opening hours. Anything that needs a bookseller, like a recommendation or a complaint, is passed on.",
-      ganas: ["Instant answers, even at night", "No leaving the till to check stock", "A person handles the tricky ones"],
       pasos: [
         { quien: "cliente", nombre: "Elena, customer", t: "Elena asks on Instagram at 21:30", d: "She's looking for a book a friend recommended and wants to know if you're open on Saturday.", boton: "Send the question" },
         { quien: "auto", t: "The answer uses real stock and opening hours", d: "There are 2 copies in the shop, and on Saturday you're open 10:00 to 14:00. She's offered to have one put aside.", boton: "Elena asks to reserve one" },
@@ -91,7 +90,6 @@
       titulo: "Special orders and click & collect that tell customers when they're ready",
       hoy: "If a book isn't in stock, it goes in a notebook, gets ordered from the distributor and, when it arrives, someone has to remember to call the customer.",
       con: "The order is logged with the customer's details, from the till or the web shop, and added to the next distributor order. When the delivery note is booked in, the customer gets a message to say it's ready to collect.",
-      ganas: ["No forgotten orders", "No calling customers one by one", "You always know what's waiting to be collected"],
       pasos: [
         { quien: "equipo", nombre: "Nora, bookseller", t: "Paul orders a book at the till", d: "He wants a cycling route guide you don't have. Nora logs it in the dashboard in half a minute, with his phone number.", boton: "Save the order" },
         { quien: "auto", t: "Paul gets a confirmation", d: "With the book, the price and the distributor's usual lead time. The order goes into the next distributor order.", boton: "The delivery arrives" },
@@ -167,7 +165,6 @@
       titulo: "Supplier delivery notes and invoices, sorted for your accountant",
       hoy: "Delivery notes arrive on paper with the boxes, and invoices by email. They pile up in a tray, and at the end of the quarter the accountant asks for the missing ones.",
       con: "Every delivery note and invoice you receive, on paper with a photo or by email, is read and filed. The invoice is checked against the delivery notes, and your accountant's folder is always up to date.",
-      ganas: ["No lost invoices", "Differences spotted before you pay", "Your accountant stops chasing paperwork"],
       pasos: [
         { quien: "equipo", nombre: "Nora, bookseller", t: "Nora takes a photo of the delivery note", d: "The boxes from the distributor arrive with a paper delivery note. One photo from the shop phone and the paper can go in the file.", boton: "Take the photo" },
         { quien: "auto", t: "It's read and checked against the order", d: "Books, quantities, net amount and VAT are read. One book that was ordered isn't there: it's noted.", boton: "The invoice arrives" },
@@ -259,7 +256,6 @@
       titulo: "Google reviews and customers who come back",
       hoy: "Happy customers leave without writing a review. And someone who came in for a present in December doesn't hear from the shop again until next year.",
       con: "Customers who leave their number and agree to messages get one asking for a Google review. When a new release matches what they bought, they're told.",
-      ganas: ["More Google reviews", "Every review answered, without losing afternoons to it", "Customers who come back"],
       pasos: [
         { quien: "auto", t: "The day after a purchase, a request for a review", d: "Only to people who left their number and agreed to messages. A short message with a direct link to your Google profile.", boton: "Elena leaves a review" },
         { quien: "equipo", nombre: "Iris, owner", t: "The reply arrives ready to go", d: "The review appears in the dashboard with a suggested reply in the shop's voice. Iris reads it, changes it if she wants and posts it.", boton: "Post the reply" },

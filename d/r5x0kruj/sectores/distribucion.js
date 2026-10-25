@@ -18,7 +18,7 @@
     ["Pedidos por WhatsApp que se teclean a mano", "Cada mañana alguien pasa al programa de gestión decenas de mensajes, audios y fotos de listas. Y algún pedido se queda en el móvil."],
     ["Albaranes en papel", "Se firman en la furgoneta y vuelven arrugados a la oficina. Si falta una caja o llega rota, nadie lo apunta."],
     ["«¿A qué hora llegáis?»", "Los clientes llaman para saber cuándo llega el reparto, y la oficina llama al repartidor para preguntarlo."],
-    ["Cobros que se alargan", "Facturas vencidas que nadie reclama a tiempo, porque da apuro o porque no hay tiempo."]
+    ["Cobros que se alargan", "Hay facturas vencidas que nadie reclama a tiempo, porque da apuro o porque no hay tiempo."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Pedidos por WhatsApp que entran solos en el sistema",
       hoy: "Los pedidos llegan por WhatsApp como mensajes sueltos, audios o fotos de una lista. Alguien los pasa a mano al programa de gestión y a veces se equivoca o se le escapa uno.",
       con: "Cada pedido se lee al llegar, se convierte en líneas con los códigos de tus productos y se comprueba el stock. El cliente recibe la confirmación y el pedido aparece en tu sistema.",
-      ganas: ["Nadie teclea pedidos", "Ningún pedido se queda en un móvil", "El cliente sabe al momento qué le llega"],
       pasos: [
         { quien: "cliente", nombre: "Manolo, Bar La Esquina", t: "Manolo pide como siempre, por WhatsApp", d: "A las 23:40, al cerrar el bar. Sin formularios ni aplicaciones nuevas: escribe como le sale.", boton: "Enviar el pedido" },
         { quien: "auto", t: "El pedido se entiende y se ordena", d: "Se reconocen los productos de tu catálogo con su código y su formato. «La de siempre» es la cerveza que Manolo pide cada semana.", boton: "Comprobar el stock" },
@@ -85,10 +84,9 @@
       id: "albaranes",
       montaje: { plazo: "2 a 3 semanas", con: "Una app web para los repartidores y tu programa de gestión" },
       nav: "Albaranes y entregas",
-      titulo: "Albarán digital: firma, foto e incidencias",
+      titulo: "Albaranes firmados en el móvil, con fotos e incidencias",
       hoy: "El albarán se firma en papel en la furgoneta y vuelve a la oficina al final del día, si vuelve. Si falta una caja o llega una rota, nadie lo apunta.",
       con: "El repartidor entrega con el móvil: el cliente firma en la pantalla, cualquier incidencia se apunta con foto y el albarán firmado le llega al cliente y a la oficina al momento.",
-      ganas: ["Ningún albarán perdido", "Incidencias apuntadas y con foto", "Facturar sin esperar al papel"],
       pasos: [
         { quien: "equipo", nombre: "Toni, repartidor", t: "Toni llega al bar con el pedido", d: "Abre la entrega en el móvil: ve lo que tiene que dejar y marca lo que descarga.", boton: "Marcar una incidencia" },
         { quien: "equipo", nombre: "Toni, repartidor", t: "Una caja llega dañada y se apunta con foto", d: "Una caja de Coca-Cola tiene latas abolladas. Toni la marca, hace una foto y se la lleva de vuelta.", boton: "Pasar a la firma" },
@@ -153,10 +151,9 @@
       id: "reparto",
       montaje: { plazo: "2 semanas", con: "Tu planificación de rutas y WhatsApp Business" },
       nav: "Avisos de reparto",
-      titulo: "Avisos de reparto: el cliente sabe cuándo llegas",
+      titulo: "Avisos para que el cliente sepa cuándo llega el reparto",
       hoy: "Los clientes llaman para preguntar a qué hora llega el reparto, y la oficina tiene que llamar al repartidor para saberlo.",
       con: "El cliente recibe la franja de entrega la víspera y un aviso cuando el reparto va hacia su local. Si hay un retraso, se le avisa solo.",
-      ganas: ["Menos llamadas a la oficina", "Clientes que esperan el reparto", "Menos entregas con la persiana bajada"],
       pasos: [
         { quien: "auto", t: "La víspera, la franja de entrega", d: "Con la ruta ya planificada, cada cliente recibe a qué hora le llega su pedido y quién se lo lleva.", boton: "Ver el día del reparto" },
         { quien: "auto", t: "Cuando el reparto va hacia él, un aviso", d: "Toni termina la entrega anterior y a Manolo le llega «Llegamos en unos 15 minutos». Nadie ha tenido que escribirlo.", boton: "Hay un retraso" },
@@ -220,7 +217,6 @@
       titulo: "Cobros pendientes, reclamados a tiempo",
       hoy: "Las facturas vencidas se acumulan porque reclamarlas da apuro y nunca hay tiempo. Cuando alguien se pone, algunas ya tienen tres meses.",
       con: "Cada factura vencida recibe recordatorios amables y escalonados, con la factura adjunta. Administración ve quién debe qué y decide en los casos delicados.",
-      ganas: ["Cobras antes", "Sin llamadas incómodas para lo normal", "Los casos delicados los decide una persona"],
       pasos: [
         { quien: "auto", t: "Vence una factura y sale un recordatorio amable", d: "Tres días después del vencimiento, el cliente recibe un recordatorio con la factura adjunta y los datos para pagar.", boton: "Ver el siguiente recordatorio" },
         { quien: "auto", t: "Si no paga, un segundo aviso más directo", d: "A los 15 días, por WhatsApp. Si el cliente responde que ya ha pagado o que hay un problema con la factura, los avisos se paran y se avisa a administración.", boton: "Pilar responde" },

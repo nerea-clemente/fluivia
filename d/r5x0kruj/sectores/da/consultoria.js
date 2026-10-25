@@ -16,9 +16,9 @@
   situacion: "Seks medarbejdere og omkring 25 kunder på fast månedlig aftale: sociale medier, annoncer og en gang imellem en hjemmeside for mindre virksomheder i området. Næsten alt går over mail, og resten over Messenger og sms.",
   dolores: [
     ["Tilbud, der tager flere dage", "Efter hvert møde sidder nogen og laver et tilbud ved at kopiere det sidste. Imens bliver kunden kold."],
-    ["Halve opstarter", "Spørgeskema, adgange, mapper, opgaver: hver ny kunde bliver sat op i hånden, og der mangler altid noget. Første uge går med at jagte adgangskoder."],
+    ["Halve opstarter", "Hver ny kunde bliver sat op i hånden, med spørgeskema, adgange, mapper og opgaver, og der mangler altid noget. Første uge går med at jagte adgangskoder."],
     ["Godkendelser, der forsvinder i indbakken", "»Her er version 3«, svar i en anden tråd og en talebesked på Messenger. Til sidst ved ingen, hvilken version der var den rigtige, eller hvem der sagde ja."],
-    ["Rapporter og fakturaer, der æder to dage", "I starten af måneden skal tal fra Meta, Google og hjemmesiden ind i en præsentation, timerne tælles sammen, og fakturaerne laves. Kunde for kunde."]
+    ["Rapporter og fakturaer, der æder to dage", "I starten af måneden skal tal fra Meta, Google og hjemmesiden ind i en præsentation, timerne tælles sammen, og fakturaerne laves, kunde for kunde."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Tilbud klar samme dag som mødet",
       hoy: "Efter hvert første møde laver nogen et tilbud ud fra det sidste, der blev sendt. Det tager to-tre dage, og bagefter ved ingen, om kunden har læst det.",
       con: "Ud fra det, der blev sagt på mødet, og jeres priser kommer der et udkast. Den, der holdt mødet, gennemgår det, sætter prisen og sender det. Du kan se, når kunden åbner det, og kunden accepterer med ét klik.",
-      ganas: ["Tilbuddet går ud samme dag", "Priser, der passer med jeres prisliste", "Du ved, hvornår det er tid til at ringe"],
       pasos: [
         { quien: "equipo", nombre: "Ida, partner", t: "Ida har første møde med en mulig kunde", d: "Et videomøde på 40 minutter med Bageriet Holm, et håndværksbageri med to butikker. Med deres samtykke bliver mødet transskriberet, og Ida skriver tre noter.", boton: "Lav tilbuddet" },
         { quien: "auto", t: "Der kommer et udkast med jeres priser", d: "Mål, indhold, periode og pris i jeres skabelon. Det, der ikke passer med det, der blev sagt på mødet, bliver markeret, så Ida kan tage stilling.", boton: "Gennemgå udkastet" },
@@ -99,10 +98,9 @@
       id: "alta",
       montaje: { plazo: "2 uger", con: "Jeres projektværktøj (Asana, Trello eller Podio), Google Drive og jeres kalender" },
       nav: "Nye kunder",
-      titulo: "Ny kunde: fra underskrift til opstart uden at jagte nogen",
+      titulo: "Nye kunder, der kommer i gang, uden at nogen skal jagte dem",
       hoy: "Når en kunde skriver under, sender nogen spørgeskemaet, beder om adgange, opretter mapper og opgaver og finder en tid til opstartsmødet. Der mangler altid noget, og første uge går med at jagte adgangskoder.",
       con: "Når tilbuddet er accepteret, får kunden en velkomst med et spørgeskema og en liste over adgange, som kunden selv giver, uden at sende adgangskoder. Mappen, opgaverne og opstartsmødet bliver oprettet automatisk.",
-      ganas: ["Ingen halve opstarter", "Ingen adgangskoder på mail", "Teamet starter med alt ved hånden"],
       pasos: [
         { quien: "auto", t: "Når tilbuddet er accepteret, kommer velkomsten", d: "Anders får en mail om, hvad der sker de første to uger, hvem der er hans kontaktperson, og et link til spørgeskemaet.", boton: "Åbn spørgeskemaet" },
         { quien: "cliente", nombre: "Anders, Bageriet Holm", t: "Anders fortæller om bageriet og giver adgang", d: "Hvem han sælger til, hvad han ikke vil se på sine sociale medier, og hvem der godkender opslagene. Adgang til Instagram og Meta giver han selv fra hver platform: ingen sender adgangskoder.", boton: "Send" },
@@ -182,10 +180,9 @@
       id: "aprobaciones",
       montaje: { plazo: "3-4 uger", con: "En kundeportal på nettet uden downloads og jeres værktøj til at planlægge opslag" },
       nav: "Godkendelser",
-      titulo: "Godkendelser ét sted i kundeportalen, ikke i tyve mails",
+      titulo: "Kundernes godkendelser samlet ét sted i kundeportalen",
       hoy: "Design og tekster bliver sendt på mail, kunden svarer i en anden tråd eller på Messenger, og til sidst ved ingen, hvilken version der er den rigtige, eller hvem der sagde ja.",
       con: "Kunden ser hvert opslag i kundeportalen, kommenterer direkte på det og godkender med ét klik. Hver ændring får sin egen version, og intet bliver planlagt uden godkendelse.",
-      ganas: ["Én rigtig version", "Kommentarerne sidder på selve opslaget", "Det er tydeligt, hvem der godkendte hvad og hvornår"],
       pasos: [
         { quien: "equipo", nombre: "Laura, design", t: "Laura lægger ugens opslag op", d: "Tre opslag til Bageriet Holms Instagram. Når de er lagt op, får Anders en besked med et link.", boton: "Send til Anders" },
         { quien: "cliente", nombre: "Anders, Bageriet Holm", t: "Anders kommenterer på hvert opslag", d: "Han ser dem på mobilen, godkender to og beder om en rettelse i det tredje: prisen på drømmekagen er forkert.", boton: "Bed om en rettelse" },
@@ -272,7 +269,6 @@
       titulo: "Månedsrapporter, der bygger sig selv, og som et menneske gennemgår",
       hoy: "I starten af måneden bruger nogen to dage på at hente tal fra Meta, Google og hjemmesiden for hver kunde, sætte dem ind i en præsentation, skrive konklusioner og tælle timer sammen til fakturaen.",
       con: "Den 1. bliver hver kundes tal hentet, og rapporten bliver bygget i jeres format sammen med månedens timer. Et resumé bliver foreslået automatisk, og den kundeansvarlige retter det, tilføjer sin vurdering og sender det. Fakturaen ligger klar som kladde i e-conomic.",
-      ganas: ["Ingen copy-paste af tal", "Mere tid til at tænke over næste måned", "Et menneske står inde for det, rapporten siger"],
       pasos: [
         { quien: "auto", t: "Den 1. bliver tallene hentet", d: "Fra Instagram, annoncerne på Meta og Google og hjemmesiden for hver af jeres 25 kunder, og timerne fra timeregistreringen. Er en forbindelse faldet ud, får I besked.", boton: "Byg rapporterne" },
         { quien: "auto", t: "Rapporten bliver bygget med et forslag til resumé", d: "I jeres format og sammenlignet med måneden før. Resuméet er et AI-forslag ud fra tallene og ligger som udkast.", boton: "Gennemgå rapporten" },

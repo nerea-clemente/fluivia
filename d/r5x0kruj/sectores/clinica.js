@@ -17,7 +17,7 @@
   dolores: [
     ["El teléfono interrumpe las sesiones", "Las citas se piden llamando. Si nadie coge, el paciente prueba con otra clínica."],
     ["Huecos vacíos por olvidos", "Cada semana 4 o 5 pacientes no vienen o cancelan tarde, y ese hueco se pierde."],
-    ["Papeles en la primera visita", "Ficha, consentimiento y protección de datos en papel: 15 minutos de sesión que se van en rellenar."],
+    ["Papeles en la primera visita", "La ficha, el consentimiento y la protección de datos se rellenan en papel, y en eso se van 15 minutos de la sesión."],
     ["Tratamientos a medias", "Cuando notan mejoría, muchos dejan de venir y no hacen los ejercicios en casa."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Citas online y huecos que se vuelven a llenar",
       hoy: "Las citas se cuadran por teléfono y, cuando alguien cancela la víspera, el hueco se queda vacío.",
       con: "El paciente reserva desde el móvil a cualquier hora, recibe un recordatorio con botones y, si cancela, el hueco se ofrece solo a la lista de espera.",
-      ganas: ["Menos llamadas durante las sesiones", "Menos huecos vacíos", "La agenda se recoloca sola"],
       pasos: [
         { quien: "cliente", nombre: "Lucía, paciente nueva", t: "Lucía pide cita a las 22:15 desde el móvil", d: "Elige qué le pasa, con quién quiere ir y la hora. Sin llamar y sin esperar a que abráis.", boton: "Reservar la cita" },
         { quien: "auto", t: "La víspera le llega un recordatorio", d: "Con botones para confirmar, cambiar o cancelar. A Lucía le ha surgido algo y cancela con un toque.", boton: "Lucía cancela" },
@@ -94,7 +93,6 @@
       titulo: "Primera visita sin papeles",
       hoy: "El paciente llega, rellena a mano la ficha, el consentimiento y la protección de datos, y después alguien lo pasa al ordenador.",
       con: "Antes de venir, el paciente rellena su ficha y firma desde el móvil. La fisio recibe un resumen con lo importante señalado.",
-      ganas: ["La sesión empieza a su hora", "Sin papeles que archivar", "Nada importante se pasa por alto"],
       pasos: [
         { quien: "auto", t: "Al reservar, le llega su ficha", d: "Seis preguntas pensadas para fisioterapia: qué le duele, desde cuándo, cuánto, y si toma medicación o se ha operado.", boton: "Enviar la ficha" },
         { quien: "cliente", nombre: "Lucía, paciente nueva", t: "Firma el consentimiento con el dedo", d: "Consentimiento informado y protección de datos desde el móvil. Queda guardado con fecha y hora en su historia.", boton: "Firmar" },
@@ -176,7 +174,6 @@
       titulo: "Ejercicios en casa y tratamientos que se terminan",
       hoy: "Los ejercicios se explican en la camilla y se olvidan en casa. Cuando el paciente nota mejoría, deja de venir sin terminar.",
       con: "Cada paciente tiene su tratamiento en el móvil: vídeos de sus ejercicios, recordatorios y cómo va su dolor. Si alguien deja de reservar, la clínica se entera.",
-      ganas: ["Pacientes que hacen los ejercicios", "Ves la evolución con datos", "Menos tratamientos abandonados"],
       pasos: [
         { quien: "equipo", nombre: "Laura, fisioterapeuta", t: "Laura asigna los ejercicios en un minuto", d: "Elige tres vídeos de la biblioteca de la clínica, ajusta las repeticiones y se los manda.", boton: "Enviar a Lucía" },
         { quien: "cliente", nombre: "Lucía, paciente", t: "Lucía los tiene en el móvil", d: "Ve sus ejercicios en vídeo, cuántas sesiones lleva y marca lo que hace. Si un día se le olvida, le llega un aviso.", boton: "Marcar como hechos" },
@@ -251,7 +248,6 @@
       titulo: "Reseñas en Google y pacientes que vuelven",
       hoy: "Los pacientes contentos se van sin dejar reseña y no se vuelve a saber de ellos hasta que se lesionan otra vez.",
       con: "Al dar el alta se pide la opinión a todos los pacientes, con un enlace directo para dejar reseña. Meses después, les llega un mensaje para revisar o probar pilates.",
-      ganas: ["Más reseñas en Google", "Todas respondidas sin dedicarle tardes", "Pacientes que vuelven"],
       pasos: [
         { quien: "auto", t: "Al dar el alta, se le pide su opinión", d: "Dos días después del alta, Rubén recibe un mensaje corto con el enlace directo a la ficha de Google de la clínica.", boton: "Rubén deja su reseña" },
         { quien: "equipo", nombre: "Marta, gerente", t: "La respuesta llega preparada", d: "La reseña aparece en el panel con una respuesta propuesta en el tono de la clínica. Marta la lee, la cambia si quiere y la publica.", boton: "Publicar la respuesta" },

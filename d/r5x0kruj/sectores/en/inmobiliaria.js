@@ -17,8 +17,8 @@
   dolores: [
     ["Leads that go cold", "Someone enquires through a portal at 21:30 and nobody replies until the next day. By then they've called another agency."],
     ["Viewings by endless messages", "Arranging one viewing takes ten messages, and afterwards nobody asks what they thought."],
-    ["Sellers asking for updates", "“How's it going with mine?” Without viewing data, the conversation about lowering the price gets difficult."],
-    ["Paperwork until the signing", "Title documents, energy certificate, mortgage papers… spread across emails and folders."]
+    ["Sellers asking for updates", "The seller asks “how's it going with mine?” and, without viewing data, it's hard to talk about lowering the price."],
+    ["Paperwork until the signing", "The title documents, the energy certificate and the mortgage papers are spread across emails and folders."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Portal enquiries, answered within a minute",
       hoy: "Enquiries from the property portals land in the inbox at any hour. They get answered when someone has time, sometimes the next day.",
       con: "Every enquiry gets a reply within a minute, answers a few key questions and reaches the agent already qualified, with a viewing offered.",
-      ganas: ["A reply within a minute, even at night", "You know which leads are serious", "More viewings booked"],
       pasos: [
         { quien: "auto", t: "An enquiry comes in from a portal at 21:30", d: "Elena is interested in the flat on Elm Street. Tom is having dinner and doesn't see it.", boton: "See what happens" },
         { quien: "auto", t: "Within a minute, Elena has a reply", d: "On WhatsApp, with the property details and two questions to see if she's serious: is it to live in, and how would she pay for it.", boton: "Elena replies" },
@@ -87,7 +86,6 @@
       titulo: "Confirmed viewings and feedback that reaches the seller",
       hoy: "Viewings are confirmed by hand, some people don't turn up and nobody asks what they thought. The seller only knows what the agent tells them.",
       con: "A reminder with confirmation, a daily route for the agent, a short question after each viewing and a weekly report for the seller.",
-      ganas: ["Fewer wasted viewings", "You know what's holding buyers back", "Sellers kept informed without phone calls"],
       pasos: [
         { quien: "auto", t: "The day before, a reminder to confirm", d: "Elena gets the address, the time and who'll meet her. She confirms with one tap.", boton: "Elena confirms" },
         { quien: "equipo", nombre: "Tom, agent", t: "Tom has his route for the day on his phone", d: "Each viewing shows what the buyer is looking for, so he doesn't have to scroll back through messages.", boton: "Viewing done" },
@@ -152,7 +150,6 @@
       titulo: "Homeowners requesting a valuation from your website",
       hoy: "Homeowners who want to sell call three agencies to find out what their home is worth. Whoever answers first, and best, wins.",
       con: "A valuation form on the website gives an instant price range, and the agency gets the owner's details with a market report already drafted.",
-      ganas: ["More owners calling you first", "You arrive with the report ready", "No valuation left without follow-up"],
       pasos: [
         { quien: "cliente", nombre: "James, homeowner", t: "James requests a valuation on the website", d: "Address, size, bedrooms, condition and when he wants to sell. Two minutes.", boton: "See my valuation" },
         { quien: "auto", t: "He gets an instant price range", d: "Based on recent sales in the area, with an invitation for an agent to visit and give a precise figure.", boton: "Book a valuation visit" },
@@ -201,7 +198,6 @@
       titulo: "From accepted offer to signing, with no lost paperwork",
       hoy: "Title documents, energy certificate, property tax bill, payslips for the bank… every document arrives a different way and someone has to remember to ask for it.",
       con: "Each sale has its own tracker showing what's missing and who needs to provide it. Buyer and seller get reminders and can follow progress on their phones.",
-      ganas: ["Nothing forgotten", "Calm buyers and sellers", "Everything ready on signing day"],
       pasos: [
         { quien: "equipo", nombre: "Tom, agent", t: "Tom opens the sale", d: "With the signing date set, the document list is created along with who needs to provide each one.", boton: "Send reminders" },
         { quien: "auto", t: "The seller is only asked for his part", d: "James still needs to provide the energy certificate. He can upload it or ask the agency to arrange it.", boton: "James replies" },

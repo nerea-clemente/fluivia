@@ -15,9 +15,9 @@
   panel: ["Cierre trimestral", "Clientes", "Facturas recibidas", "Consultas", "Altas"],
   situacion: "Cinco personas llevan la contabilidad, los impuestos y las nóminas de unos 140 autónomos y pequeñas empresas. Cada trimestre se repite la misma carrera hasta el día 20.",
   dolores: [
-    ["Perseguir la documentación", "Cada trimestre, mensajes uno a uno a 140 clientes para que manden facturas y extractos. Y un Excel para apuntar quién falta."],
-    ["Facturas en mil formatos", "Fotos de tickets, PDF, papeles arrugados. Alguien las teclea una a una en el programa de contabilidad."],
-    ["Las mismas preguntas", "«¿Hasta cuándo tengo para el IVA?», «¿Me puedo desgravar el coche?». A cualquier hora y por WhatsApp."],
+    ["Perseguir la documentación", "Cada trimestre se escribe uno a uno a 140 clientes para que manden facturas y extractos, y se apunta en un Excel quién falta."],
+    ["Facturas en mil formatos", "Llegan fotos de tickets, PDF y papeles arrugados, y alguien los teclea uno a uno en el programa de contabilidad."],
+    ["Las mismas preguntas", "Por WhatsApp y a cualquier hora te preguntan «¿hasta cuándo tengo para el IVA?» o «¿me puedo desgravar el coche?»."],
     ["Altas que se alargan", "Para dar de alta a un cliente nuevo hacen falta varios correos y siempre falta un papel."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "La documentación del trimestre, sin perseguir a nadie",
       hoy: "Ana manda 140 mensajes uno a uno y apunta en un Excel quién ha enviado qué. Los últimos días antes del 20 son una carrera.",
       con: "Cada cliente recibe su lista personalizada y un enlace a su área. Los recordatorios salen solos y solo piden lo que falta.",
-      ganas: ["Dejas de perseguir clientes", "Sabes quién falta de un vistazo", "Menos prisas el día 20"],
       pasos: [
         { quien: "auto", t: "El 1 de octubre sale el aviso a todos", d: "Cada cliente recibe lo que necesita según su caso. A Carlos, fontanero autónomo, le piden sus facturas emitidas, las de gastos y el extracto del banco.", boton: "Carlos abre su área" },
         { quien: "cliente", nombre: "Carlos, autónomo", t: "Carlos sube lo que tiene desde el móvil", d: "Hace fotos o sube los PDF. La gestoría lo ve al momento en su panel, sin buscar en el correo ni en WhatsApp.", boton: "Subir los documentos" },
@@ -103,7 +102,6 @@
       titulo: "Facturas de gastos que se leen solas",
       hoy: "Los clientes mandan fotos de tickets y PDF. Alguien del equipo los abre uno a uno y teclea los datos en el programa de contabilidad.",
       con: "Cada factura se lee al llegar: proveedor, NIF, fecha, base, IVA y total, con la cuenta contable propuesta. El equipo solo revisa las dudosas.",
-      ganas: ["Mucho menos tecleo", "Menos errores al pasar datos", "Las dudas, señaladas"],
       pasos: [
         { quien: "cliente", nombre: "Carlos, autónomo", t: "Carlos hace una foto al ticket", d: "Desde su área o reenviándolo por WhatsApp. No tiene que ordenar nada.", boton: "Enviar la foto" },
         { quien: "auto", t: "Los datos se sacan solos", d: "Se lee la factura y se rellenan los datos contables, con la cuenta propuesta según la actividad de Carlos.", boton: "Ver la bandeja" },
@@ -164,7 +162,6 @@
       titulo: "Las preguntas de siempre, respondidas a cualquier hora",
       hoy: "Por WhatsApp entran las mismas preguntas a cualquier hora. Responderlas interrumpe el trabajo y lo que es asesoramiento se mezcla con lo que no.",
       con: "Un asistente responde lo general con los datos de la gestoría y del propio cliente. Lo que es asesoramiento lo pasa a Ana con un resumen.",
-      ganas: ["Menos interrupciones", "Respuestas al momento", "El asesoramiento lo sigue dando Ana"],
       pasos: [
         { quien: "cliente", nombre: "Lucía, peluquera", t: "Lucía pregunta a las 22:40", d: "Una duda de calendario que se repite cientos de veces cada trimestre.", boton: "Enviar la pregunta" },
         { quien: "auto", t: "Respuesta al momento, con sus datos", d: "No es una respuesta genérica: sabe que Lucía tiene domiciliado el IVA y que le falta un documento.", boton: "Hacer una pregunta delicada" },
@@ -208,7 +205,6 @@
       titulo: "Alta de un cliente nuevo en un día",
       hoy: "Para dar de alta a un cliente hacen falta varios correos: DNI, alta en Hacienda, certificado, datos del banco… y siempre falta algo o está caducado.",
       con: "El cliente rellena un formulario y recibe la lista exacta de lo que necesita según su caso. Los documentos se revisan al subirlos y el calendario fiscal sale solo.",
-      ganas: ["Altas en un día, no en dos semanas", "Nada caducado ni a medias", "Buena primera impresión"],
       pasos: [
         { quien: "cliente", nombre: "Raúl, cliente nuevo", t: "Raúl rellena el formulario de alta", d: "Desde la web de la gestoría. Indica qué es (autónomo o sociedad), a qué se dedica y si tiene local o empleados.", boton: "Enviar el formulario" },
         { quien: "auto", t: "Le llega su lista, y solo la suya", d: "Como es autónomo con local, se le pide el DNI, el alta en Hacienda, el recibo de autónomos y el contrato del local. Nada más.", boton: "Subir los documentos" },

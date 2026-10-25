@@ -18,7 +18,7 @@
     ["Sms-ordrer, der tastes ind i hånden", "Hver morgen sidder nogen og skriver snesevis af sms'er, mails og billeder af indkøbslister ind i ordresystemet. Og en gang imellem bliver en ordre liggende på en telefon."],
     ["Følgesedler på papir", "De bliver skrevet under i bilen og kommer krøllede tilbage til kontoret. Mangler der en kasse, eller er en gået i stykker, bliver det ikke skrevet ned."],
     ["»Hvornår kommer I?«", "Kunderne ringer for at høre, hvornår varerne kommer, og kontoret ringer til chaufføren for at spørge."],
-    ["Betalinger, der trækker ud", "Forfaldne fakturaer, som ingen når at rykke for, fordi det er ubehageligt, eller fordi der ikke er tid."]
+    ["Betalinger, der trækker ud", "Der er forfaldne fakturaer, som ingen når at rykke for, fordi det er ubehageligt, eller fordi der ikke er tid."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Ordrer på sms og mail, der selv lander i systemet",
       hoy: "Ordrerne kommer som løse sms'er, mails eller billeder af en liste. Nogen taster dem ind i ordresystemet i hånden, og nogle gange går det galt, eller en ordre bliver glemt.",
       con: "Hver ordre bliver læst, når den kommer, lavet om til ordrelinjer med jeres varenumre, og lageret bliver tjekket. Kunden får en bekræftelse, og ordren ligger i jeres system.",
-      ganas: ["Ingen taster ordrer ind", "Ingen ordrer bliver glemt på en telefon", "Kunden ved med det samme, hvad der kommer"],
       pasos: [
         { quien: "cliente", nombre: "Jesper, Café Hjørnet", t: "Jesper bestiller, som han plejer, på sms", d: "Kl. 23.40, når caféen lukker. Ingen formularer eller nye apps: han skriver, som det falder ham ind.", boton: "Send ordren" },
         { quien: "auto", t: "Ordren bliver forstået og sat i system", d: "Varerne bliver genkendt i jeres sortiment med varenummer og enhed. »Den sædvanlige« er den pilsner, Jesper bestiller hver uge.", boton: "Tjek lageret" },
@@ -85,10 +84,9 @@
       id: "albaranes",
       montaje: { plazo: "2-3 uger", con: "En webapp til chaufførerne og jeres ordresystem" },
       nav: "Følgesedler og levering",
-      titulo: "Digital følgeseddel: underskrift, foto og afvigelser",
+      titulo: "Følgesedler underskrevet på mobilen, med billeder og afvigelser",
       hoy: "Følgesedlen bliver skrevet under på papir i bilen og kommer tilbage til kontoret sidst på dagen, hvis den kommer. Mangler der en kasse, eller er en gået i stykker, bliver det ikke skrevet ned.",
       con: "Chaufføren leverer med mobilen: kunden skriver under på skærmen, afvigelser bliver noteret med foto, og den underskrevne følgeseddel går med det samme til kunden og kontoret.",
-      ganas: ["Ingen bortkomne følgesedler", "Afvigelser bliver noteret med foto", "Du kan fakturere uden at vente på papiret"],
       pasos: [
         { quien: "equipo", nombre: "Tobias, chauffør", t: "Tobias kommer til caféen med varerne", d: "Han åbner leveringen på mobilen, ser, hvad der skal af, og krydser af, hvad han læsser af.", boton: "Meld en afvigelse" },
         { quien: "equipo", nombre: "Tobias, chauffør", t: "En kasse er beskadiget og bliver noteret med foto", d: "En kasse cola har bulede dåser. Tobias markerer den, tager et billede og tager den med retur.", boton: "Gå til underskrift" },
@@ -153,10 +151,9 @@
       id: "reparto",
       montaje: { plazo: "2 uger", con: "Jeres ruteplanlægning og sms" },
       nav: "Besked om levering",
-      titulo: "Leveringsbeskeder: kunden ved, hvornår I kommer",
+      titulo: "Beskeder, så kunden ved, hvornår varerne kommer",
       hoy: "Kunderne ringer for at høre, hvornår varerne kommer, og kontoret må ringe til chaufføren for at finde ud af det.",
       con: "Kunden får leveringsvinduet dagen før og en besked, når bilen er på vej. Bliver I forsinket, får kunden automatisk besked.",
-      ganas: ["Færre opkald til kontoret", "Kunder, der er klar til at tage imod", "Færre leveringer til lukkede døre"],
       pasos: [
         { quien: "auto", t: "Dagen før: leveringsvinduet", d: "Når ruten er planlagt, får hver kunde at vide, hvornår varerne kommer, og hvem der kører.", boton: "Se leveringsdagen" },
         { quien: "auto", t: "En besked, når bilen er på vej", d: "Tobias afslutter leveringen før, og Jesper får »Vi er der om ca. 15 minutter«. Ingen har skullet skrive den.", boton: "Der er forsinkelse" },
@@ -221,7 +218,6 @@
       titulo: "Forfaldne fakturaer, der bliver fulgt op i tide",
       hoy: "Forfaldne fakturaer hober sig op, fordi det er ubehageligt at rykke, og fordi der aldrig er tid. Når nogen endelig tager fat, er nogle af dem tre måneder gamle.",
       con: "Hver forfalden faktura får først en venlig påmindelse og derefter en rykker, med fakturaen vedhæftet. Bogholderiet kan se, hvem der skylder hvad, og bestemmer selv i de svære sager.",
-      ganas: ["Pengene kommer hurtigere ind", "Ingen pinlige opkald for det almindelige", "Et menneske bestemmer i de svære sager"],
       pasos: [
         { quien: "auto", t: "En faktura forfalder, og der går en venlig påmindelse ud", d: "Tre dage efter forfald får kunden en påmindelse uden gebyr, med fakturaen vedhæftet og oplysningerne til at betale.", boton: "Se næste påmindelse" },
         { quien: "auto", t: "Betaler kunden ikke, kommer der en rykker", d: "Efter 15 dage, på sms og med et rykkergebyr på 100 kr. Svarer kunden, at der er betalt, eller at der er fejl i fakturaen, stopper rykkerne, og bogholderiet får besked.", boton: "Pia svarer" },

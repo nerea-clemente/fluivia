@@ -15,9 +15,9 @@
   panel: ["Beskeder", "Bestillinger", "Leverandører", "Kundeklub", "Anmeldelser"],
   situacion: "To boghandlere, en eftermiddagshjælp og omkring 12.000 bøger i butikken. En lille webshop, en kundeklub med nyhedsbrev og beskeder på Messenger, Instagram og sms, der tikker ind, mens der er kunder ved disken.",
   dolores: [
-    ["»Har I den her bog?« hele dagen", "På Messenger, Instagram og telefon. For at svare skal man væk fra disken og kigge i systemet."],
-    ["Bestillinger i et kladdehæfte", "Bogen kommer fra forlaget, og ingen husker at give kunden besked. Eller også får kunden besked to gange."],
-    ["Følgesedler og fakturaer alle vegne", "Fra ti forlag og grossister, på papir og på mail. Når kvartalet slutter, efterlyser bogholderen dem, der mangler."],
+    ["»Har I den her bog?« hele dagen", "Folk spørger på Messenger, Instagram og telefon, og for at svare skal man væk fra disken og kigge i systemet."],
+    ["Bestillinger i et kladdehæfte", "Bogen kommer fra forlaget, og ingen husker at give kunden besked, eller også får kunden besked to gange."],
+    ["Følgesedler og fakturaer alle vegne", "De kommer fra ti forlag og grossister, på papir og på mail, og når kvartalet slutter, efterlyser bogholderen dem, der mangler."],
     ["Kunder, der kun kommer én gang", "Mange køber en julegave og kommer aldrig igen. Og de glade kunder skriver ikke en anmeldelse."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Beskeder fra kunder besvaret med det rigtige lager",
       hoy: "Kunderne spørger på Instagram eller Messenger, om I har en bog, hvornår I har åbent, eller om I kan lægge den til side. For at svare skal man væk fra disken og kigge i systemet.",
       con: "De faste spørgsmål bliver besvaret med det samme ud fra lageret i kassesystemet og jeres åbningstider. Det, der kræver en boghandler, som en anbefaling eller en klage, bliver sendt videre.",
-      ganas: ["Svar med det samme, også om aftenen", "Ingen ture væk fra disken for at tjekke lageret", "Et menneske tager sig af det følsomme"],
       pasos: [
         { quien: "cliente", nombre: "Emma, kunde", t: "Emma skriver på Instagram kl. 21.30", d: "Hun leder efter en bog, hun har fået anbefalet, og vil vide, om I har åbent lørdag.", boton: "Send spørgsmålet" },
         { quien: "auto", t: "Svaret bygger på det rigtige lager og de rigtige åbningstider", d: "Der er 2 eksemplarer i butikken, og lørdag har I åbent kl. 10-14. Emma får tilbudt at få lagt et til side.", boton: "Emma vil have den lagt til side" },
@@ -91,7 +90,6 @@
       titulo: "Bestillinger, der selv giver besked, når de er klar til afhentning",
       hoy: "Er en bog ikke på lager, bliver den skrevet i et hæfte og bestilt hjem, og når den kommer, skal nogen huske at ringe til kunden. Webshopordrer med »Hent i butikken« ligger i en helt anden indbakke.",
       con: "Bestillingen bliver oprettet med kundens oplysninger, uanset om den kommer fra disken eller webshoppen, og kommer med i næste ordre til grossisten. Når følgesedlen bliver tjekket ind, får kunden en sms om, at bogen er klar til afhentning.",
-      ganas: ["Ingen glemte bestillinger", "Ingen opkald én for én", "Du ved, hvad der venter på at blive hentet"],
       pasos: [
         { quien: "equipo", nombre: "Nanna, boghandler", t: "Peter bestiller en bog ved disken", d: "Han vil have en bog med cykelruter, som I ikke har inde. Nanna opretter bestillingen på et halvt minut med hans mobilnummer, og han betaler med det samme med MobilePay.", boton: "Gem bestillingen" },
         { quien: "auto", t: "Peter får en bekræftelse", d: "Med bogen, prisen og den forventede leveringstid. Bestillingen kommer med i næste ordre.", boton: "Varerne kommer" },
@@ -168,7 +166,6 @@
       titulo: "Følgesedler og leverandørfakturaer, klar til bogholderen",
       hoy: "Følgesedlerne kommer på papir med kasserne, og fakturaerne kommer på mail. De hober sig op i en bakke, og når kvartalet slutter, efterlyser bogholderen dem, der mangler.",
       con: "Hver følgeseddel og faktura, du får, på papir via et foto eller på mail, bliver læst og gemt i orden. Fakturaen bliver tjekket mod følgesedlerne, og bilagene ligger klar i e-conomic til bogholderen.",
-      ganas: ["Ingen bortkomne fakturaer", "Du ser forskellene, før du betaler", "Bogholderen holder op med at efterlyse bilag"],
       pasos: [
         { quien: "equipo", nombre: "Nanna, boghandler", t: "Nanna tager et billede af følgesedlen", d: "Kasserne fra grossisten kommer med en følgeseddel på papir. Et billede med butikkens mobil, og papiret kan ryge i mappen.", boton: "Tag billedet" },
         { quien: "auto", t: "Følgesedlen bliver læst og sammenlignet med ordren", d: "Bøger, antal, beløb og moms bliver læst. En bog, der var bestilt, er ikke med, og det bliver noteret.", boton: "Fakturaen kommer" },
@@ -260,7 +257,6 @@
       titulo: "Anmeldelser på Google og kunder, der kommer igen",
       hoy: "Glade kunder går uden at skrive en anmeldelse. Og den, der købte en gave i december, hører ikke fra boghandlen igen før året efter.",
       con: "Medlemmer af kundeklubben, der har sagt ja til beskeder, får en sms med et link til at anmelde jer på Google. Udkommer der en ny bog, der passer til det, de har købt, får de besked.",
-      ganas: ["Flere anmeldelser på Google", "Alle besvaret, uden at det tager hele eftermiddage", "Kunder, der kommer igen"],
       pasos: [
         { quien: "auto", t: "Dagen efter købet bliver kunden spurgt om sin mening", d: "Kun medlemmer af kundeklubben, der har sagt ja til beskeder. En kort sms med et direkte link til jeres Google-profil.", boton: "Emma skriver en anmeldelse" },
         { quien: "equipo", nombre: "Merete, ejer", t: "Svaret ligger klar", d: "Anmeldelsen dukker op i overblikket med et forslag til svar i boghandlens tone. Merete læser det, retter det, hvis hun vil, og udgiver det.", boton: "Udgiv svaret" },

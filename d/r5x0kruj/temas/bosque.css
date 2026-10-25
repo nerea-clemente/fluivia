@@ -100,9 +100,11 @@ body { background: var(--fondo); letter-spacing: -.003em; }
 .portada h1 { margin: 0 0 12px; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -.03em; color: #fff; text-shadow: 0 2px 30px rgba(0, 0, 0, .25); }
 .portada p:last-child { font-size: 18px; line-height: 1.5; color: rgba(255, 255, 255, .82); opacity: 1; }
 .portada-txt::after {
-  content: "4 casos · paso a paso · unos 10 minutos"; display: block; margin-top: 26px; padding-top: 18px; max-width: 420px;
+  content: "Cuatro casos, paso a paso, en unos 10 minutos"; display: block; margin-top: 26px; padding-top: 18px; max-width: 420px;
   border-top: 1px solid rgba(255, 255, 255, .14); font-size: 13px; font-weight: 600; letter-spacing: .01em; color: rgba(255, 255, 255, .72);
 }
+html[lang="en"] .portada-txt::after { content: "Four cases, step by step, in about 10 minutes"; }
+html[lang="da"] .portada-txt::after { content: "Fire cases, trin for trin, på cirka 10 minutter"; }
 /* Textura de cuadrícula */
 .portada::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;

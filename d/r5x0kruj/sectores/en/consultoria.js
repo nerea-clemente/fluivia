@@ -16,7 +16,7 @@
   situacion: "Six people and around 25 clients on monthly retainers: social media, ads and the odd website for local small businesses. Almost everything goes through email, and the rest through WhatsApp.",
   dolores: [
     ["Proposals that take days", "After every meeting, someone rebuilds a proposal by copying the last one sent. Meanwhile, the prospect goes cold."],
-    ["Half-finished onboarding", "Questionnaire, logins, folders, tasks: every new client is set up by hand and something's always missing. The first week goes on chasing passwords."],
+    ["Half-finished onboarding", "Every new client is set up by hand, with their questionnaire, logins, folders and tasks, and something's always missing. The first week goes on chasing passwords."],
     ["Approvals lost in email", "“Here's version 3”, a reply in another thread and a voice note on WhatsApp. In the end nobody knows which version was final or who said yes."],
     ["Reports that eat two days", "At the start of each month, pulling numbers from Meta, Google and the website, pasting them into slides and writing conclusions, client by client."]
   ],
@@ -28,7 +28,6 @@
       titulo: "Proposals ready on the day of the meeting",
       hoy: "After every first meeting, someone rebuilds a proposal from the last one sent. It takes two or three days, and then nobody knows if the client has read it.",
       con: "A draft is built from what was said in the meeting and your rates. Whoever ran the meeting reviews it, sets the price and sends it. You see when the client opens it, and they accept with one click.",
-      ganas: ["The proposal goes out the same day", "Prices in line with your rates", "You know when to call"],
       pasos: [
         { quien: "equipo", nombre: "Irene, partner", t: "Irene has a first meeting with a prospect", d: "A 40-minute video call with Hearth Bakery, a bakery with two shops. With their permission it's transcribed, and Irene jots down three notes.", boton: "Prepare the proposal" },
         { quien: "auto", t: "A draft comes out with your rates", d: "Goal, scope, timeline and price, in your template. Anything that doesn't match what was discussed is flagged for Irene to decide.", boton: "Review the draft" },
@@ -99,10 +98,9 @@
       id: "alta",
       montaje: { plazo: "2 weeks", con: "Your project tool (Asana, Trello or Notion), your Google Drive and your calendar" },
       nav: "Client onboarding",
-      titulo: "New client: from signature to kick-off without chasing anyone",
+      titulo: "New clients who get started without anyone chasing them",
       hoy: "When a client signs, someone sends the questionnaire, asks for logins, creates folders and tasks, and finds a slot for the meeting. Something's always missing, and the first week goes on chasing passwords.",
       con: "When they accept the proposal, the client gets a welcome with a questionnaire and a list of access to grant themselves, without sending passwords. The folder, tasks and kick-off meeting are created automatically.",
-      ganas: ["No half-finished onboarding", "No passwords by email", "The team starts with everything to hand"],
       pasos: [
         { quien: "auto", t: "Once they accept, the welcome goes out", d: "Daniel gets an email explaining the first two weeks, who runs his account and a link to his questionnaire.", boton: "Open the questionnaire" },
         { quien: "cliente", nombre: "Daniel, Hearth Bakery", t: "Daniel describes his business and grants access", d: "Who he sells to, what he doesn't want on his social media and who approves posts. He grants access to Instagram and Meta from each platform: nobody sends passwords.", boton: "Submit" },
@@ -182,10 +180,9 @@
       id: "aprobaciones",
       montaje: { plazo: "3 to 4 weeks", con: "A web portal for your clients, with nothing to download, and your post scheduling tool" },
       nav: "Approvals",
-      titulo: "Approvals in one place, not twenty emails",
+      titulo: "Client approvals in one place",
       hoy: "Designs and copy go out by email, the client replies in another thread or on WhatsApp, and in the end nobody knows which version is final or who said yes.",
       con: "The client sees each piece at a link, comments right on it and approves with one click. Every change is saved as a version, and nothing is scheduled without approval.",
-      ganas: ["One final version", "Comments right on the piece", "Clear record of who approved what, and when"],
       pasos: [
         { quien: "equipo", nombre: "Laia, design", t: "Laia uploads the week's posts", d: "Three posts for Hearth Bakery's Instagram. As soon as she uploads them, Daniel gets a notification with a link.", boton: "Send to Daniel" },
         { quien: "cliente", nombre: "Daniel, Hearth Bakery", t: "Daniel comments on each piece", d: "He views them on his phone, approves two and asks for a change on the third: the cheesecake price is wrong.", boton: "Request the change" },
@@ -272,7 +269,6 @@
       titulo: "Monthly reports that build themselves, checked by a person",
       hoy: "At the start of each month, someone spends two days pulling numbers from Meta, Google, the website and the timesheets for each client, pasting them into slides and writing conclusions.",
       con: "On the 1st, each client's numbers and logged hours are collected and the report is built in your format. AI suggests a summary; the account lead corrects it, adds their view and sends it.",
-      ganas: ["No more copying and pasting numbers", "Hours used, visible to the client", "Every report is signed off by a person"],
       pasos: [
         { quien: "auto", t: "On the 1st, the numbers come in", d: "From Instagram, Meta and Google ads, the website and your time tracker, for all 25 clients. If a connection has dropped, you're told.", boton: "Build the reports" },
         { quien: "auto", t: "The report is built with a suggested summary", d: "In your format, compared with the previous month, with hours used against the retainer. AI suggests the summary from the numbers and it stays as a draft.", boton: "Review the report" },

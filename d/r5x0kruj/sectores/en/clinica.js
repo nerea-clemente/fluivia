@@ -17,7 +17,7 @@
   dolores: [
     ["The phone interrupts sessions", "Appointments are booked by phone. If nobody picks up, the patient tries another clinic."],
     ["Empty slots from no-shows", "Every week 4 or 5 patients don't turn up or cancel late, and the slot is lost."],
-    ["Paperwork at the first visit", "Intake form, consent and privacy notice on paper: 15 minutes of the session spent filling them in."],
+    ["Paperwork at the first visit", "The intake form, consent and privacy notice are filled in on paper, and that takes 15 minutes of the session."],
     ["Unfinished treatment", "Once they feel better, many patients stop coming and skip their home exercises."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Online booking and slots that fill up again",
       hoy: "Appointments are arranged by phone and, when someone cancels the day before, the slot stays empty.",
       con: "Patients book on their phone at any hour, get a reminder with buttons and, if they cancel, the slot is offered to the waiting list automatically.",
-      ganas: ["Fewer calls during sessions", "Fewer empty slots", "The diary rearranges itself"],
       pasos: [
         { quien: "cliente", nombre: "Lucy, new patient", t: "Lucy books at 22:15 from her phone", d: "She picks what's wrong, who she'd like to see and a time. No phone call, no waiting for you to open.", boton: "Book the appointment" },
         { quien: "auto", t: "The day before, she gets a reminder", d: "With buttons to confirm, change or cancel. Something has come up for Lucy, so she cancels with one tap.", boton: "Lucy cancels" },
@@ -94,7 +93,6 @@
       titulo: "A first visit with no paperwork",
       hoy: "The patient arrives, fills in the intake form, consent and privacy notice by hand, and later someone types it all into the computer.",
       con: "Before coming in, the patient fills in their form and signs on their phone. The physio gets a summary with the important points flagged.",
-      ganas: ["Sessions start on time", "No paper to file", "Nothing important gets missed"],
       pasos: [
         { quien: "auto", t: "When she books, she gets her form", d: "Six questions designed for physiotherapy: where it hurts, since when, how much, and whether she takes medication or has had surgery.", boton: "Send the form" },
         { quien: "cliente", nombre: "Lucy, new patient", t: "She signs the consent form with her finger", d: "Informed consent and privacy notice, on her phone. It's saved to her record with the date and time.", boton: "Sign" },
@@ -176,7 +174,6 @@
       titulo: "Home exercises and treatment plans that get finished",
       hoy: "Exercises are explained on the treatment table and forgotten at home. Once patients feel better, they stop coming before the plan is finished.",
       con: "Each patient has their treatment plan on their phone: videos of their exercises, reminders and how their pain is changing. If someone stops booking, the clinic knows.",
-      ganas: ["Patients who do their exercises", "Progress you can see in numbers", "Fewer unfinished treatment plans"],
       pasos: [
         { quien: "equipo", nombre: "Laura, physiotherapist", t: "Laura assigns exercises in a minute", d: "She picks three videos from the clinic's library, adjusts the reps and sends them.", boton: "Send to Lucy" },
         { quien: "cliente", nombre: "Lucy, patient", t: "Lucy has them on her phone", d: "She sees her exercise videos and how many sessions she's done, and ticks off what she does. If she forgets one day, she gets a reminder.", boton: "Mark as done" },
@@ -251,7 +248,6 @@
       titulo: "Google reviews and patients who come back",
       hoy: "Happy patients leave without writing a review, and you don't hear from them again until their next injury.",
       con: "When a patient is discharged, they're asked for feedback with a direct link to leave a review. Months later, they get a message suggesting a check-up or Pilates.",
-      ganas: ["More Google reviews", "Every review answered without losing afternoons", "Patients who come back"],
       pasos: [
         { quien: "auto", t: "At discharge, he's asked for feedback", d: "Two days after his last session, Ruben gets a short message with a direct link to the clinic's Google profile.", boton: "Ruben leaves a review" },
         { quien: "equipo", nombre: "Nina, practice manager", t: "The reply comes ready to go", d: "The review shows up in the dashboard with a suggested reply in the clinic's tone. Nina reads it, edits it if she wants and posts it.", boton: "Post the reply" },

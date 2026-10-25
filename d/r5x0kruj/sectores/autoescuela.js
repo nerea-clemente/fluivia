@@ -52,9 +52,9 @@
     situacion: "Unos 140 alumnos a la vez, tres profesores, tres coches y una moto. Marta lleva la oficina y da las clases de teórico; el teléfono y el WhatsApp no paran entre clase y clase.",
     dolores: [
       ["Alumnos que van al examen sin estar listos", "Cada uno hace tests por su cuenta y nadie sabe en qué tema falla hasta que suspende."],
-      ["Las prácticas, en una libreta", "Cambios por WhatsApp a cualquier hora y coches parados cuando alguien no avisa."],
-      ["Exámenes preparados a mano", "Listas en papel, avisos uno a uno y siempre hay alguien que llega sin el DNI."],
-      ["Las mismas preguntas cada día", "Qué cuesta, qué papeles hacen falta, cuándo empieza el teórico. También los sábados por la noche."]
+      ["Las prácticas, en una libreta", "Los cambios llegan por WhatsApp a cualquier hora y, si alguien no avisa, el coche se queda parado."],
+      ["Exámenes preparados a mano", "Las listas se hacen en papel, los avisos se mandan uno a uno y siempre hay alguien que llega sin el DNI."],
+      ["Las mismas preguntas cada día", "Te preguntan qué cuesta, qué papeles hacen falta y cuándo empieza el teórico, también los sábados por la noche."]
     ],
     casos: [
       {
@@ -64,7 +64,6 @@
         titulo: "Tests del teórico que se corrigen solos",
         hoy: "Los alumnos hacen tests en papel o en apps que la autoescuela no ve. Marta no sabe quién está listo para el examen hasta que alguien suspende.",
         con: "El alumno hace tests desde el móvil y ve al momento por qué ha fallado. La autoescuela ve quién está listo para presentarse y quién se ha atascado, y en qué.",
-        ganas: ["Alumnos que llegan preparados al examen", "Sabes en qué tema falla cada uno", "Las clases de teórico, donde hacen falta"],
         pasos: [
           { quien: "cliente", nombre: "Carla, alumna", t: "Carla hace un test en el autobús", d: "Treinta preguntas desde el móvil, cuando le viene bien. Esta es de señales: tres respuestas y solo una es la buena.", boton: "Responder" },
           { quien: "auto", t: "La corrección llega al momento", d: "Carla ha fallado. Ve cuál era la buena y por qué, en dos líneas. No tiene que esperar a la clase para entenderlo.", boton: "Terminar el test" },
@@ -148,7 +147,6 @@
         titulo: "Clases prácticas reservadas desde el móvil",
         hoy: "Las prácticas se apuntan en una libreta o en un Excel. Los cambios llegan por WhatsApp a cualquier hora y, si alguien no avisa, el coche y el profesor se quedan parados.",
         con: "El alumno ve los huecos libres de su profesor y de su coche y reserva con un toque. Le llega un recordatorio y, si alguien cancela, el hueco se ofrece solo a la lista de espera.",
-        ganas: ["Menos mensajes para cuadrar clases", "Coches y profesores sin horas muertas", "Cada alumno sabe cuántas clases lleva"],
         pasos: [
           { quien: "cliente", nombre: "Aitana, alumna", t: "Aitana reserva su clase desde el móvil", d: "Ve los huecos libres de Javi, su profesor, en el coche con el que practica. Elige el martes a las 17:00.", boton: "Reservar" },
           { quien: "auto", t: "La víspera le llega un recordatorio", d: "Con la hora, el coche y dónde la recogen, y botones para confirmar o cambiar. Aitana confirma con un toque.", boton: "Aitana confirma" },
@@ -230,7 +228,6 @@
         titulo: "Exámenes de la DGT sin listas a mano",
         hoy: "Marta apunta en un papel quién va a cada examen y avisa uno a uno. Siempre hay alguien que llega sin el DNI o no sabe a qué hora le recogen.",
         con: "Cuando Tráfico da fecha, la autoescuela elige quién va y cada alumno recibe su cita con lo que tiene que llevar. Después se apunta el resultado y quien suspende ya sabe cómo seguir.",
-        ganas: ["Nadie llega tarde ni sin papeles", "La lista del examen en un minuto", "Quien suspende no pierde semanas"],
         pasos: [
           { quien: "equipo", nombre: "Marta, directora", t: "Marta monta la lista del examen", d: "Tráfico ha dado fecha para el práctico. El panel propone a los alumnos que su profesor ha marcado como listos. Quién va lo decide Marta.", boton: "Confirmar la lista" },
           { quien: "auto", t: "Cada alumno recibe su cita", d: "Día, hora, dónde le recogen y qué tiene que llevar: el DNI original y las gafas si las usa. La víspera le llega un recordatorio.", boton: "Ver el examen" },
@@ -316,7 +313,6 @@
         titulo: "Matrículas online y las preguntas de siempre en WhatsApp",
         hoy: "Cada día llegan las mismas preguntas: qué cuesta, qué papeles hacen falta, cuándo empieza el teórico. Y la matrícula se hace en la oficina, con fotocopias.",
         con: "Un asistente responde por WhatsApp con la información de la autoescuela y manda el enlace de matrícula. El alumno se apunta desde el móvil y sube sus documentos. Marta solo revisa.",
-        ganas: ["Respuestas a cualquier hora", "Matrículas sin pasar por la oficina", "Los papeles completos desde el principio"],
         pasos: [
           { quien: "cliente", nombre: "Daniel, 18 años", t: "Daniel pregunta un sábado por la noche", d: "Quiere sacarse el carnet de coche este invierno. Escribe por WhatsApp a las 23:10, con la oficina cerrada.", boton: "Enviar" },
           { quien: "auto", t: "Respuesta con lo que necesita saber", d: "La tarifa de la autoescuela, los papeles y cuándo empieza el próximo grupo de teórico. Lo que no sabe, como pagar a plazos, se lo pasa a Marta.", boton: "Matricularme" },

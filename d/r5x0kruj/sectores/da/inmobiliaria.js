@@ -17,8 +17,8 @@
   dolores: [
     ["Interesserede, der bliver kolde", "En køber skriver via Boligsiden kl. 21.30 og får først svar næste dag. Til den tid har hun ringet til en anden mægler."],
     ["Fremvisninger via sms-ping-pong", "Det tager ti beskeder at finde en tid, og bagefter spørger ingen, hvad køberen syntes."],
-    ["Sælgere, der spørger", "»Hvordan går det med vores hus?« Uden tal fra fremvisningerne er det svært at tale om at sætte prisen ned."],
-    ["Papirer frem til overtagelsen", "Tilstandsrapport, energimærke, lånetilbud … spredt ud over mails og mapper."]
+    ["Sælgere, der spørger", "Sælgeren spørger »hvordan går det med vores hus?«, og uden tal fra fremvisningerne er det svært at tale om at sætte prisen ned."],
+    ["Papirer frem til overtagelsen", "Tilstandsrapporten, energimærket og lånetilbuddet ligger spredt ud over mails og mapper."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Henvendelser fra portalerne, besvaret på et minut",
       hoy: "Henvendelserne fra portalerne lander i indbakken på alle tider af døgnet. De bliver besvaret, når nogen har tid, nogle gange først næste dag.",
       con: "Alle henvendelser får svar inden for et minut. Køberen får de vigtigste spørgsmål og når frem til mægleren med en kvalificeret profil og et forslag til fremvisning.",
-      ganas: ["Svar på et minut, også om aftenen", "Du ved, hvem der er seriøse", "Flere fremvisninger i kalenderen"],
       pasos: [
         { quien: "auto", t: "En henvendelse kommer ind via Boligsiden kl. 21.30", d: "Emma er interesseret i lejligheden på Vestergade. Peter sidder ved middagsbordet og opdager det ikke.", boton: "Se, hvad der sker" },
         { quien: "auto", t: "Et minut senere har Emma fået svar", d: "I en besked med boligens nøgletal og to spørgsmål, der viser, om hun er seriøs: skal hun selv bo der, og hvordan er finansieringen på plads?", boton: "Emma svarer" },
@@ -87,7 +86,6 @@
       titulo: "Bekræftede fremvisninger og feedback, der når frem til sælger",
       hoy: "Fremvisninger bliver bekræftet i hånden, nogle købere dukker ikke op, og ingen spørger, hvad de syntes. Sælger ved kun det, mægleren fortæller.",
       con: "En påmindelse med bekræftelse, en dagsplan til mægleren, et kort spørgsmål efter hver fremvisning og en ugerapport til sælger.",
-      ganas: ["Færre forgæves fremvisninger", "Du ved, hvad der holder køberne tilbage", "Sælgere, der er opdateret uden opkald"],
       pasos: [
         { quien: "auto", t: "Dagen før: påmindelse med bekræftelse", d: "Emma får adresse, tidspunkt og navnet på den, der tager imod hende. Hun bekræfter med ét tryk.", boton: "Emma bekræfter" },
         { quien: "equipo", nombre: "Peter, mægler", t: "Peter har dagens plan på mobilen", d: "Hver fremvisning med det, køberen leder efter, så han ikke skal læse beskederne igennem igen.", boton: "Fremvisningen er slut" },
@@ -152,7 +150,6 @@
       titulo: "Sælgere, der beder om en vurdering via hjemmesiden",
       hoy: "Når folk vil sælge, ringer de til tre mæglere for at høre, hvad boligen er værd. Den, der svarer først og bedst, vinder.",
       con: "En vurderingsformular på hjemmesiden giver et vejledende prisniveau med det samme, og mægleren får sælger ind med alle oplysninger og en markedsanalyse klar.",
-      ganas: ["Flere sælgere, der ringer til dig", "Du møder op med analysen klar", "Ingen vurdering bliver glemt"],
       pasos: [
         { quien: "cliente", nombre: "Jens, sælger", t: "Jens beder om en vurdering via hjemmesiden", d: "Adresse, kvadratmeter, værelser, stand og hvornår han vil sælge. To minutter.", boton: "Se min vurdering" },
         { quien: "auto", t: "Han får et vejledende prisniveau med det samme", d: "Beregnet ud fra nylige salg i området og med en invitation til, at en mægler kommer forbi og giver en præcis salgsvurdering.", boton: "Book en salgsvurdering" },
@@ -201,7 +198,6 @@
       titulo: "Fra købsaftale til overtagelse, uden papirer, der forsvinder",
       hoy: "Tilstandsrapport, energimærke, lånetilbud, advokatgodkendelse … hvert dokument kommer fra sit eget sted, og nogen skal huske at bede om det.",
       con: "Hver handel har sit eget overblik over, hvad der mangler, og hvem der skal levere det. Køber og sælger får besked og kan følge med på mobilen.",
-      ganas: ["Intet bliver glemt", "Rolige købere og sælgere", "Alt er klar til overtagelsen"],
       pasos: [
         { quien: "equipo", nombre: "Peter, mægler", t: "Peter opretter handlen", d: "Ud fra overtagelsesdatoen bliver der lavet en liste over dokumenter, og hvem der skal levere hvad.", boton: "Send beskeder" },
         { quien: "auto", t: "Sælger bliver kun bedt om sit eget", d: "Jens mangler energimærket. Han kan uploade det eller bede mægleren om at bestille det.", boton: "Jens svarer" },

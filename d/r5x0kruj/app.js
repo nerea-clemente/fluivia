@@ -26,19 +26,19 @@
       conectamos: "Lo conectamos", conectamosTxt: function (x) { return "Si " + x + " te funciona, Fluivia trabaja con él. Tu equipo sigue usando lo de siempre."; },
       sustituimos: "Lo sustituimos", sustituimosTxt: function (x) { return "Si se te queda corto, te montamos " + x + ", con todo lo que ves en esta demo dentro."; },
       demoPara: "Demo preparada para", ejemplo: "Ejemplo ficticio · ", pasaHoy: "Lo que suele pasar hoy", vasAVer: "Lo que vas a ver",
-      vasAVerTxt: function (c) { return "Cuatro situaciones del día a día, paso a paso: qué hace el " + c + ", qué pasa solo y qué ve tu equipo."; },
+      vasAVerTxt: function (c) { return "Cuatro situaciones del día a día, paso a paso. Verás qué hace el " + c + ", qué pasa solo y qué ve tu equipo."; },
       verComo: "Ver cómo funciona", casoDe: function (i, n) { return "Caso " + i + " de " + n; }, ejemploCifras: "Nombres y cifras de ejemplo",
-      empezarNuevo: "Empezar de nuevo", ganas: "Lo que ganas", montarlo: "Para montarlo", verDeQue: "Ver de qué va este caso", ocultar: "Ocultar el resumen",
+      empezarNuevo: "Empezar de nuevo", montarlo: "Para montarlo", verDeQue: "Ver de qué va este caso", ocultar: "Ocultar el resumen",
       anterior: "Paso anterior", asiQueda: "Así queda", antes: "Antes", ahora: "Ahora", montaje: "Montaje", siguiente: "Siguiente: ", verOtra: "Verlo otra vez",
       truco: "Pulsa el botón que brilla o usa las flechas del teclado.",
-      cierreTxt: "Marca lo que más trabajo te quitaría. No hace falta montarlo todo de golpe: se empieza por una cosa y se suma lo demás cuando funciona.",
+      cierreTxt: "Marca lo que más trabajo te quitaría. No hace falta montarlo todo de golpe. Se empieza por una cosa y se suma lo demás cuando funciona.",
       paraMontarlo: "Para montarlo: ", mailHola: "Hola:\n\nHe visto la demo. Lo que más me interesa:\n", mailNada: "- (todavía no lo tengo claro)",
       mailAsunto: function (n) { return "Demo de Fluivia: " + n; },
       marcados: function (n) { return "Has marcado " + n + (n === 1 ? " caso." : " casos."); }, marca: "Marca uno o varios y envíanos tu elección.",
       enviar: "Enviar mi elección", hasMarcado: "Has marcado: ",
       seguiriamos: "Cómo seguiríamos",
       sig: [["Una llamada de 30 minutos", "Para ver cómo trabajáis hoy y qué os quita más tiempo."],
-        ["Una propuesta concreta", "Qué montaríamos primero, en cuánto tiempo y con qué herramientas: las tuyas o nuevas."],
+        ["Una propuesta concreta", "Qué montaríamos primero, cuánto tardaríamos y si usaríamos tus herramientas o unas nuevas."],
         ["Lo montamos y lo probáis", "Primero lo usa tu equipo. Cuando estáis contentos, lo ven tus clientes."]],
       tituloPara: function (n) { return "Demo para " + n; }, preparada: function (n) { return "Preparada para " + n; },
       correo: "Correo", hoy: "Hoy", pieNota: "Los nombres, conversaciones y cifras de esta demo son de ejemplo.", enLinea: "en línea", hab: " hab. · ", banos: " baños", ejemploDe: "Ejemplo de", tipoNegocio: "Tipo de negocio del ejemplo", menu: "Menú de la demo", inicioDemo: "Inicio de la demo", partes: "Partes de la demo"
@@ -51,19 +51,19 @@
       conectamos: "We connect it", conectamosTxt: function (x) { return "If " + x + " works for you, Fluivia works with it. Your team keeps using what it knows."; },
       sustituimos: "We replace it", sustituimosTxt: function (x) { return "If it falls short, we build you " + x + ", with everything you see in this demo included."; },
       demoPara: "Demo prepared for", ejemplo: "Fictional example · ", pasaHoy: "What usually happens today", vasAVer: "What you'll see",
-      vasAVerTxt: function (c) { return "Four everyday situations, step by step: what the " + c + " does, what happens on its own and what your team sees."; },
+      vasAVerTxt: function (c) { return "Four everyday situations, step by step. You'll see what the " + c + " does, what happens on its own and what your team sees."; },
       verComo: "See how it works", casoDe: function (i, n) { return "Case " + i + " of " + n; }, ejemploCifras: "Sample names and figures",
-      empezarNuevo: "Start again", ganas: "What you gain", montarlo: "Setting it up", verDeQue: "What this case is about", ocultar: "Hide the summary",
+      empezarNuevo: "Start again", montarlo: "Setting it up", verDeQue: "What this case is about", ocultar: "Hide the summary",
       anterior: "Previous step", asiQueda: "The result", antes: "Before", ahora: "Now", montaje: "Set-up", siguiente: "Next: ", verOtra: "Watch it again",
       truco: "Press the glowing button or use the arrow keys.",
-      cierreTxt: "Tick what would save you the most work. There's no need to set it all up at once: you start with one thing and add the rest once it works.",
+      cierreTxt: "Tick what would save you the most work. There's no need to set it all up at once. You start with one thing and add the rest once it works.",
       paraMontarlo: "Set-up: ", mailHola: "Hi,\n\nI've seen the demo. What interests me most:\n", mailNada: "- (not sure yet)",
       mailAsunto: function (n) { return "Fluivia demo: " + n; },
       marcados: function (n) { return "You've ticked " + n + (n === 1 ? " case." : " cases."); }, marca: "Tick one or more and send us your choice.",
       enviar: "Send my choice", hasMarcado: "You've ticked: ",
       seguiriamos: "How we would continue",
       sig: [["A 30-minute call", "To see how you work today and what takes up most of your time."],
-        ["A concrete proposal", "What we would set up first, how long it takes and with which tools: yours or new ones."],
+        ["A concrete proposal", "What we would set up first, how long it would take and whether we'd use your tools or new ones."],
         ["We build it and you try it", "Your team uses it first. When you're happy, your customers see it."]],
       tituloPara: function (n) { return "Demo for " + n; }, preparada: function (n) { return "Prepared for " + n; },
       correo: "Mail", hoy: "Today", pieNota: "The names, conversations and figures in this demo are examples.", enLinea: "online", hab: " bedrooms · ", banos: " bathrooms", ejemploDe: "Example of", tipoNegocio: "Type of business in the example", menu: "Demo menu", inicioDemo: "Start of the demo", partes: "Parts of the demo"
@@ -76,19 +76,19 @@
       conectamos: "Vi kobler det på", conectamosTxt: function (x) { return "Hvis " + x + " fungerer for jer, arbejder Fluivia sammen med det. Dit team bruger det samme som altid."; },
       sustituimos: "Vi erstatter det", sustituimosTxt: function (x) { return "Hvis det ikke rækker, bygger vi " + x + " til jer, med alt det, du ser i demoen."; },
       demoPara: "Demo lavet til", ejemplo: "Fiktivt eksempel · ", pasaHoy: "Sådan er det typisk i dag", vasAVer: "Det, du kommer til at se",
-      vasAVerTxt: function (c) { return "Fire situationer fra hverdagen, trin for trin: hvad " + c + " gør, hvad der sker af sig selv, og hvad dit team ser."; },
+      vasAVerTxt: function (c) { return "Fire situationer fra hverdagen, trin for trin. Du ser, hvad " + c + " gør, hvad der sker af sig selv, og hvad dit team ser."; },
       verComo: "Se, hvordan det virker", casoDe: function (i, n) { return "Case " + i + " af " + n; }, ejemploCifras: "Navne og tal er eksempler",
-      empezarNuevo: "Start forfra", ganas: "Det får du ud af det", montarlo: "Sådan sætter vi det op", verDeQue: "Se, hvad casen handler om", ocultar: "Skjul resuméet",
+      empezarNuevo: "Start forfra", montarlo: "Sådan sætter vi det op", verDeQue: "Se, hvad casen handler om", ocultar: "Skjul resuméet",
       anterior: "Forrige trin", asiQueda: "Resultatet", antes: "Før", ahora: "Nu", montaje: "Opsætning", siguiente: "Næste: ", verOtra: "Se det igen",
       truco: "Tryk på knappen, der lyser, eller brug piletasterne.",
-      cierreTxt: "Sæt kryds ved det, der ville spare dig mest arbejde. Det behøver ikke at blive sat op på én gang: man starter med én ting og bygger videre, når den virker.",
+      cierreTxt: "Sæt kryds ved det, der ville spare dig mest arbejde. Det behøver ikke at blive sat op på én gang. Man starter med én ting og bygger videre, når den virker.",
       paraMontarlo: "Opsætning: ", mailHola: "Hej\n\nJeg har set demoen. Det, der interesserer mig mest:\n", mailNada: "- (det ved jeg ikke helt endnu)",
       mailAsunto: function (n) { return "Fluivia-demo: " + n; },
       marcados: function (n) { return "Du har valgt " + n + (n === 1 ? " case." : " cases."); }, marca: "Vælg en eller flere, og send os dit valg.",
       enviar: "Send mit valg", hasMarcado: "Du har valgt: ",
       seguiriamos: "Sådan fortsætter vi",
       sig: [["Et opkald på 30 minutter", "Så vi kan se, hvordan I arbejder i dag, og hvad der tager mest tid."],
-        ["Et konkret forslag", "Hvad vi ville sætte op først, hvor lang tid det tager, og med hvilke værktøjer: jeres egne eller nye."],
+        ["Et konkret forslag", "Hvad vi ville sætte op først, hvor lang tid det ville tage, og om vi ville bruge jeres egne værktøjer eller nye."],
         ["Vi bygger det, og I prøver det", "Først bruger dit team det. Når I er tilfredse, ser jeres kunder det."]],
       tituloPara: function (n) { return "Demo til " + n; }, preparada: function (n) { return "Lavet til " + n; },
       correo: "Mail", hoy: "I dag", pieNota: "Navne, samtaler og tal i denne demo er eksempler.", enLinea: "online", hab: " vær. · ", banos: " bad", ejemploDe: "Eksempel på", tipoNegocio: "Virksomhedstype i eksemplet", menu: "Demoens menu", inicioDemo: "Demoens start", partes: "Demoens dele"
@@ -461,7 +461,6 @@
 
     h += '<section class="resumen' + (plegado ? " is-plegado" : "") + '">' +
       '<div class="res"><h2>' + T.hoy + '</h2><p>' + esc(c.hoy) + "</p></div>" +
-      '<div class="res"><h2>' + T.ganas + '</h2><ul>' + c.ganas.map(function (g) { return "<li>" + icono("check") + esc(g) + "</li>"; }).join("") + "</ul></div>" +
       '<div class="res"><h2>' + T.montarlo + '</h2><p><strong>' + esc(c.montaje.plazo) + "</strong></p><p>" + esc(c.montaje.con) + "</p></div>" +
       "</section>";
     if (p > 0 && !fin) {
@@ -507,7 +506,7 @@
       var sel = elegidos.indexOf(c.id) > -1;
       return '<button type="button" class="elige' + (sel ? " is-sel" : "") + '" data-elegir="' + c.id + '" aria-pressed="' + sel + '">' +
         '<span class="elige-check">' + icono("check") + "</span>" +
-        '<span class="elige-txt"><strong>' + esc(c.titulo) + "</strong><span>" + esc(c.ganas.join(" · ")) + "</span>" +
+        '<span class="elige-txt"><strong>' + esc(c.titulo) + "</strong>" +
         '<small>' + T.paraMontarlo + esc(c.montaje.plazo) + "</small></span></button>";
     }).join("") + "</div>";
 

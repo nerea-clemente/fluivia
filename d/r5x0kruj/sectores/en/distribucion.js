@@ -18,7 +18,7 @@
     ["WhatsApp orders typed in by hand", "Every morning someone copies dozens of messages, voice notes and photos of lists into the system. And now and then an order stays stuck on a phone."],
     ["Paper delivery notes", "They get signed in the van and come back to the office crumpled. If a case is missing or broken, nobody writes it down."],
     ["“What time are you coming?”", "Customers ring to ask when the delivery will arrive, and the office rings the driver to find out."],
-    ["Payments that drag on", "Overdue invoices nobody chases in time, because it feels awkward or there's simply no time."]
+    ["Payments that drag on", "Some overdue invoices never get chased in time, because it feels awkward or there's simply no time."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "WhatsApp orders that go straight into the system",
       hoy: "Orders arrive on WhatsApp as loose messages, voice notes or photos of a list. Someone types them into the system by hand, and sometimes gets one wrong or misses it.",
       con: "Each order is read as it arrives, turned into lines with your product codes and checked against stock. The customer gets a confirmation and the order appears in your system.",
-      ganas: ["Nobody types up orders", "No order gets stuck on a phone", "Customers know straight away what's coming"],
       pasos: [
         { quien: "cliente", nombre: "Marco, The Corner Café", t: "Marco orders the usual way, on WhatsApp", d: "At 23:40, after closing up. No forms, no new apps: he writes it however he likes.", boton: "Send the order" },
         { quien: "auto", t: "The order is understood and sorted", d: "Products are matched to your catalogue, with code and pack size. “The usual” is the beer Marco orders every week.", boton: "Check stock" },
@@ -85,10 +84,9 @@
       id: "albaranes",
       montaje: { plazo: "2 to 3 weeks", con: "A web app for your drivers and your order software" },
       nav: "Delivery notes",
-      titulo: "Digital delivery notes: signature, photo and issues",
+      titulo: "Delivery notes signed on the phone, with photos and issues",
       hoy: "The delivery note is signed on paper in the van and comes back to the office at the end of the day, if it comes back at all. If a case is missing or broken, nobody writes it down.",
       con: "The driver delivers with their phone: the customer signs on screen, any issue is logged with a photo, and the signed note reaches the customer and the office straight away.",
-      ganas: ["No lost delivery notes", "Issues logged, with photos", "Invoice without waiting for paper"],
       pasos: [
         { quien: "equipo", nombre: "Tom, driver", t: "Tom arrives at the café with the order", d: "He opens the delivery on his phone: he sees what to drop off and ticks what he unloads.", boton: "Report an issue" },
         { quien: "equipo", nombre: "Tom, driver", t: "A case arrives damaged and is logged with a photo", d: "A case of Coke has dented cans. Tom marks it, takes a photo and takes it back with him.", boton: "Go to signature" },
@@ -153,10 +151,9 @@
       id: "reparto",
       montaje: { plazo: "2 weeks", con: "Your route planning and WhatsApp Business" },
       nav: "Delivery updates",
-      titulo: "Delivery updates: customers know when you're coming",
+      titulo: "Updates so customers know when the delivery is coming",
       hoy: "Customers ring to ask what time the delivery will arrive, and the office has to ring the driver to find out.",
       con: "The customer gets their delivery window the evening before and a message when the van is on its way. If there's a delay, they're told automatically.",
-      ganas: ["Fewer calls to the office", "Customers ready for the delivery", "Fewer drop-offs at closed doors"],
       pasos: [
         { quien: "auto", t: "The evening before, the delivery window", d: "Once the route is planned, every customer is told when their order will arrive and who's bringing it.", boton: "See delivery day" },
         { quien: "auto", t: "When the van is on its way, a message", d: "Tom finishes the previous drop and Marco gets “We'll be there in about 15 minutes”. Nobody had to type it.", boton: "There's a delay" },
@@ -220,7 +217,6 @@
       titulo: "Overdue invoices, chased on time",
       hoy: "Overdue invoices pile up because chasing them feels awkward and there's never time. By the time someone gets to it, some are three months old.",
       con: "Every overdue invoice gets friendly reminders, step by step, with the invoice attached. Accounts sees who owes what and decides on the tricky ones.",
-      ganas: ["You get paid sooner", "No awkward calls for the routine ones", "A person decides on the tricky cases"],
       pasos: [
         { quien: "auto", t: "An invoice falls due and a friendly reminder goes out", d: "Three days after the due date, the customer gets a reminder with the invoice attached and the payment details.", boton: "See the next reminder" },
         { quien: "auto", t: "If it's still unpaid, a more direct follow-up", d: "After 15 days, on WhatsApp. If the customer replies that they've already paid or that there's a problem with the invoice, the reminders stop and accounts is told.", boton: "Lucy replies" },

@@ -16,7 +16,7 @@
   situacion: "Seis personas y unos 25 clientes con cuota mensual: redes sociales, anuncios y alguna web para pymes de la zona. Casi todo pasa por el correo, y lo que no, por WhatsApp.",
   dolores: [
     ["Propuestas que tardan días", "Después de cada reunión, alguien rehace una propuesta copiando la última que se envió. Mientras tanto, el posible cliente se enfría."],
-    ["Bienvenidas a medias", "Cuestionario, accesos, carpetas, tareas: cada cliente nuevo se monta a mano y siempre falta algo. La primera semana se va en perseguir contraseñas."],
+    ["Bienvenidas a medias", "Cada cliente nuevo se monta a mano, con su cuestionario, sus accesos, sus carpetas y sus tareas, y siempre falta algo. La primera semana se va en perseguir contraseñas."],
     ["Aprobaciones perdidas en el correo", "«Te paso la versión 3», respuesta en otro hilo y un audio por WhatsApp. Al final nadie sabe cuál era la buena ni quién dijo que sí."],
     ["Informes que se comen dos días", "A primeros de mes, sacar datos de Meta, Google y la web, pegarlos en una presentación y escribir conclusiones, cliente a cliente."]
   ],
@@ -28,7 +28,6 @@
       titulo: "Propuestas listas el mismo día de la reunión",
       hoy: "Después de cada primera reunión, alguien rehace una propuesta a partir de la última que se envió. Tarda dos o tres días y luego nadie sabe si el cliente la ha leído.",
       con: "Con lo que se habló en la reunión y vuestras tarifas sale un borrador. Quien lleva la reunión lo revisa, decide el precio y lo envía. Ves cuándo lo abre el cliente y él lo acepta con un botón.",
-      ganas: ["La propuesta sale el mismo día", "Precios coherentes con vuestras tarifas", "Sabes cuándo toca llamar"],
       pasos: [
         { quien: "equipo", nombre: "Irene, socia", t: "Irene tiene la primera reunión con un posible cliente", d: "Una videollamada de 40 minutos con Obrador Sanz, una panadería con dos tiendas. Con su permiso se transcribe, e Irene apunta tres notas.", boton: "Preparar la propuesta" },
         { quien: "auto", t: "Sale un borrador con vuestras tarifas", d: "Objetivo, qué incluye, plazos y precio, con vuestra plantilla. Lo que no encaja con lo que se habló queda señalado para que lo decida Irene.", boton: "Revisar el borrador" },
@@ -99,10 +98,9 @@
       id: "alta",
       montaje: { plazo: "2 semanas", con: "Tu gestor de proyectos (Asana, Trello o Notion), tu Google Drive y tu calendario" },
       nav: "Alta de clientes",
-      titulo: "Cliente nuevo: de la firma al arranque sin perseguir a nadie",
+      titulo: "Clientes nuevos que arrancan sin perseguir a nadie",
       hoy: "Cuando un cliente firma, alguien manda el cuestionario, pide accesos, crea carpetas y tareas y busca hueco para la reunión. Siempre falta algo y la primera semana se va en perseguir contraseñas.",
       con: "Al aceptar la propuesta, el cliente recibe una bienvenida con un cuestionario y una lista de accesos que da él mismo, sin mandar contraseñas. La carpeta, las tareas y la reunión de arranque se crean solas.",
-      ganas: ["Ninguna bienvenida a medias", "Sin contraseñas por correo", "El equipo empieza con todo a mano"],
       pasos: [
         { quien: "auto", t: "Al aceptar, le llega la bienvenida", d: "Andrés recibe un correo con lo que va a pasar en las dos primeras semanas, quién lleva su cuenta y un enlace a su cuestionario.", boton: "Abrir el cuestionario" },
         { quien: "cliente", nombre: "Andrés, Obrador Sanz", t: "Andrés cuenta su negocio y da los accesos", d: "A quién vende, qué no quiere ver en sus redes y quién aprueba las publicaciones. Los accesos a Instagram y Meta los da él desde cada plataforma: nadie manda contraseñas.", boton: "Enviar" },
@@ -182,10 +180,9 @@
       id: "aprobaciones",
       montaje: { plazo: "3 a 4 semanas", con: "Un portal web para tus clientes, sin descargas, y tu herramienta para programar publicaciones" },
       nav: "Aprobaciones",
-      titulo: "Aprobaciones en un solo sitio, no en veinte correos",
+      titulo: "Las aprobaciones de los clientes, en un solo sitio",
       hoy: "Los diseños y textos van por correo, el cliente contesta en otro hilo o por WhatsApp, y al final nadie sabe qué versión es la buena ni quién dijo que sí.",
       con: "El cliente ve cada pieza en un enlace, comenta encima y aprueba con un botón. Cada cambio queda con su versión y no se programa nada sin aprobación.",
-      ganas: ["Una sola versión buena", "Los comentarios, encima de la pieza", "Queda claro quién aprobó qué y cuándo"],
       pasos: [
         { quien: "equipo", nombre: "Laia, diseño", t: "Laia sube las publicaciones de la semana", d: "Tres publicaciones para el Instagram de Obrador Sanz. Al subirlas, a Andrés le llega un aviso con un enlace.", boton: "Enviar a Andrés" },
         { quien: "cliente", nombre: "Andrés, Obrador Sanz", t: "Andrés comenta encima de cada pieza", d: "Las ve en el móvil, aprueba dos y en la tercera pide un cambio: el precio de la tarta de queso está mal.", boton: "Pedir el cambio" },
@@ -272,7 +269,6 @@
       titulo: "Informes mensuales que se montan solos y revisa una persona",
       hoy: "A primeros de mes, alguien pasa dos días sacando datos de Meta, Google y la web de cada cliente, pegándolos en una presentación y escribiendo conclusiones.",
       con: "El día 1 se recogen los datos de cada cliente y se monta el informe con vuestro formato. La IA propone un resumen; quien lleva la cuenta lo corrige, añade su opinión y lo envía.",
-      ganas: ["Sin copiar y pegar datos", "Más tiempo para pensar el mes siguiente", "Lo que dice el informe lo firma una persona"],
       pasos: [
         { quien: "auto", t: "El día 1 se recogen los datos", d: "De Instagram, de los anuncios de Meta y Google y de la web de cada uno de vuestros 25 clientes. Si a alguno se le ha caído una conexión, se avisa.", boton: "Montar los informes" },
         { quien: "auto", t: "Se monta el informe con un resumen propuesto", d: "Con vuestro formato y comparado con el mes anterior. El resumen lo propone la IA a partir de las cifras y queda como borrador.", boton: "Revisar el informe" },

@@ -17,7 +17,7 @@
   dolores: [
     ["Telefonen afbryder behandlingerne", "Tider bliver booket over telefonen. Tager ingen den, prøver patienten en anden klinik."],
     ["Tomme tider, fordi folk glemmer", "Hver uge er der 4-5 patienter, der ikke dukker op eller melder afbud for sent, og tiden går tabt."],
-    ["Papirer ved første konsultation", "Skema, samtykke og persondata på papir: 15 minutter af behandlingen går med at udfylde."],
+    ["Papirer ved første konsultation", "Skema, samtykke og persondata bliver udfyldt på papir, og det tager 15 minutter af behandlingen."],
     ["Forløb, der ikke bliver gjort færdige", "Når det går bedre, stopper mange med at komme og laver ikke øvelserne derhjemme."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Onlinebooking og ledige tider, der bliver fyldt igen",
       hoy: "Tider bliver aftalt over telefonen, og melder nogen afbud dagen før, står tiden tom.",
       con: "Patienten booker fra mobilen på alle tider af døgnet, får en påmindelse på sms med knapper, og melder patienten afbud, bliver tiden automatisk tilbudt til ventelisten.",
-      ganas: ["Færre opkald under behandlingerne", "Færre tomme tider", "Kalenderen fylder sig selv op igen"],
       pasos: [
         { quien: "cliente", nombre: "Sara, ny patient", t: "Sara booker en tid fra mobilen kl. 22.15", d: "Hun vælger, hvad der er galt, hvem hun vil til, og hvornår. Uden at ringe og uden at vente på, at I åbner.", boton: "Book tiden" },
         { quien: "auto", t: "Dagen før får hun en påmindelse", d: "Med knapper til at bekræfte, flytte eller aflyse. Sara er blevet forhindret og melder afbud med ét tryk.", boton: "Sara melder afbud" },
@@ -95,7 +94,6 @@
       titulo: "Første konsultation uden papirer",
       hoy: "Patienten kommer, udfylder skema, samtykke og persondata i hånden, og bagefter skal nogen taste det ind på computeren.",
       con: "Patienten udfylder skemaet og skriver under på mobilen, inden besøget. Fysioterapeuten får et resumé, hvor det vigtige er markeret.",
-      ganas: ["Behandlingen starter til tiden", "Ingen papirer at arkivere", "Intet vigtigt bliver overset"],
       pasos: [
         { quien: "auto", t: "Når hun booker, får hun et skema", d: "Seks spørgsmål lavet til fysioterapi: hvor det gør ondt, hvor længe, hvor meget, og om hun tager medicin eller er blevet opereret.", boton: "Send skemaet" },
         { quien: "cliente", nombre: "Sara, ny patient", t: "Hun skriver under på samtykket med fingeren", d: "Samtykke til behandling og persondata direkte på mobilen. Det bliver gemt i journalen med dato og klokkeslæt.", boton: "Skriv under" },
@@ -177,7 +175,6 @@
       titulo: "Hjemmeøvelser og forløb, der bliver gjort færdige",
       hoy: "Øvelserne bliver vist på briksen og glemt derhjemme. Når patienterne får det bedre, stopper mange med at komme, før forløbet er færdigt.",
       con: "Hver patient har sit forløb på mobilen: videoer af øvelserne, påmindelser og hvordan smerterne udvikler sig. Holder nogen op med at booke, får klinikken det at vide.",
-      ganas: ["Patienter, der laver øvelserne", "Du ser udviklingen i tal", "Færre forløb, der bliver droppet"],
       pasos: [
         { quien: "equipo", nombre: "Mette, fysioterapeut", t: "Mette vælger øvelserne på et minut", d: "Hun tager tre videoer fra klinikkens bibliotek, tilpasser antallet af gentagelser og sender dem.", boton: "Send til Sara" },
         { quien: "cliente", nombre: "Sara, patient", t: "Sara har dem på mobilen", d: "Hun ser sine øvelser på video, hvor langt hun er i forløbet, og krydser af, hvad hun har lavet. Glemmer hun det en dag, får hun en påmindelse.", boton: "Marker som lavet" },
@@ -252,7 +249,6 @@
       titulo: "Anmeldelser på Google og patienter, der kommer igen",
       hoy: "Tilfredse patienter går uden at skrive en anmeldelse, og I hører først fra dem igen, når de har skadet sig på ny.",
       con: "Når et forløb slutter, bliver alle patienter spurgt, hvad de syntes, med et direkte link til at skrive en anmeldelse. Et halvt år senere får de en besked om et tjek eller pilates.",
-      ganas: ["Flere anmeldelser på Google", "Alle besvaret uden at bruge eftermiddage på det", "Patienter, der kommer igen"],
       pasos: [
         { quien: "auto", t: "Når forløbet slutter, bliver han spurgt", d: "To dage efter sidste behandling får Rasmus en kort besked med et direkte link til klinikkens Google-profil.", boton: "Rasmus skriver en anmeldelse" },
         { quien: "equipo", nombre: "Camilla, klinikchef", t: "Svaret ligger klar", d: "Anmeldelsen dukker op i kontrolpanelet med et forslag til svar i klinikkens tone. Camilla læser det, retter det, hvis hun vil, og udgiver det.", boton: "Udgiv svaret" },

@@ -16,7 +16,7 @@
   situacion: "Around 180 students, from primary school to adults, in 22 groups for English, French and tutoring. Four groups, teenagers and adults, are preparing for Cambridge exams. Claire runs the school and teaches too. In September and June she can't keep up.",
   dolores: [
     ["Practice papers nobody marks in time", "The B2 and C1 groups want practice exams, but marking them takes whole afternoons. And the results arrive when they're no longer useful."],
-    ["September is chaos", "Paper enrolment forms, phone calls to work out levels and groups that fill up before anyone notices."],
+    ["September is chaos", "Enrolment forms arrive on paper, levels are worked out over the phone and groups fill up before anyone notices."],
     ["Absences nobody reports", "If a student misses class, the family finds out when the report arrives. And nobody sees who is drifting away."],
     ["June without knowing who's staying", "Half the families don't confirm whether they're coming back next year, so groups are planned blind."]
   ],
@@ -28,7 +28,6 @@
       titulo: "Cambridge-style practice exams that mark themselves",
       hoy: "The B2 and C1 groups ask for mock exams, but marking them eats up the teachers’ afternoons. And until the exam nobody really knows who is struggling with Listening.",
       con: "Students take practice exams in the style of B2 First and C1 Advanced on their phone or laptop. They mark themselves, with explanations, and the school sees how each group is doing in each part.",
-      ganas: ["Mock exams without hours of marking", "Every student knows what to revise", "You see who is struggling, and where"],
       pasos: [
         { quien: "cliente", nombre: "Sofia, 16", t: "Sofia does Use of English on her phone", d: "Multiple-choice gaps and word formation. Each answer is marked straight away, with the reason why.", boton: "Go to Reading" },
         { quien: "cliente", nombre: "Sofia, 16", t: "Reading, with the clue in the text", d: "A short text and its questions. If she gets one wrong, she sees the sentence where the answer was.", boton: "Go to Listening" },
@@ -151,7 +150,6 @@
       titulo: "Online enrolment with a placement test",
       hoy: "Families come into the school, fill in forms and the student has to do a placement test in person before anyone can tell them which group to join.",
       con: "The family enrols from their phone: details, a short placement test, a suggested group with real places left and the school rules signed. The school sees everything in order.",
-      ganas: ["Enrolment at any time of day", "The right groups from day one", "A September without queues"],
       pasos: [
         { quien: "cliente", nombre: "Laura, Hugo’s mum", t: "Laura signs Hugo up from her phone", d: "The student’s details, what he wants to study and which afternoons he’s free. On a Sunday evening, without calling.", boton: "Next" },
         { quien: "cliente", nombre: "Hugo, 12", t: "Hugo takes a short placement test", d: "Ten minutes of questions that adapt to how he answers. It’s there to guide, not to pass or fail.", boton: "Finish the test" },
@@ -216,7 +214,6 @@
       titulo: "Absences reported to families the same day",
       hoy: "Teachers take the register on paper. If a student misses class, the family doesn’t find out, and nobody sees who is drifting away until it’s too late.",
       con: "The teacher takes the register on her phone, the family gets a message with the homework and the school sees who is missing too many classes.",
-      ganas: ["Families informed straight away", "Students who don’t fall behind", "Termly reports without the effort"],
       pasos: [
         { quien: "equipo", nombre: "Sarah, teacher", t: "Sarah takes the register in 20 seconds", d: "On her phone, at the start of class. Hugo isn’t here.", boton: "Save the register" },
         { quien: "auto", t: "The family gets a message with the homework", d: "Laura knows straight away that Hugo didn’t turn up, and she has today’s homework so he doesn’t fall behind.", boton: "Laura replies" },
@@ -274,7 +271,6 @@
       titulo: "Knowing in June who’s coming back in September",
       hoy: "In June, half the families don’t say whether they’re staying. In September some groups are short of places and others have too many.",
       con: "In May every family gets a suggested group for next year. With their answers, the school plans its groups and knows why the people who leave are leaving.",
-      ganas: ["Groups planned before the summer", "Places kept for those who stay", "You know why people leave"],
       pasos: [
         { quien: "auto", t: "In May, a suggested group for next year", d: "Laura gets the group recommended for Hugo next year, with priority over new families.", boton: "Laura keeps the place" },
         { quien: "auto", t: "Those who leave say why", d: "One question, one tap. The school knows whether they’re leaving because of the timetable, the price or a move.", boton: "See the answers" },

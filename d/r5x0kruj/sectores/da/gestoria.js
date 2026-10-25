@@ -15,9 +15,9 @@
   panel: ["Kvartalsafslutning", "Kunder", "Bilag", "Spørgsmål", "Nye kunder"],
   situacion: "Fem medarbejdere klarer bogføring, moms og løn for omkring 140 selvstændige og små virksomheder. Hvert kvartal starter det samme ræs mod momsfristen.",
   dolores: [
-    ["Jagten på bilag", "Hvert kvartal skriver I til 140 kunder én for én for at få fakturaer og kontoudtog. Og et regneark holder styr på, hvem der mangler."],
-    ["Bilag i alle formater", "Fotos af kvitteringer, PDF'er, krøllede papirer. En medarbejder taster dem ind i regnskabsprogrammet ét for ét."],
-    ["De samme spørgsmål", "»Hvornår skal momsen være betalt?« »Kan jeg trække bilen fra?« På alle tider af døgnet og på sms."],
+    ["Jagten på bilag", "Hvert kvartal skriver I til 140 kunder én for én for at få fakturaer og kontoudtog og holder styr på, hvem der mangler, i et regneark."],
+    ["Bilag i alle formater", "Der kommer fotos af kvitteringer, PDF'er og krøllede papirer, og en medarbejder taster dem ind i regnskabsprogrammet ét for ét."],
+    ["De samme spørgsmål", "På sms og på alle tider af døgnet spørger kunderne: »Hvornår skal momsen være betalt?« eller »Kan jeg trække bilen fra?«"],
     ["Nye kunder tager tid", "Det kræver en håndfuld mails at få en ny kunde på plads, og der mangler altid et papir."]
   ],
   casos: [
@@ -28,7 +28,6 @@
       titulo: "Kvartalets bilag, uden at jagte nogen",
       hoy: "Anne sender 140 beskeder én for én og noterer i et regneark, hvem der har sendt hvad. Dagene før fristen er et ræs.",
       con: "Hver kunde får sin egen liste og et link til sin side. Påmindelserne sendes automatisk og beder kun om det, der mangler.",
-      ganas: ["Du slipper for at jagte kunder", "Du ser med det samme, hvem der mangler", "Mindre travlhed op til fristen"],
       pasos: [
         { quien: "auto", t: "Den 1. oktober får alle besked", d: "Hver kunde får at vide, præcis hvad der skal bruges. Mads, der er selvstændig VVS'er, bliver bedt om salgsfakturaer, købsbilag og kontoudtog fra banken.", boton: "Mads åbner sin side" },
         { quien: "cliente", nombre: "Mads, selvstændig", t: "Mads uploader det, han har, fra mobilen", d: "Han tager billeder eller uploader PDF'er. Bogholderiet ser det med det samme i kontrolpanelet uden at lede i mails og beskeder.", boton: "Upload bilagene" },
@@ -103,7 +102,6 @@
       titulo: "Købsbilag, der læser sig selv",
       hoy: "Kunderne sender billeder af kvitteringer og PDF'er. En fra bogholderiet åbner dem én ad gangen og taster tallene ind i regnskabsprogrammet.",
       con: "Hvert bilag bliver læst, så snart det kommer ind: leverandør, CVR-nr., dato, beløb, moms og total, med et forslag til konto. Bogholderiet kigger kun på dem, der er tvivl om.",
-      ganas: ["Langt mindre indtastning", "Færre tastefejl", "Tvivlsspørgsmål bliver markeret"],
       pasos: [
         { quien: "cliente", nombre: "Mads, selvstændig", t: "Mads tager et billede af kvitteringen", d: "Fra sin side eller ved at videresende den i en besked. Han skal ikke sortere noget.", boton: "Send billedet" },
         { quien: "auto", t: "Tallene bliver hentet ud automatisk", d: "Bilaget bliver læst, og bogføringsdata udfyldes med en konto, der passer til Mads' branche.", boton: "Se indbakken" },
@@ -164,7 +162,6 @@
       titulo: "De faste spørgsmål, besvaret på alle tider af døgnet",
       hoy: "De samme spørgsmål tikker ind på sms på alle tider af døgnet. Hvert svar afbryder arbejdet, og rådgivning blandes sammen med alt det andet.",
       con: "En assistent svarer på de generelle spørgsmål med bogholderiets og kundens egne oplysninger. Det, der kræver rådgivning, går videre til Anne med et resumé.",
-      ganas: ["Færre afbrydelser", "Svar med det samme", "Rådgivningen kommer stadig fra Anne"],
       pasos: [
         { quien: "cliente", nombre: "Sofie, frisør", t: "Sofie spørger kl. 22.40", d: "Et spørgsmål om frister, som kommer hundredvis af gange hvert kvartal.", boton: "Send spørgsmålet" },
         { quien: "auto", t: "Svar med det samme, med hendes egne tal", d: "Det er ikke et standardsvar: assistenten ved, at bogholderiet indberetter Sofies moms, og at hun mangler et bilag.", boton: "Stil et sværere spørgsmål" },
@@ -208,7 +205,6 @@
       titulo: "En ny kunde på plads på én dag",
       hoy: "Det kræver en del mails at få en ny kunde i gang: legitimation, CVR-oplysninger, adgang til SKAT, lejekontrakt … og der mangler altid noget, eller det er udløbet.",
       con: "Kunden udfylder en formular og får præcis den liste, der passer til virksomheden. Dokumenterne bliver tjekket, når de uploades, og alle frister bliver sat op automatisk.",
-      ganas: ["Ny kunde på én dag, ikke to uger", "Intet udløbet eller halvfærdigt", "Et godt første indtryk"],
       pasos: [
         { quien: "cliente", nombre: "Rasmus, ny kunde", t: "Rasmus udfylder formularen", d: "På bogholderiets hjemmeside. Han skriver, hvilken virksomhedsform han har, hvad han laver, og om han har lokaler eller ansatte.", boton: "Send formularen" },
         { quien: "auto", t: "Han får sin egen liste, og kun sin", d: "Han har enkeltmandsvirksomhed med lejet klinik, så han bliver bedt om legitimation, CVR-registrering, fuldmagt til SKAT og lejekontrakten. Ikke mere.", boton: "Upload dokumenterne" },

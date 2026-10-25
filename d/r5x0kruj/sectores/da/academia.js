@@ -16,9 +16,9 @@
   situacion: "Omkring 180 elever, fra folkeskolen og gymnasiet til voksne, på 22 hold i engelsk, tysk og lektiehjælp. Fire hold, både unge og voksne, læser op til Cambridge-prøver. Mette leder skolen og underviser også selv. I august og juni når hun det ikke.",
   dolores: [
     ["Øveprøver, ingen når at rette", "B2- og C1-holdene vil gerne have øveprøver, men det tager hele eftermiddage at rette dem. Og resultatet kommer, når det ikke kan bruges mere."],
-    ["August er kaos", "Tilmeldinger på papir, opkald for at finde elevens niveau og hold, der bliver fulde, uden at nogen opdager det i tide."],
+    ["August er kaos", "Tilmeldingerne kommer på papir, niveauet skal findes over telefonen, og hold bliver fulde, uden at nogen opdager det i tide."],
     ["Fravær, ingen hører om", "Når en elev bliver væk, hører familien det først til statussamtalen. Og ingen ser, hvem der er ved at falde fra."],
-    ["Juni uden at vide, hvem der fortsætter", "Halvdelen af familierne svarer ikke, om de fortsætter efter sommerferien. Så holdene bliver planlagt i blinde."]
+    ["Juni uden at vide, hvem der fortsætter", "Halvdelen af familierne svarer ikke, om de fortsætter efter sommerferien, så holdene bliver planlagt i blinde."]
   ],
   casos: [
     {
@@ -28,7 +28,6 @@
       titulo: "Cambridge-øveprøver, der retter sig selv",
       hoy: "B2- og C1-holdene vil have øveprøver, men rettearbejdet æder lærernes eftermiddage. Og indtil eksamen ved ingen rigtig, hvem der halter i Listening.",
       con: "Eleverne tager øveprøver i stil med B2 First og C1 Advanced på mobilen eller computeren. De retter sig selv, med forklaring, og skolen ser, hvordan hvert hold klarer hver del.",
-      ganas: ["Øveprøver uden timevis af retning", "Hver elev ved, hvad der skal øves", "Du ser, hvem der halter, og hvor"],
       pasos: [
         { quien: "cliente", nombre: "Freja, 16 år", t: "Freja tager Use of English på mobilen", d: "Huller med fire svarmuligheder og orddannelse. Hvert svar bliver rettet med det samme, og hun får at vide hvorfor.", boton: "Videre til Reading" },
         { quien: "cliente", nombre: "Freja, 16 år", t: "Reading, med svaret markeret i teksten", d: "En kort tekst med spørgsmål. Svarer hun forkert, ser hun den sætning i teksten, hvor svaret stod.", boton: "Videre til Listening" },
@@ -151,7 +150,6 @@
       titulo: "Tilmelding online med niveautest",
       hoy: "Familierne kommer forbi skolen og udfylder papirer. Og eleven skal niveautestes på stedet, før de kan få at vide, hvilket hold der passer.",
       con: "Familien tilmelder på mobilen: oplysninger, en kort niveautest, et forslag til hold med rigtige ledige pladser og accept af reglerne. Skolen får det hele på plads.",
-      ganas: ["Tilmeldinger døgnet rundt", "De rigtige hold fra starten", "En august uden kø"],
       pasos: [
         { quien: "cliente", nombre: "Line, mor til Viggo", t: "Line tilmelder Viggo på mobilen", d: "Elevens oplysninger, hvad han vil lære, og hvilke eftermiddage han kan. En søndag aften, uden at ringe.", boton: "Næste" },
         { quien: "cliente", nombre: "Viggo, 12 år", t: "Viggo tager en kort niveautest", d: "Ti minutters spørgsmål, der tilpasser sig hans svar. Testen viser niveauet. Man kan ikke dumpe.", boton: "Afslut testen" },
@@ -216,7 +214,6 @@
       titulo: "Fravær meldt til familien samme dag",
       hoy: "Lærerne krydser af på papir. Når en elev bliver væk, hører familien det ikke. Og ingen ser, hvem der er ved at falde fra, før det er for sent.",
       con: "Læreren tager fremmøde på mobilen, familien får besked med lektierne, og skolen ser, hvem der samler fravær op.",
-      ganas: ["Familien får besked med det samme", "Elever, der ikke falder fra", "Statusrapporter uden besvær"],
       pasos: [
         { quien: "equipo", nombre: "Camilla, lærer", t: "Camilla tager fremmøde på 20 sekunder", d: "På mobilen, når timen starter. Viggo er ikke kommet.", boton: "Gem fremmødet" },
         { quien: "auto", t: "Familien får besked med lektierne", d: "Line ved med det samme, at Viggo ikke er mødt op. Og hun har dagens lektier, så han ikke kommer bagud.", boton: "Line svarer" },
@@ -274,7 +271,6 @@
       titulo: "Vid allerede i juni, hvem der fortsætter i august",
       hoy: "I juni svarer halvdelen af familierne ikke, om de fortsætter. I august mangler der pladser på nogle hold, mens andre står halvtomme.",
       con: "I maj får hver familie et forslag til næste års hold. Med svarene kan skolen planlægge holdene og ved, hvorfor dem, der stopper, gør det.",
-      ganas: ["Holdene er planlagt før sommerferien", "Pladserne er sikret til dem, der fortsætter", "Du ved, hvorfor folk stopper"],
       pasos: [
         { quien: "auto", t: "I maj kommer forslaget til næste skoleår", d: "Line får det hold, vi anbefaler til Viggo næste år, og de går forud for nye familier.", boton: "Line beholder pladsen" },
         { quien: "auto", t: "Dem, der stopper, siger hvorfor", d: "Ét spørgsmål og ét tryk. Skolen ved, om de stopper på grund af tidspunktet, prisen eller en flytning.", boton: "Se svarene" },
