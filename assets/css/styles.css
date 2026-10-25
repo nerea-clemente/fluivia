@@ -799,5 +799,18 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
 .legal-draft { margin: 0 0 28px; padding: 16px 18px; border: 2px solid #C2410C; border-radius: 12px; background: #FFF4EC; color: #7C2D12; }
 .legal-draft strong { display: block; font-size: 18px; letter-spacing: .02em; text-transform: uppercase; }
 .legal-draft p { margin: 6px 0 0; color: inherit; }
-  .main-nav ul.lang-switch a { min-width: 46px; padding: 8px 10px; font-size: 14px; }
+
+/* Autoescuelas: lo que ve cada uno en el portal */
+.portal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.portal-card { padding: 32px 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--fluivia-blanco); }
+.portal-card h3 { margin-bottom: 18px; }
+.portal-card ul { display: grid; gap: 12px; }
+.portal-card li { display: flex; align-items: baseline; gap: 12px; color: var(--bosque-80); }
+.portal-card li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--fluivia-verde-acento); transform: translateY(-1px); }
+.portal-nota { margin-top: 28px; font-weight: 600; }
+@media (min-width: 1081px) {
+  .steps-4 { grid-template-columns: repeat(4, 1fr); }
+  .steps-4::before { right: calc(25% - 24px); }
 }
+@media (max-width: 760px) { .portal-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1080px) and (min-width: 641px) { .steps-4 { grid-template-columns: repeat(2, 1fr); } .steps-4::before { display: none; } }

@@ -24,7 +24,7 @@
 
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610251200">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610251300">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Tengo que dejar de usar mi programa actual?", "acceptedAnswer": {"@type": "Answer", "text": "Depende del programa y de lo que quieras hacer. Miramos si se puede conectar y qué datos deja compartir. Si hubiera que sustituir algo, lo sabrás antes de contratar."}}, {"@type": "Question", "name": "¿Los alumnos tienen que descargarse una app?", "acceptedAnswer": {"@type": "Answer", "text": "No. El portal se abre desde el navegador del móvil."}}, {"@type": "Question", "name": "¿Puedo seguir haciendo reservas yo?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tu equipo puede llevar la agenda y reservar clases a los alumnos que lo prefieran."}}, {"@type": "Question", "name": "¿Los tests son los oficiales de la DGT?", "acceptedAnswer": {"@type": "Answer", "text": "No. Son tests de práctica al estilo del examen del permiso B, sacados de un proveedor de tests o del material de tu autoescuela. Sirven para que el alumno practique y tú veas qué temas le cuestan."}}, {"@type": "Question", "name": "¿Los tests están incluidos en el precio?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de dónde salgan las preguntas. Si usamos las de un proveedor, su licencia va aparte y te la detallamos en la propuesta."}}, {"@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de lo que incluyamos. Como referencia, la reserva de prácticas parte de 390 € de puesta en marcha y 49 € al mes, y el asistente de WhatsApp, de 690 € y 89 € al mes. El portal con tests y exámenes va a medida. Son precios sin IVA, y en la propuesta te detallamos también las licencias y el mantenimiento."}}, {"@type": "Question", "name": "¿Quién me ayuda si hay un problema?", "acceptedAnswer": {"@type": "Answer", "text": "Nosotros. Nos escribes a info@fluivia.es y lo miramos ese mismo día laborable. La cuota mensual incluye el mantenimiento y los ajustes pequeños."}}]}</script>
 </head>
 <body>
@@ -103,10 +103,29 @@
       <div class="container">
         <div class="section-head">
           <h2>¿Cómo sería el portal?</h2>
-          <p class="section-lead">El alumno entra desde el navegador del móvil, sin descargarse nada. Desde ahí reserva una práctica, ve sus próximas clases, hace tests y lee los avisos de la autoescuela. Lo que aparezca depende de lo que decidamos incluir.</p>
-          <p class="section-lead">Tu equipo entra desde el ordenador. Ve la agenda y las fichas de los alumnos, cambia horarios, revisa resultados y actualiza la información.</p>
-          <p class="section-lead">El portal lleva el nombre y la imagen de tu autoescuela. Si quieres hacerte una idea antes, <a href="demo.html?sector=autoescuela">aquí tienes una demo con una autoescuela de ejemplo</a>.</p>
+          <p class="section-lead">Lleva el nombre y la imagen de tu autoescuela, y se abre desde el navegador, sin descargar nada.</p>
         </div>
+        <div class="portal-grid">
+          <article class="portal-card">
+            <h3>En el móvil del alumno</h3>
+            <ul>
+              <li>Reserva y cambia sus prácticas</li>
+              <li>Ve sus próximas clases</li>
+              <li>Hace tests del teórico</li>
+              <li>Lee los avisos de la autoescuela</li>
+            </ul>
+          </article>
+          <article class="portal-card">
+            <h3>En el ordenador de tu equipo</h3>
+            <ul>
+              <li>La agenda de profesores y coches</li>
+              <li>La ficha de cada alumno</li>
+              <li>Los resultados de los tests</li>
+              <li>Las fechas de examen y los avisos</li>
+            </ul>
+          </article>
+        </div>
+        <p class="portal-nota"><a class="link-arrow" href="demo.html?sector=autoescuela">Ver la demo de autoescuela</a></p>
       </div>
     </section>
 
@@ -114,10 +133,30 @@
       <div class="container">
         <div class="section-head">
           <h2>Cómo lo montamos</h2>
-          <p class="section-lead">Normalmente empezamos por las prácticas, porque es lo que más tiempo quita. Si también quieres organizar el teórico y los avisos, lo metemos en el mismo proyecto.</p>
-          <p class="section-lead">Primero nos cuentas cómo llevas las clases y qué programas usas. Con eso te preparamos una propuesta con lo que vamos a montar, cómo funcionará y cuánto cuesta.</p>
-          <p class="section-lead">Mientras lo montamos, lo vas viendo y probando. Antes de abrirlo a los alumnos, tu equipo prueba las reservas, los accesos y los mensajes. Después os enseñamos a usarlo y quedamos en el soporte que necesitas.</p>
+          <p class="section-lead">Solemos empezar por las prácticas, que es lo que más tiempo quita, y sumamos el resto cuando funciona.</p>
         </div>
+        <ol class="steps steps-4">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Nos cuentas</h3>
+            <p>Cómo llevas las clases y qué programas usas.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Te proponemos</h3>
+            <p>Qué montamos, cómo funcionará y cuánto cuesta.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Lo pruebas</h3>
+            <p>Tu equipo prueba reservas, accesos y mensajes.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <h3>Lo abrimos</h3>
+            <p>A tus alumnos, con el soporte que necesites.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
