@@ -100,9 +100,24 @@
             <label class="campo ancho"><span>Texto</span><textarea id="correo-texto" maxlength="10000" style="min-height:200px"></textarea></label>
           </div>
           <div class="acciones" style="margin-top:10px">
-            <button type="button" class="btn" id="enviar-correo">Enviar desde info@fluivia.ai</button>
+            <button type="button" class="btn" id="enviar-correo">Enviar ahora</button>
+            <button type="button" class="btn btn-sec" id="abrir-programar" aria-expanded="false" aria-controls="programar">Programar</button>
+            <button type="button" class="btn btn-sec" id="probar-correo">Enviarme una prueba</button>
             <button type="button" class="btn btn-sec" id="copiar-texto" title="Para pegarlo en LinkedIn">Copiar el texto</button>
-            <span class="tenue" id="correo-a"></span>
+          </div>
+          <p class="tenue" id="correo-a" style="margin-top:8px"></p>
+          <div class="programar" id="programar" hidden>
+            <label class="campo"><span>Cuándo sale</span><input type="datetime-local" id="correo-cuando"></label>
+            <div class="proxima-rapida" id="cuando-rapido">
+              <button type="button" class="btn btn-sec btn-peq" data-cuando="1|09:00">Mañana a las 9:00</button>
+              <button type="button" class="btn btn-sec btn-peq" data-cuando="1|11:30">Mañana a las 11:30</button>
+              <button type="button" class="btn btn-sec btn-peq" data-cuando="lunes|09:00">El lunes a las 9:00</button>
+            </div>
+            <div class="acciones"><button type="button" class="btn" id="programar-correo">Programar el envío</button></div>
+          </div>
+          <div id="programados-caja" hidden>
+            <h3 class="subtitulo-caja">Programados</h3>
+            <ul class="recientes programados" id="programados"></ul>
           </div>
         </section>
 

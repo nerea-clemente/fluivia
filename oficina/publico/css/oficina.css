@@ -47,7 +47,9 @@ table { border-collapse: collapse; }
 .cab-nav a { padding: 7px 12px; border-radius: 9px; text-decoration: none; font-weight: 600; color: var(--suave); }
 .cab-nav a:hover { background: var(--fondo); color: var(--texto); }
 .cab-nav a[aria-current="page"] { background: var(--fondo); color: var(--texto); }
-.cab-usuario { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--tenue); }
+.cab-pais { margin-left: auto; }
+.cab-pais .corto { display: none; }
+.cab-usuario { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--tenue); }
 
 .pagina { max-width: 1240px; margin: 0 auto; padding: 28px 24px 64px; }
 .pagina-cab { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
@@ -120,6 +122,12 @@ table { border-collapse: collapse; }
 .recientes li { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--linea); font-size: 13.5px; }
 .recientes li:first-child { border-top: 0; }
 .recientes a { font-weight: 600; text-decoration: none; }
+.programados li { align-items: center; }
+.programados li > div { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+.programar { display: grid; gap: 10px; margin-top: 14px; padding: 14px; border-radius: 12px; background: var(--fondo); }
+.subtitulo-caja { margin: 16px 0 4px; font-size: 14px; }
+.pruebas { display: grid; gap: 8px; }
+.pruebas .acciones { justify-content: flex-start; }
 
 /* ---------- Lista de contactos ---------- */
 .filtros { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
@@ -220,6 +228,9 @@ table { border-collapse: collapse; }
 @media (max-width: 640px) {
   .cab { gap: 12px; padding: 0 14px; }
   .cab-marca span, .cab-usuario span { display: none; }
+  .cab-pais .largo { display: none; }
+  .cab-pais .corto { display: inline; }
+  .cab-pais button { padding: 5px 9px; }
   .pagina { padding: 20px 14px 48px; }
   .campos { grid-template-columns: minmax(0, 1fr); }
   .tabla .ocultar-movil { display: none; }

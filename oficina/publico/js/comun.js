@@ -86,6 +86,20 @@
     aviso.t = setTimeout(function () { avisoEl.classList.remove("es-visible"); }, error ? 5000 : 2600);
   }
 
+  // País con el que trabajas: filtra el resumen, los contactos y el correo de cada mañana.
+  // Se guarda en la Oficina (para el correo) y aquí, para pintar sin esperar.
+  var paisActual = "";
+  try { paisActual = localStorage.getItem("of-pais") || ""; } catch (e) {}
+  function pais() { return paisActual; }
+  function enPais(c) { return !paisActual || (c.pais || "ES") === paisActual; }
+  function ponerPais(v, guardar) {
+    paisActual = v === "ES" || v === "DK" ? v : "";
+    try { localStorage.setItem("of-pais", paisActual); } catch (e) {}
+    document.querySelectorAll("[data-pais]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-pais") === paisActual)); });
+    if (guardar) api("/api/preferencias", { method: "PUT", body: { pais: paisActual } }).catch(function (e) { aviso(e.message, true); });
+    document.dispatchEvent(new CustomEvent("of-pais"));
+  }
+
   // Cabecera común
   function cabecera(actual) {
     var cab = document.createElement("header");
@@ -95,9 +109,16 @@
         '<a href="/"' + (actual === "resumen" ? ' aria-current="page"' : "") + ">Resumen</a>" +
         '<a href="/contactos.html"' + (actual === "contactos" ? ' aria-current="page"' : "") + ">Contactos</a>" +
       "</nav>" +
+      '<div class="vista-cambio cab-pais" role="group" aria-label="País">' +
+        [["", "Todos", "Todos"], ["ES", "España", "ES"], ["DK", "Dinamarca", "DK"]].map(function (p) { return '<button type="button" data-pais="' + p[0] + '" aria-pressed="' + (paisActual === p[0]) + '"><span class="largo">' + p[1] + '</span><span class="corto" aria-hidden="true">' + p[2] + "</span></button>"; }).join("") +
+      "</div>" +
       '<div class="cab-usuario"><span id="yo"></span><button type="button" class="btn-texto" id="salir">Salir</button></div>';
     document.body.insertBefore(cab, document.body.firstChild);
-    api("/api/yo").then(function (r) { document.getElementById("yo").textContent = r.email; }).catch(function () {});
+    api("/api/yo").then(function (r) {
+      document.getElementById("yo").textContent = r.email;
+      if ((r.pais || "") !== paisActual) ponerPais(r.pais || "", false);
+    }).catch(function () {});
+    cab.querySelector(".cab-pais").addEventListener("click", function (e) { var b = e.target.closest("[data-pais]"); if (b) ponerPais(b.getAttribute("data-pais"), true); });
     document.getElementById("salir").addEventListener("click", function () {
       api("/api/acceso/salir", { method: "POST", body: {} }).finally(function () { location.href = "/entrar.html"; });
     });
@@ -106,6 +127,6 @@
   window.Of = {
     ETAPAS: ETAPAS, SECTORES: SECTORES, ORIGENES: ORIGENES, INTERESES: INTERESES, TIPOS: TIPOS, PAISES: PAISES, fiscalPendiente: fiscalPendiente,
     nombre: nombre, icono: icono, esc: esc, api: api, hoy: hoy, masDias: masDias, dia: dia, momento: momento, euros: euros,
-    proxima: proxima, etapa: etapa, titulo: titulo, subtitulo: subtitulo, aviso: aviso, cabecera: cabecera
+    proxima: proxima, etapa: etapa, pais: pais, enPais: enPais, titulo: titulo, subtitulo: subtitulo, aviso: aviso, cabecera: cabecera
   };
 })();

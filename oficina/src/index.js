@@ -23,6 +23,11 @@
 //   POST /api/contactos/importar     añade la lista de prospección (sin repetir)
 //   GET/PUT/DELETE /api/contactos/:id
 //   POST /api/contactos/:id/correo   enviar un correo y apuntarlo en el historial
+//                                    (con «cuando», se programa y sale solo a esa hora)
+//   POST /api/contactos/:id/prueba   mandarte a ti el correo antes de enviarlo
+//   GET  /api/programados · DELETE /api/programados/:pid   correos programados
+//   GET/PUT /api/preferencias        país con el que trabajas (filtra el resumen diario)
+//   POST /api/prueba/automatico      mandarte los correos automáticos (demo, confirmación)
 //   POST /api/contactos/:id/vies     comprobar su NIF-IVA en VIES
 //   GET  /api/plantillas?contacto=:id   enlace de su demo y plantillas ya rellenas
 //   POST /api/acceso/salir · POST /api/acceso/salir-todas
@@ -208,7 +213,27 @@ async function avisar(env, e, r, url) {
 // ---- API de contactos -------------------------------------------------------------
 async function api(req, env, store, url, email) {
   const partes = url.pathname.split('/').filter(Boolean); // api, contactos, :id, accion
-  if (url.pathname === '/api/yo') return json({ email });
+  if (url.pathname === '/api/yo') return json({ email, pais: (await store.leerClave('pais')) || '' });
+  if (url.pathname === '/api/preferencias' && req.method === 'PUT') {
+    let b = {};
+    try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
+    const pais = ['ES', 'DK'].includes(b.pais) ? b.pais : '';
+    await store.anotar('pais', pais);
+    return json({ pais });
+  }
+  if (url.pathname === '/api/programados' && req.method === 'GET') return json(await store.programados(url.searchParams.get('contacto') || ''));
+  if (partes[1] === 'programados' && /^p-[a-z0-9-]{1,40}$/.test(partes[2] || '') && req.method === 'DELETE') return json(await store.cancelarProgramado(partes[2]));
+  if (url.pathname === '/api/prueba/automatico' && req.method === 'POST') {
+    let b = {};
+    try { b = await req.json(); } catch { return json({ error: 'Datos no válidos' }, 400); }
+    if (!(await store.limitar(`prueba:${email}`, 20, 3600))) return json({ error: 'Demasiadas pruebas seguidas. Prueba dentro de un rato.' }, 429);
+    const idioma = ['es', 'en', 'da'].includes(b.idioma) ? b.idioma : 'es';
+    const ejemplo = { nombre: 'Laura', empresa: 'Gestoría Ejemplo', email, sector: 'gestoria', idioma };
+    const c = b.tipo === 'recibido' ? Correo.correoRecibido(env, ejemplo) : Correo.correoDemo(env, ejemplo, Correo.enlaceDemo(env, 'gestoria', ejemplo.empresa, idioma));
+    try { await Correo.enviar(env, { ...c, to: [email], subject: `[Prueba] ${c.subject}` }); }
+    catch (e) { console.error('[prueba]', e); return json({ error: 'No se ha podido enviar la prueba' }, 502); }
+    return json({ ok: true, a: email });
+  }
   if (url.pathname === '/api/contactos' && req.method === 'GET') return json(await store.contactos());
   if (url.pathname === '/api/contactos.csv' && req.method === 'GET') {
     return new Response(C.csv(await store.contactos()), { headers: { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': `attachment; filename="contactos-fluivia-${C.hoy()}.csv"`, 'cache-control': 'no-store' } });
@@ -253,6 +278,17 @@ async function api(req, env, store, url, email) {
       const r = await Vies.comprobar(c.nif, env.DEV === '1' && env.VIES_PRUEBA === '1' ? viesSimulado : undefined);
       return json(await store.guardarVies(id, { ...r, nif: c.nif }, email));
     }
+    if (partes[3] === 'prueba' && req.method === 'POST') {
+      const c = await store.leerContacto(id);
+      if (!c) return json({ error: 'No existe ese contacto' }, 404);
+      const b = await req.json();
+      const asunto = String(b.asunto || '').trim().slice(0, 200), texto = String(b.texto || '').trim().slice(0, 10000);
+      if (!asunto || !texto) return json({ error: 'Falta el asunto o el texto' }, 400);
+      if (!(await store.limitar(`prueba:${email}`, 20, 3600))) return json({ error: 'Demasiadas pruebas seguidas. Prueba dentro de un rato.' }, 429);
+      try { await Correo.enviar(env, { to: [email], subject: `[Prueba] ${asunto}`, text: texto, html: Correo.html(texto) }); }
+      catch (e) { console.error('[prueba]', e); return json({ error: 'No se ha podido enviar la prueba' }, 502); }
+      return json({ ok: true, a: email });
+    }
     if (partes[3] === 'correo' && req.method === 'POST') {
       const c = await store.leerContacto(id);
       if (!c) return json({ error: 'No existe ese contacto' }, 404);
@@ -261,6 +297,12 @@ async function api(req, env, store, url, email) {
       const b = await req.json();
       const asunto = String(b.asunto || '').trim().slice(0, 200), texto = String(b.texto || '').trim().slice(0, 10000);
       if (!asunto || !texto) return json({ error: 'Falta el asunto o el texto' }, 400);
+      if (b.cuando) {
+        const t = Date.parse(b.cuando);
+        if (!Number.isFinite(t) || t < Date.now() + 60000) return json({ error: 'Elige una hora que sea al menos dentro de un minuto' }, 400);
+        if (t > Date.now() + 60 * 864e5) return json({ error: 'Se puede programar como mucho a 60 días' }, 400);
+        return json({ programado: await store.programar({ contacto: id, asunto, texto, cuando: t, autor: email }) });
+      }
       try { await Correo.enviar(env, { to: [c.email], reply_to: lista(env.AVISOS)[0] || undefined, subject: asunto, text: texto, html: Correo.html(texto) }); }
       catch (e) { console.error('[correo]', e); return json({ error: 'No se ha podido enviar el correo' }, 502); }
       return json(await store.anadirHistorial(id, { tipo: 'correo', asunto, texto }, email));
@@ -294,7 +336,8 @@ export function teToca(lista_) {
 async function resumenDiario(env, origen) {
   if (!env.AVISOS) return;
   const store = almacen(env);
-  const toca = teToca(await store.contactos());
+  const pais = (await store.leerClave('pais')) || '';
+  const toca = teToca((await store.contactos()).filter((c) => !pais || (c.pais || 'ES') === pais));
   if (!toca.length) return;
   const lineas = toca.map((c) => `· ${c.empresa || c.nombre}${c.empresa && c.nombre ? ` (${c.nombre})` : ''}: ${c.proxima.texto || 'sin detalle'}${c.proxima.fecha < C.hoy() ? ` · desde el ${c.proxima.fecha.split('-').reverse().join('/')}` : ''}`);
   const texto = [`Buenos días. Hoy te toca escribir o llamar a ${toca.length} ${toca.length === 1 ? 'contacto' : 'contactos'}:`, lineas.join('\n'), `Ábrelos en la Oficina: ${origen}/`].join('\n\n');

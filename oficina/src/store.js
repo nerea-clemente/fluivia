@@ -4,8 +4,9 @@
 // ---------------------------------------------------------------------------
 import { DurableObject } from 'cloudflare:workers';
 import * as Contactos from './contactos.js';
+import * as Correo from './correo.js';
 
-const TABLAS_DATOS = ['contactos', 'meta'];
+const TABLAS_DATOS = ['contactos', 'meta', 'programados'];
 
 export class Oficina extends DurableObject {
   constructor(ctx, env) {
@@ -18,6 +19,10 @@ export class Oficina extends DurableObject {
     this.sql.exec('CREATE TABLE IF NOT EXISTS sesiones (token_hash TEXT PRIMARY KEY, email TEXT NOT NULL, expira INTEGER NOT NULL, creada TEXT NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS limites (clave TEXT NOT NULL, ts INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS meta (clave TEXT PRIMARY KEY, valor TEXT)');
+    // Correos programados: salen solos a su hora con la alarma del Durable Object.
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS programados (
+      id TEXT PRIMARY KEY, contacto TEXT NOT NULL, asunto TEXT NOT NULL, texto TEXT NOT NULL,
+      cuando INTEGER NOT NULL, autor TEXT, creado TEXT NOT NULL, estado TEXT NOT NULL DEFAULT 'pendiente', error TEXT)`);
   }
 
   // ---- Acceso ----------------------------------------------------------------
@@ -144,6 +149,63 @@ export class Oficina extends DurableObject {
       nuevos++;
     }
     return { nuevos, repetidos, hasta: nuevos ? fechaPara(nuevos - 1) : '' };
+  }
+
+  // ---- Correos programados ---------------------------------------------------
+  // estado: pendiente, enviado, error o cancelado.
+  async programar({ contacto, asunto, texto, cuando, autor }) {
+    const id = `p-${Date.now().toString(36)}-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36)}`;
+    this.sql.exec('INSERT INTO programados (id, contacto, asunto, texto, cuando, autor, creado) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      id, contacto, asunto, texto, cuando, autor || '', new Date().toISOString());
+    await this.siguienteAlarma();
+    return this.programado(id);
+  }
+  programado(id) {
+    const r = this.sql.exec('SELECT * FROM programados WHERE id = ?', id).toArray()[0];
+    return r ? { ...r, cuando: new Date(r.cuando).toISOString() } : null;
+  }
+  // Los pendientes y los que han fallado (de uno o de todos los contactos).
+  programados(contacto = '') {
+    const filas = contacto
+      ? this.sql.exec("SELECT * FROM programados WHERE contacto = ? AND estado IN ('pendiente', 'error') ORDER BY cuando", contacto).toArray()
+      : this.sql.exec("SELECT * FROM programados WHERE estado IN ('pendiente', 'error') ORDER BY cuando").toArray();
+    return filas.map((r) => ({ ...r, cuando: new Date(r.cuando).toISOString() }));
+  }
+  async cancelarProgramado(id) {
+    const n = this.sql.exec("UPDATE programados SET estado = 'cancelado' WHERE id = ? AND estado IN ('pendiente', 'error') RETURNING id", id).toArray().length;
+    await this.siguienteAlarma();
+    return { ok: n > 0 };
+  }
+  async siguienteAlarma() {
+    const r = this.sql.exec("SELECT MIN(cuando) AS t FROM programados WHERE estado = 'pendiente'").one();
+    if (r.t) await this.ctx.storage.setAlarm(Math.max(r.t, Date.now() + 1000));
+    else await this.ctx.storage.deleteAlarm();
+  }
+  // Llega la hora: se envían los que tocan y quedan en el historial del contacto.
+  async alarm() {
+    const ahora = Date.now();
+    const toca = this.sql.exec("SELECT * FROM programados WHERE estado = 'pendiente' AND cuando <= ? ORDER BY cuando", ahora + 5000).toArray();
+    for (const p of toca) {
+      const c = this.leerContacto(p.contacto);
+      let estado = 'enviado', error = null;
+      if (!c) { estado = 'cancelado'; error = 'El contacto ya no existe'; }
+      else if (c.noEscribir) { estado = 'cancelado'; error = 'Pidió no recibir más correos'; }
+      else if (!Contactos.EMAIL_OK.test(c.email || '')) { estado = 'error'; error = 'El contacto no tiene un email válido'; }
+      else {
+        try {
+          const avisos = String(this.env.AVISOS || '').split(',')[0].trim();
+          await Correo.enviar(this.env, { to: [c.email], reply_to: avisos || undefined, subject: p.asunto, text: p.texto, html: Correo.html(p.texto) });
+        } catch (e) { console.error('[programado]', e); estado = 'error'; error = 'No se ha podido enviar'; }
+      }
+      this.sql.exec('UPDATE programados SET estado = ?, error = ? WHERE id = ?', estado, error, p.id);
+      if (c && estado === 'enviado') {
+        let n = { ...c, historial: [...(c.historial || []), { fecha: new Date().toISOString(), tipo: 'correo', asunto: p.asunto, texto: p.texto, autor: p.autor || undefined }] };
+        n = Contactos.limpiar(n);
+        if (n.etapa === 'nuevo') n = Contactos.cambiarEtapa(n, 'contactado', p.autor || 'oficina');
+        this.guardarContacto(c.id, n, p.autor || 'oficina');
+      }
+    }
+    await this.siguienteAlarma();
   }
 
   // ---- Copias de seguridad ------------------------------------------------------

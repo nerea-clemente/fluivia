@@ -154,7 +154,8 @@
     ["apuntar-caja", "demo-caja", "historial-caja"].forEach(function (k) { $(k).hidden = nuevo; });
     $("correo-caja").hidden = nuevo || !c.email || c.noEscribir;
     if (!nuevo) {
-      $("correo-a").textContent = "a " + c.email;
+      $("correo-a").textContent = "Sale desde info@fluivia.ai a " + c.email + ". La prueba te llega a ti.";
+      cargarProgramados();
       $("demo-enviada").textContent = c.demo ? "Pidió la demo desde la web el " + Of.momento(c.demo.fecha) + "." : "";
       pintarHistorial();
       cargarPlantillas();
@@ -237,6 +238,66 @@
     };
     // Antes de enviar, se guarda lo que haya cambiado (el correo usa los datos guardados).
     if (sucio) guardar().then(envio).catch(function () {}); else envio();
+  });
+
+  // ---- Programar el envío ----
+  var dos = function (n) { return String(n).padStart(2, "0"); };
+  var local = function (d) { return d.getFullYear() + "-" + dos(d.getMonth() + 1) + "-" + dos(d.getDate()) + "T" + dos(d.getHours()) + ":" + dos(d.getMinutes()); };
+  $("abrir-programar").addEventListener("click", function () {
+    var abierto = $("programar").hidden;
+    $("programar").hidden = !abierto; this.setAttribute("aria-expanded", String(abierto));
+    if (abierto && !$("correo-cuando").value) { var d = new Date(Date.now() + 864e5); d.setHours(9, 0, 0, 0); $("correo-cuando").value = local(d); }
+    $("correo-cuando").min = local(new Date(Date.now() + 2 * 60000));
+  });
+  $("cuando-rapido").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cuando]"); if (!b) return;
+    var p = b.getAttribute("data-cuando").split("|"), d = new Date(), h = p[1].split(":");
+    if (p[0] === "lunes") { do { d.setDate(d.getDate() + 1); } while (d.getDay() !== 1); }
+    else d.setDate(d.getDate() + Number(p[0]));
+    d.setHours(+h[0], +h[1], 0, 0);
+    $("correo-cuando").value = local(d);
+  });
+  $("programar-correo").addEventListener("click", function () {
+    var asunto = $("correo-asunto").value.trim(), texto = $("correo-texto").value.trim(), v = $("correo-cuando").value;
+    if (!asunto || !texto) { Of.aviso("Falta el asunto o el texto.", true); return; }
+    var cuando = v ? new Date(v) : null;
+    if (!cuando || isNaN(cuando) || cuando.getTime() < Date.now() + 60000) { Of.aviso("Elige una hora que sea al menos dentro de un minuto.", true); return; }
+    var programa = function () {
+      var b = $("programar-correo"); b.disabled = true;
+      Of.api("/api/contactos/" + encodeURIComponent(id) + "/correo", { method: "POST", body: { asunto: asunto, texto: texto, cuando: cuando.toISOString() } }).then(function () {
+        $("correo-asunto").value = ""; $("correo-texto").value = ""; $("plantilla").value = "";
+        $("programar").hidden = true; $("abrir-programar").setAttribute("aria-expanded", "false");
+        Of.aviso("Programado para el " + Of.momento(cuando.toISOString()));
+        cargarProgramados();
+      }).catch(function (e) { Of.aviso(e.message, true); }).finally(function () { b.disabled = false; });
+    };
+    if (sucio) guardar().then(programa).catch(function () {}); else programa();
+  });
+  function cargarProgramados() {
+    Of.api("/api/programados?contacto=" + encodeURIComponent(id)).then(function (l) {
+      $("programados-caja").hidden = !l.length;
+      $("programados").innerHTML = l.map(function (p) {
+        return '<li><div><strong>' + esc(p.asunto) + '</strong></div>' +
+          (p.estado === "error" ? '<span class="chip chip-tarde">' + esc(p.error || "No se pudo enviar") + "</span>" : '<span class="chip">' + esc(Of.momento(p.cuando)) + "</span>") +
+          '<button type="button" class="btn-texto" data-cancelar="' + esc(p.id) + '">Cancelar</button></li>';
+      }).join("");
+    }).catch(function () {});
+  }
+  $("programados").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cancelar]"); if (!b) return;
+    if (!confirm("¿Cancelar este correo programado? No se enviará.")) return;
+    Of.api("/api/programados/" + encodeURIComponent(b.getAttribute("data-cancelar")), { method: "DELETE" })
+      .then(function () { Of.aviso("Correo cancelado"); cargarProgramados(); }).catch(function (err) { Of.aviso(err.message, true); });
+  });
+
+  // ---- Enviarte una prueba (no se apunta en el historial) ----
+  $("probar-correo").addEventListener("click", function () {
+    var asunto = $("correo-asunto").value.trim(), texto = $("correo-texto").value.trim();
+    if (!asunto || !texto) { Of.aviso("Falta el asunto o el texto.", true); return; }
+    var b = this; b.disabled = true;
+    Of.api("/api/contactos/" + encodeURIComponent(id) + "/prueba", { method: "POST", body: { asunto: asunto, texto: texto } })
+      .then(function (r) { Of.aviso("Prueba enviada a " + r.a); }).catch(function (e) { Of.aviso(e.message, true); })
+      .finally(function () { b.disabled = false; });
   });
 
   // Copiar el texto (para mandarlo por LinkedIn): luego se apunta en el historial.

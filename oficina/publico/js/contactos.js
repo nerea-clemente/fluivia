@@ -5,7 +5,7 @@
   Of.cabecera("contactos");
 
   var todos = [];
-  var estado = { texto: "", sector: "", origen: "", pais: "", etapa: "activos", vista: "lista" };
+  var estado = { texto: "", sector: "", origen: "", etapa: "activos", vista: "lista" };
   try { var g = JSON.parse(localStorage.getItem("of-contactos") || "{}"); if (g.vista) estado.vista = g.vista; if (g.etapa) estado.etapa = g.etapa; } catch (e) {}
   var guardarPref = function () { try { localStorage.setItem("of-contactos", JSON.stringify({ vista: estado.vista, etapa: estado.etapa })); } catch (e) {} };
 
@@ -19,7 +19,7 @@
     return todos.filter(function (c) {
       if (estado.sector && c.sector !== estado.sector) return false;
       if (estado.origen && c.origen !== estado.origen) return false;
-      if (estado.pais && (c.pais || "ES") !== estado.pais) return false;
+      if (!Of.enPais(c)) return false;
       if (!sinEtapa) {
         if (estado.etapa === "activos" && (c.etapa === "cliente" || c.etapa === "perdido")) return false;
         if (estado.etapa === "toca" && !(c.proxima && c.proxima.fecha && c.proxima.fecha <= Of.hoy() && c.etapa !== "cliente" && c.etapa !== "perdido")) return false;
@@ -80,7 +80,8 @@
   }
 
   function pintar() {
-    $("total").textContent = todos.length + (todos.length === 1 ? " contacto" : " contactos");
+    var n = Of.pais() ? todos.filter(Of.enPais).length : todos.length;
+    $("total").textContent = n + (n === 1 ? " contacto" : " contactos") + (Of.pais() ? " en " + Of.nombre(Of.PAISES, Of.pais()) : "");
     document.querySelectorAll("[data-vista]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-vista") === estado.vista)); });
     pintarPestanas();
     $("lista").hidden = estado.vista !== "lista";
@@ -91,7 +92,7 @@
   $("buscar").addEventListener("input", function () { estado.texto = this.value; pintar(); });
   $("f-sector").addEventListener("change", function () { estado.sector = this.value; pintar(); });
   $("f-origen").addEventListener("change", function () { estado.origen = this.value; pintar(); });
-  $("f-pais").addEventListener("change", function () { estado.pais = this.value; pintar(); });
+  document.addEventListener("of-pais", function () { if (todos.length) pintar(); });
 
   // ---- Importar una lista de empresas (CSV o JSON) para prospectar ----
   // Columnas: empresa, ciudad, pais (ES/DK), sector, web, telefono, email, linkedin,

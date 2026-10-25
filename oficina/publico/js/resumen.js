@@ -8,7 +8,9 @@
   document.getElementById("saludo").textContent = h < 14 ? "Buenos días" : h < 21 ? "Buenas tardes" : "Buenas noches";
   document.getElementById("fecha").textContent = new Intl.DateTimeFormat("es-ES", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
 
-  Of.api("/api/contactos").then(function (lista) {
+  var todos = [];
+  function pintar() {
+    var lista = todos.filter(Of.enPais);
     var hoy = Of.hoy();
     var activos = lista.filter(function (c) { return c.etapa !== "cliente" && c.etapa !== "perdido"; });
     var toca = activos.filter(function (c) { return c.proxima && c.proxima.fecha && c.proxima.fecha <= hoy; })
@@ -53,5 +55,40 @@
     document.getElementById("recientes").innerHTML = web.length ? web.map(function (x) {
       return '<li><a href="/ficha.html?id=' + encodeURIComponent(x.c.id) + '">' + esc(Of.titulo(x.c)) + '</a><span class="tenue">' + (x.h.tipo === "demo" ? "Pidió la demo" : "Escribió") + " · " + esc(Of.momento(x.h.fecha)) + "</span></li>";
     }).join("") : '<li><p class="tenue">Todavía no ha llegado nadie desde la web.</p></li>';
-  }).catch(function (e) { Of.aviso(e.message, true); });
+  }
+  Of.api("/api/contactos").then(function (lista) { todos = lista; pintar(); pintarProgramados(); }).catch(function (e) { Of.aviso(e.message, true); });
+  document.addEventListener("of-pais", function () { pintar(); pintarProgramados(); });
+
+  // Correos programados (de todos los contactos): cuándo salen y a quién.
+  var programados = [];
+  function pintarProgramados() {
+    var porId = {}; todos.forEach(function (c) { porId[c.id] = c; });
+    var lista = programados.filter(function (p) { return !porId[p.contacto] || Of.enPais(porId[p.contacto]); });
+    document.getElementById("programados-caja").hidden = !lista.length;
+    document.getElementById("programados").innerHTML = lista.map(function (p) {
+      var c = porId[p.contacto];
+      return '<li><div><a href="/ficha.html?id=' + encodeURIComponent(p.contacto) + '">' + esc(c ? Of.titulo(c) : "Contacto borrado") + "</a>" +
+        '<span class="tenue">' + esc(p.asunto) + "</span></div>" +
+        (p.estado === "error" ? '<span class="chip chip-tarde">No se pudo enviar</span>' : '<span class="chip">' + esc(Of.momento(p.cuando)) + "</span>") +
+        '<button type="button" class="btn-texto" data-cancelar="' + esc(p.id) + '">Cancelar</button></li>';
+    }).join("");
+  }
+  function cargarProgramados() { return Of.api("/api/programados").then(function (l) { programados = l; pintarProgramados(); }).catch(function () {}); }
+  cargarProgramados();
+  document.getElementById("programados").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cancelar]"); if (!b) return;
+    if (!confirm("¿Cancelar este correo programado? No se enviará.")) return;
+    Of.api("/api/programados/" + encodeURIComponent(b.getAttribute("data-cancelar")), { method: "DELETE" })
+      .then(function () { Of.aviso("Correo cancelado"); return cargarProgramados(); }).catch(function (err) { Of.aviso(err.message, true); });
+  });
+
+  // Mandarte a ti los correos que salen solos, para ver cómo llegan.
+  document.getElementById("pruebas").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-prueba]"); if (!b) return;
+    var p = b.getAttribute("data-prueba").split(":");
+    b.disabled = true;
+    Of.api("/api/prueba/automatico", { method: "POST", body: { tipo: p[0], idioma: p[1] } })
+      .then(function (r) { Of.aviso("Prueba enviada a " + r.a); }).catch(function (err) { Of.aviso(err.message, true); })
+      .finally(function () { b.disabled = false; });
+  });
 })();
