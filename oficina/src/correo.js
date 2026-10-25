@@ -103,12 +103,13 @@ export function correoDemo(env, d, enlace) {
 export function correoRecibido(env, d) {
   const idioma = ['en', 'da'].includes(d.idioma) ? d.idioma : 'es';
   const responder = (env.AVISOS || '').split(',')[0].trim() || undefined;
+  const cita = /^https:\/\//.test(env.CITA_URL || '') ? env.CITA_URL : '';
   const T = {
-    es: { asunto: 'Hemos recibido tu mensaje', partes: [`Hola, ${d.nombre}:`, 'Gracias por escribirnos. Hemos recibido tu mensaje y te contestamos en un día laborable como mucho.', 'Si quieres añadir algo, responde a este correo.', 'Un saludo,\nFluivia'], pie: 'Recibes este correo porque has escrito desde la web de Fluivia.' },
-    en: { asunto: 'We have received your message', partes: [`Hi ${d.nombre},`, 'Thank you for getting in touch. We have received your message and will reply within one working day.', 'If you would like to add anything, just reply to this email.', 'Best regards,\nFluivia'], pie: 'You are receiving this email because you wrote to us through the Fluivia website.' },
-    da: { asunto: 'Vi har modtaget din besked', partes: [`Hej ${d.nombre}`, 'Tak fordi du skrev til os. Vi har modtaget din besked og svarer senest inden for en arbejdsdag.', 'Vil du tilføje noget, så svar bare på denne mail.', 'Venlig hilsen\nFluivia'], pie: 'Du får denne mail, fordi du har skrevet til os via Fluivias hjemmeside.' },
+    es: { asunto: 'Hemos recibido tu mensaje', partes: [`Hola, ${d.nombre}:`, 'Gracias por escribirnos. Hemos recibido tu mensaje y te contestamos en un día laborable como mucho.', cita ? `Si prefieres contárnoslo en una llamada, reserva aquí 20 minutos:\n${cita}` : '', 'Si quieres añadir algo, responde a este correo.', 'Un saludo,\nFluivia'], pie: 'Recibes este correo porque has escrito desde la web de Fluivia.' },
+    en: { asunto: 'We have received your message', partes: [`Hi ${d.nombre},`, 'Thank you for getting in touch. We have received your message and will reply within one working day.', cita ? `If you would rather talk it through on a call, book 20 minutes here:\n${cita}` : '', 'If you would like to add anything, just reply to this email.', 'Best regards,\nFluivia'], pie: 'You are receiving this email because you wrote to us through the Fluivia website.' },
+    da: { asunto: 'Vi har modtaget din besked', partes: [`Hej ${d.nombre}`, 'Tak fordi du skrev til os. Vi har modtaget din besked og svarer senest inden for en arbejdsdag.', cita ? `Vil du hellere tage det i et opkald, kan du booke 20 minutter her:\n${cita}` : '', 'Vil du tilføje noget, så svar bare på denne mail.', 'Venlig hilsen\nFluivia'], pie: 'Du får denne mail, fordi du har skrevet til os via Fluivias hjemmeside.' },
   }[idioma];
-  const texto = T.partes.join('\n\n');
+  const texto = T.partes.filter(Boolean).join('\n\n');
   return { to: [d.email], reply_to: responder, subject: T.asunto, text: texto, html: html(texto, T.pie) };
 }
 

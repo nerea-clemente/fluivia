@@ -11,9 +11,10 @@
     NETLIFY_FORMS: true,
     // Todas llegan al mismo buzón (info@fluivia.ai); cada web enseña la de su país.
     CONTACT_EMAIL: { es: "info@fluivia.es", en: "info@fluivia.ai", da: "info@fluivia.dk" }[(document.documentElement.lang || "es").slice(0, 2)] || "info@fluivia.ai",
-    /* CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
-       de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
-    CITA_URL: "https://calendar.app.google/Xcbh1fATzCRWefia9"
+    /* CITA_URL: vacío a propósito. En la web no se enlaza el calendario de
+       reservas: primero escriben y el enlace les llega en el correo automático
+       (CITA_URL de la Oficina y de la función de Netlify), como en Study and Beyond. */
+    CITA_URL: ""
   };
 
   // Envío a Netlify Forms: el formulario entero, codificado como lo espera Netlify.
