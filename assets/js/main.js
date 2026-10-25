@@ -13,7 +13,7 @@
     CONTACT_EMAIL: { es: "info@fluivia.es", en: "info@fluivia.ai", da: "info@fluivia.dk" }[(document.documentElement.lang || "es").slice(0, 2)] || "info@fluivia.ai",
     /* CITA_URL: enlace de reserva de llamadas (por ejemplo, la página de citas
        de Google Calendar). Si se deja vacío, el botón lleva a Contacto. */
-    CITA_URL: ""
+    CITA_URL: "https://calendar.app.google/Xcbh1fATzCRWefia9"
   };
 
   // Envío a Netlify Forms: el formulario entero, codificado como lo espera Netlify.

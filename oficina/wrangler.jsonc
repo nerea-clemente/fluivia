@@ -45,6 +45,6 @@
     // Dónde está la Oficina (para los enlaces de los avisos). Cuenta de Cloudflare
     // propia de Fluivia, con el subdominio «info-fluivia» en workers.dev.
     "OFICINA_URL": "https://fluivia-oficina.info-fluivia.workers.dev",
-    "CITA_URL": ""
+    "CITA_URL": "https://calendar.app.google/Xcbh1fATzCRWefia9"
   }
 }

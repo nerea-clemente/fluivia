@@ -30,7 +30,7 @@ const ENV = {
   RESEND_API_KEY: (process.env.RESEND_API_KEY || '').trim(),
   REMITENTE: 'Fluivia <info@fluivia.ai>',
   DEMO_URL: (process.env.URL || 'https://fluivia.ai').replace(/\/$/, '') + '/d/r5x0kruj/',
-  CITA_URL: process.env.CITA_URL || '',
+  CITA_URL: process.env.CITA_URL || 'https://calendar.app.google/Xcbh1fATzCRWefia9',
 };
 const OFICINA_URL = (process.env.OFICINA_URL || 'https://fluivia-oficina.info-fluivia.workers.dev').replace(/\/$/, '');
 const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'autoescuela', 'otro'];

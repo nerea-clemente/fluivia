@@ -137,7 +137,7 @@ export const PLANTILLAS = {
   'tras-demo': {
     nombre: 'Después de la demo',
     asunto: '¿Qué te ha parecido la demo?',
-    texto: 'Hola, {nombre}:\n\nTe escribo para saber qué te ha parecido la demo de {empresa}. ¿Hay algún caso que te quitaría más trabajo que los demás?\n\nSi quieres, lo vemos en una llamada de 20 minutos y te cuento cómo lo montaríamos con lo que ya usáis.\n\nUn saludo,\nFluivia',
+    texto: 'Hola, {nombre}:\n\nTe escribo para saber qué te ha parecido la demo de {empresa}. ¿Hay algún caso que te quitaría más trabajo que los demás?\n\nSi quieres, lo vemos en una llamada de 20 minutos y te cuento cómo lo montaríamos con lo que ya usáis. Puedes reservarla aquí:\n{cita}\n\nUn saludo,\nFluivia',
   },
   seguimiento: {
     nombre: 'Seguimiento',
@@ -163,7 +163,7 @@ export function rellenar(t, c, env) {
   const nombre = (c.nombre || '').split(/\s+/)[0] || '';
   const dk = c.pais === 'DK';
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
-    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)) };
+    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco' };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
   return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m))
     .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));
