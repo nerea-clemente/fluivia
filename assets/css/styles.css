@@ -654,6 +654,10 @@ h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
   .services-5 > .service { grid-column: span 2; }
   .services-5 > .service:nth-child(n + 4) { grid-column: span 3; }
 }
+/* Cuatro servicios: 2 + 2 */
+@media (min-width: 1081px) {
+  .services-4 { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* A medida: Oficina digital destacada */
 .office {
