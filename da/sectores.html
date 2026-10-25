@@ -26,7 +26,7 @@
 
   <link rel="preload" href="../assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202610251500">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202610251600">
 </head>
 <body>
   <a class="skip-link" href="#main">Spring til indholdet</a>
@@ -44,9 +44,10 @@
           <li><a href="sectores.html" aria-current="page">Brancher</a></li>
           <li><a href="como-trabajamos.html">Sådan arbejder vi</a></li>
           <li><a href="caso-real.html">Kundecase</a></li>
+          <li><a href="demo.html">Demo</a></li>
         </ul>
         <details class="lang-menu"><summary aria-label="Sprog: Dansk"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z"/></svg>DA</summary><ul><li><a href="https://fluivia.es/sectores.html" lang="es" hreflang="es">Español</a></li><li><a href="https://fluivia.ai/sectores.html" lang="en" hreflang="en">English</a></li><li><a href="sectores.html" lang="da" hreflang="da" aria-current="true">Dansk</a></li></ul></details>
-        <a class="btn btn-primary btn-sm nav-cta" href="demo.html">Se en demo</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="contacto.html">Skriv til os</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -62,133 +63,52 @@
     <section class="page-hero">
       <div class="container">
         <h1>Brancher</h1>
-        <p class="lead">Her er situationer, vi ofte ser i hver branche. Alle virksomheder arbejder på deres egen måde, så det, vi sætter op, bliver tilpasset den måde, du gør tingene på, og de programmer, du allerede bruger.</p>
+        <p class="lead">Hver branche har sin egen side med det, vi typisk sætter op. Er din ikke med, finder du flere eksempler længere nede.</p>
       </div>
     </section>
 
-    <section class="section section-cases" id="sectores">
+    <section class="section" id="sectores">
       <div class="container">
+        <div class="section-head">
+          <h2>Vælg din branche</h2>
+        </div>
+        <div class="sector-cards">
+          <a class="sector-card" href="automatizacion-gestorias.html">
+            <h3>Bogholderier</h3>
+            <p>Til at bede om kvartalets bilag og læse fakturaer uden at taste dem.</p>
+            <span class="link-arrow">Se, hvad vi sætter op</span>
+          </a>
+          <a class="sector-card" href="automatizacion-inmobiliarias.html">
+            <h3>Ejendomsmæglere</h3>
+            <p>Til at svare i tide på henvendelser fra portalerne og holde styr på fremvisninger.</p>
+            <span class="link-arrow">Se, hvad vi sætter op</span>
+          </a>
+          <a class="sector-card" href="automatizacion-clinicas.html">
+            <h3>Klinikker</h3>
+            <p>Så patienterne booker online og kommer med skemaet udfyldt.</p>
+            <span class="link-arrow">Se, hvad vi sætter op</span>
+          </a>
+          <a class="sector-card" href="automatizacion-distribucion.html">
+            <h3>Engros og distribution</h3>
+            <p>Så ordrer fra WhatsApp kommer ind af sig selv, og følgesedler bliver underskrevet på mobilen.</p>
+            <span class="link-arrow">Se, hvad vi sætter op</span>
+          </a>
+          <a class="sector-card" href="automatizacion-academias.html">
+            <h3>Skoler</h3>
+            <p>Til tilmelding, besked om fravær og beskeder til familierne.</p>
+            <span class="link-arrow">Se, hvad vi sætter op</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <section class="section section-grey section-cases" id="otros">
+      <div class="container">
+        <div class="section-head">
+          <h2>Andre brancher</h2>
+          <p class="section-lead">De har ikke deres egen side, men her er situationer, vi ofte ser.</p>
+        </div>
         <div class="sector-list">
-          <nav class="tab-list sector-index" aria-label="Brancher">
-            <a class="tab" href="#gestorias">Bogholderier</a>
-            <a class="tab" href="#inmobiliarias">Ejendomsmæglere</a>
-            <a class="tab" href="#clinicas">Klinikker</a>
-            <a class="tab" href="#distribucion">Engros og distribution</a>
-            <a class="tab" href="#academias">Skoler</a>
-            <a class="tab" href="#consultorias">Konsulenthuse og bureauer</a>
-            <a class="tab" href="#comercios">Butikker</a>
-          </nav>
-
-          <section class="sector-block" id="gestorias" aria-labelledby="h-gestorias">
-            <h2 id="h-gestorias">Revisor- og bogholderivirksomheder</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Indsamling af bilag</h3>
-                <p class="case-before">Du beder hver kunde om fakturaer og bilag, én ad gangen, på mail og i telefonen.</p>
-                <p class="case-after">Vi sender påmindelserne for dig, og hver kunde uploader sine bilag til sin egen mappe.</p>
-              </article>
-              <article class="case">
-                <h3>De samme spørgsmål igen</h3>
-                <p class="case-before">Du svarer igen og igen på spørgsmål om frister, skemaer og dokumenter.</p>
-                <p class="case-after">En assistent skriver et udkast til svar efter jeres retningslinjer, og I tjekker det, før det sendes.</p>
-              </article>
-              <article class="case">
-                <h3>Skattekalender</h3>
-                <p class="case-before">Hver kundes frister ligger i løse regneark.</p>
-                <p class="case-after">Du ser dem alle i ét overblik og får en påmindelse før hver dato.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-gestorias.html">Automatisering for bogholderier</a><a class="link-arrow" href="demo.html?sector=gestoria">Se demoen for bogholderier</a></p>
-          </section>
-
-          <section class="sector-block" id="inmobiliarias" aria-labelledby="h-inmobiliarias">
-            <h2 id="h-inmobiliarias">Ejendomsmæglere</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Leads fra boligportaler</h3>
-                <p class="case-before">Du kopierer kontakterne fra hver boligportal i hånden.</p>
-                <p class="case-after">De lander af sig selv på jeres liste, sorteret efter bolig og område.</p>
-              </article>
-              <article class="case">
-                <h3>Første svar</h3>
-                <p class="case-before">Forespørgsler om oplysninger eller fremvisning bliver besvaret sent.</p>
-                <p class="case-after">Den interesserede får med det samme boligens oplysninger og forslag til tidspunkter for fremvisning.</p>
-              </article>
-              <article class="case">
-                <h3>Salgsopstillinger og annoncer</h3>
-                <p class="case-before">Du skriver beskrivelsen af hver bolig fra bunden.</p>
-                <p class="case-after">Vi laver et udkast til annoncen ud fra de tekniske oplysninger, og du retter det til.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-inmobiliarias.html">Automatisering for ejendomsmæglere</a><a class="link-arrow" href="demo.html?sector=inmobiliaria">Se demoen for ejendomsmæglere</a></p>
-          </section>
-
-          <section class="sector-block" id="clinicas" aria-labelledby="h-clinicas">
-            <h2 id="h-clinicas">Klinikker</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Aftaler og tomme tider</h3>
-                <p class="case-before">Du tager telefonen midt i behandlingerne, og tider fra afbud bliver stående tomme.</p>
-                <p class="case-after">Patienterne booker online, bekræfter fra påmindelsen, og ledige tider bliver tilbudt til ventelisten.</p>
-              </article>
-              <article class="case">
-                <h3>Første besøg uden papirer</h3>
-                <p class="case-before">Ved ankomsten udfylder patienten journaloplysninger, samtykke og databeskyttelse på papir.</p>
-                <p class="case-after">Patienten udfylder og underskriver på mobilen, før de kommer, og behandleren får et resumé.</p>
-              </article>
-              <article class="case">
-                <h3>Opfølgning og anmeldelser</h3>
-                <p class="case-before">Nogle patienter dropper forløbet halvvejs, og tilfredse patienter skriver ikke en anmeldelse.</p>
-                <p class="case-after">Øvelser og påmindelser kommer på deres mobil, og når forløbet er slut, beder vi om en anmeldelse.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-clinicas.html">Automatisering for klinikker</a><a class="link-arrow" href="demo.html?sector=clinica">Se demoen for klinikker</a></p>
-          </section>
-
-          <section class="sector-block" id="distribucion" aria-labelledby="h-distribucion">
-            <h2 id="h-distribucion">Engros og distribution</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Ordrer via flere kanaler</h3>
-                <p class="case-before">Ordrerne kommer på mail, telefon og WhatsApp og skal tastes ind i hånden.</p>
-                <p class="case-after">De bliver alle registreret samme sted og i samme format.</p>
-              </article>
-              <article class="case">
-                <h3>Status på leveringer</h3>
-                <p class="case-before">Kunderne ringer og spørger, hvor deres ordre er.</p>
-                <p class="case-after">Vi giver dem besked, når ordren bliver sendt, og når den er leveret.</p>
-              </article>
-              <article class="case">
-                <h3>Lager og genbestilling</h3>
-                <p class="case-before">Du tjekker lageret på øjemål og bestiller hos leverandøren, når en vare allerede mangler.</p>
-                <p class="case-after">Du får besked, når en vare kommer under minimum, med et forslag til ordre, som du godkender.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-distribucion.html">Automatisering for engros og distribution</a><a class="link-arrow" href="demo.html?sector=distribucion">Se demoen for engros og distribution</a></p>
-          </section>
-
-          <section class="sector-block" id="academias" aria-labelledby="h-academias">
-            <h2 id="h-academias">Sprog- og lektiehjælpsskoler</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Tilmeldinger</h3>
-                <p class="case-before">Tilmeldingerne kommer på papir eller mail og skal bagefter skrives ind i et regneark.</p>
-                <p class="case-after">Familierne tilmelder sig i en formular, der går direkte til jeres elevliste og betalinger.</p>
-              </article>
-              <article class="case">
-                <h3>Spørgsmål fra forældre og elever</h3>
-                <p class="case-before">Hver uge bliver der spurgt om det samme: skema, priser og hold.</p>
-                <p class="case-after">En assistent svarer ud fra skolens oplysninger og sender resten videre til jer.</p>
-              </article>
-              <article class="case">
-                <h3>Beskeder og påmindelser</h3>
-                <p class="case-before">Du sender ændrede timer og manglende betalinger én besked ad gangen.</p>
-                <p class="case-after">Beskederne bliver sendt planlagt pr. hold, og du kan se, hvem der har fået dem.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-academias.html">Automatisering for skoler</a><a class="link-arrow" href="demo.html?sector=academia">Se demoen for skoler</a></p>
-          </section>
 
           <section class="sector-block" id="consultorias" aria-labelledby="h-consultorias">
             <h2 id="h-consultorias">Konsulenthuse og bureauer</h2>

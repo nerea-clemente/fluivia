@@ -26,7 +26,7 @@
 
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610251500">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610251600">
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -44,9 +44,10 @@
           <li><a href="sectores.html" aria-current="page">Sectores</a></li>
           <li><a href="como-trabajamos.html">Cómo trabajamos</a></li>
           <li><a href="caso-real.html">Caso real</a></li>
+          <li><a href="demo.html">Demo</a></li>
         </ul>
         <details class="lang-menu"><summary aria-label="Idioma: Español"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z"/></svg>ES</summary><ul><li><a href="sectores.html" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="https://fluivia.ai/sectores.html" lang="en" hreflang="en">English</a></li><li><a href="https://fluivia.dk/sectores.html" lang="da" hreflang="da">Dansk</a></li></ul></details>
-        <a class="btn btn-primary btn-sm nav-cta" href="demo.html">Ver una demo</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="contacto.html">Escríbenos</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -62,156 +63,57 @@
     <section class="page-hero">
       <div class="container">
         <h1>Sectores</h1>
-        <p class="lead">Estos son casos que vemos a menudo en cada sector. Cada negocio trabaja a su manera, así que lo que montamos se adapta a cómo lo haces tú y a los programas que ya usas.</p>
+        <p class="lead">Tenemos una página para cada sector con lo que solemos montar. Si el tuyo no está, más abajo tienes otros ejemplos.</p>
       </div>
     </section>
 
-    <section class="section section-cases" id="sectores">
+    <section class="section" id="sectores">
       <div class="container">
+        <div class="section-head">
+          <h2>Elige tu sector</h2>
+        </div>
+        <div class="sector-cards">
+          <a class="sector-card" href="automatizacion-gestorias.html">
+            <h3>Gestorías</h3>
+            <p>Para pedir la documentación del trimestre y leer las facturas sin teclearlas.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+          <a class="sector-card" href="automatizacion-inmobiliarias.html">
+            <h3>Inmobiliarias</h3>
+            <p>Para contestar a tiempo a los contactos de los portales y llevar las visitas.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+          <a class="sector-card" href="automatizacion-clinicas.html">
+            <h3>Clínicas</h3>
+            <p>Para que los pacientes reserven online y lleguen con la ficha rellenada.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+          <a class="sector-card" href="automatizacion-distribucion.html">
+            <h3>Distribución</h3>
+            <p>Para que los pedidos de WhatsApp entren solos y los albaranes se firmen en el móvil.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+          <a class="sector-card" href="automatizacion-academias.html">
+            <h3>Academias</h3>
+            <p>Para las matrículas, los avisos a las familias y los exámenes de práctica de inglés.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+          <a class="sector-card" href="automatizacion-autoescuelas.html">
+            <h3>Autoescuelas</h3>
+            <p>Para que los alumnos reserven las prácticas y hagan los tests desde el móvil.</p>
+            <span class="link-arrow">Ver qué montamos</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <section class="section section-grey section-cases" id="otros">
+      <div class="container">
+        <div class="section-head">
+          <h2>Otros sectores</h2>
+          <p class="section-lead">No tienen página propia, pero estos son casos que vemos a menudo.</p>
+        </div>
         <div class="sector-list">
-          <nav class="tab-list sector-index" aria-label="Sectores">
-            <a class="tab" href="#gestorias">Gestorías</a>
-            <a class="tab" href="#inmobiliarias">Inmobiliarias</a>
-            <a class="tab" href="#clinicas">Clínicas</a>
-            <a class="tab" href="#distribucion">Distribución</a>
-            <a class="tab" href="#academias">Academias</a>
-            <a class="tab" href="#autoescuelas">Autoescuelas</a>
-            <a class="tab" href="#consultorias">Consultorías y agencias</a>
-            <a class="tab" href="#comercios">Comercios</a>
-          </nav>
-
-          <section class="sector-block" id="gestorias" aria-labelledby="h-gestorias">
-            <h2 id="h-gestorias">Gestorías</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Recogida de documentación</h3>
-                <p class="case-before">Pides las facturas y los justificantes cliente a cliente, por correo y por teléfono.</p>
-                <p class="case-after">Mandamos los recordatorios por ti y cada cliente sube lo suyo a su carpeta.</p>
-              </article>
-              <article class="case">
-                <h3>Consultas repetidas</h3>
-                <p class="case-before">Contestas una y otra vez sobre plazos, modelos y documentos.</p>
-                <p class="case-after">Un asistente prepara la respuesta con vuestros criterios y la revisáis antes de enviarla.</p>
-              </article>
-              <article class="case">
-                <h3>Calendario fiscal</h3>
-                <p class="case-before">Los vencimientos de cada cliente están en hojas de cálculo sueltas.</p>
-                <p class="case-after">Los ves todos en un panel y te avisa antes de cada fecha.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-gestorias.html">Automatización para gestorías</a><a class="link-arrow" href="demo.html?sector=gestoria">Ver la demo para gestorías</a></p>
-          </section>
-
-          <section class="sector-block" id="inmobiliarias" aria-labelledby="h-inmobiliarias">
-            <h2 id="h-inmobiliarias">Inmobiliarias</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Leads de portales</h3>
-                <p class="case-before">Copias a mano los contactos que llegan de cada portal.</p>
-                <p class="case-after">Entran solos en vuestra lista, ordenados por inmueble y zona.</p>
-              </article>
-              <article class="case">
-                <h3>Primera respuesta</h3>
-                <p class="case-before">Las peticiones de información o de visita se contestan tarde.</p>
-                <p class="case-after">El interesado recibe enseguida los datos del inmueble y horarios para la visita.</p>
-              </article>
-              <article class="case">
-                <h3>Fichas y anuncios</h3>
-                <p class="case-before">Escribes desde cero la descripción de cada inmueble.</p>
-                <p class="case-after">Te preparamos un borrador del anuncio a partir de la ficha técnica y tú lo retocas.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-inmobiliarias.html">Automatización para inmobiliarias</a><a class="link-arrow" href="demo.html?sector=inmobiliaria">Ver la demo para inmobiliarias</a></p>
-          </section>
-
-          <section class="sector-block" id="clinicas" aria-labelledby="h-clinicas">
-            <h2 id="h-clinicas">Clínicas</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Citas y huecos vacíos</h3>
-                <p class="case-before">Coges el teléfono en mitad de las sesiones y los huecos de las cancelaciones se quedan vacíos.</p>
-                <p class="case-after">Los pacientes reservan online, confirman desde el recordatorio y los huecos libres se ofrecen a la lista de espera.</p>
-              </article>
-              <article class="case">
-                <h3>Primera visita sin papeles</h3>
-                <p class="case-before">Al llegar, el paciente rellena en papel la ficha, el consentimiento y la protección de datos.</p>
-                <p class="case-after">Lo rellena y lo firma desde el móvil antes de venir, y el profesional recibe un resumen.</p>
-              </article>
-              <article class="case">
-                <h3>Seguimiento y reseñas</h3>
-                <p class="case-before">Hay pacientes que dejan el tratamiento a medias y pacientes contentos que no dejan reseña.</p>
-                <p class="case-after">Les llegan al móvil los ejercicios y los avisos, y al darles el alta les pedimos la reseña.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-clinicas.html">Automatización para clínicas</a><a class="link-arrow" href="demo.html?sector=clinica">Ver la demo para clínicas</a></p>
-          </section>
-
-          <section class="sector-block" id="distribucion" aria-labelledby="h-distribucion">
-            <h2 id="h-distribucion">Distribución</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Pedidos por varios canales</h3>
-                <p class="case-before">Los pedidos llegan por correo, teléfono y WhatsApp, y hay que pasarlos a mano.</p>
-                <p class="case-after">Se apuntan todos en el mismo sitio y con el mismo formato.</p>
-              </article>
-              <article class="case">
-                <h3>Estado de las entregas</h3>
-                <p class="case-before">Los clientes llaman para preguntar dónde está su pedido.</p>
-                <p class="case-after">Les avisamos cuando el pedido sale y cuando se entrega.</p>
-              </article>
-              <article class="case">
-                <h3>Stock y reposición</h3>
-                <p class="case-before">Revisas las existencias a ojo y pides al proveedor cuando ya falta algo.</p>
-                <p class="case-after">Te avisa cuando un producto baja del mínimo y te propone el pedido para que lo confirmes.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-distribucion.html">Automatización para distribución</a><a class="link-arrow" href="demo.html?sector=distribucion">Ver la demo para distribución</a></p>
-          </section>
-
-          <section class="sector-block" id="academias" aria-labelledby="h-academias">
-            <h2 id="h-academias">Academias</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Matrículas</h3>
-                <p class="case-before">Las inscripciones llegan en papel o por correo y luego se pasan a una hoja.</p>
-                <p class="case-after">Las familias se inscriben en un formulario que va directo a vuestra lista de alumnos y cobros.</p>
-              </article>
-              <article class="case">
-                <h3>Dudas de familias y alumnos</h3>
-                <p class="case-before">Cada semana preguntan lo mismo sobre horarios, precios y grupos.</p>
-                <p class="case-after">Un asistente contesta con la información de la academia y os pasa lo demás.</p>
-              </article>
-              <article class="case">
-                <h3>Avisos y recordatorios</h3>
-                <p class="case-before">Mandas los cambios de clase y los pagos pendientes mensaje a mensaje.</p>
-                <p class="case-after">Los avisos salen programados por grupo y ves quién los ha recibido.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-academias.html">Automatización para academias</a><a class="link-arrow" href="demo.html?sector=academia">Ver la demo para academias</a></p>
-          </section>
-
-          <section class="sector-block" id="autoescuelas" aria-labelledby="h-autoescuelas">
-            <h2 id="h-autoescuelas">Autoescuelas</h2>
-            <div class="cases">
-              <article class="case">
-                <h3>Tests del teórico</h3>
-                <p class="case-before">Los alumnos se presentan al teórico sin que sepas si lo llevan bien.</p>
-                <p class="case-after">Hacen tests del permiso B que se corrigen solos y tú ves qué temas les cuestan.</p>
-              </article>
-              <article class="case">
-                <h3>Reserva de prácticas</h3>
-                <p class="case-before">Las clases se cuadran por WhatsApp y los huecos de las cancelaciones se pierden.</p>
-                <p class="case-after">Los alumnos reservan desde el móvil y, si alguien cancela, avisamos a la lista de espera.</p>
-              </article>
-              <article class="case">
-                <h3>Exámenes de la DGT</h3>
-                <p class="case-before">Las fechas y los resultados están apuntados en papeles sueltos.</p>
-                <p class="case-after">Cada alumno tiene en el portal su fecha de examen, sus recordatorios y su resultado.</p>
-              </article>
-            </div>
-            <p class="sector-more"><a class="link-arrow" href="automatizacion-autoescuelas.html">Automatización para autoescuelas</a><a class="link-arrow" href="demo.html?sector=autoescuela">Ver la demo para autoescuelas</a></p>
-          </section>
 
           <section class="sector-block" id="consultorias" aria-labelledby="h-consultorias">
             <h2 id="h-consultorias">Consultorías y agencias</h2>

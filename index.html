@@ -26,7 +26,7 @@
 
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610251500">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610251600">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Fluivia", "url": "https://fluivia.es/", "logo": "https://fluivia.es/assets/img/logo.svg", "image": "https://fluivia.es/assets/img/og-avatar.png", "slogan": "Procesos que fluyen", "description": "Automatización e inteligencia artificial para pequeñas empresas: gestorías, inmobiliarias, clínicas, academias, autoescuelas y distribución.", "areaServed": {"@type": "Country", "name": "Spain"}, "inLanguage": "es", "knowsAbout": ["Automatización de procesos", "Inteligencia artificial para empresas", "Automatización para gestorías", "Automatización para inmobiliarias", "Automatización para clínicas", "Automatización para academias", "Automatización para autoescuelas", "Automatización para distribución"]}</script>
 </head>
 <body>
@@ -45,9 +45,10 @@
           <li><a href="sectores.html">Sectores</a></li>
           <li><a href="como-trabajamos.html">Cómo trabajamos</a></li>
           <li><a href="caso-real.html">Caso real</a></li>
+          <li><a href="demo.html">Demo</a></li>
         </ul>
         <details class="lang-menu"><summary aria-label="Idioma: Español"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z"/></svg>ES</summary><ul><li><a href="index.html" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="https://fluivia.ai/" lang="en" hreflang="en">English</a></li><li><a href="https://fluivia.dk/" lang="da" hreflang="da">Dansk</a></li></ul></details>
-        <a class="btn btn-primary btn-sm nav-cta" href="demo.html">Ver una demo</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="contacto.html">Escríbenos</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -65,18 +66,19 @@
           <h1>Automatizamos las tareas que te quitan tiempo</h1>
           <p class="lead">Trabajamos con pequeñas empresas que pierden horas contestando lo mismo, cuadrando citas o pidiendo papeles. Vemos contigo qué se repite, lo montamos para que encaje con cómo trabajas y te ayudamos mientras lo usas.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="contacto.html">Cuéntanos tu proceso</a>
+            <a class="btn btn-primary" href="#consulta">Cuéntanos tu proceso</a>
             <a class="btn btn-ghost" href="demo.html">Ver una demo</a>
           </div>
           <p class="hero-note">No hace falta que sepas qué herramienta necesitas. Cuéntanos qué te quita tiempo y lo vemos juntos.</p>
         </div>
 
-        <!-- Esquema: información dispersa → un flujo ordenado -->
-        <div class="flow" aria-label="Ejemplo: las consultas llegan por varios canales y se organizan en un mismo sitio" role="img">
+        <!-- Esquema: llega un mensaje y se ve qué pasa con él -->
+        <div class="flow" aria-label="Ejemplo: llega un WhatsApp preguntando por una cita, se prepara la respuesta y se programa un recordatorio" role="img">
+          <p class="flow-label flow-label-in">Lo que te llega</p>
+          <p class="flow-label flow-label-out">Lo que ves tú</p>
           <div class="flow-col flow-in">
-            <p class="flow-label">Lo que te llega</p>
             <div class="chip"><span class="chip-dot"></span>Correo</div>
-            <div class="chip"><span class="chip-dot"></span>WhatsApp</div>
+            <div class="chip chip-activo"><span class="chip-dot"></span>WhatsApp</div>
             <div class="chip"><span class="chip-dot"></span>Formulario web</div>
             <div class="chip"><span class="chip-dot"></span>Hoja de Excel</div>
           </div>
@@ -84,23 +86,22 @@
           <div class="flow-lines" aria-hidden="true">
             <svg viewBox="0 0 80 240" preserveAspectRatio="none">
               <path d="M0 24 C40 24 40 120 80 120"/>
-              <path d="M0 88 C40 88 40 120 80 120"/>
+              <path class="activa" d="M0 88 C40 88 40 120 80 120"/>
               <path d="M0 152 C40 152 40 120 80 120"/>
               <path d="M0 216 C40 216 40 120 80 120"/>
             </svg>
           </div>
 
           <div class="flow-col flow-out">
-            <p class="flow-label">Dónde lo ves</p>
             <div class="panel">
               <div class="panel-head">
                 <img src="assets/img/isotipo.svg" alt="" width="14" height="22">
                 <span>Consultas</span>
               </div>
               <ul class="panel-list">
-                <li><span class="tag">Nueva</span><span>Solicitud de presupuesto <em>clasificada</em></span></li>
-                <li><span class="tag tag-soft">Borrador</span><span>Respuesta lista para que la revises</span></li>
-                <li><span class="tag tag-soft">Aviso</span><span>Seguimiento programado para el jueves</span></li>
+                <li class="paso paso-1"><span class="tag">WhatsApp · 16:42</span><span>«Hola, ¿tenéis hueco el jueves por la tarde?»</span></li>
+                <li class="paso paso-2"><span class="tag tag-soft">Respuesta preparada</span><span>Sí, a las 17:00 o a las 18:30. ¿Te reservo una?</span><span class="mini-btn">Enviar</span></li>
+                <li class="paso paso-3"><span class="tag tag-soft">Recordatorio</span><span>Sale solo el miércoles a las 10:00</span></li>
               </ul>
             </div>
           </div>
@@ -122,7 +123,7 @@
           <li><span class="num">05</span><p>«Quiero usar la IA en el negocio, pero no sé por dónde empezar.»</p></li>
           <li class="pains-cta">
             <p>Si alguna es tuya, ya sabemos por dónde empezar.</p>
-            <a class="link-arrow" href="contacto.html">Cuéntanos la tuya</a>
+            <a class="link-arrow" href="#consulta">Cuéntanos la tuya</a>
           </li>
         </ul>
       </div>
@@ -132,8 +133,8 @@
     <section class="section" id="productos">
       <div class="container">
         <div class="section-head">
-          <h2>Tres servicios para empezar</h2>
-          <p class="section-lead">Cubren lo que más vemos en pequeñas empresas. Tienen un precio de partida y los adaptamos a tu forma de trabajar.</p>
+          <h2>Servicios listos para empezar</h2>
+          <p class="section-lead">Son tres servicios que montamos de forma parecida en casi todos los negocios, por eso tienen precio de partida y suelen estar funcionando en pocas semanas. Lo demás lo hacemos a medida y te damos el precio cuando vemos tu caso.</p>
         </div>
 
         <div class="products">
@@ -200,15 +201,70 @@
     </section>
 
     <!-- ============ LLAMADA A LA ACCIÓN ============ -->
-    <section class="cta-band">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h2>¿Qué tarea te gustaría quitarte de encima?</h2>
-            <p>Cuéntanosla y te decimos si podemos ayudarte. La primera conversación no te compromete a nada.</p>
-          </div>
-          <a class="btn btn-primary" href="contacto.html">Hablemos</a>
+    <section class="section section-dark contact" id="consulta">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>¿Qué tarea te gustaría quitarte de encima?</h2>
+          <p>Cuéntanosla y te decimos si podemos ayudarte. La primera conversación no te compromete a nada.</p>
         </div>
+        <form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
+          <input type="hidden" name="form-name" value="contacto">
+          <input type="hidden" name="idioma" value="es">
+          <div class="field field-trampa" aria-hidden="true">
+            <label for="f-web">No rellenes este campo</label>
+            <input id="f-web" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-nombre">Nombre</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-empresa">Empresa</label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Correo electrónico</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono <span class="optional">(opcional)</span></label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-sector">Sector</label>
+            <select id="f-sector" name="sector">
+              <option value="">Selecciona una opción</option>
+              <option value="gestoria">Gestoría o asesoría</option>
+              <option value="inmobiliaria">Inmobiliaria</option>
+              <option value="distribucion">Distribución</option>
+              <option value="academia">Academia o formación</option>
+              <option value="autoescuela">Autoescuela</option>
+              <option value="clinica">Clínica o centro de salud</option>
+              <option value="consultoria">Consultoría o agencia</option>
+              <option value="comercio">Comercio</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-mensaje">¿Qué tarea te gustaría simplificar?</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="Por ejemplo: respondo las mismas preguntas por correo varias veces al día."></textarea>
+          </div>
+
+          <div class="field field-check">
+            <input id="f-privacidad" name="privacidad" type="checkbox" required>
+            <label for="f-privacidad">He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</label>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Enviar mensaje</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>

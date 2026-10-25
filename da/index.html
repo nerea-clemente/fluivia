@@ -26,7 +26,7 @@
 
   <link rel="preload" href="../assets/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202610251500">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202610251600">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Fluivia", "url": "https://fluivia.dk/", "logo": "https://fluivia.dk/assets/img/logo.svg", "image": "https://fluivia.dk/assets/img/og-avatar.png", "slogan": "Processer, der flyder", "description": "Automatisering og kunstig intelligens til små virksomheder: revisor- og bogholderivirksomheder, ejendomsmæglere, klinikker, sprog- og lektiehjælpsskoler samt engros og distribution.", "areaServed": {"@type": "Country", "name": "Denmark"}, "inLanguage": "da", "knowsAbout": ["Procesautomatisering", "Kunstig intelligens til virksomheder", "Automatisering for bogholderier", "Automatisering for ejendomsmæglere", "Automatisering for klinikker", "Automatisering for skoler", "Automatisering for engros og distribution"]}</script>
 </head>
 <body>
@@ -45,9 +45,10 @@
           <li><a href="sectores.html">Brancher</a></li>
           <li><a href="como-trabajamos.html">Sådan arbejder vi</a></li>
           <li><a href="caso-real.html">Kundecase</a></li>
+          <li><a href="demo.html">Demo</a></li>
         </ul>
         <details class="lang-menu"><summary aria-label="Sprog: Dansk"><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5z"/></svg>DA</summary><ul><li><a href="https://fluivia.es/" lang="es" hreflang="es">Español</a></li><li><a href="https://fluivia.ai/" lang="en" hreflang="en">English</a></li><li><a href="index.html" lang="da" hreflang="da" aria-current="true">Dansk</a></li></ul></details>
-        <a class="btn btn-primary btn-sm nav-cta" href="demo.html">Se en demo</a>
+        <a class="btn btn-primary btn-sm nav-cta" href="contacto.html">Skriv til os</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -65,18 +66,19 @@
           <h1>Vi automatiserer de opgaver, der tager din tid</h1>
           <p class="lead">Vi arbejder med små virksomheder, der bruger timer på at svare på det samme, få aftaler til at passe eller rykke for papirer. Vi ser sammen med dig på, hvad der gentager sig, sætter det op, så det passer til den måde, du arbejder på, og hjælper dig, mens du bruger det.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="contacto.html">Fortæl os om din proces</a>
+            <a class="btn btn-primary" href="#consulta">Fortæl os om din proces</a>
             <a class="btn btn-ghost" href="demo.html">Se en demo</a>
           </div>
           <p class="hero-note">Du behøver ikke at vide, hvilket værktøj du har brug for. Fortæl os, hvad der tager din tid, så finder vi ud af det sammen.</p>
         </div>
 
-        <!-- Esquema: información dispersa → un flujo ordenado -->
-        <div class="flow" aria-label="Eksempel: henvendelserne kommer ind via flere kanaler og samles ét sted" role="img">
+        <!-- Esquema: llega un mensaje y se ve qué pasa con él -->
+        <div class="flow" aria-label="Eksempel: en WhatsApp-besked spørger efter en tid, et svar bliver gjort klar, og en påmindelse bliver planlagt" role="img">
+          <p class="flow-label flow-label-in">Det, der kommer ind</p>
+          <p class="flow-label flow-label-out">Det, du ser</p>
           <div class="flow-col flow-in">
-            <p class="flow-label">Det, der kommer ind</p>
             <div class="chip"><span class="chip-dot"></span>Mail</div>
-            <div class="chip"><span class="chip-dot"></span>WhatsApp</div>
+            <div class="chip chip-activo"><span class="chip-dot"></span>WhatsApp</div>
             <div class="chip"><span class="chip-dot"></span>Kontaktformular</div>
             <div class="chip"><span class="chip-dot"></span>Excel-ark</div>
           </div>
@@ -84,23 +86,22 @@
           <div class="flow-lines" aria-hidden="true">
             <svg viewBox="0 0 80 240" preserveAspectRatio="none">
               <path d="M0 24 C40 24 40 120 80 120"/>
-              <path d="M0 88 C40 88 40 120 80 120"/>
+              <path class="activa" d="M0 88 C40 88 40 120 80 120"/>
               <path d="M0 152 C40 152 40 120 80 120"/>
               <path d="M0 216 C40 216 40 120 80 120"/>
             </svg>
           </div>
 
           <div class="flow-col flow-out">
-            <p class="flow-label">Hvor du ser det</p>
             <div class="panel">
               <div class="panel-head">
                 <img src="../assets/img/isotipo.svg" alt="" width="14" height="22">
                 <span>Henvendelser</span>
               </div>
               <ul class="panel-list">
-                <li><span class="tag">Ny</span><span>Tilbudsforespørgsel <em>sorteret</em></span></li>
-                <li><span class="tag tag-soft">Udkast</span><span>Svar klar til, at du kan læse det igennem</span></li>
-                <li><span class="tag tag-soft">Påmindelse</span><span>Opfølgning planlagt til torsdag</span></li>
+                <li class="paso paso-1"><span class="tag">WhatsApp · 16.42</span><span>»Hej, har I en tid torsdag eftermiddag?«</span></li>
+                <li class="paso paso-2"><span class="tag tag-soft">Svar klar</span><span>Ja, kl. 17.00 eller 18.30. Skal jeg booke en af dem?</span><span class="mini-btn">Send</span></li>
+                <li class="paso paso-3"><span class="tag tag-soft">Påmindelse</span><span>Sendes af sig selv onsdag kl. 10.00</span></li>
               </ul>
             </div>
           </div>
@@ -122,7 +123,7 @@
           <li><span class="num">05</span><p>»Jeg vil gerne bruge AI i virksomheden, men ved ikke, hvor jeg skal starte.«</p></li>
           <li class="pains-cta">
             <p>Er en af dem din, ved vi allerede, hvor vi skal starte.</p>
-            <a class="link-arrow" href="contacto.html">Fortæl os om din</a>
+            <a class="link-arrow" href="#consulta">Fortæl os om din</a>
           </li>
         </ul>
       </div>
@@ -132,8 +133,8 @@
     <section class="section" id="productos">
       <div class="container">
         <div class="section-head">
-          <h2>Tre ydelser at starte med</h2>
-          <p class="section-lead">De dækker det, vi oftest ser i små virksomheder. Hver har en startpris, og vi tilpasser dem til den måde, du arbejder på.</p>
+          <h2>Ydelser, der er klar til at gå i gang med</h2>
+          <p class="section-lead">Det er tre ydelser, vi sætter op på næsten samme måde i alle virksomheder, og derfor har de en startpris og kører som regel inden for få uger. Alt andet bygger vi til dig, og prisen får du, når vi har set din situation.</p>
         </div>
 
         <div class="products">
@@ -199,15 +200,69 @@
     </section>
 
     <!-- ============ LLAMADA A LA ACCIÓN ============ -->
-    <section class="cta-band">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h2>Hvilken opgave vil du helst være fri for?</h2>
-            <p>Fortæl os om den, så siger vi, om vi kan hjælpe. Den første snak forpligter dig ikke til noget.</p>
-          </div>
-          <a class="btn btn-primary" href="contacto.html">Lad os tale sammen</a>
+    <section class="section section-dark contact" id="consulta">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>Hvilken opgave vil du helst være fri for?</h2>
+          <p>Fortæl os om den, så siger vi, om vi kan hjælpe. Den første snak forpligter dig ikke til noget.</p>
         </div>
+        <form class="contact-form" id="contact-form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
+          <input type="hidden" name="form-name" value="contacto">
+          <input type="hidden" name="idioma" value="da">
+          <div class="field field-trampa" aria-hidden="true">
+            <label for="f-web">Lad dette felt være tomt</label>
+            <input id="f-web" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-nombre">Navn</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-empresa">Virksomhed</label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-tel">Telefon <span class="optional">(valgfrit)</span></label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-sector">Branche</label>
+            <select id="f-sector" name="sector">
+              <option value="">Vælg en mulighed</option>
+              <option value="gestoria">Revisor- eller bogholderivirksomhed</option>
+              <option value="inmobiliaria">Ejendomsmægler</option>
+              <option value="distribucion">Engros og distribution</option>
+              <option value="academia">Sprog- eller lektiehjælpsskole, kurser</option>
+              <option value="clinica">Klinik eller sundhedscenter</option>
+              <option value="consultoria">Konsulenthus eller bureau</option>
+              <option value="comercio">Butik</option>
+              <option value="otro">Andet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-mensaje">Hvilken opgave vil du gerne gøre enklere?</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" required placeholder="For eksempel: Jeg svarer på de samme spørgsmål på mail flere gange om dagen."></textarea>
+          </div>
+
+          <div class="field field-check">
+            <input id="f-privacidad" name="privacidad" type="checkbox" required>
+            <label for="f-privacidad">Jeg har læst og accepterer <a href="privacidad.html">privatlivspolitikken</a>.</label>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Send besked</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
