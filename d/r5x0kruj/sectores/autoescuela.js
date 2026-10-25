@@ -66,17 +66,17 @@
         con: "El alumno hace tests desde el móvil y ve al momento por qué ha fallado. La autoescuela ve quién está listo para presentarse y quién se ha atascado, y en qué.",
         ganas: ["Alumnos que llegan preparados al examen", "Sabes en qué tema falla cada uno", "Las clases de teórico, donde hacen falta"],
         pasos: [
-          { quien: "cliente", nombre: "Nerea, alumna", t: "Nerea hace un test en el autobús", d: "Treinta preguntas desde el móvil, cuando le viene bien. Esta es de señales: tres respuestas y solo una es la buena.", boton: "Responder" },
-          { quien: "auto", t: "La corrección llega al momento", d: "Nerea ha fallado. Ve cuál era la buena y por qué, en dos líneas. No tiene que esperar a la clase para entenderlo.", boton: "Terminar el test" },
+          { quien: "cliente", nombre: "Carla, alumna", t: "Carla hace un test en el autobús", d: "Treinta preguntas desde el móvil, cuando le viene bien. Esta es de señales: tres respuestas y solo una es la buena.", boton: "Responder" },
+          { quien: "auto", t: "La corrección llega al momento", d: "Carla ha fallado. Ve cuál era la buena y por qué, en dos líneas. No tiene que esperar a la clase para entenderlo.", boton: "Terminar el test" },
           { quien: "auto", t: "Sabe en qué falla y si está lista", d: "Al acabar ve sus fallos por tema y cuánto le falta para presentarse. En Faro, cinco tests aprobados seguidos.", boton: "Ver el panel de la autoescuela" },
           { quien: "equipo", nombre: "Marta, directora", t: "Marta sabe a quién presentar y a quién ayudar", d: "Quién está listo para el examen, quién lleva semanas atascado y en qué tema. A Iván le llega una clase de repaso sin que nadie tenga que llamarle.", boton: "Ver el resultado" }
         ],
         final: { antes: "Tests que nadie revisa y alumnos que se presentan al teórico a ver si suena la flauta.", ahora: "Cada alumno sabe qué le falta y Marta presenta al examen a quien de verdad está listo." },
         escena: function (x) {
           var u = UI, movil, cuerpo;
-          var tests = function (estadoNerea, resaltar) {
+          var tests = function (estadoCarla, resaltar) {
             return u.tabla(["Alumno", "Test", "Resultado"], [
-              ["Nerea Soler", "Test 14 · Señales y velocidad", estadoNerea],
+              ["Carla Soler", "Test 14 · Señales y velocidad", estadoCarla],
               ["Pablo Ferrer", "Test 9 · Prioridad", u.chip("24 de 30 · suspenso", "alerta")],
               ["Aitana Ruiz", "Test 21 · Todos los temas", u.chip("29 de 30 · aprobado", "ok")]
             ], [resaltar ? "is-resaltada" : ""]);
@@ -84,7 +84,7 @@
           var kp = u.kpis([["38", "alumnos en el teórico"], ["214", "tests hechos esta semana"]]);
 
           if (x.p === 0) {
-            movil = u.movil({ quien: "Móvil de Nerea", hora: "8:12", titulo: "Test 14 · Señales y velocidad", cuerpo:
+            movil = u.movil({ quien: "Móvil de Carla", hora: "8:12", titulo: "Test 14 · Señales y velocidad", cuerpo:
               u.barra(12, 30, "Pregunta") +
               senal +
               '<p style="font-size:14px;font-weight:600">¿Qué indica esta señal?</p>' +
@@ -92,7 +92,7 @@
             });
             cuerpo = kp + tests(u.chip("Haciendo el test · 12 de 30", "info"), true);
           } else if (x.p === 1) {
-            movil = u.movil({ quien: "Móvil de Nerea", hora: "8:12", titulo: "Test 14 · Señales y velocidad", cuerpo:
+            movil = u.movil({ quien: "Móvil de Carla", hora: "8:12", titulo: "Test 14 · Señales y velocidad", cuerpo:
               u.barra(12, 30, "Pregunta") +
               senal +
               '<p style="font-size:14px;font-weight:600">¿Qué indica esta señal?</p>' +
@@ -103,7 +103,7 @@
             cuerpo = kp + tests(u.chip("Haciendo el test · 12 de 30", "info"), true) +
               '<div class="caja anim anim-2"><h5>La pregunta que más se falla esta semana</h5><p>Señal de velocidad mínima: la fallan 4 de cada 10 alumnos. Casi todos la confunden con la de velocidad máxima.</p></div>';
           } else if (x.p === 2) {
-            movil = u.movil({ quien: "Móvil de Nerea", hora: "8:31", titulo: "Test 14 · resultado", cuerpo:
+            movil = u.movil({ quien: "Móvil de Carla", hora: "8:31", titulo: "Test 14 · resultado", cuerpo:
               '<div class="anim">' + u.kpis([["27 de 30", "aciertos", "ok"], ["3", "fallos"]]) + "</div>" +
               '<div class="caja anim"><h5>Tus fallos por tema</h5><ul class="lista-simple">' +
                 "<li><span>Señales</span><strong>2</strong></li>" +
@@ -130,7 +130,7 @@
               u.tabla(["Alumno", "Aprobados seguidos", "Le cuesta", "Estado"], [
                 ["Aitana Ruiz", "7", "—", u.chip("Lista para examen", "ok")],
                 ["Lorena Martí", "5", "—", u.chip("Lista para examen", "ok")],
-                ["Nerea Soler", "4 de 5", "Señales", u.chip("Casi lista", "pend")],
+                ["Carla Soler", "4 de 5", "Señales", u.chip("Casi lista", "pend")],
                 ["Pablo Ferrer", "1", "Prioridad", u.chip("Casi listo", "pend")],
                 ["Iván Castro", "0 en 6 semanas", "Prioridad · Distancias", u.chip("Atascado", "alerta")]
               ], ["", "", "", "", "is-resaltada"]) +
