@@ -10,6 +10,7 @@ const SECTOR_TEXTO = {
   inmobiliaria: { una: 'una inmobiliaria', plural: 'inmobiliarias' },
   clinica: { una: 'una clínica', plural: 'clínicas' },
   academia: { una: 'una academia', plural: 'academias' },
+  idiomas: { una: 'una academia de idiomas', plural: 'academias de idiomas' },
   distribucion: { una: 'una empresa de distribución', plural: 'empresas de distribución' },
   consultoria: { una: 'una consultoría o agencia', plural: 'consultorías y agencias' },
   comercio: { una: 'un comercio', plural: 'comercios' },
@@ -52,7 +53,8 @@ export const idiomaDe = (c) => (['es', 'en', 'da'].includes(c.idioma) ? c.idioma
 export function enlaceDemo(env, sector, empresa, idioma = 'es') {
   const url = new URL(env.DEMO_URL || 'https://fluivia.es/d/r5x0kruj/');
   if (idioma === 'en' || idioma === 'da') url.searchParams.set('lang', idioma);
-  if (tieneDemo(sector)) url.searchParams.set('s', sector);
+  // Las academias de idiomas ven la demo de academia (con los simulacros de Cambridge).
+  if (tieneDemo(sector)) url.searchParams.set('s', sector === 'idiomas' ? 'academia' : sector);
   if (empresa) url.searchParams.set('n', empresa.slice(0, 60));
   const responder = (env.AVISOS || '').split(',')[0].trim();
   if (responder) url.searchParams.set('r', responder);
@@ -61,8 +63,8 @@ export function enlaceDemo(env, sector, empresa, idioma = 'es') {
 
 // El correo que recibe quien pide la demo desde la web, en el idioma de la web
 // desde la que la pidió (español, inglés o danés). La demo está en español.
-const SECTOR_EN = { autoescuela: 'a driving school', gestoria: 'an accountancy firm', inmobiliaria: 'an estate agency', clinica: 'a clinic', academia: 'a school', distribucion: 'a distribution business', consultoria: 'a consultancy or agency', comercio: 'a shop' };
-const SECTOR_DA = { autoescuela: 'en køreskole', gestoria: 'et bogholderi', inmobiliaria: 'en ejendomsmægler', clinica: 'en klinik', academia: 'en skole', distribucion: 'en distributionsvirksomhed', consultoria: 'et konsulenthus eller bureau', comercio: 'en butik' };
+const SECTOR_EN = { autoescuela: 'a driving school', gestoria: 'an accountancy firm', inmobiliaria: 'an estate agency', clinica: 'a clinic', idiomas: 'a language school', academia: 'a school', distribucion: 'a distribution business', consultoria: 'a consultancy or agency', comercio: 'a shop' };
+const SECTOR_DA = { autoescuela: 'en køreskole', gestoria: 'et bogholderi', inmobiliaria: 'en ejendomsmægler', clinica: 'en klinik', idiomas: 'en sprogskole', academia: 'en skole', distribucion: 'en distributionsvirksomhed', consultoria: 'et konsulenthus eller bureau', comercio: 'en butik' };
 
 export function correoDemo(env, d, enlace) {
   const idioma = ['en', 'da'].includes(d.idioma) ? d.idioma : 'es';
@@ -92,10 +94,11 @@ export function correoDemo(env, d, enlace) {
       conDemo ? `Son cuatro situaciones del día a día de ${s.una}, contadas paso a paso. Se recorre en unos cinco minutos.`
         : 'Todavía no tenemos una demo de tu sector, así que te mando la general. Respóndeme contándome a qué te dedicas y te preparo una con tus casos.',
       env.CITA_URL ? `Si prefieres verla conmigo, reserva una llamada de 20 minutos: ${env.CITA_URL}` : 'Si prefieres verla conmigo, responde a este correo y buscamos un hueco de 20 minutos.',
-      'Un saludo,\nFluivia'];
+      'Un saludo,\nNerea'];
     pie = 'Recibes este correo porque has pedido la demo en la web de Fluivia.';
   }
   const texto = partes.join('\n\n');
+  if (idioma === 'es') return { to: [d.email], reply_to: responder, ...personal(env, { asunto, texto, pie }) };
   return { to: [d.email], reply_to: responder, subject: asunto, text: texto, html: html(texto, pie) };
 }
 
@@ -105,25 +108,32 @@ export function correoRecibido(env, d) {
   const responder = (env.AVISOS || '').split(',')[0].trim() || undefined;
   const cita = /^https:\/\//.test(env.CITA_URL || '') ? env.CITA_URL : '';
   const T = {
-    es: { asunto: 'Hemos recibido tu mensaje', partes: [`Hola, ${d.nombre}:`, 'Gracias por escribirnos. Hemos recibido tu mensaje y te contestamos en un día laborable como mucho.', cita ? `Si prefieres contárnoslo en una llamada, reserva aquí 20 minutos:\n${cita}` : '', 'Si quieres añadir algo, responde a este correo.', 'Un saludo,\nFluivia'], pie: 'Recibes este correo porque has escrito desde la web de Fluivia.' },
+    es: { asunto: 'He recibido tu mensaje', partes: [`Hola, ${d.nombre}:`, 'Gracias por escribirme. He recibido tu mensaje y te contesto en un día laborable como mucho.', cita ? `Si prefieres contármelo en una llamada, reserva aquí 20 minutos:\n${cita}` : '', 'Si quieres añadir algo, responde a este correo o escríbeme por WhatsApp.', 'Un saludo,\nNerea'], pie: 'Recibes este correo porque has escrito desde la web de Fluivia.' },
     en: { asunto: 'We have received your message', partes: [`Hi ${d.nombre},`, 'Thank you for getting in touch. We have received your message and will reply within one working day.', cita ? `If you would rather talk it through on a call, book 20 minutes here:\n${cita}` : '', 'If you would like to add anything, just reply to this email.', 'Best regards,\nFluivia'], pie: 'You are receiving this email because you wrote to us through the Fluivia website.' },
     da: { asunto: 'Vi har modtaget din besked', partes: [`Hej ${d.nombre}`, 'Tak fordi du skrev til os. Vi har modtaget din besked og svarer senest inden for en arbejdsdag.', cita ? `Vil du hellere tage det i et opkald, kan du booke 20 minutter her:\n${cita}` : '', 'Vil du tilføje noget, så svar bare på denne mail.', 'Venlig hilsen\nFluivia'], pie: 'Du får denne mail, fordi du har skrevet til os via Fluivias hjemmeside.' },
   }[idioma];
   const texto = T.partes.filter(Boolean).join('\n\n');
+  if (idioma === 'es') return { to: [d.email], reply_to: responder, ...personal(env, { asunto: T.asunto, texto, pie: T.pie }) };
   return { to: [d.email], reply_to: responder, subject: T.asunto, text: texto, html: html(texto, T.pie) };
 }
 
 // Plantillas para escribir desde la ficha. Se rellenan y se pueden cambiar antes de enviar.
+// Las de España las firma Nerea (la firma completa, con el WhatsApp, la añade personal()).
 export const PLANTILLAS = {
   'primer-contacto': {
     nombre: 'Primer correo (España)',
-    asunto: 'Una idea para {empresa}',
-    texto: 'Hola, {nombre}:\n\nTe escribo porque trabajo con {sector_plural} para quitarles tareas que se repiten cada semana: pedir documentación, contestar las mismas preguntas o pasar datos de un sitio a otro.\n\nHe preparado una demo con el nombre de {empresa}, para que veas en cinco minutos cómo quedaría:\n{demo}\n\nSi te encaja, lo vemos en una llamada de 20 minutos. Y si no te interesa, dímelo y no te vuelvo a escribir.\n\nUn saludo,\nFluivia',
+    asunto: 'Una demo con el nombre de {empresa}',
+    texto: 'Hola, {nombre}:\n\nSoy Nerea, de Fluivia. Ayudo a {sector_plural} a quitarse de encima las tareas que se repiten cada semana.\n\n{gancho} Eso es justo lo que automatizamos, y sin que tengáis que cambiar los programas que ya usáis.\n\nPara que no tengas que imaginártelo, te he preparado una demo con el nombre de {empresa}. Se ve en cinco minutos:\n{demo}\n\nSi te encaja, te lo enseño en una llamada de 20 minutos y te digo qué tendría sentido en vuestro caso y cuánto costaría. Puedes elegir el hueco aquí:\n{cita}\n\nY si no es el momento, dímelo y no te vuelvo a escribir.\n\nUn saludo,\nNerea',
+  },
+  'segundo-contacto': {
+    nombre: 'Segundo correo, si no contesta (España)',
+    asunto: 'Re: Una demo con el nombre de {empresa}',
+    texto: 'Hola, {nombre}:\n\nTe escribí hace unos días con una demo para {empresa} y no quería que se quedara perdida en la bandeja de entrada.\n\nPor si te ayuda a hacerte una idea, en Study and Beyond, una empresa pequeña, montamos el seguimiento de contactos, los recordatorios y los documentos de cada cliente. Ahora el equipo dedica ese tiempo a atender a la gente. Lo tienes contado aquí:\nhttps://fluivia.es/caso-real.html\n\nTu demo sigue aquí:\n{demo}\n\n¿Te viene bien una llamada de 20 minutos esta semana o la que viene?\n{cita}\n\nUn saludo,\nNerea',
   },
   'linkedin-es': {
     nombre: 'Mensaje de LinkedIn (España)',
     asunto: 'Primer contacto',
-    texto: 'Hola, {nombre}. Trabajo con {sector_plural} automatizando tareas que se repiten cada semana (documentación, consultas, citas). He preparado una demo corta con el nombre de {empresa}. ¿Te la paso y me dices si te encaja?',
+    texto: 'Hola, {nombre}. Soy Nerea, de Fluivia. Ayudo a {sector_plural} a automatizar lo que se repite cada semana. {gancho} He preparado una demo de cinco minutos con el nombre de {empresa}. ¿Te la paso?',
   },
   'primer-contacto-dk': {
     nombre: 'Første mail (Danmark)',
@@ -137,34 +147,89 @@ export const PLANTILLAS = {
   },
   'tras-demo': {
     nombre: 'Después de la demo',
-    asunto: '¿Qué te ha parecido la demo?',
-    texto: 'Hola, {nombre}:\n\nTe escribo para saber qué te ha parecido la demo de {empresa}. ¿Hay algún caso que te quitaría más trabajo que los demás?\n\nSi quieres, lo vemos en una llamada de 20 minutos y te cuento cómo lo montaríamos con lo que ya usáis. Puedes reservarla aquí:\n{cita}\n\nUn saludo,\nFluivia',
+    asunto: '¿Qué te pareció la demo de {empresa}?',
+    texto: 'Hola, {nombre}:\n\nTe escribo para saber qué te pareció la demo de {empresa}. Casi siempre hay un caso que os ahorraría más tiempo que los demás. ¿Cuál sería el vuestro?\n\nSi quieres, lo vemos en 20 minutos y te digo cómo lo montaríamos con lo que ya usáis, en cuánto tiempo estaría funcionando y cuánto costaría. Reserva el hueco que mejor te venga:\n{cita}\n\nUn saludo,\nNerea',
   },
   seguimiento: {
     nombre: 'Seguimiento',
     asunto: 'Retomamos lo de {empresa}',
-    texto: 'Hola, {nombre}:\n\nRetomo nuestra conversación. ¿Has podido darle una vuelta? Si te surge alguna duda o quieres cambiar algo de lo que hablamos, dímelo y lo ajusto.\n\nUn saludo,\nFluivia',
+    texto: 'Hola, {nombre}:\n\nRetomo lo que hablamos. ¿Has podido darle una vuelta? Si te ha surgido alguna duda, o quieres empezar por una parte más pequeña para probar, dímelo y lo ajusto.\n\nUn saludo,\nNerea',
   },
   'datos-facturacion': {
     nombre: 'Pedir los datos para facturar',
     asunto: 'Datos para la factura de {empresa}',
-    texto: 'Hola, {nombre}:\n\nPara preparar la factura necesito estos datos:\n\n· Razón social\n· NIF\n· Dirección fiscal\n\nTe facturo desde Dinamarca, que también es UE, así que la factura irá sin IVA y con «inversión del sujeto pasivo»: el IVA lo declaráis vosotros en vuestra declaración trimestral. Para eso vuestro NIF tiene que estar dado de alta en el registro de operaciones intracomunitarias (ROI). Si no lo está, vuestra gestoría lo hace en un momento con el modelo 036.\n\nGracias,\nFluivia',
+    texto: 'Hola, {nombre}:\n\nPara preparar la factura necesito estos datos:\n\n· Razón social\n· NIF\n· Dirección fiscal\n\nTe facturo desde Dinamarca, que también es UE, así que la factura irá sin IVA y con «inversión del sujeto pasivo»: el IVA lo declaráis vosotros en vuestra declaración trimestral. Para eso vuestro NIF tiene que estar dado de alta en el registro de operaciones intracomunitarias (ROI). Si no lo está, vuestra gestoría lo hace en un momento con el modelo 036.\n\nGracias,\nNerea',
   },
   propuesta: {
     nombre: 'Envío de propuesta',
     asunto: 'Propuesta para {empresa}',
-    texto: 'Hola, {nombre}:\n\nComo hablamos, te mando la propuesta para {empresa}: qué montaríamos, en cuánto tiempo y lo que cuesta.\n\nCualquier duda, respóndeme a este correo o llámame y lo vemos.\n\nUn saludo,\nFluivia',
+    texto: 'Hola, {nombre}:\n\nComo hablamos, te mando la propuesta para {empresa}: qué montaríamos, en cuánto tiempo y lo que cuesta.\n\nSi quieres repasarla juntos, respóndeme a este correo o escríbeme por WhatsApp y lo vemos.\n\nUn saludo,\nNerea',
   },
 };
 
-const SECTOR_DA_PLURAL = { autoescuela: 'køreskoler', gestoria: 'bogholderier og revisorer', inmobiliaria: 'ejendomsmæglere', clinica: 'klinikker', academia: 'skoler og kursuscentre', distribucion: 'grossister', consultoria: 'konsulenthuse og bureauer', comercio: 'butikker' };
+// La frase del primer correo que muestra que sabemos cómo es su día a día.
+const GANCHO = {
+  gestoria: 'En muchas gestorías, cada trimestre se va media semana persiguiendo facturas y contestando «¿hasta cuándo tengo para el IVA?».',
+  inmobiliaria: 'En muchas inmobiliarias, un contacto que escribe desde Idealista a las nueve de la noche ya ha llamado a otra agencia cuando se le contesta al día siguiente.',
+  clinica: 'En muchas clínicas, el teléfono suena en mitad de las sesiones y los huecos de las cancelaciones se quedan vacíos.',
+  academia: 'En muchas academias, las matrículas de septiembre y las renovaciones de junio se comen horas, y las familias preguntan lo mismo cada semana.',
+  idiomas: 'En muchas academias de idiomas, corregir los simulacros de Cambridge se lleva las tardes del profesorado y el alumno se entera de en qué falla cuando ya es tarde.',
+  autoescuela: 'En muchas autoescuelas, las prácticas se cuadran por WhatsApp y cada cancelación de última hora es un coche parado.',
+  distribucion: 'En muchas distribuidoras, cada mañana alguien pasa a mano los pedidos que llegan por WhatsApp, audios incluidos.',
+  consultoria: 'En muchas consultorías y agencias, cada propuesta se rehace copiando la anterior y cada cliente nuevo empieza persiguiendo accesos.',
+  comercio: 'En muchos comercios, las mismas preguntas llegan por WhatsApp e Instagram mientras se atiende el mostrador.',
+};
+
+// ---- Correos en español: los firma Nerea, como en Study and Beyond -------------
+// Remitente «Nerea de Fluivia», texto sin tarjeta (parece escrito a mano) y, al
+// final, la firma con el isotipo y el WhatsApp de España.
+export const WHATSAPP_ES = '+34 635 369 915';
+const WHATSAPP_URL = 'https://wa.me/34635369915';
+const FIRMA_IMG = 'https://fluivia.es/assets/img/firma-correo.png';
+export const FIRMA_TEXTO_ES = `Nerea Clemente\nFluivia\nWhatsApp: ${WHATSAPP_ES}\ninfo@fluivia.es\nfluivia.es`;
+const direccion = (env) => (/<([^>]+)>/.exec(env.REMITENTE || '') || [])[1] || 'info@fluivia.ai';
+export const remitenteNerea = (env) => `Nerea de Fluivia <${direccion(env)}>`;
+export const firmaNerea = (c) => idiomaDe(c) === 'es';
+
+export function personal(env, { asunto, texto, pie = '' }) {
+  const t = String(texto).replace(/\r/g, '').trim();
+  const enlace = (x) => esc(x).replace(/(https:\/\/[^\s<]+[^\s<.,;:!?)])/g, '<a href="$1" style="color:#123F35;font-weight:bold">$1</a>');
+  const parrafos = t.split(/\n\s*\n/).map((p) => `<p style="margin:0 0 14px">${p.split('\n').map(enlace).join('<br>')}</p>`).join('\n');
+  const F = 'Arial,Helvetica,sans-serif';
+  const firma = `<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:22px"><tr>
+  <td style="vertical-align:top;padding:2px 14px 0 0"><img src="${FIRMA_IMG}" width="56" height="56" alt="Fluivia" style="display:block;width:56px;height:56px;border:0;border-radius:12px"></td>
+  <td style="vertical-align:top;font-family:${F}">
+    <div style="font:bold 17px/1.3 ${F};color:#123F35">Nerea Clemente</div>
+    <div style="font:15px/1.4 ${F};color:#5B6662">Fluivia</div>
+    <div style="font:14px/1.7 ${F};margin-top:8px">
+      <a href="${WHATSAPP_URL}" style="color:#123F35">WhatsApp: ${WHATSAPP_ES}</a><br>
+      <a href="mailto:info@fluivia.es" style="color:#123F35;text-decoration:none">info@fluivia.es</a><br>
+      <a href="https://fluivia.es" style="color:#123F35;text-decoration:none">fluivia.es</a>
+    </div>
+  </td></tr></table>`;
+  const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:16px;background:#FFFFFF"><div style="max-width:600px;font:15px/1.6 ${F};color:#1C2B27">
+${parrafos}
+${firma}
+${pie ? `<p style="font-size:12px;color:#5B6662;margin-top:22px">${esc(pie)}</p>` : ''}
+</div></body></html>`;
+  return { from: remitenteNerea(env), subject: String(asunto).replace(/\s+/g, ' ').trim(), text: `${t}\n\n--\n${FIRMA_TEXTO_ES}`, html };
+}
+
+// El correo que se escribe desde la ficha: firmado por Nerea si es en español.
+export function deFicha(env, c, asunto, texto) {
+  return firmaNerea(c) ? personal(env, { asunto, texto }) : { subject: asunto, text: texto, html: html(texto) };
+}
+
+const SECTOR_DA_PLURAL = { autoescuela: 'køreskoler', idiomas: 'sprogskoler', gestoria: 'bogholderier og revisorer', inmobiliaria: 'ejendomsmæglere', clinica: 'klinikker', academia: 'skoler og kursuscentre', distribucion: 'grossister', consultoria: 'konsulenthuse og bureauer', comercio: 'butikker' };
 
 export function rellenar(t, c, env) {
   const s = sectorTexto(c.sector);
   const nombre = (c.nombre || '').split(/\s+/)[0] || '';
   const dk = c.pais === 'DK';
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
-    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco' };
+    sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco',
+    gancho: GANCHO[c.sector] || 'Muchas pequeñas empresas pierden horas cada semana contestando lo mismo, pidiendo papeles o pasando datos de un sitio a otro.' };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
   return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m))
     .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));

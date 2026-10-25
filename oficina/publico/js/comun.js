@@ -3,7 +3,7 @@
   "use strict";
 
   var ETAPAS = [["nuevo", "Nuevo"], ["contactado", "Contactado"], ["reunion", "Reunión"], ["propuesta", "Propuesta"], ["cliente", "Cliente"], ["perdido", "Perdido"]];
-  var SECTORES = [["gestoria", "Gestoría"], ["inmobiliaria", "Inmobiliaria"], ["clinica", "Clínica"], ["academia", "Academia"], ["distribucion", "Distribución"], ["consultoria", "Consultoría o agencia"], ["comercio", "Comercio"], ["autoescuela", "Autoescuela"], ["otro", "Otro"]];
+  var SECTORES = [["gestoria", "Gestoría"], ["inmobiliaria", "Inmobiliaria"], ["clinica", "Clínica"], ["academia", "Academia"], ["idiomas", "Academia de idiomas"], ["distribucion", "Distribución"], ["consultoria", "Consultoría o agencia"], ["comercio", "Comercio"], ["autoescuela", "Autoescuela"], ["otro", "Otro"]];
   var ORIGENES = [["web-demo", "Pidió la demo"], ["web-contacto", "Formulario de la web"], ["prospeccion", "Prospección"], ["linkedin", "LinkedIn"], ["recomendacion", "Recomendación"], ["evento", "Evento"], ["manual", "A mano"], ["otro", "Otro"]];
   var INTERESES = [["consultas", "Consultas en orden"], ["citas", "Citas sin llamadas"], ["documentos", "Documentos sin perseguir"], ["a-medida", "A medida"], ["marketing", "Marketing"], ["formacion", "Formación"]];
   var TIPOS = [["nota", "Nota"], ["llamada", "Llamada"], ["correo", "Correo"], ["reunion", "Reunión"], ["whatsapp", "WhatsApp"], ["linkedin", "LinkedIn"], ["web", "Web"], ["etapa", "Etapa"], ["demo", "Demo"], ["fiscal", "IVA"]];

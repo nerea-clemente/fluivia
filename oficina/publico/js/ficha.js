@@ -112,7 +112,7 @@
       h = caja("fiscal-pend", "alerta", "<p><strong>Sin comprobar en VIES.</strong> Compruébalo antes de la primera factura.</p>");
       chip = "pend";
     }
-    if (pais === "ES" && (sector === "clinica" || sector === "academia")) {
+    if (pais === "ES" && (sector === "clinica" || sector === "academia" || sector === "idiomas")) {
       h += caja("fiscal-info", "fiscal", "<p>La sanidad y la enseñanza suelen estar <strong>exentas de IVA</strong>: el 21 % que declare por tu factura será un coste para él, igual que con un proveedor español. Mejor comentárselo a su gestoría.</p>");
     }
     var acciones = [];
@@ -154,7 +154,8 @@
     ["apuntar-caja", "demo-caja", "historial-caja"].forEach(function (k) { $(k).hidden = nuevo; });
     $("correo-caja").hidden = nuevo || !c.email || c.noEscribir;
     if (!nuevo) {
-      $("correo-a").textContent = "Sale desde info@fluivia.ai a " + c.email + ". La prueba te llega a ti.";
+      var enEs = (c.idioma || (c.pais === "DK" ? "da" : "es")) === "es";
+      $("correo-a").textContent = (enEs ? "Sale como «Nerea de Fluivia», con tu firma y el WhatsApp, a " : "Sale desde Fluivia (info@fluivia.ai) a ") + c.email + ". La prueba te llega a ti.";
       cargarProgramados();
       $("demo-enviada").textContent = c.demo ? "Pidió la demo desde la web el " + Of.momento(c.demo.fecha) + "." : "";
       pintarHistorial();

@@ -110,7 +110,7 @@ async function acceso(req, env, store, url) {
 // ---- Formularios de la web -------------------------------------------------------
 const SECTOR_DE_TEXTO = [
   [/autoescuela|auto escuela|autoescola/i, 'autoescuela'], [/gestor|asesor/i, 'gestoria'], [/inmobiliar/i, 'inmobiliaria'], [/cl[ií]nica|salud/i, 'clinica'],
-  [/academia|formaci/i, 'academia'], [/distribu/i, 'distribucion'], [/consultor|agencia/i, 'consultoria'], [/comercio|tienda/i, 'comercio'],
+  [/idioma|ingl[eé]s|language|sprog/i, 'idiomas'], [/academia|formaci/i, 'academia'], [/distribu/i, 'distribucion'], [/consultor|agencia/i, 'consultoria'], [/comercio|tienda/i, 'comercio'],
 ];
 const sectorDe = (v) => (C.SECTORES.includes(v) && v ? v : (SECTOR_DE_TEXTO.find(([re]) => re.test(v || '')) || [null, 'otro'])[1]);
 const limpio = (v, max) => String(v || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, max);
@@ -285,7 +285,8 @@ async function api(req, env, store, url, email) {
       const asunto = String(b.asunto || '').trim().slice(0, 200), texto = String(b.texto || '').trim().slice(0, 10000);
       if (!asunto || !texto) return json({ error: 'Falta el asunto o el texto' }, 400);
       if (!(await store.limitar(`prueba:${email}`, 20, 3600))) return json({ error: 'Demasiadas pruebas seguidas. Prueba dentro de un rato.' }, 429);
-      try { await Correo.enviar(env, { to: [email], subject: `[Prueba] ${asunto}`, text: texto, html: Correo.html(texto) }); }
+      const m = Correo.deFicha(env, c, asunto, texto);
+      try { await Correo.enviar(env, { ...m, to: [email], subject: `[Prueba] ${m.subject}` }); }
       catch (e) { console.error('[prueba]', e); return json({ error: 'No se ha podido enviar la prueba' }, 502); }
       return json({ ok: true, a: email });
     }
@@ -303,7 +304,7 @@ async function api(req, env, store, url, email) {
         if (t > Date.now() + 60 * 864e5) return json({ error: 'Se puede programar como mucho a 60 días' }, 400);
         return json({ programado: await store.programar({ contacto: id, asunto, texto, cuando: t, autor: email }) });
       }
-      try { await Correo.enviar(env, { to: [c.email], reply_to: lista(env.AVISOS)[0] || undefined, subject: asunto, text: texto, html: Correo.html(texto) }); }
+      try { await Correo.enviar(env, { to: [c.email], reply_to: lista(env.AVISOS)[0] || undefined, ...Correo.deFicha(env, c, asunto, texto) }); }
       catch (e) { console.error('[correo]', e); return json({ error: 'No se ha podido enviar el correo' }, 502); }
       return json(await store.anadirHistorial(id, { tipo: 'correo', asunto, texto }, email));
     }

@@ -6,18 +6,17 @@
 
   var todos = [];
   var estado = { texto: "", sector: "", origen: "", etapa: "activos", vista: "lista" };
-  try { var g = JSON.parse(localStorage.getItem("of-contactos") || "{}"); if (g.vista) estado.vista = g.vista; if (g.etapa) estado.etapa = g.etapa; } catch (e) {}
-  var guardarPref = function () { try { localStorage.setItem("of-contactos", JSON.stringify({ vista: estado.vista, etapa: estado.etapa })); } catch (e) {} };
+  try { var g = JSON.parse(localStorage.getItem("of-contactos") || "{}"); if (g.vista) estado.vista = g.vista; if (g.etapa) estado.etapa = g.etapa; if (g.sector) estado.sector = g.sector; } catch (e) {}
+  var guardarPref = function () { try { localStorage.setItem("of-contactos", JSON.stringify({ vista: estado.vista, etapa: estado.etapa, sector: estado.sector })); } catch (e) {} };
 
   var $ = function (id) { return document.getElementById(id); };
-  $("f-sector").insertAdjacentHTML("beforeend", Of.SECTORES.map(function (s) { return '<option value="' + s[0] + '">' + esc(s[1]) + "</option>"; }).join(""));
   $("f-origen").insertAdjacentHTML("beforeend", Of.ORIGENES.map(function (s) { return '<option value="' + s[0] + '">' + esc(s[1]) + "</option>"; }).join(""));
 
   var normal = function (t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
   function filtrar(sinEtapa) {
     var q = normal(estado.texto);
     return todos.filter(function (c) {
-      if (estado.sector && c.sector !== estado.sector) return false;
+      if (estado.sector && (c.sector || "otro") !== estado.sector) return false;
       if (estado.origen && c.origen !== estado.origen) return false;
       if (!Of.enPais(c)) return false;
       if (!sinEtapa) {
@@ -39,6 +38,14 @@
   }
   function ultimo(c) { var h = (c.historial || []).slice(-1)[0]; return h ? Of.momento(h.fecha) : ""; }
 
+  // Sectores con contactos (en el país elegido), con cuántos hay de cada uno.
+  function pintarSectores() {
+    var base = todos.filter(Of.enPais), n = {};
+    base.forEach(function (c) { var k = c.sector || "otro"; n[k] = (n[k] || 0) + 1; });
+    var lista = Of.SECTORES.filter(function (s) { return n[s[0]] || estado.sector === s[0]; });
+    $("sectores").innerHTML = '<button type="button" class="pestana" data-sector="" aria-pressed="' + (!estado.sector) + '">Todos los sectores <span>' + base.length + "</span></button>" +
+      lista.map(function (s) { return '<button type="button" class="pestana" data-sector="' + s[0] + '" aria-pressed="' + (estado.sector === s[0]) + '">' + esc(s[1]) + " <span>" + (n[s[0]] || 0) + "</span></button>"; }).join("");
+  }
   function pintarPestanas() {
     var base = filtrar(true), h = Of.hoy();
     var cuenta = function (f) { return base.filter(f).length; };
@@ -83,6 +90,7 @@
     var n = Of.pais() ? todos.filter(Of.enPais).length : todos.length;
     $("total").textContent = n + (n === 1 ? " contacto" : " contactos") + (Of.pais() ? " en " + Of.nombre(Of.PAISES, Of.pais()) : "");
     document.querySelectorAll("[data-vista]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-vista") === estado.vista)); });
+    pintarSectores();
     pintarPestanas();
     $("lista").hidden = estado.vista !== "lista";
     $("tablero").hidden = estado.vista !== "tablero";
@@ -90,7 +98,7 @@
   }
 
   $("buscar").addEventListener("input", function () { estado.texto = this.value; pintar(); });
-  $("f-sector").addEventListener("change", function () { estado.sector = this.value; pintar(); });
+  $("sectores").addEventListener("click", function (e) { var b = e.target.closest("[data-sector]"); if (b) { estado.sector = b.getAttribute("data-sector"); guardarPref(); pintar(); } });
   $("f-origen").addEventListener("change", function () { estado.origen = this.value; pintar(); });
   document.addEventListener("of-pais", function () { if (todos.length) pintar(); });
 

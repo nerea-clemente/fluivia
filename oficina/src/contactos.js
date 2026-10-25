@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 export const ETAPAS = ['nuevo', 'contactado', 'reunion', 'propuesta', 'cliente', 'perdido'];
-export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'autoescuela', 'otro', ''];
+export const SECTORES = ['gestoria', 'inmobiliaria', 'clinica', 'academia', 'distribucion', 'consultoria', 'comercio', 'autoescuela', 'idiomas', 'otro', ''];
 export const ORIGENES = ['web-demo', 'web-contacto', 'prospeccion', 'linkedin', 'recomendacion', 'evento', 'manual', 'otro'];
 export const INTERESES = ['consultas', 'citas', 'documentos', 'a-medida', 'marketing', 'formacion'];
 export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linkedin', 'web', 'etapa', 'demo', 'fiscal'];
@@ -15,7 +15,7 @@ export const TIPOS = ['nota', 'llamada', 'correo', 'reunion', 'whatsapp', 'linke
 export const PAISES = ['ES', 'DK', 'UE'];
 export const VIES_ESTADOS = ['valido', 'no-valido', 'no-disponible'];
 // Sectores cuya actividad suele estar exenta de IVA en España (sanidad y enseñanza).
-export const SECTORES_EXENTOS = ['clinica', 'academia'];
+export const SECTORES_EXENTOS = ['clinica', 'academia', 'idiomas'];
 
 // NIF-IVA en mayúsculas, sin espacios ni signos, con el prefijo del país.
 export function normalizarNif(v, pais = 'ES') {

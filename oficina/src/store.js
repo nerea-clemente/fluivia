@@ -194,7 +194,7 @@ export class Oficina extends DurableObject {
       else {
         try {
           const avisos = String(this.env.AVISOS || '').split(',')[0].trim();
-          await Correo.enviar(this.env, { to: [c.email], reply_to: avisos || undefined, subject: p.asunto, text: p.texto, html: Correo.html(p.texto) });
+          await Correo.enviar(this.env, { to: [c.email], reply_to: avisos || undefined, ...Correo.deFicha(this.env, c, p.asunto, p.texto) });
         } catch (e) { console.error('[programado]', e); estado = 'error'; error = 'No se ha podido enviar'; }
       }
       this.sql.exec('UPDATE programados SET estado = ?, error = ? WHERE id = ?', estado, error, p.id);

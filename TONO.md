@@ -45,7 +45,9 @@ estar en la web de cualquier empresa de tecnología, se reescribe.
 ## Datos que se escriben siempre igual
 
 - La empresa es CLEMPA & Co. y Fluivia es su nombre comercial. CVR 43172794.
-- No se nombra a ninguna persona del equipo.
+- En la web no se nombra a ninguna persona del equipo.
+- Los correos en español (los de la Oficina y los automáticos) los firma Nerea, en primera persona, con remitente «Nerea de Fluivia» y la firma «Nerea Clemente» (nunca con el segundo apellido). En inglés y danés firma Fluivia.
+- WhatsApp de España: +34 635 369 915. Solo en la web en español (pie) y en la firma de los correos en español; la web en inglés y en danés no lleva teléfono.
 - Precios sin IVA, «desde» o «parte de», con la cuota mensual aparte:
   consultas 690 € + 89 €/mes; citas 390 € + 49 €/mes; documentos 990 € + 99 €/mes;
   diagnóstico desde 190 € (se descuenta si se hace el proyecto). En danés, ×10 en DKK.
