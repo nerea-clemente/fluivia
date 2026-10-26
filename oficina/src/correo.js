@@ -123,7 +123,7 @@ export const PLANTILLAS = {
   'primer-contacto': {
     nombre: 'Primer correo (España)',
     asunto: 'Una demo con el nombre de {empresa}',
-    texto: 'Hola, {nombre}:\n\nSoy Nerea, de Fluivia. Ayudo a {sector_plural} a quitarse de encima las tareas que se repiten cada semana.\n\n{gancho} Eso es justo lo que automatizamos, y sin que tengáis que cambiar los programas que ya usáis.\n\nPara que no tengas que imaginártelo, te he preparado una demo con el nombre de {empresa}. Se ve en cinco minutos:\n{demo}\n\nSi te encaja, te lo enseño en una llamada de 20 minutos y te digo qué tendría sentido en vuestro caso y cuánto costaría. Puedes elegir el hueco aquí:\n{cita}\n\nY si no es el momento, dímelo y no te vuelvo a escribir.\n\nUn saludo,\nNerea',
+    texto: 'Hola, {nombre}:\n\nSoy Nerea, de Fluivia. Ayudo a {sector_plural} a quitarse de encima las tareas que se repiten cada semana.\n\n{gancho} Eso es justo lo que automatizamos, y sin que tengáis que cambiar los programas que ya usáis.\n\n{oferta}\n\nPara que no tengas que imaginártelo, te he preparado una demo con el nombre de {empresa}. Se ve en cinco minutos:\n{demo}\n\nSi te encaja, te lo enseño en una llamada de 20 minutos y te digo qué tendría sentido en vuestro caso y cuánto costaría. Puedes elegir el hueco aquí:\n{cita}\n\nY si no es el momento, dímelo y no te vuelvo a escribir.\n\nUn saludo,\nNerea',
   },
   'segundo-contacto': {
     nombre: 'Segundo correo, si no contesta (España)',
@@ -173,11 +173,19 @@ const GANCHO = {
   inmobiliaria: 'En muchas inmobiliarias, un contacto que escribe desde Idealista a las nueve de la noche ya ha llamado a otra agencia cuando se le contesta al día siguiente.',
   clinica: 'En muchas clínicas, el teléfono suena en mitad de las sesiones y los huecos de las cancelaciones se quedan vacíos.',
   academia: 'En muchas academias, las matrículas de septiembre y las renovaciones de junio se comen horas, y las familias preguntan lo mismo cada semana.',
-  idiomas: 'En muchas academias de idiomas, corregir los simulacros de Cambridge se lleva las tardes del profesorado y el alumno se entera de en qué falla cuando ya es tarde.',
+  idiomas: 'En muchas academias de idiomas, corregir simulacros se lleva las tardes del profesorado y el alumno se entera de en qué falla cuando ya es tarde.',
   autoescuela: 'En muchas autoescuelas, las prácticas se cuadran por WhatsApp y cada cancelación de última hora es un coche parado.',
   distribucion: 'En muchas distribuidoras, cada mañana alguien pasa a mano los pedidos que llegan por WhatsApp, audios incluidos.',
   consultoria: 'En muchas consultorías y agencias, cada propuesta se rehace copiando la anterior y cada cliente nuevo empieza persiguiendo accesos.',
   comercio: 'En muchos comercios, las mismas preguntas llegan por WhatsApp e Instagram mientras se atiende el mostrador.',
+};
+
+// Lo que más vendemos en cada sector, para el primer correo (si no hay, el párrafo no sale).
+const OFERTA_ACADEMIA = 'También montamos plataformas para que tus alumnos practiquen con exámenes modelo al estilo de Cambridge o IELTS, que se corrigen solos. Ellos practican desde donde quieran, vosotros os ahorráis horas de corrección y, desde el área del profesorado, veis de un vistazo quién está listo para presentarse y qué partes conviene repasar en clase.\n\nY si tenéis en mente otros recursos digitales, los hacemos a medida. Por ejemplo, listas de vocabulario que se repasan solas en el momento justo, listenings con vuestros propios audios, un banco de writings con los comentarios del profesor, simulacros de speaking con el tiempo cronometrado o un área para que las familias vean cómo avanza cada alumno.';
+const OFERTA = {
+  academia: OFERTA_ACADEMIA,
+  idiomas: OFERTA_ACADEMIA,
+  autoescuela: 'También montamos un portal con el nombre de tu autoescuela donde los alumnos hacen tests del teórico que se corrigen solos y reservan sus prácticas desde el móvil. Tú ves quién está listo para el examen y qué temas le cuestan, y si alguien cancela, el hueco se ofrece solo a la lista de espera.',
 };
 
 // ---- Correos en español: los firma Nerea, como en Study and Beyond -------------
@@ -229,8 +237,9 @@ export function rellenar(t, c, env) {
   const dk = c.pais === 'DK';
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
     sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco',
+    oferta: OFERTA[c.sector] || '',
     gancho: GANCHO[c.sector] || 'Muchas pequeñas empresas pierden horas cada semana contestando lo mismo, pidiendo papeles o pasando datos de un sitio a otro.' };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
-  return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m))
+  return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m)).replace(/\n{3,}/g, '\n\n')
     .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));
 }
