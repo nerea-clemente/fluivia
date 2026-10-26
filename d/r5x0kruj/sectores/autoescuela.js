@@ -225,7 +225,7 @@
         id: "examenes",
         montaje: { plazo: "2 semanas", con: "Tu programa de gestión y WhatsApp Business" },
         nav: "Exámenes de la DGT",
-        titulo: "Exámenes de la DGT sin listas a mano",
+        titulo: "Los exámenes de la DGT, organizados desde el portal",
         hoy: "Marta apunta en un papel quién va a cada examen y avisa uno a uno. Siempre hay alguien que llega sin el DNI o no sabe a qué hora le recogen.",
         con: "Cuando Tráfico da fecha, la autoescuela elige quién va y cada alumno recibe su cita con lo que tiene que llevar. Después se apunta el resultado y quien suspende ya sabe cómo seguir.",
         pasos: [

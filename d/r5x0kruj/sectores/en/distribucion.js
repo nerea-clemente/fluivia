@@ -86,7 +86,7 @@
       nav: "Delivery notes",
       titulo: "Delivery notes signed on the phone, with photos and issues",
       hoy: "The delivery note is signed on paper in the van and comes back to the office at the end of the day, if it comes back at all. If a case is missing or broken, nobody writes it down.",
-      con: "The driver delivers with their phone: the customer signs on screen, any issue is logged with a photo, and the signed note reaches the customer and the office straight away.",
+      con: "The driver delivers with their phone. The customer signs on screen, any issue is logged with a photo, and the signed note reaches the customer and the office straight away.",
       pasos: [
         { quien: "equipo", nombre: "Tom, driver", t: "Tom arrives at the café with the order", d: "He opens the delivery on his phone: he sees what to drop off and ticks what he unloads.", boton: "Report an issue" },
         { quien: "equipo", nombre: "Tom, driver", t: "A case arrives damaged and is logged with a photo", d: "A case of Coke has dented cans. Tom marks it, takes a photo and takes it back with him.", boton: "Go to signature" },

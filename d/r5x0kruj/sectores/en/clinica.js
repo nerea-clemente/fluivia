@@ -173,7 +173,7 @@
       nav: "Exercises and follow-up",
       titulo: "Home exercises and treatment plans that get finished",
       hoy: "Exercises are explained on the treatment table and forgotten at home. Once patients feel better, they stop coming before the plan is finished.",
-      con: "Each patient has their treatment plan on their phone: videos of their exercises, reminders and how their pain is changing. If someone stops booking, the clinic knows.",
+      con: "Each patient has their treatment plan on their phone, with videos of their exercises, reminders and how their pain is changing. If someone stops booking, the clinic knows.",
       pasos: [
         { quien: "equipo", nombre: "Laura, physiotherapist", t: "Laura assigns exercises in a minute", d: "She picks three videos from the clinic's library, adjusts the reps and sends them.", boton: "Send to Lucy" },
         { quien: "cliente", nombre: "Lucy, patient", t: "Lucy has them on her phone", d: "She sees her exercise videos and how many sessions she's done, and ticks off what she does. If she forgets one day, she gets a reminder.", boton: "Mark as done" },

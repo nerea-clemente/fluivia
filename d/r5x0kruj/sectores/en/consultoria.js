@@ -98,7 +98,7 @@
       id: "alta",
       montaje: { plazo: "2 weeks", con: "Your project tool (Asana, Trello or Notion), your Google Drive and your calendar" },
       nav: "Client onboarding",
-      titulo: "New clients who get started without anyone chasing them",
+      titulo: "New clients who get started on their own",
       hoy: "When a client signs, someone sends the questionnaire, asks for logins, creates folders and tasks, and finds a slot for the meeting. Something's always missing, and the first week goes on chasing passwords.",
       con: "When they accept the proposal, the client gets a welcome with a questionnaire and a list of access to grant themselves, without sending passwords. The folder, tasks and kick-off meeting are created automatically.",
       pasos: [

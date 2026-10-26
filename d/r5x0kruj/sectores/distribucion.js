@@ -86,7 +86,7 @@
       nav: "Albaranes y entregas",
       titulo: "Albaranes firmados en el móvil, con fotos e incidencias",
       hoy: "El albarán se firma en papel en la furgoneta y vuelve a la oficina al final del día, si vuelve. Si falta una caja o llega una rota, nadie lo apunta.",
-      con: "El repartidor entrega con el móvil: el cliente firma en la pantalla, cualquier incidencia se apunta con foto y el albarán firmado le llega al cliente y a la oficina al momento.",
+      con: "El repartidor entrega con el móvil. El cliente firma en la pantalla, las incidencias se apuntan con foto y el albarán firmado le llega al cliente y a la oficina al momento.",
       pasos: [
         { quien: "equipo", nombre: "Toni, repartidor", t: "Toni llega al bar con el pedido", d: "Abre la entrega en el móvil: ve lo que tiene que dejar y marca lo que descarga.", boton: "Marcar una incidencia" },
         { quien: "equipo", nombre: "Toni, repartidor", t: "Una caja llega dañada y se apunta con foto", d: "Una caja de Coca-Cola tiene latas abolladas. Toni la marca, hace una foto y se la lleva de vuelta.", boton: "Pasar a la firma" },

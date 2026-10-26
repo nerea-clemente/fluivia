@@ -195,7 +195,7 @@
       id: "operacion",
       montaje: { plazo: "2 to 3 weeks", con: "Your CRM or a custom sale tracker" },
       nav: "Paperwork to signing",
-      titulo: "From accepted offer to signing, with no lost paperwork",
+      titulo: "The paperwork for each sale, all the way to signing",
       hoy: "Title documents, energy certificate, property tax bill, payslips for the bank… every document arrives a different way and someone has to remember to ask for it.",
       con: "Each sale has its own tracker showing what's missing and who needs to provide it. Buyer and seller get reminders and can follow progress on their phones.",
       pasos: [

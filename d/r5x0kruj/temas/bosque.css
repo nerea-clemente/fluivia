@@ -321,10 +321,14 @@ html[lang="da"] .portada-txt::after { content: "Fire cases, trin for trin, på c
 .siguientes strong { font-size: 16px; letter-spacing: -.012em; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+@media (max-width: 1480px) {
   .nav { box-shadow: none; }
   body.menu-abierto .nav { box-shadow: 20px 0 50px -20px rgba(0, 0, 0, .55); }
   .nav-link.is-activo::before { display: none; }
+  .historia { gap: 18px; }
+  .escenario { gap: 18px; padding: 20px; }
+}
+@media (max-width: 900px) {
   .res + .res { border-left: 0; border-top: 1px solid var(--linea); }
 }
 @media (max-width: 640px) {

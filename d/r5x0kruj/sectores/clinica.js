@@ -173,7 +173,7 @@
       nav: "Ejercicios y seguimiento",
       titulo: "Ejercicios en casa y tratamientos que se terminan",
       hoy: "Los ejercicios se explican en la camilla y se olvidan en casa. Cuando el paciente nota mejoría, deja de venir sin terminar.",
-      con: "Cada paciente tiene su tratamiento en el móvil: vídeos de sus ejercicios, recordatorios y cómo va su dolor. Si alguien deja de reservar, la clínica se entera.",
+      con: "Cada paciente tiene su tratamiento en el móvil, con los vídeos de sus ejercicios, los recordatorios y cómo va su dolor. Si alguien deja de reservar, la clínica se entera.",
       pasos: [
         { quien: "equipo", nombre: "Laura, fisioterapeuta", t: "Laura asigna los ejercicios en un minuto", d: "Elige tres vídeos de la biblioteca de la clínica, ajusta las repeticiones y se los manda.", boton: "Enviar a Lucía" },
         { quien: "cliente", nombre: "Lucía, paciente", t: "Lucía los tiene en el móvil", d: "Ve sus ejercicios en vídeo, cuántas sesiones lleva y marca lo que hace. Si un día se le olvida, le llega un aviso.", boton: "Marcar como hechos" },

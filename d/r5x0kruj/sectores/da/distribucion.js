@@ -86,7 +86,7 @@
       nav: "Følgesedler og levering",
       titulo: "Følgesedler underskrevet på mobilen, med billeder og afvigelser",
       hoy: "Følgesedlen bliver skrevet under på papir i bilen og kommer tilbage til kontoret sidst på dagen, hvis den kommer. Mangler der en kasse, eller er en gået i stykker, bliver det ikke skrevet ned.",
-      con: "Chaufføren leverer med mobilen: kunden skriver under på skærmen, afvigelser bliver noteret med foto, og den underskrevne følgeseddel går med det samme til kunden og kontoret.",
+      con: "Chaufføren leverer med mobilen. Kunden skriver under på skærmen, afvigelser bliver noteret med foto, og den underskrevne følgeseddel går med det samme til kunden og kontoret.",
       pasos: [
         { quien: "equipo", nombre: "Tobias, chauffør", t: "Tobias kommer til caféen med varerne", d: "Han åbner leveringen på mobilen, ser, hvad der skal af, og krydser af, hvad han læsser af.", boton: "Meld en afvigelse" },
         { quien: "equipo", nombre: "Tobias, chauffør", t: "En kasse er beskadiget og bliver noteret med foto", d: "En kasse cola har bulede dåser. Tobias markerer den, tager et billede og tager den med retur.", boton: "Gå til underskrift" },

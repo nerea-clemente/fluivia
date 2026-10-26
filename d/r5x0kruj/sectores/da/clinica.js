@@ -174,7 +174,7 @@
       nav: "Øvelser og opfølgning",
       titulo: "Hjemmeøvelser og forløb, der bliver gjort færdige",
       hoy: "Øvelserne bliver vist på briksen og glemt derhjemme. Når patienterne får det bedre, stopper mange med at komme, før forløbet er færdigt.",
-      con: "Hver patient har sit forløb på mobilen: videoer af øvelserne, påmindelser og hvordan smerterne udvikler sig. Holder nogen op med at booke, får klinikken det at vide.",
+      con: "Hver patient har sit forløb på mobilen, med videoer af øvelserne, påmindelser og hvordan smerterne udvikler sig. Holder nogen op med at booke, får klinikken det at vide.",
       pasos: [
         { quien: "equipo", nombre: "Mette, fysioterapeut", t: "Mette vælger øvelserne på et minut", d: "Hun tager tre videoer fra klinikkens bibliotek, tilpasser antallet af gentagelser og sender dem.", boton: "Send til Sara" },
         { quien: "cliente", nombre: "Sara, patient", t: "Sara har dem på mobilen", d: "Hun ser sine øvelser på video, hvor langt hun er i forløbet, og krydser af, hvad hun har lavet. Glemmer hun det en dag, får hun en påmindelse.", boton: "Marker som lavet" },

@@ -25,7 +25,7 @@
       id: "cierre",
       montaje: { plazo: "2 to 3 weeks", con: "Your client portal or a new one, with WhatsApp and email" },
       nav: "Quarterly paperwork",
-      titulo: "Quarterly paperwork, without chasing anyone",
+      titulo: "Quarterly paperwork that arrives on its own",
       hoy: "Anna sends 140 messages one by one and tracks who has sent what in a spreadsheet. The last days before the deadline are a race.",
       con: "Each client gets their own checklist and a link to their portal. Reminders go out on their own and only ask for what's missing.",
       pasos: [
@@ -101,7 +101,7 @@
       nav: "Receipts that read themselves",
       titulo: "Expense receipts that read themselves",
       hoy: "Clients send photos of receipts and PDFs. Someone on the team opens them one by one and types the figures into the accounting software.",
-      con: "Each receipt is read as it arrives: supplier, VAT number, date, net amount, VAT and total, with a suggested account. The team only checks the unclear ones.",
+      con: "Each receipt is read as it arrives, picking out the supplier, VAT number, date, net amount, VAT and total, with a suggested account. The team only checks the unclear ones.",
       pasos: [
         { quien: "cliente", nombre: "Marco, self-employed", t: "Marco takes a photo of the receipt", d: "From his portal or by forwarding it on WhatsApp. He doesn't need to sort anything.", boton: "Send the photo" },
         { quien: "auto", t: "The figures are pulled out automatically", d: "The receipt is read and the bookkeeping fields are filled in, with an account suggested based on Marco's line of work.", boton: "Open the inbox" },
@@ -203,7 +203,7 @@
       montaje: { plazo: "2 weeks", con: "Your website and your client management software, or a new one" },
       nav: "New client onboarding",
       titulo: "A new client onboarded in a day",
-      hoy: "Taking on a client takes several emails: ID, business registration, last year's tax return, bank details… and something is always missing or out of date.",
+      hoy: "Taking on a client takes several emails asking for their ID, business registration, last year's tax return and bank details, and something is always missing or out of date.",
       con: "The client fills in a form and gets the exact list of what they need to send. Documents are checked as they're uploaded and the tax calendar is set up automatically.",
       pasos: [
         { quien: "cliente", nombre: "Daniel, new client", t: "Daniel fills in the sign-up form", d: "On the firm's website. He says how he trades (sole trader or company), what he does and whether he has premises or staff.", boton: "Send the form" },

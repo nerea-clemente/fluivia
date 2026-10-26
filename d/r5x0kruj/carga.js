@@ -2,7 +2,7 @@
    Español: sectores/*.js · Inglés: sectores/en/*.js · Danés: sectores/da/*.js */
 (function () {
   "use strict";
-  var V = "4";
+  var V = "5";
   var SECTORES = {
     es: ["gestoria", "inmobiliaria", "academia", "clinica", "distribucion", "consultoria", "comercio", "autoescuela"],
     en: ["gestoria", "inmobiliaria", "academia", "clinica", "distribucion", "consultoria", "comercio"],

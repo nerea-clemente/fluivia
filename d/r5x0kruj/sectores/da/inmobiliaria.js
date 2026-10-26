@@ -195,7 +195,7 @@
       id: "operacion",
       montaje: { plazo: "2-3 uger", con: "Jeres mæglersystem eller et skræddersyet sagsoverblik" },
       nav: "Fra købsaftale til nøgler",
-      titulo: "Fra købsaftale til overtagelse, uden papirer, der forsvinder",
+      titulo: "Papirerne til hver handel, helt frem til overtagelsen",
       hoy: "Tilstandsrapport, energimærke, lånetilbud, advokatgodkendelse … hvert dokument kommer fra sit eget sted, og nogen skal huske at bede om det.",
       con: "Hver handel har sit eget overblik over, hvad der mangler, og hvem der skal levere det. Køber og sælger får besked og kan følge med på mobilen.",
       pasos: [

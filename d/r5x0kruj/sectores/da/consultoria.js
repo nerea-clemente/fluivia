@@ -98,7 +98,7 @@
       id: "alta",
       montaje: { plazo: "2 uger", con: "Jeres projektværktøj (Asana, Trello eller Podio), Google Drive og jeres kalender" },
       nav: "Nye kunder",
-      titulo: "Nye kunder, der kommer i gang, uden at nogen skal jagte dem",
+      titulo: "Nye kunder, der kommer i gang af sig selv",
       hoy: "Når en kunde skriver under, sender nogen spørgeskemaet, beder om adgange, opretter mapper og opgaver og finder en tid til opstartsmødet. Der mangler altid noget, og første uge går med at jagte adgangskoder.",
       con: "Når tilbuddet er accepteret, får kunden en velkomst med et spørgeskema og en liste over adgange, som kunden selv giver, uden at sende adgangskoder. Mappen, opgaverne og opstartsmødet bliver oprettet automatisk.",
       pasos: [

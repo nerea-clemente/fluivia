@@ -25,7 +25,7 @@
       id: "examenes",
       montaje: { plazo: "3 a 4 semanas", con: "Tu web, tus grupos y los ejercicios que prepara tu profesorado" },
       nav: "Exámenes de práctica",
-      titulo: "Exámenes de Cambridge de práctica que se corrigen solos",
+      titulo: "Exámenes de práctica al estilo de Cambridge que se corrigen solos",
       hoy: "Los grupos de B2 y C1 piden simulacros, pero corregirlos se come las tardes del profesorado. Y hasta el examen nadie sabe bien quién va justo en Listening.",
       con: "Los alumnos hacen exámenes de práctica al estilo de B2 First y C1 Advanced desde el móvil o el portátil. Se corrigen solos, con explicación, y la academia ve cómo va cada grupo en cada parte.",
       pasos: [
@@ -149,7 +149,7 @@
       nav: "Matrícula online",
       titulo: "Matrícula online con prueba de nivel",
       hoy: "Las familias vienen a la academia, rellenan papeles y hay que hacerles una prueba de nivel en persona antes de decirles en qué grupo entran.",
-      con: "La familia matricula desde el móvil: datos, prueba de nivel corta, grupo recomendado con plazas reales y firma de las normas. La academia lo ve todo colocado.",
+      con: "La familia matricula desde el móvil con sus datos, una prueba de nivel corta, el grupo recomendado con plazas libres y la firma de las normas. La academia lo ve todo ordenado.",
       pasos: [
         { quien: "cliente", nombre: "Laura, madre de Hugo", t: "Laura apunta a Hugo desde el móvil", d: "Datos del alumno, qué quiere estudiar y qué tardes puede. Un domingo por la noche, sin llamar.", boton: "Siguiente" },
         { quien: "cliente", nombre: "Hugo, 12 años", t: "Hugo hace una prueba de nivel corta", d: "Diez minutos de preguntas que se adaptan a cómo va respondiendo. Sirve para orientar, no para aprobar o suspender.", boton: "Terminar la prueba" },

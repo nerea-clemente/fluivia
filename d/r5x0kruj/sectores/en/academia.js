@@ -149,7 +149,7 @@
       nav: "Online enrolment",
       titulo: "Online enrolment with a placement test",
       hoy: "Families come into the school, fill in forms and the student has to do a placement test in person before anyone can tell them which group to join.",
-      con: "The family enrols from their phone: details, a short placement test, a suggested group with real places left and the school rules signed. The school sees everything in order.",
+      con: "The family enrols from their phone with their details, a short placement test, a suggested group with free places and the signed school rules. The school sees everything in order.",
       pasos: [
         { quien: "cliente", nombre: "Laura, Hugo’s mum", t: "Laura signs Hugo up from her phone", d: "The student’s details, what he wants to study and which afternoons he’s free. On a Sunday evening, without calling.", boton: "Next" },
         { quien: "cliente", nombre: "Hugo, 12", t: "Hugo takes a short placement test", d: "Ten minutes of questions that adapt to how he answers. It’s there to guide, not to pass or fail.", boton: "Finish the test" },

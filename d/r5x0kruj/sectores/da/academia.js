@@ -149,7 +149,7 @@
       nav: "Tilmelding online",
       titulo: "Tilmelding online med niveautest",
       hoy: "Familierne kommer forbi skolen og udfylder papirer. Og eleven skal niveautestes på stedet, før de kan få at vide, hvilket hold der passer.",
-      con: "Familien tilmelder på mobilen: oplysninger, en kort niveautest, et forslag til hold med rigtige ledige pladser og accept af reglerne. Skolen får det hele på plads.",
+      con: "Familien tilmelder sig på mobilen med deres oplysninger, en kort niveautest, et forslag til hold med ledige pladser og accept af reglerne. Skolen får det hele på plads.",
       pasos: [
         { quien: "cliente", nombre: "Line, mor til Viggo", t: "Line tilmelder Viggo på mobilen", d: "Elevens oplysninger, hvad han vil lære, og hvilke eftermiddage han kan. En søndag aften, uden at ringe.", boton: "Næste" },
         { quien: "cliente", nombre: "Viggo, 12 år", t: "Viggo tager en kort niveautest", d: "Ti minutters spørgsmål, der tilpasser sig hans svar. Testen viser niveauet. Man kan ikke dumpe.", boton: "Afslut testen" },

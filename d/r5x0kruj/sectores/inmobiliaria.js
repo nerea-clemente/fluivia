@@ -85,7 +85,7 @@
       nav: "Visitas y opiniones",
       titulo: "Visitas confirmadas y opiniones que llegan al propietario",
       hoy: "Las visitas se confirman a mano, algunas personas no aparecen y nadie pregunta qué les pareció. El propietario solo sabe lo que el agente le cuenta.",
-      con: "Recordatorio con confirmación, hoja de ruta para el agente, una pregunta corta después de cada visita y un informe semanal para el propietario.",
+      con: "Al comprador le llega un recordatorio para confirmar y el agente tiene su hoja de ruta. Después de cada visita se hace una pregunta corta, y el propietario recibe un informe cada semana.",
       pasos: [
         { quien: "auto", t: "La víspera, recordatorio con confirmación", d: "Elena recibe dirección, hora y quién la va a recibir. Confirma con un toque.", boton: "Elena confirma" },
         { quien: "equipo", nombre: "Pablo, agente", t: "Pablo tiene su ruta del día en el móvil", d: "Cada visita con lo que busca el comprador, para que no tenga que repasar los mensajes.", boton: "Visita terminada" },
@@ -195,8 +195,8 @@
       id: "operacion",
       montaje: { plazo: "2 a 3 semanas", con: "Tu CRM o una ficha de operación a medida" },
       nav: "Papeles hasta la notaría",
-      titulo: "De las arras a la notaría, sin papeles perdidos",
-      hoy: "Nota simple, certificado energético, recibo del IBI, nóminas para el banco… cada documento llega por un sitio distinto y alguien tiene que acordarse de pedirlo.",
+      titulo: "Los papeles de cada operación, hasta la firma",
+      hoy: "La nota simple, el certificado energético, el recibo del IBI o las nóminas para el banco llegan cada uno por un sitio, y alguien tiene que acordarse de pedirlos.",
       con: "Cada operación tiene su ficha con lo que falta y quién lo tiene que traer. Comprador y vendedor reciben avisos y ven cómo va todo desde el móvil.",
       pasos: [
         { quien: "equipo", nombre: "Pablo, agente", t: "Pablo abre la operación", d: "Con la fecha de firma, se crea la lista de documentos y quién tiene que aportar cada uno.", boton: "Enviar avisos" },

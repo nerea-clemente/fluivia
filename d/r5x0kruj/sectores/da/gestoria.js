@@ -25,7 +25,7 @@
       id: "cierre",
       montaje: { plazo: "2-3 uger", con: "Jeres kundeportal eller en ny, med sms og mail" },
       nav: "Kvartalets bilag",
-      titulo: "Kvartalets bilag, uden at jagte nogen",
+      titulo: "Kvartalets bilag, der kommer af sig selv",
       hoy: "Anne sender 140 beskeder én for én og noterer i et regneark, hvem der har sendt hvad. Dagene før fristen er et ræs.",
       con: "Hver kunde får sin egen liste og et link til sin side. Påmindelserne sendes automatisk og beder kun om det, der mangler.",
       pasos: [
@@ -101,7 +101,7 @@
       nav: "Bilag, der læser sig selv",
       titulo: "Købsbilag, der læser sig selv",
       hoy: "Kunderne sender billeder af kvitteringer og PDF'er. En fra bogholderiet åbner dem én ad gangen og taster tallene ind i regnskabsprogrammet.",
-      con: "Hvert bilag bliver læst, så snart det kommer ind: leverandør, CVR-nr., dato, beløb, moms og total, med et forslag til konto. Bogholderiet kigger kun på dem, der er tvivl om.",
+      con: "Hvert bilag bliver læst, så snart det kommer ind, og leverandør, CVR-nr., dato, beløb, moms og total bliver trukket ud med et forslag til konto. Bogholderiet kigger kun på dem, der er tvivl om.",
       pasos: [
         { quien: "cliente", nombre: "Mads, selvstændig", t: "Mads tager et billede af kvitteringen", d: "Fra sin side eller ved at videresende den i en besked. Han skal ikke sortere noget.", boton: "Send billedet" },
         { quien: "auto", t: "Tallene bliver hentet ud automatisk", d: "Bilaget bliver læst, og bogføringsdata udfyldes med en konto, der passer til Mads' branche.", boton: "Se indbakken" },
@@ -203,7 +203,7 @@
       montaje: { plazo: "2 uger", con: "Jeres hjemmeside og kundesystem, eller et nyt" },
       nav: "Ny kunde",
       titulo: "En ny kunde på plads på én dag",
-      hoy: "Det kræver en del mails at få en ny kunde i gang: legitimation, CVR-oplysninger, adgang til SKAT, lejekontrakt … og der mangler altid noget, eller det er udløbet.",
+      hoy: "Det kræver en del mails at få legitimation, CVR-oplysninger, adgang til SKAT og lejekontrakt fra en ny kunde, og der mangler altid noget, eller det er udløbet.",
       con: "Kunden udfylder en formular og får præcis den liste, der passer til virksomheden. Dokumenterne bliver tjekket, når de uploades, og alle frister bliver sat op automatisk.",
       pasos: [
         { quien: "cliente", nombre: "Rasmus, ny kunde", t: "Rasmus udfylder formularen", d: "På bogholderiets hjemmeside. Han skriver, hvilken virksomhedsform han har, hvad han laver, og om han har lokaler eller ansatte.", boton: "Send formularen" },

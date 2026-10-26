@@ -25,7 +25,7 @@
       id: "cierre",
       montaje: { plazo: "2 a 3 semanas", con: "Tu portal de cliente o uno nuevo, con WhatsApp y correo" },
       nav: "Documentación del trimestre",
-      titulo: "La documentación del trimestre, sin perseguir a nadie",
+      titulo: "La documentación del trimestre llega sola",
       hoy: "Ana manda 140 mensajes uno a uno y apunta en un Excel quién ha enviado qué. Los últimos días antes del 20 son una carrera.",
       con: "Cada cliente recibe su lista personalizada y un enlace a su área. Los recordatorios salen solos y solo piden lo que falta.",
       pasos: [
@@ -101,7 +101,7 @@
       nav: "Facturas que se leen solas",
       titulo: "Facturas de gastos que se leen solas",
       hoy: "Los clientes mandan fotos de tickets y PDF. Alguien del equipo los abre uno a uno y teclea los datos en el programa de contabilidad.",
-      con: "Cada factura se lee al llegar: proveedor, NIF, fecha, base, IVA y total, con la cuenta contable propuesta. El equipo solo revisa las dudosas.",
+      con: "Cada factura se lee al llegar y se sacan el proveedor, el NIF, la fecha, la base, el IVA y el total, con la cuenta contable propuesta. El equipo solo revisa las dudosas.",
       pasos: [
         { quien: "cliente", nombre: "Carlos, autónomo", t: "Carlos hace una foto al ticket", d: "Desde su área o reenviándolo por WhatsApp. No tiene que ordenar nada.", boton: "Enviar la foto" },
         { quien: "auto", t: "Los datos se sacan solos", d: "Se lee la factura y se rellenan los datos contables, con la cuenta propuesta según la actividad de Carlos.", boton: "Ver la bandeja" },
@@ -203,7 +203,7 @@
       montaje: { plazo: "2 semanas", con: "Tu web y tu programa de gestión de clientes, o uno nuevo" },
       nav: "Alta de cliente nuevo",
       titulo: "Alta de un cliente nuevo en un día",
-      hoy: "Para dar de alta a un cliente hacen falta varios correos: DNI, alta en Hacienda, certificado, datos del banco… y siempre falta algo o está caducado.",
+      hoy: "Para dar de alta a un cliente hacen falta varios correos pidiendo el DNI, el alta en Hacienda, el certificado y los datos del banco, y siempre falta algo o está caducado.",
       con: "El cliente rellena un formulario y recibe la lista exacta de lo que necesita según su caso. Los documentos se revisan al subirlos y el calendario fiscal sale solo.",
       pasos: [
         { quien: "cliente", nombre: "Raúl, cliente nuevo", t: "Raúl rellena el formulario de alta", d: "Desde la web de la gestoría. Indica qué es (autónomo o sociedad), a qué se dedica y si tiene local o empleados.", boton: "Enviar el formulario" },
