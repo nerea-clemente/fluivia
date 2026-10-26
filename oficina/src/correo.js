@@ -169,15 +169,15 @@ export const PLANTILLAS = {
 
 // El asunto del primer correo: corto y sobre algo que les pasa de verdad.
 const ASUNTO = {
-  gestoria: '¿Cuánto [[te|os]] lleva el cierre del trimestre?',
-  inmobiliaria: 'Los contactos de Idealista que llegan de noche',
-  clinica: 'Los huecos que dejan las cancelaciones',
-  academia: 'Exámenes de práctica que se corrigen solos',
-  idiomas: 'Exámenes de práctica que se corrigen solos',
-  autoescuela: 'Las prácticas de {empresa}, desde el móvil',
-  distribucion: 'Los pedidos de WhatsApp de cada mañana',
-  consultoria: 'Propuestas listas el mismo día de la reunión',
-  comercio: 'Las preguntas que llegan mientras [[atiendes|atendéis]]',
+  gestoria: '¿Y si [[tus|vuestros]] clientes mandaran las facturas sin que se las [[pidas|pidáis]]?',
+  inmobiliaria: '¿Quién contesta en {empresa} a un contacto de Idealista a las 21:30?',
+  clinica: '¿Cuántas citas se [[te|os]] quedan vacías cada semana?',
+  academia: '¿Y si los exámenes de práctica de {empresa} se corrigieran solos?',
+  idiomas: '¿Y si los simulacros de {empresa} se corrigieran solos?',
+  autoescuela: '¿Y si [[tus|vuestros]] alumnos reservaran las prácticas sin escribir[[te|os]]?',
+  distribucion: '¿Cuánto tarda {empresa} en pasar los pedidos de WhatsApp?',
+  consultoria: '¿Y si la propuesta saliera el mismo día de la reunión?',
+  comercio: '¿Cuántos WhatsApps [[contestas|contestáis]] mientras [[atiendes|atendéis]] el mostrador?',
 };
 
 // La frase del primer correo que muestra que sabemos cómo es su día a día.
@@ -251,7 +251,7 @@ export function rellenar(t, c, env) {
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
     sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco',
     oferta: OFERTA[c.sector] || '',
-    asunto_sector: ASUNTO[c.sector] || 'Una idea para {empresa}',
+    asunto_sector: ASUNTO[c.sector] || 'He preparado una demo para {empresa}',
     gancho: GANCHO[c.sector] || 'Muchas pequeñas empresas pierden horas cada semana contestando lo mismo, pidiendo papeles o pasando datos de un sitio a otro.' };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
   // Dos pasadas: algunos valores (el asunto del sector) llevan a su vez {empresa}.
