@@ -89,7 +89,7 @@ export function correoDemo(env, d, enlace) {
     pie = 'Du får denne mail, fordi du har bedt om demoen på Fluivias hjemmeside.';
   } else {
     const s = sectorTexto(d.sector);
-    asunto = `Tu demo de Fluivia para ${d.empresa}`;
+    asunto = `Aquí tienes la demo de ${d.empresa}`;
     partes = [`Hola, ${d.nombre}:`, `Aquí tienes la demo de Fluivia preparada para ${d.empresa}:`, enlace,
       conDemo ? `Son cuatro situaciones del día a día de ${s.una}, contadas paso a paso. Se recorre en unos cinco minutos.`
         : 'Todavía no tenemos una demo de tu sector, así que te mando la general. Respóndeme contándome a qué te dedicas y te preparo una con tus casos.',
@@ -122,12 +122,12 @@ export function correoRecibido(env, d) {
 export const PLANTILLAS = {
   'primer-contacto': {
     nombre: 'Primer correo (España)',
-    asunto: 'Una demo con el nombre de {empresa}',
+    asunto: '{asunto_sector}',
     texto: 'Hola, {nombre}:\n\nSoy Nerea, de Fluivia. Ayudo a {sector_plural} a quitarse de encima las tareas que se repiten cada semana.\n\n{gancho} Eso es justo lo que automatizamos, y sin que [[tengas|tengáis]] que cambiar los programas que ya [[usas|usáis]].\n\n{oferta}\n\nPara que no [[tengas que imaginártelo|tengáis que imaginároslo]], [[te|os]] he preparado una demo con el nombre de {empresa}. Se ve en cinco minutos:\n{demo}\n\nSi [[te|os]] encaja, [[te|os]] lo enseño en una llamada de 20 minutos y [[te|os]] digo qué tendría sentido en [[tu|vuestro]] caso y cuánto costaría. [[Puedes|Podéis]] elegir el hueco aquí:\n{cita}\n\nY si no es el momento, [[dímelo|decídmelo]] y no [[te|os]] vuelvo a escribir.\n\nUn saludo,\nNerea',
   },
   'segundo-contacto': {
     nombre: 'Segundo correo, si no contesta (España)',
-    asunto: 'Re: Una demo con el nombre de {empresa}',
+    asunto: 'Re: {asunto_sector}',
     texto: 'Hola, {nombre}:\n\n[[Te|Os]] escribí hace unos días con una demo para {empresa} y no quería que se quedara perdida en la bandeja de entrada.\n\nPor si [[te ayuda a hacerte|os ayuda a haceros]] una idea, en Study and Beyond, una empresa pequeña, montamos el seguimiento de contactos, los recordatorios y los documentos de cada cliente. Ahora el equipo dedica ese tiempo a atender a la gente. Lo [[tienes|tenéis]] contado aquí:\nhttps://fluivia.es/caso-real.html\n\n[[Tu|Vuestra]] demo sigue aquí:\n{demo}\n\n¿[[Te|Os]] viene bien una llamada de 20 minutos esta semana o la que viene?\n{cita}\n\nUn saludo,\nNerea',
   },
   'linkedin-es': {
@@ -147,24 +147,37 @@ export const PLANTILLAS = {
   },
   'tras-demo': {
     nombre: 'Después de la demo',
-    asunto: '¿Qué te pareció la demo de {empresa}?',
+    asunto: '¿Qué [[te|os]] ha parecido la demo?',
     texto: 'Hola, {nombre}:\n\n[[Te|Os]] escribo para saber qué [[te|os]] pareció la demo de {empresa}. Casi siempre hay un caso que [[te|os]] ahorraría más tiempo que los demás. ¿Cuál sería el [[tuyo|vuestro]]?\n\nSi [[quieres|queréis]], lo vemos en 20 minutos y [[te|os]] digo cómo lo montaríamos con lo que ya [[usas|usáis]], en cuánto tiempo estaría funcionando y cuánto costaría. [[Reserva|Reservad]] el hueco que mejor [[te|os]] venga:\n{cita}\n\nUn saludo,\nNerea',
   },
   seguimiento: {
     nombre: 'Seguimiento',
-    asunto: 'Retomamos lo de {empresa}',
+    asunto: '¿[[Has|Habéis]] podido darle una vuelta?',
     texto: 'Hola, {nombre}:\n\nRetomo lo que hablamos. ¿[[Has|Habéis]] podido darle una vuelta? Si [[te|os]] ha surgido alguna duda, o [[quieres|queréis]] empezar por una parte más pequeña para probar, [[dímelo|decídmelo]] y lo ajusto.\n\nUn saludo,\nNerea',
   },
   'datos-facturacion': {
     nombre: 'Pedir los datos para facturar',
-    asunto: 'Datos para la factura de {empresa}',
+    asunto: 'Lo que necesito para la factura',
     texto: 'Hola, {nombre}:\n\nPara preparar la factura necesito estos datos:\n\n· Razón social\n· NIF\n· Dirección fiscal\n\n[[Te|Os]] facturo desde Dinamarca, que también es UE, así que la factura irá sin IVA y con «inversión del sujeto pasivo»: el IVA lo declaráis vosotros en vuestra declaración trimestral. Para eso vuestro NIF tiene que estar dado de alta en el registro de operaciones intracomunitarias (ROI). Si no lo está, vuestra gestoría lo hace en un momento con el modelo 036.\n\nGracias,\nNerea',
   },
   propuesta: {
     nombre: 'Envío de propuesta',
-    asunto: 'Propuesta para {empresa}',
+    asunto: 'La propuesta para {empresa}',
     texto: 'Hola, {nombre}:\n\nComo hablamos, [[te|os]] mando la propuesta para {empresa}: qué montaríamos, en cuánto tiempo y lo que cuesta.\n\nSi [[quieres|queréis]] repasarla juntos, [[respóndeme|respondedme]] a este correo o [[escríbeme|escribidme]] por WhatsApp y lo vemos.\n\nUn saludo,\nNerea',
   },
+};
+
+// El asunto del primer correo: corto y sobre algo que les pasa de verdad.
+const ASUNTO = {
+  gestoria: '¿Cuánto [[te|os]] lleva el cierre del trimestre?',
+  inmobiliaria: 'Los contactos de Idealista que llegan de noche',
+  clinica: 'Los huecos que dejan las cancelaciones',
+  academia: 'Exámenes de práctica que se corrigen solos',
+  idiomas: 'Exámenes de práctica que se corrigen solos',
+  autoescuela: 'Las prácticas de {empresa}, desde el móvil',
+  distribucion: 'Los pedidos de WhatsApp de cada mañana',
+  consultoria: 'Propuestas listas el mismo día de la reunión',
+  comercio: 'Las preguntas que llegan mientras [[atiendes|atendéis]]',
 };
 
 // La frase del primer correo que muestra que sabemos cómo es su día a día.
@@ -181,7 +194,7 @@ const GANCHO = {
 };
 
 // Lo que más vendemos en cada sector, para el primer correo (si no hay, el párrafo no sale).
-const OFERTA_ACADEMIA = 'También montamos plataformas para que [[tus|vuestros]] alumnos practiquen con exámenes modelo al estilo de Cambridge o IELTS, que se corrigen solos. Ellos practican desde donde quieran, [[te ahorras|os ahorráis]] horas de corrección y, desde el área del profesorado, [[ves|veis]] de un vistazo quién está listo para presentarse y qué partes conviene repasar en clase.\n\nY si [[tienes|tenéis]] en mente otros recursos digitales, los hacemos a medida. Por ejemplo, listas de vocabulario que se repasan solas en el momento justo, listenings con [[tus|vuestros]] propios audios, un banco de writings con los comentarios del profesor o un área para que las familias vean cómo avanza cada alumno.';
+const OFERTA_ACADEMIA = 'También montamos plataformas para que [[tus|vuestros]] alumnos practiquen con exámenes modelo al estilo de Cambridge o IELTS, que se corrigen solos. Ellos practican desde donde quieran, [[te ahorras|os ahorráis]] horas de corrección y, desde el área del profesorado, [[ves|veis]] de un vistazo quién está listo para presentarse y qué partes conviene repasar en clase.\n\nY si [[tienes|tenéis]] en mente otros recursos digitales, los hacemos a medida. Por ejemplo, listas de vocabulario interactivas, listenings con [[tus|vuestros]] propios audios, un banco de writings con los comentarios del profesor, ejercicios dinámicos para la pizarra, una plataforma de aprendizaje completa para complementar el libro o sustituirlo, o un área para que las familias vean cómo avanza cada alumno.';
 const OFERTA = {
   academia: OFERTA_ACADEMIA,
   idiomas: OFERTA_ACADEMIA,
@@ -238,9 +251,12 @@ export function rellenar(t, c, env) {
   const vals = { nombre, empresa: c.empresa || (dk ? 'jer' : 'tu negocio'), sector_plural: s.plural, sector: s.una,
     sector_plural_da: SECTOR_DA_PLURAL[c.sector] || 'små virksomheder', demo: enlaceDemo(env, c.sector, c.empresa, idiomaDe(c)), cita: env.CITA_URL || 'responde a este correo y buscamos un hueco',
     oferta: OFERTA[c.sector] || '',
+    asunto_sector: ASUNTO[c.sector] || 'Una idea para {empresa}',
     gancho: GANCHO[c.sector] || 'Muchas pequeñas empresas pierden horas cada semana contestando lo mismo, pidiendo papeles o pasando datos de un sitio a otro.' };
   // Sin nombre de persona: «Hola:» / «Hej» en vez de «Hola, :».
-  return String(t).replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m)).replace(/\n{3,}/g, '\n\n')
+  // Dos pasadas: algunos valores (el asunto del sector) llevan a su vez {empresa}.
+  const poner = (x) => x.replace(/\{(\w+)\}/g, (m, k) => (k in vals ? vals[k] : m));
+  return poner(poner(String(t))).replace(/\n{3,}/g, '\n\n')
     // Con nombre de persona se le habla de tú; sin él, de vosotros: [[tú|vosotros]].
     .replace(/\[\[([^|\]]*)\|([^\]]*)\]\]/g, (m, tu, vos) => (nombre ? tu : vos))
     .replace(/^Hola, ([:.])/, 'Hola$1').replace(/^Hej ([.\n])/, (m, x) => (x === '.' ? 'Hej.' : 'Hej\n'));
