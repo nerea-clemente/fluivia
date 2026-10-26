@@ -41,7 +41,7 @@
         ["Una propuesta concreta", "Qué montaríamos primero, cuánto tardaríamos y si usaríamos tus herramientas o unas nuevas."],
         ["Lo montamos y lo probáis", "Primero lo usa tu equipo. Cuando estáis contentos, lo ven tus clientes."]],
       tituloPara: function (n) { return "Demo para " + n; }, preparada: function (n) { return "Preparada para " + n; },
-      correo: "Correo", hoy: "Hoy", pieNota: "Los nombres, conversaciones y cifras de esta demo son de ejemplo.", enLinea: "en línea", hab: " hab. · ", banos: " baños", ejemploDe: "Ejemplo de", tipoNegocio: "Tipo de negocio del ejemplo", menu: "Menú de la demo", inicioDemo: "Inicio de la demo", partes: "Partes de la demo"
+      tabs: ["Inicio", "Agenda", "Avisos", "Perfil"], correo: "Correo", hoy: "Hoy", pieNota: "Los nombres, conversaciones y cifras de esta demo son de ejemplo.", enLinea: "en línea", hab: " hab. · ", banos: " baños", ejemploDe: "Ejemplo de", tipoNegocio: "Tipo de negocio del ejemplo", menu: "Menú de la demo", inicioDemo: "Inicio de la demo", partes: "Partes de la demo"
     },
     en: {
       auto: "Automatic", cliente: "Customer", equipo: "Your team", de: " of ", de5: " of 5",
@@ -66,7 +66,7 @@
         ["A concrete proposal", "What we would set up first, how long it would take and whether we'd use your tools or new ones."],
         ["We build it and you try it", "Your team uses it first. When you're happy, your customers see it."]],
       tituloPara: function (n) { return "Demo for " + n; }, preparada: function (n) { return "Prepared for " + n; },
-      correo: "Mail", hoy: "Today", pieNota: "The names, conversations and figures in this demo are examples.", enLinea: "online", hab: " bedrooms · ", banos: " bathrooms", ejemploDe: "Example of", tipoNegocio: "Type of business in the example", menu: "Demo menu", inicioDemo: "Start of the demo", partes: "Parts of the demo"
+      tabs: ["Home", "Diary", "Updates", "Profile"], correo: "Mail", hoy: "Today", pieNota: "The names, conversations and figures in this demo are examples.", enLinea: "online", hab: " bedrooms · ", banos: " bathrooms", ejemploDe: "Example of", tipoNegocio: "Type of business in the example", menu: "Demo menu", inicioDemo: "Start of the demo", partes: "Parts of the demo"
     },
     da: {
       auto: "Automatisk", cliente: "Kunde", equipo: "Dit team", de: " af ", de5: " af 5",
@@ -91,7 +91,7 @@
         ["Et konkret forslag", "Hvad vi ville sætte op først, hvor lang tid det ville tage, og om vi ville bruge jeres egne værktøjer eller nye."],
         ["Vi bygger det, og I prøver det", "Først bruger dit team det. Når I er tilfredse, ser jeres kunder det."]],
       tituloPara: function (n) { return "Demo til " + n; }, preparada: function (n) { return "Lavet til " + n; },
-      correo: "Mail", hoy: "I dag", pieNota: "Navne, samtaler og tal i denne demo er eksempler.", enLinea: "online", hab: " vær. · ", banos: " bad", ejemploDe: "Eksempel på", tipoNegocio: "Virksomhedstype i eksemplet", menu: "Demoens menu", inicioDemo: "Demoens start", partes: "Demoens dele"
+      tabs: ["Hjem", "Kalender", "Beskeder", "Profil"], correo: "Mail", hoy: "I dag", pieNota: "Navne, samtaler og tal i denne demo er eksempler.", enLinea: "online", hab: " vær. · ", banos: " bad", ejemploDe: "Eksempel på", tipoNegocio: "Virksomhedstype i eksemplet", menu: "Demoens menu", inicioDemo: "Demoens start", partes: "Demoens dele"
     }
   };
   var T = TXT[IDIOMA];
@@ -229,6 +229,9 @@
           '<div class="movil-estado"><span>' + esc(o.hora || "9:41") + '</span><span class="movil-isla"></span><span class="movil-bat"></span></div>' +
           cab +
           '<div class="m-cuerpo' + (o.app === "wa" ? " m-wa" : "") + '">' + o.cuerpo + "</div>" +
+          (o.app ? "" : '<div class="m-tabs" aria-hidden="true">' + [["casa", T.tabs[0]], ["calendario", T.tabs[1]], ["chat", T.tabs[2]], ["persona", T.tabs[3]]].map(function (t, i) {
+            return '<span class="' + (i === (o.tab || 0) ? "is-activo" : "") + '">' + icono(t[0]) + esc(t[1]) + "</span>";
+          }).join("") + "</div>") +
         "</div></div></figure>";
     },
 
