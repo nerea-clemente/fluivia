@@ -130,6 +130,16 @@ export const PLANTILLAS = {
     asunto: 'Re: {asunto_sector}',
     texto: 'Hola, {nombre}:\n\n[[Te|Os]] escribí hace unos días con una demo para {empresa} y no quería que se quedara perdida en la bandeja de entrada.\n\nPor si [[te ayuda a hacerte|os ayuda a haceros]] una idea, en Study and Beyond, una empresa pequeña, montamos el seguimiento de contactos, los recordatorios y los documentos de cada cliente. Ahora el equipo dedica ese tiempo a atender a la gente. Lo [[tienes|tenéis]] contado aquí:\nhttps://fluivia.es/caso-real.html\n\n[[Tu|Vuestra]] demo sigue aquí:\n{demo}\n\n¿[[Te|Os]] viene bien una llamada de 20 minutos esta semana o la que viene?\n{cita}\n\nUn saludo,\nNerea',
   },
+  'caso-estudio': {
+    nombre: 'Automatización gratis a cambio de caso real (España)',
+    asunto: 'Una automatización gratis para {empresa}',
+    texto: 'Hola, {nombre}:\n\nSoy Nerea, de Fluivia. Ayudo a {sector_plural} a automatizar las tareas que se repiten cada semana.\n\nEstoy buscando un par de negocios de la zona para trabajar con ellos de cerca estos meses, y he pensado en {empresa}. [[Te propongo montarte|Os propongo montaros]] gratis una automatización para lo que más tiempo [[te|os]] quite. A cambio, [[me dejarías|me dejaríais]] contarlo en la web como caso real, con [[tu|vuestra]] opinión y algunos datos de cómo ha ido.\n\n{gancho} Por ahí podríamos empezar, o por lo que [[tú veas|veáis]] más urgente.\n\nLa puesta en marcha no [[te|os]] cuesta nada. Cuando ya esté funcionando y lo [[estés|estéis]] usando, solo [[pagas|pagáis]] la cuota mensual, que cubre el mantenimiento, las copias de seguridad y los ajustes pequeños. Y si no [[te|os]] convence, lo dejamos ahí.\n\nPara que [[te hagas|os hagáis]] una idea, [[te|os]] he preparado una demo con el nombre de {empresa}:\n{demo}\n\n¿Lo hablamos en una llamada de 20 minutos? [[Puedes|Podéis]] elegir el hueco aquí:\n{cita}\n\nUn saludo,\nNerea',
+  },
+  'caso-estudio-dk': {
+    nombre: 'Gratis automatisering mod kundecase (Danmark)',
+    asunto: 'En gratis automatisering til {empresa}',
+    texto: 'Hej {nombre}\n\nJeg hedder Nerea og driver Fluivia her i Aarhus. Jeg hjælper {sector_plural_da} med at automatisere de opgaver, der gentager sig hver uge.\n\nLige nu leder jeg efter et par lokale virksomheder, som jeg kan arbejde tæt sammen med de næste måneder, og jeg tænkte på {empresa}. Mit forslag er, at jeg gratis sætter en automatisering op til den opgave, der tager mest tid hos jer. Til gengæld må jeg fortælle om det som kundecase på hjemmesiden, med jeres udtalelse og et par tal for, hvordan det er gået.\n\nOpsætningen koster ikke noget. Når det kører, og I bruger det, betaler I kun det månedlige beløb, som dækker vedligeholdelse, backup og små justeringer. Og hvis I ikke er tilfredse, stopper vi bare der.\n\nHar du 20 minutter i næste uge, så vi kan tale om det? Du kan vælge et tidspunkt her:\n{cita}\n\nVenlig hilsen\nNerea\nFluivia',
+  },
   'linkedin-es': {
     nombre: 'Mensaje de LinkedIn (España)',
     asunto: 'Primer contacto',
