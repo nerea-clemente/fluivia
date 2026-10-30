@@ -237,3 +237,7 @@ table { border-collapse: collapse; }
   .campos { grid-template-columns: minmax(0, 1fr); }
   .tabla .ocultar-movil { display: none; }
 }
+
+/* Etiquetas propias (por ejemplo, «Caso real gratis») y correo preparado */
+.chip-etiqueta { background: #E6F7EC; color: #1E7B45; font-weight: 700; }
+.chip-borrador { background: #EEF0FF; color: #3B3FB8; }

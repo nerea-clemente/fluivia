@@ -72,6 +72,12 @@
     if (c.pais === "DK") return false;
     return !(c.vies && c.vies.estado === "valido" && c.vies.nif === c.nif);
   }
+  // Etiquetas propias (no las automáticas de la importación) y si tiene un correo preparado.
+  var AUTO = ["prospección", "España", "Dinamarca"];
+  function marcas(c) {
+    return (c.etiquetas || []).filter(function (t) { return AUTO.indexOf(t) < 0; }).map(function (t) { return ' <span class="chip chip-etiqueta">' + esc(t) + "</span>"; }).join("") +
+      (c.borrador ? ' <span class="chip chip-borrador" title="Tiene un correo preparado en la ficha">Correo preparado</span>' : "");
+  }
   function etapa(k) { return '<span class="etapa etapa-' + esc(k) + '">' + esc(nombre(ETAPAS, k)) + "</span>"; }
   function titulo(c) { return c.empresa || c.nombre || c.email || "Sin nombre"; }
   function subtitulo(c) { return [c.empresa ? c.nombre : "", nombre(SECTORES, c.sector)].filter(Boolean).join(" · "); }
@@ -127,6 +133,6 @@
   window.Of = {
     ETAPAS: ETAPAS, SECTORES: SECTORES, ORIGENES: ORIGENES, INTERESES: INTERESES, TIPOS: TIPOS, PAISES: PAISES, fiscalPendiente: fiscalPendiente,
     nombre: nombre, icono: icono, esc: esc, api: api, hoy: hoy, masDias: masDias, dia: dia, momento: momento, euros: euros,
-    proxima: proxima, etapa: etapa, pais: pais, enPais: enPais, titulo: titulo, subtitulo: subtitulo, aviso: aviso, cabecera: cabecera
+    proxima: proxima, etapa: etapa, marcas: marcas, pais: pais, enPais: enPais, titulo: titulo, subtitulo: subtitulo, aviso: aviso, cabecera: cabecera
   };
 })();

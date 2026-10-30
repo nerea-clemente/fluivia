@@ -450,3 +450,5 @@ html[data-tema="precision"] body:has(> .cab) { padding-left: var(--lado); }
   [data-tema="precision"] .tabla td:first-child { flex-basis: 100%; margin-bottom: 2px; }
   [data-tema="precision"] .tabla .ocultar-movil { display: none; }
 }
+[data-tema="precision"] .chip-etiqueta { background: #E3F6EA; color: #17643A; font-weight: 700; box-shadow: inset 0 0 0 1px #B7E4C7; }
+[data-tema="precision"] .chip-borrador { background: #EEF0FF; color: #3B3FB8; box-shadow: inset 0 0 0 1px #D5D8FF; }

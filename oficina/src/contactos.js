@@ -89,6 +89,9 @@ export function limpiar(b = {}) {
       ...(txt(h.autor, 200) ? { autor: txt(h.autor, 200) } : {}),
     }))
     .filter((h) => h.texto || h.asunto);
+  // Correo preparado para este contacto (llega con la importación); se borra al enviarlo.
+  d.borrador = b.borrador && (txt(b.borrador.asunto, 200).trim() || txt(b.borrador.texto, 10000).trim())
+    ? { asunto: txt(b.borrador.asunto, 200).trim(), texto: txt(b.borrador.texto, 10000).trim() } : null;
   d.demo = b.demo && fechaIso(b.demo.fecha) ? { fecha: b.demo.fecha, enlace: txt(b.demo.enlace, 600) } : null;
   // Dejó de recibir correos (rebote o petición): no se le vuelve a escribir.
   d.noEscribir = b.noEscribir === true;
@@ -154,10 +157,19 @@ export function deProspeccion(e, fecha, autor) {
     email: EMAIL_OK.test(e.email || '') ? e.email : '', telefono: e.telefono, web: conHttps(e.web), ciudad: e.ciudad,
     linkedin: e.linkedin, fuente: e.fuente, sector: SECTORES.includes(e.sector) ? e.sector : 'otro',
     origen: 'prospeccion', etapa: 'nuevo', pais, nif: pais === 'DK' && /^\d{8}$/.test(String(e.cvr || '').replace(/\D/g, '')) ? 'DK' + String(e.cvr).replace(/\D/g, '') : '',
-    notas: txt(e.nota, 1000), etiquetas: ['prospección', pais === 'DK' ? 'Dinamarca' : 'España'],
-    proxima: { fecha, texto: QUE[canal] }, creado: ahora,
+    notas: txt(e.nota, 1000), etiquetas: ['prospección', pais === 'DK' ? 'Dinamarca' : 'España', ...etiquetasDe(e)],
+    borrador: borradorDe(e),
+    proxima: { fecha, texto: borradorDe(e) ? 'Enviar el correo preparado' : QUE[canal] }, creado: ahora,
     historial: [{ fecha: ahora, tipo: 'nota', texto: `Añadida a la lista de prospección.${e.fuente ? ` Datos de ${txt(e.fuente, 300)}` : ''}`, auto: true, ...(autor ? { autor } : {}) }],
   });
+}
+
+// Etiquetas y correo preparado que pueden venir en la lista (columnas «etiquetas»,
+// «borrador_asunto» y «borrador_texto», o «borrador» en JSON).
+export const etiquetasDe = (e) => (Array.isArray(e.etiquetas) ? e.etiquetas : String(e.etiquetas || '').split(/[,|]/)).map((x) => txt(x, 40).trim()).filter(Boolean);
+export function borradorDe(e) {
+  const asunto = txt(e.borrador?.asunto ?? e.borrador_asunto, 200).trim(), texto = txt(e.borrador?.texto ?? e.borrador_texto, 10000).trim();
+  return asunto || texto ? { asunto, texto } : null;
 }
 
 // Para no repetir empresas: por correo, por web (sin www) o por nombre y ciudad.

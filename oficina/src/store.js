@@ -97,6 +97,7 @@ export class Oficina extends DurableObject {
   anadirHistorial(id, entrada, autor) {
     const c = this.leerContacto(id);
     if (!c) return null;
+    if (entrada.tipo === 'correo') c.borrador = null;
     c.historial = [...(c.historial || []), { fecha: new Date().toISOString(), ...entrada, autor }];
     return this.guardarContacto(id, Contactos.limpiar(c), autor);
   }
@@ -131,7 +132,8 @@ export class Oficina extends DurableObject {
     const vistas = new Set(this.contactos().flatMap((c) => Contactos.clavesDe(c)));
     const dias = [];
     const d = new Date();
-    let nuevos = 0, repetidos = 0;
+    let nuevos = 0, repetidos = 0, actualizados = 0;
+    const porClave = new Map(this.contactos().flatMap((c) => Contactos.clavesDe(c).map((k) => [k, c])));
     const fechaPara = (i) => {
       while (dias.length <= Math.floor(i / porDia)) {
         while ([0, 6].includes(d.getUTCDay())) d.setUTCDate(d.getUTCDate() + 1);
@@ -142,13 +144,29 @@ export class Oficina extends DurableObject {
     };
     for (const e of lista) {
       const claves = Contactos.clavesDe({ ...e, web: e.web });
-      if (!e.empresa || claves.some((k) => vistas.has(k))) { repetidos++; continue; }
-      const c = Contactos.deProspeccion(e, fechaPara(nuevos), autor);
+      if (!e.empresa) { repetidos++; continue; }
+      if (claves.some((k) => vistas.has(k))) {
+        // Ya estaba: si la lista trae etiquetas o un correo preparado, se añaden a su ficha.
+        const prev = claves.map((k) => porClave.get(k)).find(Boolean);
+        const etiq = Contactos.etiquetasDe(e), borr = Contactos.borradorDe(e);
+        if (prev && (etiq.length || borr)) {
+          const n = { ...prev, etiquetas: [...new Set([...(prev.etiquetas || []), ...etiq])] };
+          if (borr) {
+            n.borrador = borr;
+            if (!['cliente', 'perdido'].includes(n.etapa)) n.proxima = { fecha: fechaPara(nuevos + actualizados), texto: 'Enviar el correo preparado' };
+          }
+          this.guardarContacto(prev.id, Contactos.limpiar(n), autor);
+          actualizados++;
+        } else repetidos++;
+        continue;
+      }
+      const c = Contactos.deProspeccion(e, fechaPara(nuevos + actualizados), autor);
       this.guardarContacto(Contactos.nuevoId(), c, autor);
       claves.forEach((k) => vistas.add(k));
       nuevos++;
     }
-    return { nuevos, repetidos, hasta: nuevos ? fechaPara(nuevos - 1) : '' };
+    const total = nuevos + actualizados;
+    return { nuevos, repetidos, actualizados, hasta: total ? fechaPara(total - 1) : '' };
   }
 
   // ---- Correos programados ---------------------------------------------------
@@ -199,7 +217,7 @@ export class Oficina extends DurableObject {
       }
       this.sql.exec('UPDATE programados SET estado = ?, error = ? WHERE id = ?', estado, error, p.id);
       if (c && estado === 'enviado') {
-        let n = { ...c, historial: [...(c.historial || []), { fecha: new Date().toISOString(), tipo: 'correo', asunto: p.asunto, texto: p.texto, autor: p.autor || undefined }] };
+        let n = { ...c, borrador: null, historial: [...(c.historial || []), { fecha: new Date().toISOString(), tipo: 'correo', asunto: p.asunto, texto: p.texto, autor: p.autor || undefined }] };
         n = Contactos.limpiar(n);
         if (n.etapa === 'nuevo') n = Contactos.cambiarEtapa(n, 'contactado', p.autor || 'oficina');
         this.guardarContacto(c.id, n, p.autor || 'oficina');

@@ -65,7 +65,7 @@
     $("lista").innerHTML = '<div class="tabla-env"><table class="tabla"><thead><tr><th>Contacto</th><th>Etapa</th><th>Próxima acción</th><th class="ocultar-movil">Origen</th><th class="ocultar-movil">Último movimiento</th></tr></thead><tbody>' +
       lista.map(function (c) {
         var li = c.linkedin ? ' <a class="chip" href="' + esc(c.linkedin) + '" target="_blank" rel="noopener" title="Abrir en LinkedIn">in</a>' : "";
-        return '<tr data-id="' + esc(c.id) + '"><td><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + "</a>" + li + "<small>" + esc([Of.subtitulo(c), c.ciudad].filter(Boolean).join(" · ")) + "</small></td>" +
+        return '<tr data-id="' + esc(c.id) + '"><td><a href="/ficha.html?id=' + encodeURIComponent(c.id) + '">' + esc(Of.titulo(c)) + "</a>" + li + Of.marcas(c) + "<small>" + esc([Of.subtitulo(c), c.ciudad].filter(Boolean).join(" · ")) + "</small></td>" +
           "<td>" + Of.etapa(c.etapa) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</td>" +
           "<td>" + (c.proxima && c.proxima.fecha ? Of.proxima(c) + "<small>" + esc(c.proxima.texto) + "</small>" : '<span class="tenue">—</span>') + "</td>" +
           '<td class="ocultar-movil">' + esc(Of.nombre(Of.ORIGENES, c.origen)) + "</td>" +
@@ -81,7 +81,7 @@
       return '<section class="columna" data-etapa="' + e[0] + '"><h2>' + esc(e[1]) + " <span>" + col.length + "</span></h2>" +
         (suma ? '<p class="columna-suma">' + Of.euros(suma) + (e[0] === "cliente" ? "/mes" : "") + "</p>" : "") +
         col.map(function (c) {
-          return '<a class="tarjeta-c" draggable="true" data-id="' + esc(c.id) + '" href="/ficha.html?id=' + encodeURIComponent(c.id) + '"><strong>' + esc(Of.titulo(c)) + "</strong><span>" + esc(Of.subtitulo(c)) + "</span>" + Of.proxima(c) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</a>";
+          return '<a class="tarjeta-c" draggable="true" data-id="' + esc(c.id) + '" href="/ficha.html?id=' + encodeURIComponent(c.id) + '"><strong>' + esc(Of.titulo(c)) + "</strong>" + Of.marcas(c) + "<span>" + esc(Of.subtitulo(c)) + "</span>" + Of.proxima(c) + (Of.fiscalPendiente(c) ? ' <span class="chip chip-fiscal">Sin NIF-IVA válido</span>' : "") + "</a>";
         }).join("") + "</section>";
     }).join("");
   }
@@ -119,7 +119,7 @@
     }
     if (celda || fila.length) { fila.push(celda); filas.push(fila); }
     var cab = (filas.shift() || []).map(function (h) { return normal(h).trim().replace(/[^a-z]/g, ""); });
-    var alias = { nombre: "empresa", company: "empresa", city: "ciudad", country: "pais", phone: "telefono", telfono: "telefono", correo: "email", mail: "email", contacto: "persona", notas: "nota" };
+    var alias = { nombre: "empresa", company: "empresa", city: "ciudad", country: "pais", phone: "telefono", telfono: "telefono", correo: "email", mail: "email", contacto: "persona", notas: "nota", borradorasunto: "borrador_asunto", borradortexto: "borrador_texto" };
     return filas.filter(function (f) { return f.some(function (x) { return x.trim(); }); }).map(function (f) {
       var o = {}; cab.forEach(function (h, j) { o[alias[h] || h] = (f[j] || "").trim(); }); return o;
     });
@@ -129,7 +129,7 @@
     var porDia = prompt(lista.length + " empresas en el archivo. ¿Cuántas quieres contactar al día? (las repartimos en la próxima acción)", "10");
     if (porDia === null) return;
     Of.api("/api/contactos/importar", { method: "POST", body: { contactos: lista, porDia: Number(porDia) || 10 } }).then(function (r) {
-      Of.aviso(r.nuevos + " empresas añadidas" + (r.repetidos ? ", " + r.repetidos + " ya estaban" : "") + (r.hasta ? ". Repartidas hasta el " + r.hasta.split("-").reverse().join("/") : ""));
+      Of.aviso(r.nuevos + " empresas añadidas" + (r.actualizados ? ", " + r.actualizados + " actualizadas con su etiqueta o su correo" : "") + (r.repetidos ? ", " + r.repetidos + " ya estaban" : "") + (r.hasta ? ". Repartidas hasta el " + r.hasta.split("-").reverse().join("/") : ""));
       return Of.api("/api/contactos");
     }).then(function (l) { if (l) { todos = l; estado.origen = "prospeccion"; $("f-origen").value = "prospeccion"; pintar(); } }).catch(function (e) { Of.aviso(e.message, true); });
   }

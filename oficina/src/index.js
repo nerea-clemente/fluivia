@@ -302,7 +302,9 @@ async function api(req, env, store, url, email) {
         const t = Date.parse(b.cuando);
         if (!Number.isFinite(t) || t < Date.now() + 60000) return json({ error: 'Elige una hora que sea al menos dentro de un minuto' }, 400);
         if (t > Date.now() + 60 * 864e5) return json({ error: 'Se puede programar como mucho a 60 días' }, 400);
-        return json({ programado: await store.programar({ contacto: id, asunto, texto, cuando: t, autor: email }) });
+        const programado = await store.programar({ contacto: id, asunto, texto, cuando: t, autor: email });
+        if (c.borrador) await store.guardarContacto(id, C.limpiar({ ...c, borrador: null }), email);
+        return json({ programado });
       }
       try { await Correo.enviar(env, { to: [c.email], reply_to: lista(env.AVISOS)[0] || undefined, ...Correo.deFicha(env, c, asunto, texto) }); }
       catch (e) { console.error('[correo]', e); return json({ error: 'No se ha podido enviar el correo' }, 502); }

@@ -152,11 +152,18 @@
     pintarFiscal();
     $("borrar").hidden = nuevo;
     ["apuntar-caja", "demo-caja", "historial-caja"].forEach(function (k) { $(k).hidden = nuevo; });
-    $("correo-caja").hidden = nuevo || !c.email || c.noEscribir;
+    // Sin correo, la caja sale solo si hay un texto preparado (para copiarlo y mandarlo por SMS o LinkedIn).
+    $("correo-caja").hidden = nuevo || c.noEscribir || (!c.email && !c.borrador);
+    ["enviar-correo", "abrir-programar", "probar-correo"].forEach(function (k) { $(k).hidden = !c.email; });
     if (!nuevo) {
       var enEs = (c.idioma || (c.pais === "DK" ? "da" : "es")) === "es";
-      $("correo-a").textContent = (enEs ? "Sale como «Nerea de Fluivia», con tu firma y el WhatsApp, a " : "Sale desde Fluivia (info@fluivia.ai) a ") + c.email + ". La prueba te llega a ti.";
+      $("correo-a").textContent = !c.email ? "No tiene correo: copia el texto y mándalo por SMS, WhatsApp o LinkedIn." : (enEs ? "Sale como «Nerea de Fluivia», con tu firma y el WhatsApp, a " : "Sale desde Fluivia (info@fluivia.ai) a ") + c.email + ". La prueba te llega a ti.";
       cargarProgramados();
+      // Correo preparado desde la importación: se deja listo en la caja de correo.
+      if (c.borrador && !$("correo-asunto").value && !$("correo-texto").value) {
+        $("correo-asunto").value = c.borrador.asunto || ""; $("correo-texto").value = c.borrador.texto || "";
+        $("correo-a").textContent = "Correo preparado para este contacto. " + $("correo-a").textContent;
+      }
       $("demo-enviada").textContent = c.demo ? "Pidió la demo desde la web el " + Of.momento(c.demo.fecha) + "." : "";
       pintarHistorial();
       cargarPlantillas();
